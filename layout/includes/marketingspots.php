@@ -25,64 +25,48 @@
  */
  
 ?>
-<div class="clearfix"></div>
+
 <div class="row-fluid" id="marketing-spots">
-
-<div class="span4">
-    <div class="marketwrap service">
-    <span class="vert-flag noise">★★★</span>
-    <h1><?php echo $PAGE->theme->settings->marketing1 ?></h1>
-    <?php if ($PAGE->theme->settings->marketing1image) { ?>
-    <img src="<?php echo $PAGE->theme->setting_file_url('marketing1image', 'marketing1image', true); ?>" />
-    <?php } ?>
-        <p>
-         <?php echo $PAGE->theme->settings->marketing1content ?>
-        </p> 
-        <br />
-        <?php if ($PAGE->theme->settings->marketing1buttonurl) { ?>
-        <a href="<?php echo $PAGE->theme->settings->marketing1buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing1target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing1icon ?>"></i></span>
+    <div class="span4">
+        <!-- Advert #1 -->
+        <div class="service">
+            <!-- Icon & title. Font Awesome icon used. -->
+            <h5><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing1icon ?>"></i> <?php echo $PAGE->theme->settings->marketing1 ?></span></h5>
+            <?php echo $PAGE->theme->settings->marketing1content ?>
+            <p align="right">
+                <a href="<?php echo $PAGE->theme->settings->marketing1buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing1target ?>" class="btn btn-danger">
                     <?php echo $PAGE->theme->settings->marketing1buttontext ?>
-        </a>
-        <?php } ?>
+                </a>
+            </p>
+        </div>
     </div>
-</div>
-
-<div class="span4">
-    <div class="marketwrap service">
-    <span class="vert-flag noise">★★★</span>
-    <h1><?php echo $PAGE->theme->settings->marketing2 ?></h1>
-    <?php if ($PAGE->theme->settings->marketing2image) { ?>
-    <img src="<?php echo $PAGE->theme->setting_file_url('marketing2image', 'marketing2image', true); ?>" />
-    <?php } ?>
-        <p>
-         <?php echo $PAGE->theme->settings->marketing2content ?>
-        </p> 
-        <br />
-        <?php if ($PAGE->theme->settings->marketing2buttonurl) { ?>
-        <a href="<?php echo $PAGE->theme->settings->marketing2buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing2target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing2icon ?>"></i></span>
+    
+    <div class="span4">
+        <!-- Advert #2 -->
+        <div class="service">
+            <!-- Icon & title. Font Awesome icon used. -->
+            <h5><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing2icon ?>"></i> <?php echo $PAGE->theme->settings->marketing2 ?></span></h5>
+            <?php echo $PAGE->theme->settings->marketing2content ?>
+            <p align="right">
+                <a href="<?php echo $PAGE->theme->settings->marketing2buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing2target ?>" class="btn btn-danger">
                     <?php echo $PAGE->theme->settings->marketing2buttontext ?>
-        </a>
-        <?php } ?>
+                </a>
+            </p>
+        </div>
     </div>
-</div>
-
-<div class="span4">
-    <div class="marketwrap service">
-    <span class="vert-flag noise">★★★</span>
-    <h1><?php echo $PAGE->theme->settings->marketing3 ?></h1>
-    <?php if ($PAGE->theme->settings->marketing3image) { ?>
-    <img src="<?php echo $PAGE->theme->setting_file_url('marketing3image', 'marketing3image', true); ?>" />
-    <?php } ?>
-        <p>
-         <?php echo $PAGE->theme->settings->marketing3content ?>
-        </p> 
-        <br />
-        <?php if ($PAGE->theme->settings->marketing3buttonurl) { ?>
-        <a href="<?php echo $PAGE->theme->settings->marketing3buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing3target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing3icon ?>"></i></span>
+    
+    <div class="span4">
+        <!-- Advert #3 -->
+        <div class="service">
+            <!-- Icon & title. Font Awesome icon used. -->
+            <h5><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing3icon ?>"></i> <?php echo $PAGE->theme->settings->marketing3 ?></span></h5>
+            
+            <?php echo $PAGE->theme->settings->marketing3content ?>
+            <p align="right">
+                <a href="<?php echo $PAGE->theme->settings->marketing3buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing3target ?>" class="btn btn-danger">
                     <?php echo $PAGE->theme->settings->marketing3buttontext ?>
-        </a>
-        <?php } ?>
+                </a>
+            </p>
+        </div>
     </div>
-</div>
-
 </div>

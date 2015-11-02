@@ -22,8 +22,27 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
  
- class theme_pioneer_core_renderer extends theme_bootstrapbase_core_renderer {
-    /*
+ class theme_evolved_core_renderer extends theme_bootstrapbase_core_renderer {
+            /*
+     * This renders the navbar.
+     * Uses bootstrap compatible html.
+     */
+    public function navbar() {
+        $items = $this->page->navbar->get_items();
+        if (empty($items)) {
+            return '';
+        }
+        $breadcrumbs = array();
+        foreach ($items as $item) {
+            $item->hideicon = true;
+            $breadcrumbs[] = $this->render($item);
+        }
+        $divider = '';
+        $list_items = '<li>'.join(" $divider</li><li>", $breadcrumbs).'</li>';
+        $title = '<span class="accesshide">'.get_string('pagepath').'</span>';
+        return $title . "<ul class=\"breadcrumb\">$list_items</ul>";
+    }
+/**
      * Returns HTML to display a "Turn editing on/off" button in a form.
      *
      * @param moodle_url $url The URL + params to send through when clicking the button
@@ -46,7 +65,7 @@
         return html_writer::tag('a', html_writer::start_tag('i', array('class' => $icon . ' fa fa-fw')) .
             html_writer::end_tag('i') . $title, array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
     }
-     protected function render_custom_menu(custom_menu $menu) {
+    protected function render_custom_menu(custom_menu $menu) {
         /*
         * This code replaces adds the current enrolled
         * courses to the custommenu.

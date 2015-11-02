@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The one column layout.
+ * The two column layout.
  *
  * @package   theme_clean
  * @copyright 2013 Moodle, moodle.org
@@ -25,6 +25,7 @@
 // Get the HTML for the settings bits.
 $html = theme_clean_get_html_for_settings($OUTPUT, $PAGE);
 
+$left = (!right_to_left());  // To know if to add 'pull-right' and 'desktop-first-column' classes in the layout for LTR.
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 <head>
@@ -34,14 +35,15 @@ echo $OUTPUT->doctype() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Google web fonts -->
     <?php require_once(dirname(__FILE__).'/includes/fonts.php'); ?>
+<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" type='text/css' /> -->
 </head>
 
-<body <?php echo $OUTPUT->body_attributes(); ?>>
+<body <?php echo $OUTPUT->body_attributes('two-column'); ?>>
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
-<header role="banner" class="navbar navbar-fixed-top<?php echo $html->navbarclass ?> moodle-has-zindex">
-    <nav role="navigation" class="navbar-inner">
+<header role="banner" class="navbar navbar-fixed-top<?php echo $html->navbarclass ?>">
+   <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
             <a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo
                 format_string($SITE->shortname, true, array('context' => context_course::instance(SITEID)));
@@ -72,7 +74,8 @@ echo $OUTPUT->doctype() ?>
     </header>
 
     <div id="page-content" class="row-fluid">
-        <section id="region-main" class="span12">
+    
+        <section id="region-main" class="span9<?php if ($left) { echo ' pull-right'; } ?>">
             <div class="course-title">
          <div id="editbutton">
       <?php echo $OUTPUT->page_heading_button(); ?>
@@ -88,9 +91,27 @@ echo $OUTPUT->doctype() ?>
             echo $OUTPUT->course_content_footer();
             ?>
         </section>
+        <?php
+        $classextra = '';
+        if ($left) {
+            $classextra = ' desktop-first-column';
+        }
+        echo $OUTPUT->blocks('side-pre', 'span3'.$classextra);
+        ?>
     </div>
 
     <footer id="page-footer">
+        <!-- Start Marketing Spots -->
+    <?php 
+        if($PAGE->theme->settings->togglemarketing==1) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } else if($PAGE->theme->settings->togglemarketing==2 && !isloggedin()) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } else if($PAGE->theme->settings->togglemarketing==3 && isloggedin()) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } 
+    ?>
+    <!-- End Marketing Spots -->
         <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
         <?php

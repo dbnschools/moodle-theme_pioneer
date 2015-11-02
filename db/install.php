@@ -15,20 +15,32 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme evolveD version file.
+ * Theme evolve-D install.
  *
  * @package    theme_evolved
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
+defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2015092300;
-$plugin->maturity = MATURITY_STABLE; // this version's maturity level.
-$plugin->release = '2.1.1 Evolve-D Dearborn Public Schools (Build: 2015092300)';
-$plugin->requires  = 2014050800;
-$plugin->component = 'theme_evolved';
-$plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2014050800,
-    'theme_clean'  => 2014050800,
-);
+/**
+ * Theme_mimoodle install function.
+ *
+ * @return void
+ */
+function xmldb_theme_evolved_install() {
+    global $CFG;
+
+    // Set the default background.
+    $fs = get_file_storage();
+
+    $filerecord = new stdClass();
+    $filerecord->component = 'theme_evolved';
+    $filerecord->contextid = context_system::instance()->id;
+    $filerecord->userid    = get_admin()->id;
+    $filerecord->filearea  = 'backgroundimage';
+    $filerecord->filepath  = '/';
+    $filerecord->itemid    = 0;
+    $filerecord->filename  = 'background.png';
+    $fs->create_file_from_pathname($filerecord, $CFG->dirroot . '/theme/evolved/pix/background.png');
+}

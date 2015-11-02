@@ -14,17 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * The one column layout.
- *
- * @package   theme_clean
- * @copyright 2013 Moodle, moodle.org
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
 // Get the HTML for the settings bits.
 $html = theme_clean_get_html_for_settings($OUTPUT, $PAGE);
 
+$left = (!right_to_left());
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 <head>
@@ -32,15 +25,24 @@ echo $OUTPUT->doctype() ?>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
     <?php echo $OUTPUT->standard_head_html() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google web fonts -->
+ <!-- Google web fonts -->
     <?php require_once(dirname(__FILE__).'/includes/fonts.php'); ?>
+<script>
+if (location.href.substr('/modedit.php?add=')) {
+    var style = document.createElement('link');
+    style.type = 'text/css';
+    style.href = '../../style/simple.css';
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(style);
+}
+</script>    
+<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" type='text/css' /> -->
 </head>
 
-<body <?php echo $OUTPUT->body_attributes(); ?>>
-
+<body <?php echo $OUTPUT->body_attributes('two-column'); ?>>
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
-<header role="banner" class="navbar navbar-fixed-top<?php echo $html->navbarclass ?> moodle-has-zindex">
+<header role="banner" class="navbar navbar-fixed-top<?php echo $html->navbarclass ?>">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
             <a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo
@@ -63,17 +65,22 @@ echo $OUTPUT->doctype() ?>
 </header>
 
 <div id="page" class="container-fluid">
-<?php require_once(dirname(__FILE__).'/includes/alerts.php'); ?>
+
     <header id="page-header" class="clearfix">
         <div id="page-navbar" class="clearfix">
             <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
             <div class="breadcrumb-button logosmall"></div>
+
         </div>
     </header>
-
     <div id="page-content" class="row-fluid">
-        <section id="region-main" class="span12">
-            <div class="course-title">
+<?php
+if (!$left) { ?>
+    <section id="region-main" class="span9 pull-left">
+<?php } else { ?>
+    <section id="region-main" class="span9">
+<?php } ?>
+    <div class="course-title">
          <div id="editbutton">
       <?php echo $OUTPUT->page_heading_button(); ?>
       </div>
@@ -82,15 +89,28 @@ echo $OUTPUT->doctype() ?>
         <div id="course-header">
             <?php echo $OUTPUT->course_header(); ?>
         </div>
-            <?php
-            echo $OUTPUT->course_content_header();
-            echo $OUTPUT->main_content();
-            echo $OUTPUT->course_content_footer();
-            ?>
-        </section>
+        <?php
+        echo $OUTPUT->course_content_header();
+        echo $OUTPUT->main_content();
+        echo $OUTPUT->course_content_footer();
+        ?>
+    </section>
+        <?php echo $OUTPUT->blocks('side-pre', 'span3'); ?>
+        <?php echo $OUTPUT->blocks('side-post', 'span3 pull-right'); ?>
     </div>
 
-    <footer id="page-footer">
+     <footer id="page-footer">
+    <!-- Start Marketing Spots -->
+    <?php 
+        if($PAGE->theme->settings->togglemarketing==1) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } else if($PAGE->theme->settings->togglemarketing==2 && !isloggedin()) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } else if($PAGE->theme->settings->togglemarketing==3 && isloggedin()) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } 
+    ?>
+    <!-- End Marketing Spots -->
         <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
         <?php
@@ -99,9 +119,10 @@ echo $OUTPUT->doctype() ?>
         echo $OUTPUT->home_link();
         echo $OUTPUT->standard_footer_html();
         ?>
+
     </footer>
 
-    <?php echo $OUTPUT->standard_end_of_body_html() ?>
+ <?php echo $OUTPUT->standard_end_of_body_html() ?>
 
 </div>
 </body>
