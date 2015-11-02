@@ -16,7 +16,8 @@ The Moodle Pioneer theme is a responsive bootstrap theme for Moodle. Highly cust
 * Social Icons display neatly at the bottom of the page.
 * Custom Logo and Images
 * Custom Colors
-###Special Thanks
+
+##Special Thanks
 Pioneer would not be possible in it's current form without help and code from the following:
 * Richard Oelmann for coding the Header Image functionality
 * Mary Evans designer of More Candy theme and the super cool Block Styling and support in the Moodle.org theme forum
