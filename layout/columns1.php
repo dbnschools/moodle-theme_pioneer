@@ -15,24 +15,24 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The one column layout.
+ * A one column layout for the Bootstrapbase theme.
  *
- * @package   theme_clean
- * @copyright 2013 Moodle, moodle.org
+ * @package   theme_bootstrapbase
+ * @copyright 2012 Bas Brands, www.basbrands.nl
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-// Get the HTML for the settings bits.
-$html = theme_clean_get_html_for_settings($OUTPUT, $PAGE);
-
+$html = theme_pioneer_get_html_for_settings($OUTPUT, $PAGE);
+$PAGE->requires->jquery();
+require('includes/courseimage.php'); 
 echo $OUTPUT->doctype() ?>
+
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 <head>
     <title><?php echo $OUTPUT->page_title(); ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
     <?php echo $OUTPUT->standard_head_html() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google web fonts -->
+    <!-- Google web fonts -->
     <?php require_once(dirname(__FILE__).'/includes/fonts.php'); ?>
 </head>
 
@@ -40,63 +40,70 @@ echo $OUTPUT->doctype() ?>
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
-<header role="banner" class="navbar navbar-fixed-top<?php echo $html->navbarclass ?> moodle-has-zindex">
-    <nav role="navigation" class="navbar-inner">
-        <div class="container-fluid">
-            <a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo
-                format_string($SITE->shortname, true, array('context' => context_course::instance(SITEID)));
-                ?></a>
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <?php echo $OUTPUT->user_menu(); ?>
-            <div class="nav-collapse collapse">
-                <?php echo $OUTPUT->custom_menu(); ?>
-                <ul class="nav pull-right">
-                    <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
 <div id="page" class="container-fluid">
-<?php require_once(dirname(__FILE__).'/includes/alerts.php'); ?>
-    <header id="page-header" class="clearfix">
-        <div id="page-navbar" class="clearfix">
-            <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
-            <div class="breadcrumb-button logosmall"></div>
-        </div>
-    </header>
+<div class="fpcustomnav-container">
+        <nav role="navigation" class="navbar navbar-inner">
+          <div id="logo"> </div>
+                <!-- icon navigation-->
+    <?php require_once(dirname(__FILE__).'/includes/iconnav.php'); ?>
+            <?php echo $OUTPUT->custom_menu(); ?>
+            <div class="top-search">
+           <form action="<?php echo new moodle_url('/course/search.php'); ?>" method="get">
+              <input type="text" placeholder="<?php echo get_string('searchcourses'); ?>" name="search" value="">
+              <input type="submit" value="Find">
+           </form>    
+            </div>
+        </nav>
+</div>
+        <div class="clearfix"></div>
 
     <div id="page-content" class="row-fluid">
-        <section id="region-main" class="span12">
-            <div class="course-title">
-         <div id="editbutton">
-      <?php echo $OUTPUT->page_heading_button(); ?>
-      </div>
-    <?php echo $html->heading; ?>
-    </div>
-        <div id="course-header">
-            <?php echo $OUTPUT->course_header(); ?>
+        <div id="header-image-box">
+            <div class="header-image" <?php if ($courseimage){ echo 'style="background-image: url('.$courseimage.');"'; } ?> >
+            <div class="header-spacer-incourse">
+                <div class="course-title">
+                    <?php echo $html->heading; ?>
+                </div>
+                <div id="course-header">      
+                <?php echo $OUTPUT->course_header(); ?>
+                </div>
+            </div>
+            </div>
         </div>
+        <div id="breadcrumb-container" class="clearfix">
+            <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> <?php echo $OUTPUT->user_menu(); ?>
+        </div>
+        <div id="editbutton">
+                <?php echo $OUTPUT->page_heading_button(); ?>
+        </div> 
+        <section id="region-main" class="span12">
             <?php
             echo $OUTPUT->course_content_header();
             echo $OUTPUT->main_content();
             echo $OUTPUT->course_content_footer();
             ?>
         </section>
+                    <!-- Start Marketing Spots -->
+    <?php 
+        if($PAGE->theme->settings->togglemarketing==1) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } else if($PAGE->theme->settings->togglemarketing==2 && !isloggedin()) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } else if($PAGE->theme->settings->togglemarketing==3 && isloggedin()) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } 
+    ?>
+    <!-- End Marketing Spots -->
     </div>
 
+        <?php require_once(dirname(__FILE__).'/includes/socialicons.php'); ?>
+
+
     <footer id="page-footer">
+   
         <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
         <?php
-        echo $html->footnote;
-        echo $OUTPUT->login_info();
-        echo $OUTPUT->home_link();
         echo $OUTPUT->standard_footer_html();
         ?>
     </footer>
@@ -104,5 +111,10 @@ echo $OUTPUT->doctype() ?>
     <?php echo $OUTPUT->standard_end_of_body_html() ?>
 
 </div>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
 </body>
 </html>

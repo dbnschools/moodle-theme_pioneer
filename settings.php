@@ -9,24 +9,25 @@
 // Moodle is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for evolved details.
+// GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme evolved temp.
+ * Theme More settings.
  *
  * Each setting that is defined in the parent theme Clean should be
  * defined here too, and use the exact same config name. The reason
- * is that theme_evolved does not define any layout files to re-use the
+ * is that theme_pioneer does not define any layout files to re-use the
  * ones from theme_clean. But as those layout files use the function
- * {@link theme_clean_get_html_for_temp} that belong to Clean,
- * we have to make sure it works as expected by having the same temp
+ * {@link theme_clean_get_html_for_settings} that belong to Clean,
+ * we have to make sure it works as expected by having the same settings
  * in our theme.
  *
- * @see        theme_clean_get_html_for_temp
- * @package    theme_evolved
+ * @see        theme_clean_get_html_for_settings
+ * @package    theme_pioneer
+ * @copyright  2014 Frédéric Massart
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -35,271 +36,659 @@ $settings = null;
 defined('MOODLE_INTERNAL') || die;
 
 
-	$ADMIN->add('themes', new admin_category('theme_evolved', 'evolve-D'));
+    $ADMIN->add('themes', new admin_category('theme_pioneer', 'Pioneer'));
 
     // "geneictemp" settingpage
-    $temp = new admin_settingpage('theme_evolved_generic',  get_string('geneicsettings', 'theme_evolved'));
-    // Font Selector.
-    $name = 'theme_evolved/fontselect';
-    $title = get_string('fontselect' , 'theme_evolved');
-    $description = get_string('fontselectdesc', 'theme_evolved');
-    $default = '1';
+    $temp = new admin_settingpage('theme_pioneer_generic',  get_string('geneicsettings', 'theme_pioneer'));
+
+    // Header Background spacing setting.
+    $name = 'theme_pioneer/headerimagepadding';
+    $title = get_string('headerimagepadding', 'theme_pioneer');
+    $description = get_string('headerimagepadding_desc', 'theme_pioneer');;
+    $default = '300px';
     $choices = array(
-    	'1'=>'Oswald & PT Sans', 
-    	'2'=>'Lobster & Cabin', 
-    	'3'=>'Raleway & Goudy', 
-    	'4'=>'Allerta & Crimson Text', 
-    	'5'=>'Arvo & PT Sans',
-    	'6'=>'Dancing Script & Josefin Sans',
-    	'7'=>'Allan & Cardo',
-    	'8'=>'Molengo & Lekton',
-    	'9'=>'Droid Serif & Droid Sans',
-    	'10'=>'Corbin & Nobile',
-    	'11'=>'Ubuntu & Vollkorn',
-    	'12'=>'Bree Serif & Open Sans', 
-    	'13'=>'Bevan & Pontano Sans', 
-    	'14'=>'Abril Fatface & Average', 
-    	'15'=>'Playfair Display and Muli', 
-    	'16'=>'Sansita One & Kameron',
-    	'17'=>'Istok Web & Lora',
-    	'18'=>'Pacifico & Arimo',
-    	'19'=>'Nixie One & Ledger',
-    	'20'=>'Cantata One & Imprima',
-    	'21'=>'Rancho & Gudea',
-    	'22'=>'DISABLE Google Fonts');
+        '10px' => '10px',
+        '20px' => '20px',
+        '40px' => '40px',
+        '80px' => '80px',
+        '100px' => '100px',
+        '120px' => '120px',
+        '140px' => '140px',
+        '180px' => '180px',
+        '200px' => '200px',
+        '220px' => '220px',
+        '240px' => '240px',
+        '300px' => '300px',
+    );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-    // Invert Navbar to dark background.
-    $name = 'theme_evolved/invert';
-    $title = get_string('invert', 'theme_evolved');
-    $description = get_string('invertdesc', 'theme_evolved');
-    $setting = new admin_setting_configcheckbox($name, $title, $description, 1);
+    // Header Background spacing setting.
+    $name = 'theme_pioneer/headerincourseimagepadding';
+    $title = get_string('headerincourseimagepadding', 'theme_pioneer');
+    $description = get_string('headerincourseimagepadding_desc', 'theme_pioneer');;
+    $default = '40px';
+    $choices = array(
+        '10px' => '10px',
+        '20px' => '20px',
+        '30px' => '30px',
+        '40px' => '40px',
+        '80px' => '80px',
+        '100px' => '100px',
+        '120px' => '120px',
+        '140px' => '140px',
+        '180px' => '180px',
+        '200px' => '200px',
+        '220px' => '220px',
+        '240px' => '240px',
+        '300px' => '300px',
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-    // Logo file setting.
-    $name = 'theme_evolved/logosmall';
-    $title = get_string('logo','theme_evolved');
-    $description = get_string('logodesc', 'theme_evolved');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'logosmall');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Custom CSS file.
-    $name = 'theme_evolved/customcss';
-    $title = get_string('customcss', 'theme_evolved');
-    $description = get_string('customcssdesc', 'theme_evolved');
-    $default = null;
-    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // General Alert setting
-    $name = 'theme_evolved/generalalert';
-    $title = get_string('generalalert','theme_evolved');
-    $description = get_string('generalalertdesc', 'theme_evolved');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $temp->add($setting);
-
-    // Snow Alert setting
-    $name = 'theme_evolved/snowalert';
-    $title = get_string('snowalert','theme_evolved');
-    $description = get_string('snowalertdesc', 'theme_evolved');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $temp->add($setting);
-
-    // Footnote setting.
-    $name = 'theme_evolved/footnote';
-    $title = get_string('footnote', 'theme_evolved');
-    $description = get_string('footnotedesc', 'theme_evolved');
-    $default = '';
-    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    $ADMIN->add('theme_evolved', $temp);
-
-    $temp = new admin_settingpage('theme_evolved_themecolors',  get_string('themecolorsettings', 'theme_evolved'));
-
- // @textColor setting.
-    $name = 'theme_evolved/textcolor';
-    $title = get_string('textcolor', 'theme_evolved');
-    $description = get_string('textcolor_desc', 'theme_evolved');
-    $default = '#3d3d3d';
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // @linkColor setting.
-    $name = 'theme_evolved/linkcolor';
-    $title = get_string('linkcolor', 'theme_evolved');
-    $description = get_string('linkcolor_desc', 'theme_evolved');
-    $default = '#415FFB';
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-	 // Main content background color.
-    $name = 'theme_evolved/contentbackground';
-    $title = get_string('contentbackground', 'theme_evolved');
-    $description = get_string('contentbackground_desc', 'theme_evolved');
-    $default = '#FFFFFF';
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Secondary background color.
-    $name = 'theme_evolved/secondarybackground';
-    $title = get_string('secondarybackground', 'theme_evolved');
-    $description = get_string('secondarybackground_desc', 'theme_evolved');
-    $default = '#CAD9E8';
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Topic and Week Background setting.
-    $name = 'theme_evolved/topicweekcolor';
-    $title = get_string('topicweekcolor', 'theme_evolved');
-    $description = get_string('topicweekcolor_desc', 'theme_evolved');
-    $default = '#FFFFFF';
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    // @bodyBackground setting.
-    $name = 'theme_evolved/bodybackground';
-    $title = get_string('bodybackground', 'theme_evolved');
-    $description = get_string('bodybackground_desc', 'theme_evolved');
-    $default = '#0370A5';
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    // Header Background image setting.
+    $name = 'theme_pioneer/headerbackgroundimage';
+    $title = get_string('headerbackgroundimage', 'theme_pioneer');
+    $description = get_string('headerbackgroundimage_desc', 'theme_pioneer');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'headerbackgroundimage');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Background image setting.
-    $name = 'theme_evolved/backgroundimage';
-    $title = get_string('backgroundimage', 'theme_evolved');
-    $description = get_string('backgroundimage_desc', 'theme_evolved');
+    $name = 'theme_pioneer/backgroundimage';
+    $title = get_string('backgroundimage', 'theme_pioneer');
+    $description = get_string('backgroundimage_desc', 'theme_pioneer');
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'backgroundimage');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Background repeat setting.
-    $name = 'theme_evolved/backgroundrepeat';
-    $title = get_string('backgroundrepeat', 'theme_evolved');
-    $description = get_string('backgroundrepeat_desc', 'theme_evolved');;
-    $default = 'repeat-x';
+    $name = 'theme_pioneer/backgroundrepeat';
+    $title = get_string('backgroundrepeat', 'theme_pioneer');
+    $description = get_string('backgroundrepeat_desc', 'theme_pioneer');;
+    $default = 'repeat';
     $choices = array(
         '0' => get_string('default'),
-        'repeat' => get_string('backgroundrepeatrepeat', 'theme_evolved'),
-        'repeat-x' => get_string('backgroundrepeatrepeatx', 'theme_evolved'),
-        'repeat-y' => get_string('backgroundrepeatrepeaty', 'theme_evolved'),
-        'no-repeat' => get_string('backgroundrepeatnorepeat', 'theme_evolved'),
+        'repeat' => get_string('backgroundrepeatrepeat', 'theme_pioneer'),
+        'repeat-x' => get_string('backgroundrepeatrepeatx', 'theme_pioneer'),
+        'repeat-y' => get_string('backgroundrepeatrepeaty', 'theme_pioneer'),
+        'no-repeat' => get_string('backgroundrepeatnorepeat', 'theme_pioneer'),
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Background position setting.
-    $name = 'theme_evolved/backgroundposition';
-    $title = get_string('backgroundposition', 'theme_evolved');
-    $description = get_string('backgroundposition_desc', 'theme_evolved');
-    $default = 'left_bottom';
+    $name = 'theme_pioneer/backgroundposition';
+    $title = get_string('backgroundposition', 'theme_pioneer');
+    $description = get_string('backgroundposition_desc', 'theme_pioneer');
+    $default = '0';
     $choices = array(
         '0' => get_string('default'),
-        'left_top' => get_string('backgroundpositionlefttop', 'theme_evolved'),
-        'left_center' => get_string('backgroundpositionleftcenter', 'theme_evolved'),
-        'left_bottom' => get_string('backgroundpositionleftbottom', 'theme_evolved'),
-        'right_top' => get_string('backgroundpositionrighttop', 'theme_evolved'),
-        'right_center' => get_string('backgroundpositionrightcenter', 'theme_evolved'),
-        'right_bottom' => get_string('backgroundpositionrightbottom', 'theme_evolved'),
-        'center_top' => get_string('backgroundpositioncentertop', 'theme_evolved'),
-        'center_center' => get_string('backgroundpositioncentercenter', 'theme_evolved'),
-        'center_bottom' => get_string('backgroundpositioncenterbottom', 'theme_evolved'),
+        'left_top' => get_string('backgroundpositionlefttop', 'theme_pioneer'),
+        'left_center' => get_string('backgroundpositionleftcenter', 'theme_pioneer'),
+        'left_bottom' => get_string('backgroundpositionleftbottom', 'theme_pioneer'),
+        'right_top' => get_string('backgroundpositionrighttop', 'theme_pioneer'),
+        'right_center' => get_string('backgroundpositionrightcenter', 'theme_pioneer'),
+        'right_bottom' => get_string('backgroundpositionrightbottom', 'theme_pioneer'),
+        'center_top' => get_string('backgroundpositioncentertop', 'theme_pioneer'),
+        'center_center' => get_string('backgroundpositioncentercenter', 'theme_pioneer'),
+        'center_bottom' => get_string('backgroundpositioncenterbottom', 'theme_pioneer'),
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Background fixed setting.
-    $name = 'theme_evolved/backgroundfixed';
-    $title = get_string('backgroundfixed', 'theme_evolved');
-    $description = get_string('backgroundfixed_desc', 'theme_evolved');
-    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    // Background cover setting.
-    $name = 'theme_evolved/backgroundcover';
-    $title = get_string('backgroundcover', 'theme_evolved');
-    $description = get_string('backgroundcover_desc', 'theme_evolved');
+    $name = 'theme_pioneer/backgroundfixed';
+    $title = get_string('backgroundfixed', 'theme_pioneer');
+    $description = get_string('backgroundfixed_desc', 'theme_pioneer');
     $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-    $ADMIN->add('theme_evolved', $temp);
+    // Logo file setting.
+    $name = 'theme_pioneer/logo';
+    $title = get_string('logo','theme_pioneer');
+    $description = get_string('logodesc', 'theme_pioneer');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
 
-    /* Custom Menu temp */
-    $temp = new admin_settingpage('theme_evolved_custommenu', get_string('custommenuheading', 'theme_evolved'));
+    // Custom CSS file.
+    $name = 'theme_pioneer/customcss';
+    $title = get_string('customcss', 'theme_pioneer');
+    $description = get_string('customcssdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // generalalert setting.
+    $name = 'theme_pioneer/generalalert';
+    $title = get_string('generalalert', 'theme_pioneer');
+    $description = get_string('generalalertdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Toggle Marketing Spots.
+    $name = 'theme_pioneer/togglefptextbox';
+    $title = get_string('togglefptextbox' , 'theme_pioneer');
+    $description = get_string('togglefptextboxdesc', 'theme_pioneer');
+    $alwaysdisplay = get_string('alwaysdisplay', 'theme_pioneer');
+    $displaybeforelogin = get_string('displaybeforelogin', 'theme_pioneer');
+    $displayafterlogin = get_string('displayafterlogin', 'theme_pioneer');
+    $dontdisplay = get_string('dontdisplay', 'theme_pioneer');
+    $default = 'display';
+    $choices = array('1'=>$alwaysdisplay, '2'=>$displaybeforelogin, '3'=>$displayafterlogin, '0'=>$dontdisplay);
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+
+    // Frontpage Textbox.
+    $name = 'theme_pioneer/fptextbox';
+    $title = get_string('fptextbox', 'theme_pioneer');
+    $description = get_string('fptextboxdesc', 'theme_pioneer');
+    $default = '<h3>Welcome to Moodle</h3><p>This is the Pioneer theme brought to you by Dearborn Public Schools. &nbsp;We hope you enjoy using this theme as much as we do. &nbsp;A big thank you to the Moodle Community members and theme developers who helped make this theme possible. &nbsp;Special Thanks to Richard Oberman for help with the Header Images, Mary Evans who developed the Block Styling, and the eGuru theme from which we found excellent code for the Featured Courses.</p>';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
 
     // Toggle courses display in custommenu.
-    $name = 'theme_evolved/displaymycourses';
-    $title = get_string('displaymycourses', 'theme_evolved');
-    $description = get_string('displaymycoursesdesc', 'theme_evolved');
+    $name = 'theme_pioneer/displaymycourses';
+    $title = get_string('displaymycourses', 'theme_pioneer');
+    $description = get_string('displaymycoursesdesc', 'theme_pioneer');
     $default = true;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
     // Set terminology for dropdown course list
-	$name = 'theme_evolved/mycoursetitle';
-	$title = get_string('mycoursetitle','theme_evolved');
-	$description = get_string('mycoursetitledesc', 'theme_evolved');
-	$default = 'course';
-	$choices = array(
-		'course' => get_string('mycourses', 'theme_evolved'),
-		'unit' => get_string('myunits', 'theme_evolved'),
-		'class' => get_string('myclasses', 'theme_evolved'),
-		'module' => get_string('mymodules', 'theme_evolved')
-	);
-	$setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-	$setting->set_updatedcallback('theme_reset_all_caches');
-	$temp->add($setting);
-/*
-    // Toggle dashboard display in custommenu.
-    $name = 'theme_evolved/displaymydashboard';
-    $title = get_string('displaymydashboard', 'theme_evolved');
-    $description = get_string('displaymydashboarddesc', 'theme_evolved');
-    $default = true;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $name = 'theme_pioneer/mycoursetitle';
+    $title = get_string('mycoursetitle','theme_pioneer');
+    $description = get_string('mycoursetitledesc', 'theme_pioneer');
+    $default = 'course';
+    $choices = array(
+        'course' => get_string('mycourses', 'theme_pioneer'),
+        'unit' => get_string('myunits', 'theme_pioneer'),
+        'class' => get_string('myclasses', 'theme_pioneer'),
+        'module' => get_string('mymodules', 'theme_pioneer')
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
-*/
-$ADMIN->add('theme_evolved', $temp);
 
-    /* Marketing Spot Settings temp*/
-    $temp = new admin_settingpage('theme_evolved_marketing', get_string('marketingheading', 'theme_evolved'));
+// Promoted Courses Start.
+    // Promoted Courses Heading.
+    $name = 'theme_pioneer_promotedcoursesheading';
+    $heading = get_string('promotedcoursesheading', 'theme_pioneer');
+    $information = '';
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // Enable / Disable Promoted Courses.
+    $name = 'theme_pioneer/pcourseenable';
+    $title = get_string('pcourseenable', 'theme_pioneer');
+    $description = '';
+    $default = 0;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Promoted courses Block title.
+    $name = 'theme_pioneer/promotedtitle';
+    $title = get_string('pcourses', 'theme_pioneer').' '.get_string('title', 'theme_pioneer');
+    $description = get_string('promotedtitledesc', 'theme_pioneer');
+    $default = 'lang:promotedtitledefault';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/promotedcourses';
+    $title = get_string('pcourses', 'theme_pioneer');
+    $description = get_string('pcoursesdesc', 'theme_pioneer');
+    $default = array();
+
+    $courses[0] = '';
+    $cnt = 0;
+    if ($ccc = get_courses('all', 'c.sortorder ASC', 'c.id,c.shortname,c.visible,c.category')) {
+        foreach ($ccc as $cc) {
+            if ($cc->visible == "0" || $cc->id == "1") {
+                continue;
+            }
+            $cnt++;
+            $courses[$cc->id] = $cc->shortname;
+            // Set some courses for default option.
+            if ($cnt < 8) {
+                $default[] = $cc->id;
+            }
+        }
+    }
+    $coursedefault = implode(",", $default);
+    $setting = new admin_setting_configtextarea($name, $title, $description, $coursedefault);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    // Promoted Courses End.
+
+
+
+    $ADMIN->add('theme_pioneer', $temp);
+
+$temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorheading', 'theme_pioneer'));
+
+        // @textColor setting.
+    $name = 'theme_pioneer/textcolor';
+    $title = get_string('textcolor', 'theme_pioneer');
+    $description = get_string('textcolor_desc', 'theme_pioneer');
+    $default = '#333366';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // @linkColor setting.
+    $name = 'theme_pioneer/linkcolor';
+    $title = get_string('linkcolor', 'theme_pioneer');
+    $description = get_string('linkcolor_desc', 'theme_pioneer');
+    $default = '#FF6500';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // block border
+    $name = 'theme_pioneer/blockbordercolor';
+    $title = get_string('blockbordercolor', 'theme_pioneer');
+    $description = get_string('blockbordercolor_desc', 'theme_pioneer');
+    $default = '#273844';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+     // block background
+    $name = 'theme_pioneer/blockcolor';
+    $title = get_string('blockcolor', 'theme_pioneer');
+    $description = get_string('blockcolor_desc', 'theme_pioneer');
+    $default = '#DCE0E5';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Main Content Background
+    $name = 'theme_pioneer/contentbackgroundcolor';
+    $title = get_string('contentbackgroundcolor', 'theme_pioneer');
+    $description = get_string('contentbackgroundcolor_desc', 'theme_pioneer');
+    $default = '#F2F5FB';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // icon navigation Background
+    $name = 'theme_pioneer/iconnavbackgroundcolor';
+    $title = get_string('iconnavbackgroundcolor', 'theme_pioneer');
+    $description = get_string('iconnavbackgroundcolor_desc', 'theme_pioneer');
+    $default = '#fff';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // @bodyBackground setting.
+    $name = 'theme_pioneer/bodybackground';
+    $title = get_string('bodybackground', 'theme_pioneer');
+    $description = get_string('bodybackground_desc', 'theme_pioneer');
+    $default = '#d6d6d6';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Topic and Week Background setting.
+    $name = 'theme_pioneer/topicweekcolor';
+    $title = get_string('topicweekcolor', 'theme_pioneer');
+    $description = get_string('topicweekcolor_desc', 'theme_pioneer');
+    $default = '#FFFFFF';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $ADMIN->add('theme_pioneer', $temp);
+
+
+/* Frontpage Settings temp*/
+    $temp = new admin_settingpage('theme_pioneer_googleheading', get_string('googleheading', 'theme_pioneer'));
+
+    // Google fonts Heading,body,size,weight
+    $name = 'theme_pioneer/gheadingimporturl';
+    $title = get_string('gheadingimporturl','theme_pioneer');
+    $description = get_string('gheadingimporturldesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/gbodyimporturl';
+    $title = get_string('gbodyimporturl','theme_pioneer');
+    $description = get_string('gbodyimporturl', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/headingfont';
+    $title = get_string('headingfont','theme_pioneer');
+    $description = get_string('headingfontdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/bodyfont';
+    $title = get_string('bodyfont','theme_pioneer');
+    $description = get_string('bodyfontdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/bodysize';
+    $title = get_string('bodysize','theme_pioneer');
+    $description = get_string('bodysizedesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/bodyweight';
+    $title = get_string('bodyweight','theme_pioneer');
+    $description = get_string('bodyweightdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+
+    $ADMIN->add('theme_pioneer', $temp);
+
+
+
+/* Frontpage Settings temp*/
+    $temp = new admin_settingpage('theme_pioneer_iconnav', get_string('iconnavheading', 'theme_pioneer'));
+
+//Custom Navigation Icons on homepage
+    
+    // This is the descriptor for icon One
+    $name = 'theme_pioneer/navicon1info';
+    $heading = get_string('navicon1', 'theme_pioneer');
+    $information = get_string('navicondesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // icon One
+    $name = 'theme_pioneer/nav1icon';
+    $title = get_string('navicon', 'theme_pioneer');
+    $description = get_string('navicondesc', 'theme_pioneer');
+    $default = 'home';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav1buttontext';
+    $title = get_string('naviconbuttontext', 'theme_pioneer');
+    $description = get_string('naviconbuttontextdesc', 'theme_pioneer');
+    $default = 'My Home';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav1buttonurl';
+    $title = get_string('naviconbuttonurl', 'theme_pioneer');
+    $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
+    $default = 'my/';
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for icon One
+    $name = 'theme_pioneer/navicon2info';
+    $heading = get_string('navicon2', 'theme_pioneer');
+    $information = get_string('navicondesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/nav2icon';
+    $title = get_string('navicon', 'theme_pioneer');
+    $description = get_string('navicondesc', 'theme_pioneer');
+    $default = 'calendar';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav2buttontext';
+    $title = get_string('naviconbuttontext', 'theme_pioneer');
+    $description = get_string('naviconbuttontextdesc', 'theme_pioneer');
+    $default = 'Calendar';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav2buttonurl';
+    $title = get_string('naviconbuttonurl', 'theme_pioneer');
+    $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
+    $default = 'calendar/view.php?view=month';
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for icon three
+    $name = 'theme_pioneer/navicon3info';
+    $heading = get_string('navicon3', 'theme_pioneer');
+    $information = get_string('navicondesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/nav3icon';
+    $title = get_string('navicon', 'theme_pioneer');
+    $description = get_string('navicondesc', 'theme_pioneer');
+    $default = 'bookmark';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav3buttontext';
+    $title = get_string('naviconbuttontext', 'theme_pioneer');
+    $description = get_string('naviconbuttontextdesc', 'theme_pioneer');
+    $default = 'Badges';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav3buttonurl';
+    $title = get_string('naviconbuttonurl', 'theme_pioneer');
+    $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
+    $default = 'badges/mybadges.php';
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for icon four
+    $name = 'theme_pioneer/navicon4info';
+    $heading = get_string('navicon4', 'theme_pioneer');
+    $information = get_string('navicondesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/nav4icon';
+    $title = get_string('navicon', 'theme_pioneer');
+    $description = get_string('navicondesc', 'theme_pioneer');
+    $default = 'book';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav4buttontext';
+    $title = get_string('naviconbuttontext', 'theme_pioneer');
+    $description = get_string('naviconbuttontextdesc', 'theme_pioneer');
+    $default = 'Courses';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav4buttonurl';
+    $title = get_string('naviconbuttonurl', 'theme_pioneer');
+    $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
+    $default = 'course/';
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for icon four
+    $name = 'theme_pioneer/navicon5info';
+    $heading = get_string('navicon5', 'theme_pioneer');
+    $information = get_string('navicondesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/nav5icon';
+    $title = get_string('navicon', 'theme_pioneer');
+    $description = get_string('navicondesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav5buttontext';
+    $title = get_string('naviconbuttontext', 'theme_pioneer');
+    $description = get_string('naviconbuttontextdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav5buttonurl';
+    $title = get_string('naviconbuttonurl', 'theme_pioneer');
+    $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for icon six
+    $name = 'theme_pioneer/navicon6info';
+    $heading = get_string('navicon6', 'theme_pioneer');
+    $information = get_string('navicondesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/nav6icon';
+    $title = get_string('navicon', 'theme_pioneer');
+    $description = get_string('navicondesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav6buttontext';
+    $title = get_string('naviconbuttontext', 'theme_pioneer');
+    $description = get_string('naviconbuttontextdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav6buttonurl';
+    $title = get_string('naviconbuttonurl', 'theme_pioneer');
+    $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for icon seven
+    $name = 'theme_pioneer/navicon7info';
+    $heading = get_string('navicon7', 'theme_pioneer');
+    $information = get_string('navicondesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/nav7icon';
+    $title = get_string('navicon', 'theme_pioneer');
+    $description = get_string('navicondesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav7buttontext';
+    $title = get_string('naviconbuttontext', 'theme_pioneer');
+    $description = get_string('naviconbuttontextdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav7buttonurl';
+    $title = get_string('naviconbuttonurl', 'theme_pioneer');
+    $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for icon eight
+    $name = 'theme_pioneer/navicon8info';
+    $heading = get_string('navicon8', 'theme_pioneer');
+    $information = get_string('navicondesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/nav8icon';
+    $title = get_string('navicon', 'theme_pioneer');
+    $description = get_string('navicondesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav8buttontext';
+    $title = get_string('naviconbuttontext', 'theme_pioneer');
+    $description = get_string('naviconbuttontextdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/nav8buttonurl';
+    $title = get_string('naviconbuttonurl', 'theme_pioneer');
+    $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+$ADMIN->add('theme_pioneer', $temp);
+
+/* Marketing Spot Settings temp*/
+    $temp = new admin_settingpage('theme_pioneer_marketing', get_string('marketingheading', 'theme_pioneer'));
 
     // @Marketing Box background color setting.
-    $name = 'theme_evolved/marketboxcolor';
-    $title = get_string('marketboxcolor', 'theme_evolved');
-    $description = get_string('marketboxcolor_desc', 'theme_evolved');
+    $name = 'theme_pioneer/marketboxcolor';
+    $title = get_string('marketboxcolor', 'theme_pioneer');
+    $description = get_string('marketboxcolor_desc', 'theme_pioneer');
     $default = '#FFFFFF';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Toggle Marketing Spots.
-    $name = 'theme_evolved/togglemarketing';
-    $title = get_string('togglemarketing' , 'theme_evolved');
-    $description = get_string('togglemarketingdesc', 'theme_evolved');
-    $alwaysdisplay = get_string('alwaysdisplay', 'theme_evolved');
-    $displaybeforelogin = get_string('displaybeforelogin', 'theme_evolved');
-    $displayafterlogin = get_string('displayafterlogin', 'theme_evolved');
-    $dontdisplay = get_string('dontdisplay', 'theme_evolved');
+    $name = 'theme_pioneer/togglemarketing';
+    $title = get_string('togglemarketing' , 'theme_pioneer');
+    $description = get_string('togglemarketingdesc', 'theme_pioneer');
+    $alwaysdisplay = get_string('alwaysdisplay', 'theme_pioneer');
+    $displaybeforelogin = get_string('displaybeforelogin', 'theme_pioneer');
+    $displayafterlogin = get_string('displayafterlogin', 'theme_pioneer');
+    $dontdisplay = get_string('dontdisplay', 'theme_pioneer');
     $default = 'display';
     $choices = array('1'=>$alwaysdisplay, '2'=>$displaybeforelogin, '3'=>$displayafterlogin, '0'=>$dontdisplay);
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
@@ -307,59 +696,67 @@ $ADMIN->add('theme_evolved', $temp);
     $temp->add($setting);
     
     // This is the descriptor for Marketing Spot One
-    $name = 'theme_evolved/marketing1info';
-    $heading = get_string('marketing1', 'theme_evolved');
-    $information = get_string('marketinginfodesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing1info';
+    $heading = get_string('marketing1', 'theme_pioneer');
+    $information = get_string('marketinginfodesc', 'theme_pioneer');
     $setting = new admin_setting_heading($name, $heading, $information);
     $temp->add($setting);
     
     // Marketing Spot One
-    $name = 'theme_evolved/marketing1';
-    $title = get_string('marketingtitle', 'theme_evolved');
-    $description = get_string('marketingtitledesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing1';
+    $title = get_string('marketingtitle', 'theme_pioneer');
+    $description = get_string('marketingtitledesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
-    
-    $name = 'theme_evolved/marketing1icon';
-    $title = get_string('marketingicon', 'theme_evolved');
-    $description = get_string('marketingicondesc', 'theme_evolved');
-    $default = 'star';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
+
+    // Background image setting.
+    $name = 'theme_pioneer/marketing1image';
+    $title = get_string('marketingimage', 'theme_pioneer');
+    $description = get_string('marketingimage_desc', 'theme_pioneer');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'marketing1image');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
-    $name = 'theme_evolved/marketing1content';
-    $title = get_string('marketingcontent', 'theme_evolved');
-    $description = get_string('marketingcontentdesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing1content';
+    $title = get_string('marketingcontent', 'theme_pioneer');
+    $description = get_string('marketingcontentdesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
-    $name = 'theme_evolved/marketing1buttontext';
-    $title = get_string('marketingbuttontext', 'theme_evolved');
-    $description = get_string('marketingbuttontextdesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing1buttontext';
+    $title = get_string('marketingbuttontext', 'theme_pioneer');
+    $description = get_string('marketingbuttontextdesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
+
+    $name = 'theme_pioneer/marketing1icon';
+    $title = get_string('marketingicon', 'theme_pioneer');
+    $description = get_string('marketingicondesc', 'theme_pioneer');
+    $default = 'star';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
     
-    $name = 'theme_evolved/marketing1buttonurl';
-    $title = get_string('marketingbuttonurl', 'theme_evolved');
-    $description = get_string('marketingbuttonurldesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing1buttonurl';
+    $title = get_string('marketingbuttonurl', 'theme_pioneer');
+    $description = get_string('marketingbuttonurldesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
-    $name = 'theme_evolved/marketing1target';
-    $title = get_string('marketingurltarget' , 'theme_evolved');
-    $description = get_string('marketingurltargetdesc', 'theme_evolved');
-    $target1 = get_string('marketingurltargetself', 'theme_evolved');
-    $target2 = get_string('marketingurltargetnew', 'theme_evolved');
-    $target3 = get_string('marketingurltargetparent', 'theme_evolved');
+    $name = 'theme_pioneer/marketing1target';
+    $title = get_string('marketingurltarget' , 'theme_pioneer');
+    $description = get_string('marketingurltargetdesc', 'theme_pioneer');
+    $target1 = get_string('marketingurltargetself', 'theme_pioneer');
+    $target2 = get_string('marketingurltargetnew', 'theme_pioneer');
+    $target3 = get_string('marketingurltargetparent', 'theme_pioneer');
     $default = 'target1';
     $choices = array('_self'=>$target1, '_blank'=>$target2, '_parent'=>$target3);
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
@@ -367,59 +764,67 @@ $ADMIN->add('theme_evolved', $temp);
     $temp->add($setting);
     
     // This is the descriptor for Marketing Spot Two
-    $name = 'theme_evolved/marketing2info';
-    $heading = get_string('marketing2', 'theme_evolved');
-    $information = get_string('marketinginfodesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing2info';
+    $heading = get_string('marketing2', 'theme_pioneer');
+    $information = get_string('marketinginfodesc', 'theme_pioneer');
     $setting = new admin_setting_heading($name, $heading, $information);
     $temp->add($setting);
     
     // Marketing Spot Two.
-    $name = 'theme_evolved/marketing2';
-    $title = get_string('marketingtitle', 'theme_evolved');
-    $description = get_string('marketingtitledesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing2';
+    $title = get_string('marketingtitle', 'theme_pioneer');
+    $description = get_string('marketingtitledesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
-    
-    $name = 'theme_evolved/marketing2icon';
-    $title = get_string('marketingicon', 'theme_evolved');
-    $description = get_string('marketingicondesc', 'theme_evolved');
-    $default = 'star';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
+
+    // Background image setting.
+    $name = 'theme_pioneer/marketing2image';
+    $title = get_string('marketingimage', 'theme_pioneer');
+    $description = get_string('marketingimage_desc', 'theme_pioneer');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'marketing2image');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
-    $name = 'theme_evolved/marketing2content';
-    $title = get_string('marketingcontent', 'theme_evolved');
-    $description = get_string('marketingcontentdesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing2content';
+    $title = get_string('marketingcontent', 'theme_pioneer');
+    $description = get_string('marketingcontentdesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
-    $name = 'theme_evolved/marketing2buttontext';
-    $title = get_string('marketingbuttontext', 'theme_evolved');
-    $description = get_string('marketingbuttontextdesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing2buttontext';
+    $title = get_string('marketingbuttontext', 'theme_pioneer');
+    $description = get_string('marketingbuttontextdesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
+
+    $name = 'theme_pioneer/marketing2icon';
+    $title = get_string('marketingicon', 'theme_pioneer');
+    $description = get_string('marketingicondesc', 'theme_pioneer');
+    $default = 'star';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
     
-    $name = 'theme_evolved/marketing2buttonurl';
-    $title = get_string('marketingbuttonurl', 'theme_evolved');
-    $description = get_string('marketingbuttonurldesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing2buttonurl';
+    $title = get_string('marketingbuttonurl', 'theme_pioneer');
+    $description = get_string('marketingbuttonurldesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
-    $name = 'theme_evolved/marketing2target';
-    $title = get_string('marketingurltarget' , 'theme_evolved');
-    $description = get_string('marketingurltargetdesc', 'theme_evolved');
-    $target1 = get_string('marketingurltargetself', 'theme_evolved');
-    $target2 = get_string('marketingurltargetnew', 'theme_evolved');
-    $target3 = get_string('marketingurltargetparent', 'theme_evolved');
+    $name = 'theme_pioneer/marketing2target';
+    $title = get_string('marketingurltarget' , 'theme_pioneer');
+    $description = get_string('marketingurltargetdesc', 'theme_pioneer');
+    $target1 = get_string('marketingurltargetself', 'theme_pioneer');
+    $target2 = get_string('marketingurltargetnew', 'theme_pioneer');
+    $target3 = get_string('marketingurltargetparent', 'theme_pioneer');
     $default = 'target1';
     $choices = array('_self'=>$target1, '_blank'=>$target2, '_parent'=>$target3);
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
@@ -427,499 +832,242 @@ $ADMIN->add('theme_evolved', $temp);
     $temp->add($setting);
     
     // This is the descriptor for Marketing Spot Three
-    $name = 'theme_evolved/marketing3info';
-    $heading = get_string('marketing3', 'theme_evolved');
-    $information = get_string('marketinginfodesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing3info';
+    $heading = get_string('marketing3', 'theme_pioneer');
+    $information = get_string('marketinginfodesc', 'theme_pioneer');
     $setting = new admin_setting_heading($name, $heading, $information);
     $temp->add($setting);
     
     // Marketing Spot Three.
-    $name = 'theme_evolved/marketing3';
-    $title = get_string('marketingtitle', 'theme_evolved');
-    $description = get_string('marketingtitledesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing3';
+    $title = get_string('marketingtitle', 'theme_pioneer');
+    $description = get_string('marketingtitledesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
-    
-    $name = 'theme_evolved/marketing3icon';
-    $title = get_string('marketingicon', 'theme_evolved');
-    $description = get_string('marketingicondesc', 'theme_evolved');
-    $default = 'star';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
+
+    // Background image setting.
+    $name = 'theme_pioneer/marketing3image';
+    $title = get_string('marketingimage', 'theme_pioneer');
+    $description = get_string('marketingimage_desc', 'theme_pioneer');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'marketing3image');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
-    $name = 'theme_evolved/marketing3content';
-    $title = get_string('marketingcontent', 'theme_evolved');
-    $description = get_string('marketingcontentdesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing3content';
+    $title = get_string('marketingcontent', 'theme_pioneer');
+    $description = get_string('marketingcontentdesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
-    $name = 'theme_evolved/marketing3buttontext';
-    $title = get_string('marketingbuttontext', 'theme_evolved');
-    $description = get_string('marketingbuttontextdesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing3buttontext';
+    $title = get_string('marketingbuttontext', 'theme_pioneer');
+    $description = get_string('marketingbuttontextdesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
-    $name = 'theme_evolved/marketing3buttonurl';
-    $title = get_string('marketingbuttonurl', 'theme_evolved');
-    $description = get_string('marketingbuttonurldesc', 'theme_evolved');
+    $name = 'theme_pioneer/marketing3icon';
+    $title = get_string('marketingicon', 'theme_pioneer');
+    $description = get_string('marketingicondesc', 'theme_pioneer');
+    $default = 'star';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/marketing3buttonurl';
+    $title = get_string('marketingbuttonurl', 'theme_pioneer');
+    $description = get_string('marketingbuttonurldesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
-    $name = 'theme_evolved/marketing3target';
-    $title = get_string('marketingurltarget' , 'theme_evolved');
-    $description = get_string('marketingurltargetdesc', 'theme_evolved');
-    $target1 = get_string('marketingurltargetself', 'theme_evolved');
-    $target2 = get_string('marketingurltargetnew', 'theme_evolved');
-    $target3 = get_string('marketingurltargetparent', 'theme_evolved');
+    $name = 'theme_pioneer/marketing3target';
+    $title = get_string('marketingurltarget' , 'theme_pioneer');
+    $description = get_string('marketingurltargetdesc', 'theme_pioneer');
+    $target1 = get_string('marketingurltargetself', 'theme_pioneer');
+    $target2 = get_string('marketingurltargetnew', 'theme_pioneer');
+    $target3 = get_string('marketingurltargetparent', 'theme_pioneer');
     $default = 'target1';
     $choices = array('_self'=>$target1, '_blank'=>$target2, '_parent'=>$target3);
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
     
-    $ADMIN->add('theme_evolved', $temp);
+    $ADMIN->add('theme_pioneer', $temp);
 
 
 
-/* Frontpage Settings temp*/
-    $temp = new admin_settingpage('theme_evolved_frontpage', get_string('frontpageheading', 'theme_evolved'));
 
+$temp = new admin_settingpage('theme_pioneer_socialiconnav', get_string('socialiconheading', 'theme_pioneer'));
 
-// Toggle custom frontpage on or off.
-    $name = 'theme_evolved/togglefp';
-    $title = get_string('togglefp' , 'theme_evolved');
-    $description = get_string('togglefpdesc', 'theme_evolved');
-    $fpon = get_string('fpon', 'theme_evolved');
-    $fpoff = get_string('fpoff', 'theme_evolved');
-    $default = '2';
-    $choices = array('1'=>$fpon, '2'=>$fpoff);
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-// Frontpage fullscreen image  file setting.
-    $name = 'theme_evolved/fpbkg';
-    $title = get_string('fpbkg','theme_evolved');
-    $description = get_string('fpbkgdesc', 'theme_evolved');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'fpbkg');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-// Slide Show Background Images for Login Page
-    // fullscreen image slideshow file setting.
-    // Toggle custom frontpage on or off.
-    $name = 'theme_evolved/fpslideshow';
-    $title = get_string('fpslideshow' , 'theme_evolved');
-    $description = get_string('fpslideshowdesc', 'theme_evolved');
-    $fpslideshowon = get_string('fpslideshowon', 'theme_evolved');
-    $fpslideshowoff = get_string('fpslideshowoff', 'theme_evolved');
-    $default = '2';
-    $choices = array('1'=>$fpslideshowon, '2'=>$fpslideshowoff);
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    $name = 'theme_evolved/back1';
-    $title = get_string('back1','theme_evolved');
-    $description = get_string('backdesc', 'theme_evolved');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'back1');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    // fullscreen image slideshow file setting.
-    $name = 'theme_evolved/back2';
-    $title = get_string('back2','theme_evolved');
-    $description = get_string('backdesc', 'theme_evolved');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'back2');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    // fullscreen image slideshow file setting.
-    $name = 'theme_evolved/back3';
-    $title = get_string('back3','theme_evolved');
-    $description = get_string('backdesc', 'theme_evolved');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'back3');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    // fullscreen image slideshow file setting.
-    $name = 'theme_evolved/back4';
-    $title = get_string('back4','theme_evolved');
-    $description = get_string('backdesc', 'theme_evolved');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'back4');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-// CustomFP Text setting.
-    $name = 'theme_evolved/fptext';
-    $title = get_string('fptext', 'theme_evolved');
-    $description = get_string('fptextdesc', 'theme_evolved');
+    $name = 'theme_pioneer/social1buttonurl';
+    $title = get_string('socialicon1', 'theme_pioneer');
+    $description = get_string('socialicon1', 'theme_pioneer');
     $default = '';
-    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/social2buttonurl';
+    $title = get_string('socialicon2', 'theme_pioneer');
+    $description = get_string('socialicon2', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/social3buttonurl';
+    $title = get_string('socialicon3', 'theme_pioneer');
+    $description = get_string('socialicon3', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/social4buttonurl';
+    $title = get_string('socialicon4', 'theme_pioneer');
+    $description = get_string('socialicon4', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/social5buttonurl';
+    $title = get_string('socialicon5', 'theme_pioneer');
+    $description = get_string('socialicon5', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/social6buttonurl';
+    $title = get_string('socialicon6', 'theme_pioneer');
+    $description = get_string('socialicon6', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/social7buttonurl';
+    $title = get_string('socialicon7', 'theme_pioneer');
+    $description = get_string('socialicon7', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/social8buttonurl';
+    $title = get_string('socialicon8', 'theme_pioneer');
+    $description = get_string('socialicon8', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
 //Custom Navigation Icons on homepage
-    
-    // This is the descriptor for icon One
-    $name = 'theme_evolved/navicon1info';
-    $heading = get_string('navicon1', 'theme_evolved');
-    $information = get_string('navicondesc', 'theme_evolved');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    // icon One
-    $name = 'theme_evolved/nav1icon';
-    $title = get_string('navicon', 'theme_evolved');
-    $description = get_string('navicondesc', 'theme_evolved');
-    $default = 'home';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav1buttontext';
-    $title = get_string('naviconbuttontext', 'theme_evolved');
-    $description = get_string('naviconbuttontextdesc', 'theme_evolved');
-    $default = 'My Home';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav1buttonurl';
-    $title = get_string('naviconbuttonurl', 'theme_evolved');
-    $description = get_string('naviconbuttonurldesc', 'theme_evolved');
-    $default = 'my/';
-    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // icon two
-    // This is the descriptor for icon One
-    $name = 'theme_evolved/navicon2info';
-    $heading = get_string('navicon2', 'theme_evolved');
-    $information = get_string('navicondesc', 'theme_evolved');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    $name = 'theme_evolved/nav2icon';
-    $title = get_string('navicon', 'theme_evolved');
-    $description = get_string('navicondesc', 'theme_evolved');
-    $default = 'calendar';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav2buttontext';
-    $title = get_string('naviconbuttontext', 'theme_evolved');
-    $description = get_string('naviconbuttontextdesc', 'theme_evolved');
-    $default = 'Calendar';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav2buttonurl';
-    $title = get_string('naviconbuttonurl', 'theme_evolved');
-    $description = get_string('naviconbuttonurldesc', 'theme_evolved');
-    $default = 'calendar/view.php?view=month';
-    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // icon three
-    // This is the descriptor for icon three
-    $name = 'theme_evolved/navicon3info';
-    $heading = get_string('navicon3', 'theme_evolved');
-    $information = get_string('navicondesc', 'theme_evolved');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    $name = 'theme_evolved/nav3icon';
-    $title = get_string('navicon', 'theme_evolved');
-    $description = get_string('navicondesc', 'theme_evolved');
-    $default = 'bookmark';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav3buttontext';
-    $title = get_string('naviconbuttontext', 'theme_evolved');
-    $description = get_string('naviconbuttontextdesc', 'theme_evolved');
-    $default = 'Badges';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav3buttonurl';
-    $title = get_string('naviconbuttonurl', 'theme_evolved');
-    $description = get_string('naviconbuttonurldesc', 'theme_evolved');
-    $default = 'badges/mybadges.php';
-    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-
-    // Marketing Spot Four
-    // This is the descriptor for icon four
-    $name = 'theme_evolved/navicon4info';
-    $heading = get_string('navicon4', 'theme_evolved');
-    $information = get_string('navicondesc', 'theme_evolved');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    $name = 'theme_evolved/nav4icon';
-    $title = get_string('navicon', 'theme_evolved');
-    $description = get_string('navicondesc', 'theme_evolved');
-    $default = 'book';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav4buttontext';
-    $title = get_string('naviconbuttontext', 'theme_evolved');
-    $description = get_string('naviconbuttontextdesc', 'theme_evolved');
-    $default = 'Courses';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav4buttonurl';
-    $title = get_string('naviconbuttonurl', 'theme_evolved');
-    $description = get_string('naviconbuttonurldesc', 'theme_evolved');
-    $default = 'course/';
-    $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-        // Marketing Spot five
-    // This is the descriptor for icon four
-    $name = 'theme_evolved/navicon5info';
-    $heading = get_string('navicon5', 'theme_evolved');
-    $information = get_string('navicondesc', 'theme_evolved');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    $name = 'theme_evolved/nav5icon';
-    $title = get_string('navicon', 'theme_evolved');
-    $description = get_string('navicondesc', 'theme_evolved');
-    $default = 'star';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav5buttontext';
-    $title = get_string('naviconbuttontext', 'theme_evolved');
-    $description = get_string('naviconbuttontextdesc', 'theme_evolved');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav5buttonurl';
-    $title = get_string('naviconbuttonurl', 'theme_evolved');
-    $description = get_string('naviconbuttonurldesc', 'theme_evolved');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-        // Marketing Spot six
-    // This is the descriptor for icon six
-    $name = 'theme_evolved/navicon6info';
-    $heading = get_string('navicon6', 'theme_evolved');
-    $information = get_string('navicondesc', 'theme_evolved');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    $name = 'theme_evolved/nav6icon';
-    $title = get_string('navicon', 'theme_evolved');
-    $description = get_string('navicondesc', 'theme_evolved');
-    $default = 'star';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav6buttontext';
-    $title = get_string('naviconbuttontext', 'theme_evolved');
-    $description = get_string('naviconbuttontextdesc', 'theme_evolved');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav6buttonurl';
-    $title = get_string('naviconbuttonurl', 'theme_evolved');
-    $description = get_string('naviconbuttonurldesc', 'theme_evolved');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-        // Marketing Spot Seven
-    // This is the descriptor for icon seven
-    $name = 'theme_evolved/navicon7info';
-    $heading = get_string('navicon7', 'theme_evolved');
-    $information = get_string('navicondesc', 'theme_evolved');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    $name = 'theme_evolved/nav7icon';
-    $title = get_string('navicon', 'theme_evolved');
-    $description = get_string('navicondesc', 'theme_evolved');
-    $default = 'star';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav7buttontext';
-    $title = get_string('naviconbuttontext', 'theme_evolved');
-    $description = get_string('naviconbuttontextdesc', 'theme_evolved');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav7buttonurl';
-    $title = get_string('naviconbuttonurl', 'theme_evolved');
-    $description = get_string('naviconbuttonurldesc', 'theme_evolved');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-        // Marketing Spot eight
-    // This is the descriptor for icon eight
-    $name = 'theme_evolved/navicon8info';
-    $heading = get_string('navicon8', 'theme_evolved');
-    $information = get_string('navicondesc', 'theme_evolved');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    $name = 'theme_evolved/nav8icon';
-    $title = get_string('navicon', 'theme_evolved');
-    $description = get_string('navicondesc', 'theme_evolved');
-    $default = 'star';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav8buttontext';
-    $title = get_string('naviconbuttontext', 'theme_evolved');
-    $description = get_string('naviconbuttontextdesc', 'theme_evolved');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    $name = 'theme_evolved/nav8buttonurl';
-    $title = get_string('naviconbuttonurl', 'theme_evolved');
-    $description = get_string('naviconbuttonurldesc', 'theme_evolved');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-$ADMIN->add('theme_evolved', $temp);
+$ADMIN->add('theme_pioneer', $temp);
 
 
 /*Socialwall Settings temp*/
-$temp = new admin_settingpage('theme_evolved_socialwall', get_string('socialwallheading', 'theme_evolved'));
+$temp = new admin_settingpage('theme_pioneer_socialwall', get_string('socialwallheading', 'theme_pioneer'));
 
     // Label Post
-    $name = 'theme_evolved/swlabelpost';
-    $title = get_string('swlabelpost','theme_evolved');
-    $description = get_string('swlabelpost_desc', 'theme_evolved');
+    $name = 'theme_pioneer/swlabelpost';
+    $title = get_string('swlabelpost','theme_pioneer');
+    $description = get_string('swlabelpost_desc', 'theme_pioneer');
     $default = '\f086  Post';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $temp->add($setting);
 
     // Label Message
-    $name = 'theme_evolved/swlabelmessage';
-    $title = get_string('swlabelmessage','theme_evolved');
-    $description = get_string('swlabelmessage_desc', 'theme_evolved');
+    $name = 'theme_pioneer/swlabelmessage';
+    $title = get_string('swlabelmessage','theme_pioneer');
+    $description = get_string('swlabelmessage_desc', 'theme_pioneer');
     $default = '\f0e5  Message';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $temp->add($setting);
 
     // Label comment
-    $name = 'theme_evolved/swlabelcomment';
-    $title = get_string('swlabelcomment','theme_evolved');
-    $description = get_string('swlabelcomment_desc', 'theme_evolved');
+    $name = 'theme_pioneer/swlabelcomment';
+    $title = get_string('swlabelcomment','theme_pioneer');
+    $description = get_string('swlabelcomment_desc', 'theme_pioneer');
     $default = '\f0e6  Comments';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $temp->add($setting);
 
     // Label Attachment
-    $name = 'theme_evolved/swlabelattachment';
-    $title = get_string('swlabelattachment','theme_evolved');
-    $description = get_string('swlabelattachment_desc', 'theme_evolved');
+    $name = 'theme_pioneer/swlabelattachment';
+    $title = get_string('swlabelattachment','theme_pioneer');
+    $description = get_string('swlabelattachment_desc', 'theme_pioneer');
     $default = '\f0c6  Attachments';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $temp->add($setting);
 
 
     // Socialwall add a post bkg color.
-    $name = 'theme_evolved/swaddpost';
-    $title = get_string('swaddpost', 'theme_evolved');
-    $description = get_string('swaddpost_desc', 'theme_evolved');
+    $name = 'theme_pioneer/swaddpost';
+    $title = get_string('swaddpost', 'theme_pioneer');
+    $description = get_string('swaddpost_desc', 'theme_pioneer');
     $default = '#FFFFFF';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Socialwall post color.
-    $name = 'theme_evolved/swpost';
-    $title = get_string('swpost', 'theme_evolved');
-    $description = get_string('swpost_desc', 'theme_evolved');
+    $name = 'theme_pioneer/swpost';
+    $title = get_string('swpost', 'theme_pioneer');
+    $description = get_string('swpost_desc', 'theme_pioneer');
     $default = '#FFFFFF';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Socialwall Message color.
-    $name = 'theme_evolved/swmessage';
-    $title = get_string('swmessage', 'theme_evolved');
-    $description = get_string('swmessage_desc', 'theme_evolved');
+    $name = 'theme_pioneer/swmessage';
+    $title = get_string('swmessage', 'theme_pioneer');
+    $description = get_string('swmessage_desc', 'theme_pioneer');
     $default = '#F0F3F7';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Socialwall Attachment color.
-    $name = 'theme_evolved/swattach';
-    $title = get_string('swattach', 'theme_evolved');
-    $description = get_string('swattach_desc', 'theme_evolved');
+    $name = 'theme_pioneer/swattach';
+    $title = get_string('swattach', 'theme_pioneer');
+    $description = get_string('swattach_desc', 'theme_pioneer');
     $default = '#F6FAA0';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Socialwall Attachment color.
-    $name = 'theme_evolved/swcomment';
-    $title = get_string('swcomment', 'theme_evolved');
-    $description = get_string('swcomment_desc', 'theme_evolved');
+    $name = 'theme_pioneer/swcomment';
+    $title = get_string('swcomment', 'theme_pioneer');
+    $description = get_string('swcomment_desc', 'theme_pioneer');
     $default = '#FFFFFF';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Socialwall Icon and text color.
-    $name = 'theme_evolved/swicontext';
-    $title = get_string('swicontext', 'theme_evolved');
-    $description = get_string('swicontext_desc', 'theme_evolved');
+    $name = 'theme_pioneer/swicontext';
+    $title = get_string('swicontext', 'theme_pioneer');
+    $description = get_string('swicontext_desc', 'theme_pioneer');
     $default = '#A83116';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Multilanguage CSS.
-    $name = 'theme_evolved/swmultilangcss';
-    $title = get_string('swmultilangcss', 'theme_evolved');
-    $description = get_string('swmultilangcss_desc', 'theme_evolved');
+    $name = 'theme_pioneer/swmultilangcss';
+    $title = get_string('swmultilangcss', 'theme_pioneer');
+    $description = get_string('swmultilangcss_desc', 'theme_pioneer');
     $default = '.lang-es.format-socialwall ul.section.tl-postattachment:before { content: "\f0c6  Anexos"; }
 .lang-es.format-socialwall .tl-comments:before { content: "\f0e6  Comentarios"; }
 .lang-es.format-socialwall .tl-posttext:before{ content: "\f0e5  Mensaje"; }
@@ -948,4 +1096,4 @@ $temp = new admin_settingpage('theme_evolved_socialwall', get_string('socialwall
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-$ADMIN->add('theme_evolved', $temp);
+$ADMIN->add('theme_pioneer', $temp);

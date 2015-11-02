@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The embedded layout.
+ * An embedded layout for the Bootstrapbase theme.
  *
- * @package   theme_clean
- * @copyright 2013 Moodle, moodle.org
+ * @package   theme_bootstrapbase
+ * @copyright 2012 Bas Brands, www.basbrands.nl
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -29,9 +29,6 @@ echo $OUTPUT->doctype() ?>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
     <?php echo $OUTPUT->standard_head_html() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google web fonts -->
-    <?php require_once(dirname(__FILE__).'/includes/fonts.php'); ?>
-<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" type='text/css' /> -->
 </head>
 
 <body <?php echo $OUTPUT->body_attributes(); ?>>

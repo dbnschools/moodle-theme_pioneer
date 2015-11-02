@@ -9,15 +9,16 @@
 // Moodle is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for details.
+// GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme evolved lib.
+ * Theme pioneer lib.
  *
- * @package    theme_evolved
+ * @package    theme_pioneer
+ * @copyright  2014 Frédéric Massart
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -25,13 +26,13 @@
  * Extra LESS code to inject.
  *
  * This will generate some LESS code from the settings used by the user. We cannot use
- * the {@link theme_evolved_less_variables()} here because we need to create selectors or
+ * the {@link theme_pioneer_less_variables()} here because we need to create selectors or
  * alter existing ones.
  *
  * @param theme_config $theme The theme config object.
  * @return string Raw LESS code.
  */
-function theme_evolved_extra_less($theme) {
+function theme_pioneer_extra_less($theme) {
     $content = '';
     $imageurl = $theme->setting_file_url('backgroundimage', 'backgroundimage');
     // Sets the background image, and its settings.
@@ -41,9 +42,6 @@ function theme_evolved_extra_less($theme) {
         if (!empty($theme->settings->backgroundfixed)) {
             $content .= 'background-attachment: fixed;';
         }
-        if (!empty($theme->settings->backgroundcover)) {
-            $content .= 'background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;';
-        }
         if (!empty($theme->settings->backgroundposition)) {
             $content .= 'background-position: ' . str_replace('_', ' ', $theme->settings->backgroundposition) . ';';
         }
@@ -52,17 +50,7 @@ function theme_evolved_extra_less($theme) {
         }
         $content .= ' }';
     }
-    // If there the user wants a background for the content, we need to make it look consistent,
-    // therefore we need to round its borders, and adapt the border colour.  
-    //This also sets the page-content css to make the background color the same as the main content.
-    if (!empty($theme->settings->contentbackground)) {
-        $content .= '
-            #region-main {
-                .well;
-                background-color: ' . $theme->settings->contentbackground . ';
-                border-color: darken(' . $theme->settings->contentbackground . ', 7%);
-		border-radius: 7px; }';
-    }
+   
     return $content;
 }
 
@@ -75,7 +63,7 @@ function theme_evolved_extra_less($theme) {
  * @param theme_config $theme The theme config object.
  * @return array of LESS variables without the @.
  */
-function theme_evolved_less_variables($theme) {
+function theme_pioneer_less_variables($theme) {
     $variables = array();
     if (!empty($theme->settings->bodybackground)) {
         $variables['bodyBackground'] = $theme->settings->bodybackground;
@@ -85,9 +73,6 @@ function theme_evolved_less_variables($theme) {
     }
     if (!empty($theme->settings->linkcolor)) {
         $variables['linkColor'] = $theme->settings->linkcolor;
-    }
-    if (!empty($theme->settings->secondarybackground)) {
-        $variables['wellBackground'] = $theme->settings->secondarybackground;
     }
     return $variables;
 }
@@ -101,15 +86,45 @@ function theme_evolved_less_variables($theme) {
  * @param theme_config $theme The theme config object.
  * @return string The parsed CSS The parsed CSS.
  */
-function theme_evolved_process_css($css, $theme) {
-     // Set the background image for the logo.
-    $logosmall = $theme->setting_file_url('logosmall', 'logosmall');
-    $css = theme_evolved_set_logosmall($css, $logosmall);
-    
-    // Set the background image for the frontpage.
-    $fpbkg = $theme->setting_file_url('fpbkg', 'fpbkg');
-    $css = theme_evolved_set_fpbkg($css, $fpbkg);
+function theme_pioneer_process_css($css, $theme) {
 
+    // Set the background image for the logo.
+
+    $logo = $theme->setting_file_url('logo', 'logo');
+    $css = theme_pioneer_set_logo($css, $logo, $theme);
+
+    $headerbackgroundimage = $theme->setting_file_url('headerbackgroundimage', 'headerbackgroundimage');
+    $css = theme_pioneer_set_headerbackgroundimage($css, $headerbackgroundimage, $theme);
+
+    $css = theme_pioneer_set_gheadingimporturl($css, $gheadingimporturl);
+    $css = theme_pioneer_set_gbodyimporturl($css, $gbodyimporturl);
+
+    // Set header font.
+    if (!empty($theme->settings->headingfont)) {
+        $headingfont = $theme->settings->headingfont;
+    } else {
+        $headingfont = '';
+    }
+    $css = theme_pioneer_set_headingfont($css, $headingfont);
+
+   //Set body font
+    if (!empty($theme->settings->bodyfont)) {
+        $bodyfont = $theme->settings->bodyfont;
+    } else {
+        $bodyfont = '';
+    }
+    $css = theme_pioneer_set_bodyfont($css, $bodyfont);
+
+    //Set body font
+    if (!empty($theme->settings->bodysize)) {
+        $bodysize = $theme->settings->bodysize;
+    } else {
+        $bodysize = '';
+    }
+    $css = theme_pioneer_set_bodysize($css, $bodysize);
+
+
+    $css = theme_pioneer_set_bodyweight($css, $bodyweight);
 
     // Set custom CSS.
     if (!empty($theme->settings->customcss)) {
@@ -117,125 +132,63 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $customcss = null;
     }
-    $css = theme_evolved_set_customcss($css, $customcss);
+    $css = theme_pioneer_set_customcss($css, $customcss);
 
-    // Set the Fonts.
-    if ($theme->settings->fontselect ==1) {
-        $headingfont = 'Oswald';
-        $bodyfont = 'PT Sans';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==2) {
-        $headingfont = 'Lobster';
-        $bodyfont = 'Cabin';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==3) {
-        $headingfont = 'Raelway';
-        $bodyfont = 'Goudy Bookletter 1911';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==4) {
-        $headingfont = 'Allerta';
-        $bodyfont = 'Crimson Text';
-        $bodysize = '14px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==5) {
-        $headingfont = 'Arvo';
-        $bodyfont = 'PT Sans';
-        $bodysize = '14px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==6) {
-        $headingfont = 'Dancing Script';
-        $bodyfont = 'Josefin Sans';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==7) {
-        $headingfont = 'Allan';
-        $bodyfont = 'Cardo';
-        $bodysize = '14px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==8) {
-        $headingfont = 'Molengo';
-        $bodyfont = 'Lekton';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==9) {
-        $headingfont = 'Droid Serif';
-        $bodyfont = 'Droid Sans';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==10) {
-        $headingfont = 'Corben';
-        $bodyfont = 'Nobile';
-        $bodysize = '12px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==11) {
-        $headingfont = 'Ubuntu';
-        $bodyfont = 'Vollkorn';
-        $bodysize = '14px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==12) {
-        $headingfont = 'Bree Serif';
-        $bodyfont = 'Open Sans';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==13) {
-        $headingfont = 'Bevan';
-        $bodyfont = 'Pontano Sans';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==14) {
-        $headingfont = 'Abril Fatface';
-        $bodyfont = 'Average';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==15) {
-        $headingfont = 'Playfair Display';
-        $bodyfont = 'Multi';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==16) {
-        $headingfont = 'Sansita one';
-        $bodyfont = 'Kameron';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==17) {
-        $headingfont = 'Istok Web';
-        $bodyfont = 'Lora';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==18) {
-        $headingfont = 'Pacifico';
-        $bodyfont = 'Arimo';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==19) {
-        $headingfont = 'Nixie One';
-        $bodyfont = 'Ledger';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==20) {
-        $headingfont = 'Cantata One';
-        $bodyfont = 'Imprima';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==21) {
-        $headingfont = 'Rancho';
-        $bodyfont = 'Gudea';
-        $bodysize = '13px';
-        $bodyweight = '400';
-    } else if ($theme->settings->fontselect ==22) {
-        $headingfont = 'Helvetica';
-        $bodyfont = 'Georgia';
-        $bodysize = '17px';
-        $bodyweight = '400';
+    // Set header image padding.
+    if (!empty($theme->settings->headerimagepadding)) {
+        $headerimagepadding = $theme->settings->headerimagepadding;
+    } else {
+        $headerimagepadding = null;
     }
+    $css = theme_pioneer_set_headerimagepadding($css, $headerimagepadding);
+
+    // Set header image padding.
+    if (!empty($theme->settings->headerincourseimagepadding)) {
+        $headerincourseimagepadding = $theme->settings->headerincourseimagepadding;
+    } else {
+        $headerincourseimagepadding = null;
+    }
+    $css = theme_pioneer_set_headerincourseimagepadding($css, $headerincourseimagepadding);
     
-    $css = theme_evolved_set_headingfont($css, $headingfont);
-    $css = theme_evolved_set_bodyfont($css, $bodyfont);
-    $css = theme_evolved_set_bodysize($css, $bodysize);
-    $css = theme_evolved_set_bodyweight($css, $bodyweight);
+   // Set topic week background CSS.
+    if (!empty($theme->settings->topicweekcolor)) {
+        $topicweekcolor = $theme->settings->topicweekcolor;
+    } else {
+        $topicweekcolor = '';
+    }
+    $css = theme_pioneer_set_topicweekcolor($css, $topicweekcolor);
+
+
+    if (!empty($theme->settings->blockbordercolor)) {
+        $blockbordercolor = $theme->settings->blockbordercolor;
+    } else {
+        $blockbordercolor = '';
+    }
+    $css = theme_pioneer_set_blockbordercolor($css, $blockbordercolor);
+
+
+    if (!empty($theme->settings->blockcolor)) {
+        $blockcolor = $theme->settings->blockcolor;
+    } else {
+        $blockbcolor = '';
+    }
+    $css = theme_pioneer_set_blockcolor($css, $blockcolor);
+
+
+    if (!empty($theme->settings->contentbackgroundcolor)) {
+        $contentbackgroundcolor = $theme->settings->contentbackgroundcolor;
+    } else {
+        $contentbackgroundcolor = '';
+    }
+    $css = theme_pioneer_set_contentbackgroundcolor($css, $contentbackgroundcolor);
+
+
+    if (!empty($theme->settings->iconnavbackgroundcolor)) {
+        $iconnavbackgroundcolor = $theme->settings->iconnavbackgroundcolor;
+    } else {
+        $iconnavbackgroundcolor = '';
+    }
+    $css = theme_pioneer_set_iconnavbackgroundcolor($css, $iconnavbackgroundcolor);
 
     // Set marketbox CSS.
     if (!empty($theme->settings->marketboxcolor)) {
@@ -243,15 +196,7 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $marketboxcolor = '';
     }
-    $css = theme_evolved_set_marketboxcolor($css, $marketboxcolor);
-
-    // Set topic week background CSS.
-    if (!empty($theme->settings->topicweekcolor)) {
-        $topicweekcolor = $theme->settings->topicweekcolor;
-    } else {
-        $topicweekcolor = '';
-    }
-    $css = theme_evolved_set_topicweekcolor($css, $topicweekcolor);
+    $css = theme_pioneer_set_marketboxcolor($css, $marketboxcolor);
 
     // Set Socialwall icon and text color CSS.
     if (!empty($theme->settings->swicontext)) {
@@ -259,7 +204,7 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $swicontext = '';
     }
-    $css = theme_evolved_set_swicontext($css, $swicontext);
+    $css = theme_pioneer_set_swicontext($css, $swicontext);
 
     // Set Socialwall post background color CSS.
     if (!empty($theme->settings->swpost)) {
@@ -267,7 +212,7 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $swpost = '';
     }
-    $css = theme_evolved_set_swpost($css, $swpost);
+    $css = theme_pioneer_set_swpost($css, $swpost);
 
     // Set Socialwall add post color CSS.
     if (!empty($theme->settings->swaddpost)) {
@@ -275,7 +220,7 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $swaddpost = '';
     }
-    $css = theme_evolved_set_swaddpost($css, $swaddpost);
+    $css = theme_pioneer_set_swaddpost($css, $swaddpost);
 
     // Set Socialwall message color CSS.
     if (!empty($theme->settings->swmessage)) {
@@ -283,7 +228,7 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $swmessage = '';
     }
-    $css = theme_evolved_set_swmessage($css, $swmessage);
+    $css = theme_pioneer_set_swmessage($css, $swmessage);
 
     // Set Socialwall attachment color CSS.
     if (!empty($theme->settings->swattach)) {
@@ -291,7 +236,7 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $swattach = '';
     }
-    $css = theme_evolved_set_swattach($css, $swattach);
+    $css = theme_pioneer_set_swattach($css, $swattach);
 
     // Set Socialwall attachment color CSS.
     if (!empty($theme->settings->swcomment)) {
@@ -299,7 +244,7 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $swcomment = '';
     }
-    $css = theme_evolved_set_swcomment($css, $swcomment);
+    $css = theme_pioneer_set_swcomment($css, $swcomment);
 
     // Socialwall Labels.
     if (!empty($theme->settings->swlabelpost)) {
@@ -307,7 +252,7 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $swlabelpost = '';
     }
-    $css = theme_evolved_set_swlabelpost($css, $swlabelpost);
+    $css = theme_pioneer_set_swlabelpost($css, $swlabelpost);
     
     // Socialwall Labels.
     if (!empty($theme->settings->swlabelmessage)) {
@@ -315,7 +260,7 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $swlabelmessage = '';
     }
-    $css = theme_evolved_set_swlabelmessage($css, $swlabelmessage);
+    $css = theme_pioneer_set_swlabelmessage($css, $swlabelmessage);
 
     // Socialwall Labels.
     if (!empty($theme->settings->swlabelcomment)) {
@@ -323,7 +268,7 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $swlabelcomment = '';
     }
-    $css = theme_evolved_set_swlabelcomment($css, $swlabelcomment);
+    $css = theme_pioneer_set_swlabelcomment($css, $swlabelcomment);
 
     // Socialwall Labels.
     if (!empty($theme->settings->swlabelattachment)) {
@@ -331,7 +276,7 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $swlabelattachment = '';
     }
-    $css = theme_evolved_set_swlabelattachment($css, $swlabelattachment);
+    $css = theme_pioneer_set_swlabelattachment($css, $swlabelattachment);
     
     // Set custom CSS.
     if (!empty($theme->settings->swmultilangcss)) {
@@ -339,34 +284,33 @@ function theme_evolved_process_css($css, $theme) {
     } else {
         $swmultilangcss = null;
     }
-    $css = theme_evolved_set_swmultilangcss($css, $swmultilangcss);
+    $css = theme_pioneer_set_swmultilangcss($css, $swmultilangcss);
 
 
     return $css;
+
 }
 
-
 /**
- * Adds any custom CSS to the CSS before it is cached.
+ * Adds the logo to CSS.
  *
- * @param string $css The original CSS.
- * @param string $customcss The custom CSS to add.
- * @return string The CSS which now contains our custom CSS.
+ * @param string $css The CSS.
+ * @param string $logo The URL of the logo.
+ * @return string The parsed CSS
  */
-function theme_evolved_set_customcss($css, $customcss) {
-    $tag = '[[setting:customcss]]';
-    $replacement = $customcss;
+function theme_pioneer_set_logo($css, $logo, $theme) {
+    $tag = '[[setting:logo]]';
+    $replacement = $logo;
     if (is_null($replacement)) {
-        $replacement = null;
+        $replacement = $theme->pix_url('logo','theme');
     }
 
     $css = str_replace($tag, $replacement, $css);
 
     return $css;
 }
-
 //Adds custom background color to marketboxes
-function theme_evolved_set_marketboxcolor($css, $marketboxcolor) {
+function theme_pioneer_set_marketboxcolor($css, $marketboxcolor) {
     $tag = '[[setting:marketboxcolor]]';
     $replacement = $marketboxcolor;
         if (is_null($replacement)) {
@@ -378,8 +322,106 @@ function theme_evolved_set_marketboxcolor($css, $marketboxcolor) {
     return $css;
 }
 
+function theme_pioneer_set_headerbackgroundimage($css, $headerbackgroundimage, $theme) {
+    $tag = '[[setting:headerbackgroundimage]]';
+    $replacement = $headerbackgroundimage;
+    if (is_null($replacement)) {
+        $replacement = $theme->pix_url('headerbackgroundimage','theme');
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_headerimagepadding($css, $headerimagepadding) {
+    $tag = '[[setting:headerimagepadding]]';
+    $replacement = $headerimagepadding;
+    if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_headerincourseimagepadding($css, $headerincourseimagepadding) {
+    $tag = '[[setting:headerincourseimagepadding]]';
+    $replacement = $headerincourseimagepadding;
+    if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+//Adds Google Font Settings
+function theme_pioneer_set_gheadingimporturl($css, $gheadingimporturl) {
+    $tag = '[[setting:gheadingimporturl]]';
+    $replacement = $gheadingimporturl;
+    if (is_null($replacement)) {
+        $replacement = '';
+    }
+    $css = str_replace($tag, $replacement, $css);
+    return $css;
+}
+
+function theme_pioneer_set_gbodyimporturl($css, $gbodyimporturl) {
+    $tag = '[[setting:gbodyimporturl]]';
+    $replacement = $gbodyimporturl;
+    if (is_null($replacement)) {
+        $replacement = '';
+    }
+    $css = str_replace($tag, $replacement, $css);
+    return $css;
+}
+
+function theme_pioneer_set_headingfont($css, $headingfont) {
+    $tag = '[[setting:headingfont]]';
+    $replacement = $headingfont;
+    if (is_null($replacement)) {
+        $replacement = 'Georgia';
+    }
+    $css = str_replace($tag, $replacement, $css);
+    return $css;
+}
+
+function theme_pioneer_set_bodyfont($css, $bodyfont) {
+    $tag = '[[setting:bodyfont]]';
+    $replacement = $bodyfont;
+    if (is_null($replacement)) {
+        $replacement = 'Arial';
+    }
+    $css = str_replace($tag, $replacement, $css);
+    return $css;
+}
+
+function theme_pioneer_set_bodysize($css, $bodysize) {
+    $tag = '[[setting:bodysize]]';
+    $replacement = $bodysize;
+    if (is_null($replacement)) {
+        $replacement = '16';
+    }
+    $css = str_replace($tag, $replacement, $css);
+    return $css;
+}
+
+function theme_pioneer_set_bodyweight($css, $bodyweight) {
+    $tag = '[[setting:bodyweight]]';
+    $replacement = $bodyweight;
+    if (is_null($replacement)) {
+        $replacement = '400';
+    }
+    $css = str_replace($tag, $replacement, $css);
+    return $css;
+}
+
+
 //Adds custom background color to topics and weeks
-function theme_evolved_set_topicweekcolor($css, $topicweekcolor) {
+function theme_pioneer_set_topicweekcolor($css, $topicweekcolor) {
     $tag = '[[setting:topicweekcolor]]';
     $replacement = $topicweekcolor;
         if (is_null($replacement)) {
@@ -391,8 +433,57 @@ function theme_evolved_set_topicweekcolor($css, $topicweekcolor) {
     return $css;
 }
 
+function theme_pioneer_set_blockbordercolor($css, $blockbordercolor) {
+    $tag = '[[setting:blockbordercolor]]';
+    $replacement = $blockbordercolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_blockcolor($css, $blockcolor) {
+    $tag = '[[setting:blockcolor]]';
+    $replacement = $blockcolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_contentbackgroundcolor($css, $contentbackgroundcolor) {
+    $tag = '[[setting:contentbackgroundcolor]]';
+    $replacement = $contentbackgroundcolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_iconnavbackgroundcolor($css, $iconnavbackgroundcolor) {
+    $tag = '[[setting:iconnavbackgroundcolor]]';
+    $replacement = $iconnavbackgroundcolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+
 //Adds custom Socialwall Labels
-function theme_evolved_set_swlabelpost($css, $swlabelpost) {
+function theme_pioneer_set_swlabelpost($css, $swlabelpost) {
     $tag = '[[setting:swlabelpost]]';
     $replacement = $swlabelpost;
         if (is_null($replacement)) {
@@ -405,7 +496,7 @@ function theme_evolved_set_swlabelpost($css, $swlabelpost) {
 }
 
 //Adds custom Socialwall Labels
-function theme_evolved_set_swlabelmessage($css, $swlabelmessage) {
+function theme_pioneer_set_swlabelmessage($css, $swlabelmessage) {
     $tag = '[[setting:swlabelmessage]]';
     $replacement = $swlabelmessage;
         if (is_null($replacement)) {
@@ -418,7 +509,7 @@ function theme_evolved_set_swlabelmessage($css, $swlabelmessage) {
 }
 
 //Adds custom Socialwall Labels
-function theme_evolved_set_swlabelcomment($css, $swlabelcomment) {
+function theme_pioneer_set_swlabelcomment($css, $swlabelcomment) {
     $tag = '[[setting:swlabelcomment]]';
     $replacement = $swlabelcomment;
         if (is_null($replacement)) {
@@ -431,7 +522,7 @@ function theme_evolved_set_swlabelcomment($css, $swlabelcomment) {
 }
 
 //Adds custom Socialwall Labels
-function theme_evolved_set_swlabelattachment($css, $swlabelattachment) {
+function theme_pioneer_set_swlabelattachment($css, $swlabelattachment) {
     $tag = '[[setting:swlabelattachment]]';
     $replacement = $swlabelattachment;
         if (is_null($replacement)) {
@@ -444,7 +535,7 @@ function theme_evolved_set_swlabelattachment($css, $swlabelattachment) {
 }
 
 //Adds custom Socialwall Icon and text color
-function theme_evolved_set_swicontext($css, $swicontext) {
+function theme_pioneer_set_swicontext($css, $swicontext) {
     $tag = '[[setting:swicontext]]';
     $replacement = $swicontext;
         if (is_null($replacement)) {
@@ -457,7 +548,7 @@ function theme_evolved_set_swicontext($css, $swicontext) {
 }
 
 //Adds custom Socialwall Icon and text color
-function theme_evolved_set_swpost($css, $swpost) {
+function theme_pioneer_set_swpost($css, $swpost) {
     $tag = '[[setting:swpost]]';
     $replacement = $swpost;
         if (is_null($replacement)) {
@@ -470,7 +561,7 @@ function theme_evolved_set_swpost($css, $swpost) {
 }
 
 //Adds custom Socialwall Icon and text color
-function theme_evolved_set_swaddpost($css, $swaddpost) {
+function theme_pioneer_set_swaddpost($css, $swaddpost) {
     $tag = '[[setting:swaddpost]]';
     $replacement = $swaddpost;
         if (is_null($replacement)) {
@@ -483,7 +574,7 @@ function theme_evolved_set_swaddpost($css, $swaddpost) {
 }
 
 //Adds custom Socialwall Icon and text color
-function theme_evolved_set_swmessage($css, $swmessage) {
+function theme_pioneer_set_swmessage($css, $swmessage) {
     $tag = '[[setting:swmessage]]';
     $replacement = $swmessage;
         if (is_null($replacement)) {
@@ -496,7 +587,7 @@ function theme_evolved_set_swmessage($css, $swmessage) {
 }
 
 //Adds custom Socialwall attachment color
-function theme_evolved_set_swattach($css, $swattach) {
+function theme_pioneer_set_swattach($css, $swattach) {
     $tag = '[[setting:swattach]]';
     $replacement = $swattach;
         if (is_null($replacement)) {
@@ -509,7 +600,7 @@ function theme_evolved_set_swattach($css, $swattach) {
 }
 
 //Adds custom Socialwall attachment color
-function theme_evolved_set_swcomment($css, $swcomment) {
+function theme_pioneer_set_swcomment($css, $swcomment) {
     $tag = '[[setting:swcomment]]';
     $replacement = $swcomment;
         if (is_null($replacement)) {
@@ -521,85 +612,11 @@ function theme_evolved_set_swcomment($css, $swcomment) {
     return $css;
 }
 
-function theme_evolved_set_swmultilangcss($css, $swmultilangcss) {
+function theme_pioneer_set_swmultilangcss($css, $swmultilangcss) {
     $tag = '[[setting:swmultilangcss]]';
     $replacement = $swmultilangcss;
     if (is_null($replacement)) {
         $replacement = null;
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
-/**
- * Adds the logo to CSS.
- *
- * @param string $css The CSS.
- * @param string $logo The URL of the logo.
- * @return string The parsed CSS
- */
-function theme_evolved_set_logosmall($css, $logosmall) {
-    $tag = '[[setting:logosmall]]';
-    $replacement = $logosmall;
-    if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
-function theme_evolved_set_headingfont($css, $headingfont) {
-    $tag = '[[setting:headingfont]]';
-    $replacement = $headingfont;
-    if (is_null($replacement)) {
-        $replacement = 'Georgia';
-    }
-    $css = str_replace($tag, $replacement, $css);
-    return $css;
-}
-
-function theme_evolved_set_bodyfont($css, $bodyfont) {
-    $tag = '[[setting:bodyfont]]';
-    $replacement = $bodyfont;
-    if (is_null($replacement)) {
-        $replacement = 'Arial';
-    }
-    $css = str_replace($tag, $replacement, $css);
-    return $css;
-}
-
-function theme_evolved_set_bodysize($css, $bodysize) {
-    $tag = '[[setting:bodysize]]';
-    $replacement = $bodysize;
-    if (is_null($replacement)) {
-        $replacement = '13';
-    }
-    $css = str_replace($tag, $replacement, $css);
-    return $css;
-}
-
-function theme_evolved_set_bodyweight($css, $bodyweight) {
-    $tag = '[[setting:bodyweight]]';
-    $replacement = $bodyweight;
-    if (is_null($replacement)) {
-        $replacement = '400';
-    }
-    $css = str_replace($tag, $replacement, $css);
-    return $css;
-}
-
-/**
- * Adds the frontpage background to CSS.
- */
-function theme_evolved_set_fpbkg($css, $fpbkg) {
-    $tag = '[[setting:fpbkg]]';
-    $replacement = $fpbkg;
-    if (is_null($replacement)) {
-        $replacement = '';
     }
 
     $css = str_replace($tag, $replacement, $css);
@@ -620,18 +637,142 @@ function theme_evolved_set_fpbkg($css, $fpbkg) {
  * @param array $options
  * @return bool
  */
-function theme_evolved_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
-    if ($context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'logosmall' || $filearea === 'backgroundimage' || $filearea === 'back1' || $filearea === 'back2' || $filearea === 'back3' || $filearea === 'back4' || $filearea === 'fpbkg')) {
-        $theme = theme_config::load('evolved');
+function theme_pioneer_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+    if ($context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'logo' || $filearea === 'backgroundimage' || $filearea === 'headerbackgroundimage' || $filearea === 'marketing1image'|| $filearea === 'marketing2image' || $filearea === 'marketing3image'  )) {
+        $theme = theme_config::load('pioneer');
+        // By default, theme files must be cache-able by both browsers and proxies.
+        if (!array_key_exists('cacheability', $options)) {
+            $options['cacheability'] = 'public';
+        }
         return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
     } else {
         send_file_not_found();
     }
 }
 
-/**
- * Page requires jQuery. */
+function theme_pioneer_get_setting($setting, $format = false) {
+    global $CFG;
+    require_once($CFG->dirroot . '/lib/weblib.php');
+    static $theme;
+    if (empty($theme)) {
+        $theme = theme_config::load('pioneer');
+    }
+    if (empty($theme->settings->$setting)) {
+        return false;
+    } else if (!$format) {
+        return $theme->settings->$setting;
+    } else if ($format === 'format_text') {
+        return format_text($theme->settings->$setting, FORMAT_PLAIN);
+    } else if ($format === 'format_html') {
+        return format_text($theme->settings->$setting, FORMAT_HTML, array('trusted' => true, 'noclean' => true));
+    } else {
+        return format_string($theme->settings->$setting);
+    }
+}
 
-function theme_evolved_page_init(moodle_page $page) {
-$page->requires->jquery_plugin('tab', 'theme_evolved');
+/**
+ * Fetch the hide course ids
+ *
+ * @return array
+ */
+function theme_pioneer_hidden_courses_ids() {
+    global $DB;
+    $hcourseids = array();
+    $result = $DB->get_records_sql("SELECT id FROM {course} WHERE visible='0' ");
+    if (!empty($result)) {
+        foreach ($result as $row) {
+            $hcourseids[] = $row->id;
+        }
+    }
+    return $hcourseids;
+}
+
+
+function theme_pioneer_strip_html_tags( $text ) {
+    
+}
+
+/**
+ * Cut the Course content.
+ *
+ * @param $str
+ * @param $n
+ * @param $end_char
+ * @return string
+ */
+function theme_pioneer_course_trim_char($str, $n = 500, $endchar = '&#8230;') {
+    if (strlen($str) < $n) {
+        return $str;
+    }
+
+    $str = preg_replace("/\s+/", ' ', str_replace(array("\r\n", "\r", "\n"), ' ', $str));
+    if (strlen($str) <= $n) {
+        return $str;
+    }
+
+    $out = "";
+    $small = substr($str, 0, $n);
+    $out = $small.$endchar;
+    return $out;
+}
+
+
+function theme_pioneer_get_html_for_settings(renderer_base $output, moodle_page $page) {
+    global $CFG;
+    $return = new stdClass;
+    $return->heading = $output->page_heading();
+    $return->generalalert = '';
+    if (!empty($page->theme->settings->generalalert)) {
+        $return->generalalert = '<div class="generalalert text-center">'.format_text($page->theme->settings->generalalert).'</div>';
+    }
+
+    return $return;
+}
+
+function theme_pioneer_get_html_for_fptextbox(renderer_base $output, moodle_page $page) {
+    global $CFG;
+    $return = new stdClass;
+    $return->heading = $output->page_heading();
+    $return->fptextbox = '';
+    if (!empty($page->theme->settings->fptextbox)) {
+        $return->fptextbox = '<div class="fptextbox text-center">'.format_text($page->theme->settings->fptextbox).'</div>';
+    }
+
+    return $return;
+}
+
+
+
+/**
+ * Adds any custom CSS to the CSS before it is cached.
+ *
+ * @param string $css The original CSS.
+ * @param string $customcss The custom CSS to add.
+ * @return string The CSS which now contains our custom CSS.
+ */
+function theme_pioneer_set_customcss($css, $customcss) {
+    $tag = '[[setting:customcss]]';
+    $replacement = $customcss;
+    if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_page_init(moodle_page $page) {
+$page->requires->jquery_plugin('bootstrap-tooltip', 'theme_pioneer');
+}
+
+function theme_pioneer_lang($key = '') {
+    $pos = strpos($key, 'lang:');
+    if ($pos !== false) {
+        list($l, $k) = explode(":", $key);
+        $v = get_string($k, 'theme_pioneer');
+        return $v;
+    } else {
+        return $key;
+    }
 }

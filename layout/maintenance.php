@@ -15,15 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The maintenance layout.
+ * This layout file is designed maintenance related tasks such as upgrade and installation of plugins.
  *
- * @package   theme_clean
- * @copyright 2013 Moodle, moodle.org
+ * It's ultra important that this layout file makes no use of API's unless it absolutely needs to.
+ * Under no circumstances should it use API calls that result in database or cache interaction.
+ *
+ * If you are modifying this file please be extremely careful, one wrong API call and you could end up
+ * breaking installation or upgrade unwittingly.
+ *
+ * @package   theme_bootstrapbase
+ * @copyright 2012 Bas Brands, www.basbrands.nl
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-// Get the HTML for the settings bits.
-$html = theme_clean_get_html_for_settings($OUTPUT, $PAGE);
 
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
@@ -32,9 +35,6 @@ echo $OUTPUT->doctype() ?>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
     <?php echo $OUTPUT->standard_head_html() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google web fonts -->
-    <?php require_once(dirname(__FILE__).'/includes/fonts.php'); ?>
-<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" type='text/css' /> -->
 </head>
 
 <body <?php echo $OUTPUT->body_attributes(); ?>>
@@ -44,7 +44,7 @@ echo $OUTPUT->doctype() ?>
 <div id="page" class="container-fluid">
 
     <header id="page-header" class="clearfix">
-        <?php echo $html->heading; ?>
+        <?php echo $OUTPUT->page_heading(); ?>
     </header>
 
     <div id="page-content" class="row-fluid">
