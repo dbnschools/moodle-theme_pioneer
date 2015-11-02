@@ -1,5 +1,5 @@
 # Moodle-theme_pioneer
-The Moodle Pioneer theme is a responsive bootstrap theme for Moodle. Highly customizable and loaded with great features.  This theme is ideal for educational institutions and businesses.
+The Moodle Pioneer theme is a responsive bootstrap theme for Moodle. Highly customizable and loaded with great features.  This theme is ideal for educational institutions and businesses alike.  Pioneer is focused on simplicity and providing an intuitive user experience.
 ## Top Features of Pioneer
 * Teachers can upload an image into Course Summary Files and the theme will utilize that image in the Header of the page.  This slight customization allows the learner to distinguish between courses while still maintaining a standard look and feel.
 * My Courses drop down displays enrolled courses at top of page.
@@ -16,3 +16,9 @@ The Moodle Pioneer theme is a responsive bootstrap theme for Moodle. Highly cust
 * Social Icons display neatly at the bottom of the page.
 * Custom Logo and Images
 * Custom Colors
+###Special Thanks
+Pioneer would not be possible in it's current form without help and code from the following:
+* Richard Oelmann for coding the Header Image functionality
+* Mary Evans designer of More Candy theme and the super cool Block Styling and support in the Moodle.org theme forum
+* Eguru Theme with Featured Courses functionality
+* Gareth Barnard for support and ideas in the Moodle theme forum
