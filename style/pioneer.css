@@ -156,7 +156,6 @@ section#region-main .block_course_overview {
 .top-search { display:none;}
 }
 
-
 /* BREADCRUMBS */
 div#breadcrumb-container {
     background-color: #DCE0E5;
@@ -408,6 +407,11 @@ text-align: right;
   padding-top: [[setting:headerimagepadding]];
 }
 
+@media (max-width: 767px){
+.header-spacer {
+    padding-top: 40px;
+}
+}
 
 /*Social Wall*/
 .format-socialwall .course-content ul.topics li.section {

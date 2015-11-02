@@ -59,7 +59,7 @@ $string['backgroundrepeatrepeatx'] = 'Repeat horizontally';
 $string['backgroundrepeatrepeaty'] = 'Repeat vertically';
 $string['bodybackground'] = 'Background colour';
 $string['bodybackground_desc'] = 'The main colour to use for the background.';
-$string['choosereadme'] = '<p>Pioneer is breaking new ground.</p>';
+$string['choosereadme'] = '<p>The Pioneer theme is a responsive bootstrap theme for Moodle. Highly customizable and loaded with great features. This theme is ideal for educational institutions and businesses alike. Pioneer is focused on simplicity and providing an intuitive user experience.</p><p>Developed and maintained by Dearborn Public Schools.  We are a K-12 school district in Dearborn, Michigan.  Pioneer is the mascot of Dearborn High School.</p>';
 
 $string['configtitle'] = 'Pioneer';
 $string['contentbackground'] = 'Main content background colour';
