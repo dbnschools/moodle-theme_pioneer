@@ -72,15 +72,26 @@ echo $OUTPUT->doctype() ?>
         <div id="header-image-box">
             <div class="header-image" <?php if ($courseimage){ echo 'style="background-image: url('.$courseimage.');"'; } ?> >
                 <div class="header-spacer">
-                <div class="course-title">
-                    <?php echo $html->heading; ?>
-                </div>
                 <div id="course-header">      
                 <?php echo $OUTPUT->course_header(); ?>
                 </div>
+                <div class="course-title">
+                    <?php echo $html->heading; ?> 
+                </div>
             </div>
+            <?php if($PAGE->theme->settings->coursegradetoggle==1) { ?>
+            <div data-toggle="collapse" data-target="#test" class="coursegradebtn"><i class="fa fa-graduation-cap"></i>  <?php echo get_string('coursegradebutton' , 'theme_pioneer'); ?></div>
+            <?php } ?>
             </div>
         </div>
+        <div>
+<?php 
+    if($PAGE->theme->settings->coursegradetoggle==1) { ?>
+            <div id="test" class="collapse out">
+                <?php require_once(dirname(__FILE__).'/includes/coursegrade.php'); ?>
+            </div>
+<?php } ?>
+</div>
         <div id="breadcrumb-container" class="clearfix">
             <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> <?php echo $OUTPUT->user_menu(); ?>
         </div>

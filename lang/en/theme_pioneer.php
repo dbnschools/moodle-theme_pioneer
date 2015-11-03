@@ -202,11 +202,11 @@ $string['naviconbuttonurldesc'] = 'URL the button will point to.';
 
 //Google Fonts
 $string['gheadingimporturl'] = 'Heading Import URL';
-$string['gheadingimporturldesc'] = 'Copy and paste the code from Google Fonts that begins with @import url()';
+$string['gheadingimporturldesc'] = 'Find a font on google.com/fonts.  Click the quick use icon.  Find the step that says "Add this code to your website.  Copy and paste that here.';
 $string['gbodyimporturl'] = 'Body Import URL';
 $string['gbodyimporturldesc'] = 'Copy and paste the code from Google Fonts that begins with @import url()';
 $string['headingfont'] = 'Heading Font family';
-$string['headingfontdesc'] = 'Copy and paste the Google font name here.';
+$string['headingfontdesc'] = 'Copy and paste the Google font family informaiton here.';
 $string['bodyfont'] = 'Body Font';
 $string['bodyfontdesc'] = 'Copy and paste the Google font code that begins with font-family (Integrate the fonts into your CSS)';
 $string['bodysize'] = 'Body Text Size';
@@ -285,6 +285,10 @@ $string['noenrolments'] = 'You have no current enrolments';
 $string['thiscourse'] = 'Activities';
 $string['people'] = 'Classmates';
 $string['grades'] = 'My Grades';
+
+$string['coursegradetoggle'] = 'Show/Hide Course Grade Slider';
+$string['coursegradetoggle_desc'] = 'This will allow students to quickly see a list of all activities and their grade right in the top header area above the breadcrumbs and below the course title.';
+$string['coursegradebutton'] = 'Course Grades';
 
 
 // CourseBox rendering.

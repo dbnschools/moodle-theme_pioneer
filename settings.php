@@ -223,6 +223,15 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+// Show or Hide Course Grades toggle.
+    $name = 'theme_pioneer/coursegradetoggle';
+    $title = get_string('coursegradetoggle', 'theme_pioneer');
+    $description = get_string('coursegradetoggle_desc', 'theme_pioneer');
+    $default = 0;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
 // Promoted Courses Start.
     // Promoted Courses Heading.
     $name = 'theme_pioneer_promotedcoursesheading';

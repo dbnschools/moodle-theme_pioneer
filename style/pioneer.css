@@ -100,6 +100,22 @@ section#region-main .block_course_overview {
     background-position: center;
   }
 
+.coursegradebtn {
+    margin: 0px auto;
+    display: block;
+    max-width: 175px;
+  background-color: rgba(0,0,0,0.65);
+  padding:7px;
+  color:#fff;
+  font-size:20px;
+  text-align: center;
+}
+.coursegradebtn:hover {
+  background-color:#fff;
+  color:#000;
+  cursor:pointer;
+}
+
 .course-content .current {
   background-color: #d9edf7 !important;
 }
@@ -397,14 +413,15 @@ text-align: right;
     background-size: cover;
     background-repeat:no-repeat;
     background-position: center;
-    padding-bottom:10px;
 }
 
 .header-spacer-incourse {
   padding-top:[[setting:headerincourseimagepadding]];
+    padding-bottom:5px;
 }
 .header-spacer {
   padding-top: [[setting:headerimagepadding]];
+  padding-bottom:5px;
 }
 
 @media (max-width: 767px){
@@ -1452,3 +1469,24 @@ filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccfffff
     border: 3px solid #555;
 }
 }
+
+
+/*.pagelayout-course .courseheadergradepercentage {display:block;}
+.courseheadergradepercentage {background-color:#fff; opacity:0.8; border-radius:2px; float:right; margin-top:0px; margin-right:125px;}
+.courseheadergradepercentage table.generaltable {margin:0;}
+
+.courseheadergradepercentage table tbody tr,
+.courseheadergradepercentage table thead {display:none;}
+.courseheadergradepercentage table tbody tr:last-of-type th,
+.courseheadergradepercentage table tbody tr:last-of-type td {border-top:none;}
+
+.courseheadergradepercentage table tbody tr:last-of-type {display:block;border-radius:6px;}
+
+.courseheadergradepercentage table tbody tr:last-of-type .column-itemname {font-weight:900;font-size:150%;text-align:right;width:120px;}
+.courseheadergradepercentage table tbody tr:last-of-type .column-weight {display:none;}
+.courseheadergradepercentage table tbody tr:last-of-type .column-grade {display:none;}
+.courseheadergradepercentage table tbody tr:last-of-type .column-range {display:none;}
+.courseheadergradepercentage table tbody tr:last-of-type .column-percentage {font-weight:900;font-size:150%;width:100px;}
+.courseheadergradepercentage table tbody tr:last-of-type .column-feedback {display:none;}
+.courseheadergradepercentage table tbody tr:last-of-type .column-contributiontocoursetotal {display:none;}
+*/
