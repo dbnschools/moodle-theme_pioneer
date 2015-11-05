@@ -41,7 +41,7 @@ echo $OUTPUT->doctype() ?>
 <div id="page" class="container-fluid">
 <div class="fpcustomnav-container">
         <nav role="navigation" class="navbar navbar-inner">
-          <div id="logo"> </div>
+          <a href="<?php echo $CFG->wwwroot;?>"><div id="logo"> </div></a>
             <?php echo $OUTPUT->custom_menu(); ?>
         </nav>
 </div>

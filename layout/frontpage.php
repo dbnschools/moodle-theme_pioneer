@@ -56,9 +56,9 @@ echo $OUTPUT->doctype() ?>
 <div id="page" class="container-fluid">
 <div class="fpcustomnav-container">
         <nav role="navigation" class="navbar navbar-inner">
-          <div id="logo"> </div>
+          <a href="<?php echo $CFG->wwwroot;?>"><div id="logo"> </div></a>
                 <!-- icon navigation-->
-    <?php require_once(dirname(__FILE__).'/includes/iconnav.php'); ?>
+            <?php require_once(dirname(__FILE__).'/includes/iconnav.php'); ?>
             <?php echo $OUTPUT->custom_menu(); ?>
             <?php if (isloggedin()) { ?>
             <div class="top-search">
