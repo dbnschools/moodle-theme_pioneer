@@ -17,8 +17,8 @@
 /**
  * Theme More lang file.
  *
- * @package    theme_more
- * @copyright  2014 Frédéric Massart
+ * @package    theme_pioneer
+ * @copyright  2015 Chris Kenniburg
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 $string['pluginname'] = 'Pioneer';
@@ -82,7 +82,7 @@ $string['invertdesc'] = 'Swaps text and background for the navbar at the top of 
 $string['linkcolor'] = 'Link colour';
 $string['linkcolor_desc'] = 'The colour of the links.';
 $string['logo'] = 'Logo';
-$string['logodesc'] = 'The logo is only displayed in the header of the front page and login page.<br /> If the height of your logo is more than 75px add div.logo {height: 100px;} to the Custom CSS box below, amending accordingly if the height is other than 100px.';
+$string['logodesc'] = 'The logo should be 140px by 40px.  The logo is displayed in the top left and bottom right of the theme.';
 
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
@@ -202,13 +202,13 @@ $string['naviconbuttonurldesc'] = 'URL the button will point to.';
 
 //Google Fonts
 $string['gheadingimporturl'] = 'Heading Import URL';
-$string['gheadingimporturldesc'] = 'Find a font on google.com/fonts.  Click the quick use icon.  Find the step that says "Add this code to your website.  Copy and paste that here.';
+$string['gheadingimporturldesc'] = 'HEADING STEP ONE: Find a font on google.com/fonts.  Click the quick use icon.  Find the step that says "Add this code to your website".  Copy and paste that here. Be sure to complete HEADING STEP 2.';
 $string['gbodyimporturl'] = 'Body Import URL';
-$string['gbodyimporturldesc'] = 'Copy and paste the code from Google Fonts that begins with @import url()';
+$string['gbodyimporturldesc'] = 'BODY STEP 1: Find a font on google.com/fonts.  Click the quick use icon.  Find the step that says "Add this code to your website".  Copy and paste that here. Be sure to complete BODY STEP 2.';
 $string['headingfont'] = 'Heading Font family';
-$string['headingfontdesc'] = 'Copy and paste the Google font family informaiton here.';
+$string['headingfontdesc'] = 'HEADING STEP 2: Copy and paste the Google font family informaiton here.';
 $string['bodyfont'] = 'Body Font';
-$string['bodyfontdesc'] = 'Copy and paste the Google font code that begins with font-family (Integrate the fonts into your CSS)';
+$string['bodyfontdesc'] = 'BODY STEP 2: Copy and paste the Google font code that begins with font-family (Integrate the fonts into your CSS)';
 $string['bodysize'] = 'Body Text Size';
 $string['bodysizedesc'] = 'Use a number such as 14px';
 $string['bodyweight'] = 'Body Weight';

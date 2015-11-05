@@ -18,9 +18,9 @@
  * This is built using the bootstrapbase template to allow for new theme's using
  * Moodle's new Bootstrap theme engine
  *
- * @package     theme_pioneer
- * @copyright   2015 Nephzat Dev Team, nephzat.com
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme_pioneer
+ * @copyright  2015 Chris Kenniburg
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();

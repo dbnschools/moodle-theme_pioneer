@@ -17,9 +17,9 @@
 /**
  * The two column layout.
  *
- * @package   theme_clean
- * @copyright 2013 Moodle, moodle.org
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme_pioneer
+ * @copyright  2015 Chris Kenniburg
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 // Get the HTML for the settings bits.

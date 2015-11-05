@@ -15,19 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme More settings.
- *
- * Each setting that is defined in the parent theme Clean should be
- * defined here too, and use the exact same config name. The reason
- * is that theme_pioneer does not define any layout files to re-use the
- * ones from theme_clean. But as those layout files use the function
- * {@link theme_clean_get_html_for_settings} that belong to Clean,
- * we have to make sure it works as expected by having the same settings
- * in our theme.
- *
- * @see        theme_clean_get_html_for_settings
  * @package    theme_pioneer
- * @copyright  2014 Frédéric Massart
+ * @copyright  2015 Chris Kenniburg
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

@@ -18,10 +18,9 @@
  * This is built using the bootstrapbase template to allow for new theme's using
  * Moodle's new Bootstrap theme engine
  *
- * @package     theme_essential
- * @copyright   2013 Julian Ridden
- * @copyright   2014 Gareth J Barnard, David Bezemer
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme_pioneer
+ * @copyright  2015 Chris Kenniburg
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**

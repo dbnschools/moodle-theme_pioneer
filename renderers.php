@@ -17,10 +17,8 @@
 /**
  * Essential theme with the underlying Bootstrap theme.
  *
- * @package    theme
- * @subpackage evolve-D
- * @author     Chris Kenniburg
- * @author     Based on code originally written by G J Bernard, Mary Evans, Bas Brands, Stuart Lamour and David Scotson Julian Ridden.
+ * @package    theme_pioneer
+ * @copyright  2015 Chris Kenniburg
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

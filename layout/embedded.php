@@ -17,9 +17,9 @@
 /**
  * An embedded layout for the Bootstrapbase theme.
  *
- * @package   theme_bootstrapbase
- * @copyright 2012 Bas Brands, www.basbrands.nl
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme_pioneer
+ * @copyright  2015 Chris Kenniburg
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 echo $OUTPUT->doctype() ?>

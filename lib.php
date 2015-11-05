@@ -18,7 +18,7 @@
  * Theme pioneer lib.
  *
  * @package    theme_pioneer
- * @copyright  2014 Frédéric Massart
+ * @copyright  2015 Chris Kenniburg
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
