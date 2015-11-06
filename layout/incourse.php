@@ -52,21 +52,8 @@ echo $OUTPUT->doctype() ?>
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
 <div id="page" class="container-fluid">
-<div class="fpcustomnav-container">
-        <nav role="navigation" class="navbar navbar-inner">
-          <a href="<?php echo $CFG->wwwroot;?>"><div id="logo"> </div></a>
-                <!-- icon navigation-->
-            <?php require_once(dirname(__FILE__).'/includes/iconnav.php'); ?>
-            <?php echo $OUTPUT->custom_menu(); ?>
-            <div class="top-search">
-           <form action="<?php echo new moodle_url('/course/search.php'); ?>" method="get">
-              <input type="text" placeholder="<?php echo get_string('searchcourses'); ?>" name="search" value="">
-              <input type="submit" value="Find">
-           </form>    
-            </div>
-        </nav>
-</div>
-        <div class="clearfix"></div>
+
+<?php require_once(dirname(__FILE__).'/includes/topnav.php'); ?>
 
     <div id="page-content" class="row-fluid">
         <div id="header-image-box">

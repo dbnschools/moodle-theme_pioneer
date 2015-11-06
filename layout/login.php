@@ -39,6 +39,7 @@ echo $OUTPUT->doctype() ?>
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
 <div id="page" class="container-fluid">
+
 <div class="fpcustomnav-container">
         <nav role="navigation" class="navbar navbar-inner">
           <a href="<?php echo $CFG->wwwroot;?>"><div id="logo"> </div></a>
@@ -49,9 +50,6 @@ echo $OUTPUT->doctype() ?>
 
     <div id="page-content" class="row-fluid">
        
-        <div id="breadcrumb-container" class="clearfix">
-            <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> <?php echo $OUTPUT->user_menu(); ?>
-        </div>
         <section id="region-main" class="span12 moodleheader">
             <?php
             echo $OUTPUT->course_content_header();
@@ -59,7 +57,9 @@ echo $OUTPUT->doctype() ?>
             echo $OUTPUT->course_content_footer();
             ?>
         </section>
-
+        <div id="breadcrumb-container" class="clearfix">
+            <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> <?php echo $OUTPUT->user_menu(); ?>
+        </div>
                     <!-- Start Marketing Spots -->
     <?php 
         if($PAGE->theme->settings->togglemarketing==1) {

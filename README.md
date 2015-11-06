@@ -25,6 +25,13 @@ Pioneer would not be possible in it's current form without help and code from th
 * Gareth Barnard for support and ideas in the Moodle theme forum
 * Anupam Chugh with help on design aspects
 
+##Pioneer v1.1.1
+* Made theme full screen in width at request of teachers
+* Made top navigation stick to top of screen
+* Moved top navigation into a single include file
+* Fixed css and language strings
+
+
 ##Pioneer v1.1
 * Fixed css and language strings
 * Added Course Grades drop down toggle.  This allows students to see all their grades while in a course by a simple toggle show and hide

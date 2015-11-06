@@ -54,25 +54,9 @@ echo $OUTPUT->doctype() ?>
 <?php require_once(dirname(__FILE__).'/includes/alerts.php'); ?>
 
 <div id="page" class="container-fluid">
-<div class="fpcustomnav-container">
-        <nav role="navigation" class="navbar navbar-inner">
-          <a href="<?php echo $CFG->wwwroot;?>"><div id="logo"> </div></a>
-                <!-- icon navigation-->
-            <?php require_once(dirname(__FILE__).'/includes/iconnav.php'); ?>
-            <?php echo $OUTPUT->custom_menu(); ?>
-            <?php if (isloggedin()) { ?>
-            <div class="top-search">
-           <form action="<?php echo new moodle_url('/course/search.php'); ?>" method="get">
-              <input type="text" placeholder="<?php echo get_string('searchcourses'); ?>" name="search" value="">
-              <input type="submit" value="Find">
-           </form>    
-            </div>
-            <?php } else { ?>
-            <?php } ?>
-        </nav>
-</div>
-        <div class="clearfix"></div>
 
+    <?php require_once(dirname(__FILE__).'/includes/topnav.php'); ?>
+    
     <div id="page-content" class="row-fluid">
         <?php if (!isloggedin()) { ?>
         <div id="header-image-box-logout">
