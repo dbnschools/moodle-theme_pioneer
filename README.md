@@ -30,6 +30,7 @@ Pioneer would not be possible in it's current form without help and code from th
 * Made top navigation stick to top of screen
 * Moved top navigation into a single include file
 * Fixed css and language strings
+* Full screen gradebook view
 
 
 ##Pioneer v1.1

@@ -22,6 +22,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 $html = theme_pioneer_get_html_for_settings($OUTPUT, $PAGE);
+$courserenderer = $PAGE->get_renderer('core', 'course');
 $PAGE->requires->jquery();
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
@@ -57,10 +58,15 @@ echo $OUTPUT->doctype() ?>
             echo $OUTPUT->course_content_footer();
             ?>
         </section>
+
         <div id="breadcrumb-container" class="clearfix">
             <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> <?php echo $OUTPUT->user_menu(); ?>
         </div>
-                    <!-- Start Marketing Spots -->
+
+        <div class="clearfix"></div>
+        <?php echo $courserenderer->promoted_courses(); ?>
+    
+    <!-- Start Marketing Spots -->
     <?php 
         if($PAGE->theme->settings->togglemarketing==1) {
             require_once(dirname(__FILE__).'/includes/marketingspots.php');
@@ -88,10 +94,5 @@ echo $OUTPUT->doctype() ?>
     <?php echo $OUTPUT->standard_end_of_body_html() ?>
 
 </div>
-<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-});
-</script>
 </body>
 </html>

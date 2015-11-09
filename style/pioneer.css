@@ -311,18 +311,16 @@ text-align: right;
 .fpcustomnav-container .navbar,.navbar-inner {
   margin-bottom: 0px;
   padding-bottom: 0px;
-  font-size:16px;
+  font-size:14px;
   vertical-align: middle;
   border:0px;
     border: none;
     border-radius: 0px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-    background-color: [[setting:iconnavbackgroundcolor]];
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
-    height:50px;
     background-image:none;
-  background: none;
+    background: none;
     border: none;
     border-radius: 0px;
     -webkit-box-shadow: none;
@@ -330,6 +328,7 @@ text-align: right;
     box-shadow: none;
     padding-left:15px;
     padding-right:15px;
+    background-color: [[setting:iconnavbackgroundcolor]];
 }
 
 .fixed-top-nav {
@@ -376,8 +375,8 @@ text-align: right;
 
 .fpcustomnav-container .iconset {
   float:left;
-  padding-right: 30px;
-  padding-left:30px;
+  padding-right: 15px;
+  padding-left:15px;
   position: relative;
 }
 
@@ -398,6 +397,12 @@ text-align: right;
 
 .navbar, .navbar-inner{
   padding:0px;
+}
+
+/*@media (max-width: 979px)*/
+.navbar .nav-collapse.in {
+    border: 1px solid #d4d4d4;
+    background-color: [[setting:iconnavbackgroundcolor]];
 }
 
 #editbutton {padding: 15px 10px 5px 20px;}
@@ -1047,6 +1052,7 @@ color: #000;
 
 div#Promoted-Courses {
 margin-bottom:20px;
+Margin-top:20px;
 }
 .fp-coursebox {
   text-align: center;

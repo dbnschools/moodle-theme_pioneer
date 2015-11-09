@@ -9,8 +9,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 $plugin->maturity = MATURITY_STABLE; // this version's maturity level.
-$plugin->release = 'Pioneer v1.1.1';
-$plugin->version   = 2015110600;
+$plugin->release = 'Pioneer v1.1.2';
+$plugin->version   = 2015110900;
 $plugin->requires  = 2014050800;
 $plugin->component = 'theme_pioneer';
 $plugin->dependencies = array(
