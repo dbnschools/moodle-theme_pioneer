@@ -164,7 +164,7 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-    // Toggle Marketing Spots.
+    // Toggle FP Textbox Spots.
     $name = 'theme_pioneer/togglefptextbox';
     $title = get_string('togglefptextbox' , 'theme_pioneer');
     $description = get_string('togglefptextboxdesc', 'theme_pioneer');
@@ -172,7 +172,7 @@ defined('MOODLE_INTERNAL') || die;
     $displaybeforelogin = get_string('displaybeforelogin', 'theme_pioneer');
     $displayafterlogin = get_string('displayafterlogin', 'theme_pioneer');
     $dontdisplay = get_string('dontdisplay', 'theme_pioneer');
-    $default = 'display';
+    $default = 'displaybeforelogin';
     $choices = array('1'=>$alwaysdisplay, '2'=>$displaybeforelogin, '3'=>$displayafterlogin, '0'=>$dontdisplay);
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
