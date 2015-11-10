@@ -66,12 +66,25 @@ section#region-main {
     box-shadow: none;
 }
 
+@media (max-width: 679px){
+section#region-main {
+    padding:0px;
+}
+}
+
 section#region-main .block_course_overview {
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
   padding: 10px;
   margin-bottom: 60px;
   border-bottom: 0px;
   background-color:[[setting:topicweekcolor]];
+}
+
+@media (max-width: 679px){
+section#region-main .block_course_overview .content {
+    margin: 0px;
+    padding:0px;
+}
 }
 
 
@@ -128,6 +141,12 @@ section#region-main .block_course_overview {
 .course-content {
     padding-left: 20px;
     padding-right: 20px;
+}
+@media (max-width: 679px) {
+.course-content {
+    padding-left: 0px;
+    padding-right: 0px;
+}
 }
 
 #page-content {
@@ -283,12 +302,7 @@ display:block;
 text-align: right;
 }
 
-/*.navbar .nav {
-    position: relative;
-    left: 0;
-    display: block;
-    margin: 0 10px 0 0;
-}*/
+
 .breadcrumb li,
 .nav-header {
     text-shadow: none;

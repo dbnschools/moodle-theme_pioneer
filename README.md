@@ -25,6 +25,11 @@ Pioneer would not be possible in it's current form without help and code from th
 * Gareth Barnard for support and ideas in the Moodle theme forum
 * Anupam Chugh with help on design aspects
 
+##Pioneer v1.1.4
+* Fixed General Frontpage Alert not showing on moodle default login page
+* Fixed top navigation bar for logged out users.
+* More mobile menu adjustments
+
 ##Pioneer v1.1.3
 * Fixed css issue with small screen sizes and top navigation bar and changed when mobile menu appears
 * At 979px the course search box is hidden.  At 679px the mobile menu is displayed.

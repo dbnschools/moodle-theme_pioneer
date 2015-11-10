@@ -50,7 +50,7 @@ echo $OUTPUT->doctype() ?>
         <div class="clearfix"></div>
 
     <div id="page-content" class="row-fluid">
-       
+       <?php require_once(dirname(__FILE__).'/includes/alerts.php'); ?>
         <section id="region-main" class="span12 moodleheader">
             <?php
             echo $OUTPUT->course_content_header();
