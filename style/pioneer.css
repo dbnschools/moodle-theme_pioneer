@@ -68,7 +68,8 @@ section#region-main {
 
 @media (max-width: 679px){
 section#region-main {
-    padding:0px;
+    padding-left:5px;
+    padding-right:5px;
 }
 }
 
@@ -345,6 +346,12 @@ text-align: right;
     background-color: [[setting:iconnavbackgroundcolor]];
 }
 
+@media (max-width: 679px){
+.fpcustomnav-container .navbar,.navbar-inner {
+  padding-bottom:10px;
+}
+}
+
 .fixed-top-nav {
     display: block;
     position: fixed;
@@ -377,10 +384,10 @@ body.has_dock .fpcustomnav-container {
 }
 
 .fpcustomnav-container .iconset {
-  float:left;
   padding-right: 15px;
   padding-left:15px;
-  position: relative;
+  float:left;
+  display:block;
 }
 
 .fpcustomnav-container i{
@@ -413,11 +420,15 @@ body.has_dock .fpcustomnav-container {
 .navbar .nav-collapse.in>.nav>li>a {
     padding-left: 20px;
     border-radius: 0;
-    width: 150px;
-    float: right;
+    clear: both;
 }
 }
-
+@media (max-width: 679px){
+.nav-collapse .nav {
+    margin: 0 0 10px;
+    clear:both;
+}
+}
 
 #editbutton {padding: 15px 10px 5px 20px;}
 #editbutton .btn {clear:both;}
@@ -431,10 +442,6 @@ body.has_dock .fpcustomnav-container {
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
     display:block;
     clear:both;
-    background: url([[setting:headerbackgroundimage]]);
-    background-size: cover;
-    background-repeat:no-repeat;
-    background-position: center;
 }
 
 #header-image-box-logout {
@@ -450,6 +457,13 @@ body.has_dock .fpcustomnav-container {
 }
 
 .header-image {
+    background: url([[setting:headerbackgroundimage]]);
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center;
+}
+
+.header-image-custom {
     background-size: cover;
     background-repeat:no-repeat;
     background-position: center;

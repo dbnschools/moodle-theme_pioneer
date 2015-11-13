@@ -229,6 +229,8 @@ $string['headerincourseimagepadding_desc'] = 'After the course homepage, this wi
 $string['headerimagepadding_desc'] = 'Control the padding and height of the header image for courses.';
 $string['headerbackgroundimage'] = 'Default Header Image';
 $string['headerbackgroundimage_desc'] = 'This is the default header image.';
+$string['headerbackgroundtoggle'] = 'Allow teachers to upload header image';
+$string['headerbackgroundtoggle_desc'] = 'If turned on a teacher can upload an image to <a href="https://docs.moodle.org/29/en/Course_settings#Course_summary_files" target="_new">Course Summary Files</a>.  This image should be small to reduce load time.  Recommended size is 1024 width and less than 500kb in size. Otherwise all courses will use the photo you upload below for header image.';
 
 
 $string['topicweekcolor'] = 'Topic and Week Section Background';

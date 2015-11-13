@@ -57,7 +57,11 @@ echo $OUTPUT->doctype() ?>
 
     <div id="page-content" class="row-fluid">
         <div id="header-image-box">
-            <div class="header-image" <?php if ($courseimage){ echo 'style="background-image: url('.$courseimage.');"'; } ?> >
+            <?php if($PAGE->theme->settings->headerbackgroundtoggle==1 && $courseimage) { ?>
+            <div class="header-image-custom" style="background-image: url('<?php echo $courseimage ?>');">
+            <?php } else { ?>
+            <div class="header-image">
+            <?php } ?>
                 <div class="header-spacer-incourse">
                 <div class="course-title">
                     <?php echo $html->heading; ?>

@@ -34,7 +34,7 @@ defined('MOODLE_INTERNAL') || die;
     $name = 'theme_pioneer/headerimagepadding';
     $title = get_string('headerimagepadding', 'theme_pioneer');
     $description = get_string('headerimagepadding_desc', 'theme_pioneer');;
-    $default = '300px';
+    $default = '200px';
     $choices = array(
         '10px' => '10px',
         '20px' => '20px',
@@ -74,6 +74,15 @@ defined('MOODLE_INTERNAL') || die;
         '300px' => '300px',
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // allow or disallow teacher header images.
+    $name = 'theme_pioneer/headerbackgroundtoggle';
+    $title = get_string('headerbackgroundtoggle', 'theme_pioneer');
+    $description = get_string('headerbackgroundtoggle_desc', 'theme_pioneer');
+    $default = 0;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
@@ -443,7 +452,7 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $name = 'theme_pioneer/nav1buttonurl';
     $title = get_string('naviconbuttonurl', 'theme_pioneer');
     $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
-    $default = 'my/';
+    $default = '/my/';
     $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
@@ -474,7 +483,7 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $name = 'theme_pioneer/nav2buttonurl';
     $title = get_string('naviconbuttonurl', 'theme_pioneer');
     $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
-    $default = 'calendar/view.php?view=month';
+    $default = '/calendar/view.php?view=month';
     $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
@@ -505,7 +514,7 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $name = 'theme_pioneer/nav3buttonurl';
     $title = get_string('naviconbuttonurl', 'theme_pioneer');
     $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
-    $default = 'badges/mybadges.php';
+    $default = '/badges/mybadges.php';
     $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
@@ -536,7 +545,7 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $name = 'theme_pioneer/nav4buttonurl';
     $title = get_string('naviconbuttonurl', 'theme_pioneer');
     $description = get_string('naviconbuttonurldesc', 'theme_pioneer');
-    $default = 'course/';
+    $default = '/course/';
     $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
