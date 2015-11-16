@@ -984,39 +984,6 @@ $ADMIN->add('theme_pioneer', $temp);
 /*Socialwall Settings temp*/
 $temp = new admin_settingpage('theme_pioneer_socialwall', get_string('socialwallheading', 'theme_pioneer'));
 
-    // Label Post
-    $name = 'theme_pioneer/swlabelpost';
-    $title = get_string('swlabelpost','theme_pioneer');
-    $description = get_string('swlabelpost_desc', 'theme_pioneer');
-    $default = '\f086  Post';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $temp->add($setting);
-
-    // Label Message
-    $name = 'theme_pioneer/swlabelmessage';
-    $title = get_string('swlabelmessage','theme_pioneer');
-    $description = get_string('swlabelmessage_desc', 'theme_pioneer');
-    $default = '\f0e5  Message';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $temp->add($setting);
-
-    // Label comment
-    $name = 'theme_pioneer/swlabelcomment';
-    $title = get_string('swlabelcomment','theme_pioneer');
-    $description = get_string('swlabelcomment_desc', 'theme_pioneer');
-    $default = '\f0e6  Comments';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $temp->add($setting);
-
-    // Label Attachment
-    $name = 'theme_pioneer/swlabelattachment';
-    $title = get_string('swlabelattachment','theme_pioneer');
-    $description = get_string('swlabelattachment_desc', 'theme_pioneer');
-    $default = '\f0c6  Attachments';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $temp->add($setting);
-
-
     // Socialwall add a post bkg color.
     $name = 'theme_pioneer/swaddpost';
     $title = get_string('swaddpost', 'theme_pioneer');
@@ -1062,45 +1029,5 @@ $temp = new admin_settingpage('theme_pioneer_socialwall', get_string('socialwall
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-    // Socialwall Icon and text color.
-    $name = 'theme_pioneer/swicontext';
-    $title = get_string('swicontext', 'theme_pioneer');
-    $description = get_string('swicontext_desc', 'theme_pioneer');
-    $default = '#A83116';
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Multilanguage CSS.
-    $name = 'theme_pioneer/swmultilangcss';
-    $title = get_string('swmultilangcss', 'theme_pioneer');
-    $description = get_string('swmultilangcss_desc', 'theme_pioneer');
-    $default = '.lang-es.format-socialwall ul.section.tl-postattachment:before { content: "\f0c6  Anexos"; }
-.lang-es.format-socialwall .tl-comments:before { content: "\f0e6  Comentarios"; }
-.lang-es.format-socialwall .tl-posttext:before{ content: "\f0e5  Mensaje"; }
-.lang-es.format-socialwall .tl-post:before{ content: "\f086  Publicación" }
-
-.lang-de.format-socialwall ul.section.tl-postattachment:before { content: "\f0c6  Zubehör"; }
-.lang-de.format-socialwall .tl-comments:before { content: "\f0e6  Comments"; }
-.lang-de.format-socialwall .tl-posttext:before{ content: "\f0e5  Nachricht"; }
-.lang-de.format-socialwall .tl-post:before{ content: "\f086  Post" }
-
-.lang-es_mx.format-socialwall ul.section.tl-postattachment:before { content: "\f0c6  Anexos"; }
-.lang-es_mx.format-socialwall .tl-comments:before { content: "\f0e6  Comentarios"; }
-.lang-es_mx.format-socialwall .tl-posttext:before{ content: "\f0e5  Mensaje"; }
-.lang-es_mx.format-socialwall .tl-post:before{ content: "\f086  Publicación" }
-
-.lang-fr.format-socialwall ul.section.tl-postattachment:before { content: "\f0c6  Pièces jointes"; }
-.lang-fr.format-socialwall .tl-comments:before { content: "\f0e6  Commentaires"; }
-.lang-fr.format-socialwall .tl-posttext:before{ content: "\f0e5  Message"; }
-.lang-fr.format-socialwall .tl-post:before{ content: "\f086  Poste" }
-
-.lang-it.format-socialwall ul.section.tl-postattachment:before { content: "\f0c6  Allegati"; }
-.lang-it.format-socialwall .tl-comments:before { content: "\f0e6  Commenti"; }
-.lang-it.format-socialwall .tl-posttext:before{ content: "\f0e5  Messaggio"; }
-.lang-it.format-socialwall .tl-post:before{ content: "\f086  Posta" }';
-    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
 
 $ADMIN->add('theme_pioneer', $temp);

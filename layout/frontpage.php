@@ -63,7 +63,6 @@ echo $OUTPUT->doctype() ?>
 
         <?php if (!isloggedin()) { ?>
         <div id="header-image-box-logout">
-        <div class="header-image">
             <div class="course-title">
             <?php echo $html->heading; ?>
            </div>
@@ -102,7 +101,6 @@ echo $OUTPUT->doctype() ?>
                 </div>
             </div>
     <?php } ?>
-        </div>
         </div>
         <div id="breadcrumb-container" class="clearfix">
             <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> <?php echo $OUTPUT->user_menu(); ?>

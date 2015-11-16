@@ -1,7 +1,7 @@
 # Moodle-theme_pioneer
 The Moodle Pioneer theme is a responsive bootstrap theme for Moodle. Highly customizable and loaded with great features.  This theme is ideal for educational institutions and businesses alike.  Pioneer is focused on simplicity and providing an intuitive user experience.
 ## Top Features of Pioneer
-* Teachers can upload an image into Course Summary Files and the theme will utilize that image in the Header of the page.  This slight customization allows the learner to distinguish between courses while still maintaining a standard look and feel.
+* Teachers can upload an image into Course Summary Files and the theme will utilize that image in the Header of the page.  This slight customization allows the learner to distinguish between courses while still maintaining a standard look and feel.  This must be turned on in General Settings of the theme.  
 * My Courses drop down displays enrolled courses at top of page.
 * Custom Fontawesome Icons allows site admin to create up to 8 special icon links at the top of the page. Each icon has a bootstrap tooltip and custom link.
 * Featured Courses allow the site admin to promote and highlight courses by ID number on the frontpage. The courses are displayed with an image and course title as a block.
@@ -17,13 +17,17 @@ The Moodle Pioneer theme is a responsive bootstrap theme for Moodle. Highly cust
 * Custom Logo and Images
 * Custom Colors
 
-##Special Thanks
-Pioneer would not be possible in it's current form without help and code from the following:
-* Richard Oelmann for coding the Header Image functionality
-* Mary Evans designer of More Candy theme and the super cool Block Styling and support in the Moodle.org theme forum
-* Eguru Theme with Featured Courses functionality
-* Gareth Barnard for support and ideas in the Moodle theme forum
-* Anupam Chugh with help on design aspects
+##Pioneer v1.1.6
+* Fixed PDF Assignment Editing where some icons were cut off when leaving comments. 
+* Socialwall fixes for the latest version.  Simplified coloring and styling.
+* Removed some CSS fontawesome icons for socialwall and opted for a more simple look for users.
+* Fixed small issue with frontpage login image when logged out.
+
+##Pioneer v1.1.5
+* Added better logic to displaying header images on course pages.  Will not show default image while loading course image.  The image swap effect when the course image loaded was annoying.
+* Added toggle to turn on or off using course header images.  Use one image for entire site or allow teachers to customize.  Default is use one image.
+* CSS fixes and better explainations in language files
+
 
 ##Pioneer v1.1.4
 * Fixed General Frontpage Alert not showing on moodle default login page

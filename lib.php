@@ -198,14 +198,6 @@ function theme_pioneer_process_css($css, $theme) {
     }
     $css = theme_pioneer_set_marketboxcolor($css, $marketboxcolor);
 
-    // Set Socialwall icon and text color CSS.
-    if (!empty($theme->settings->swicontext)) {
-        $swicontext = $theme->settings->swicontext;
-    } else {
-        $swicontext = '';
-    }
-    $css = theme_pioneer_set_swicontext($css, $swicontext);
-
     // Set Socialwall post background color CSS.
     if (!empty($theme->settings->swpost)) {
         $swpost = $theme->settings->swpost;
@@ -245,47 +237,6 @@ function theme_pioneer_process_css($css, $theme) {
         $swcomment = '';
     }
     $css = theme_pioneer_set_swcomment($css, $swcomment);
-
-    // Socialwall Labels.
-    if (!empty($theme->settings->swlabelpost)) {
-        $swlabelpost = $theme->settings->swlabelpost;
-    } else {
-        $swlabelpost = '';
-    }
-    $css = theme_pioneer_set_swlabelpost($css, $swlabelpost);
-    
-    // Socialwall Labels.
-    if (!empty($theme->settings->swlabelmessage)) {
-        $swlabelmessage = $theme->settings->swlabelmessage;
-    } else {
-        $swlabelmessage = '';
-    }
-    $css = theme_pioneer_set_swlabelmessage($css, $swlabelmessage);
-
-    // Socialwall Labels.
-    if (!empty($theme->settings->swlabelcomment)) {
-        $swlabelcomment = $theme->settings->swlabelcomment;
-    } else {
-        $swlabelcomment = '';
-    }
-    $css = theme_pioneer_set_swlabelcomment($css, $swlabelcomment);
-
-    // Socialwall Labels.
-    if (!empty($theme->settings->swlabelattachment)) {
-        $swlabelattachment = $theme->settings->swlabelattachment;
-    } else {
-        $swlabelattachment = '';
-    }
-    $css = theme_pioneer_set_swlabelattachment($css, $swlabelattachment);
-    
-    // Set custom CSS.
-    if (!empty($theme->settings->swmultilangcss)) {
-        $swmultilangcss = $theme->settings->swmultilangcss;
-    } else {
-        $swmultilangcss = null;
-    }
-    $css = theme_pioneer_set_swmultilangcss($css, $swmultilangcss);
-
 
     return $css;
 
@@ -481,72 +432,6 @@ function theme_pioneer_set_iconnavbackgroundcolor($css, $iconnavbackgroundcolor)
     return $css;
 }
 
-
-//Adds custom Socialwall Labels
-function theme_pioneer_set_swlabelpost($css, $swlabelpost) {
-    $tag = '[[setting:swlabelpost]]';
-    $replacement = $swlabelpost;
-        if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
-//Adds custom Socialwall Labels
-function theme_pioneer_set_swlabelmessage($css, $swlabelmessage) {
-    $tag = '[[setting:swlabelmessage]]';
-    $replacement = $swlabelmessage;
-        if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
-//Adds custom Socialwall Labels
-function theme_pioneer_set_swlabelcomment($css, $swlabelcomment) {
-    $tag = '[[setting:swlabelcomment]]';
-    $replacement = $swlabelcomment;
-        if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
-//Adds custom Socialwall Labels
-function theme_pioneer_set_swlabelattachment($css, $swlabelattachment) {
-    $tag = '[[setting:swlabelattachment]]';
-    $replacement = $swlabelattachment;
-        if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
-//Adds custom Socialwall Icon and text color
-function theme_pioneer_set_swicontext($css, $swicontext) {
-    $tag = '[[setting:swicontext]]';
-    $replacement = $swicontext;
-        if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
 //Adds custom Socialwall Icon and text color
 function theme_pioneer_set_swpost($css, $swpost) {
     $tag = '[[setting:swpost]]';
@@ -605,18 +490,6 @@ function theme_pioneer_set_swcomment($css, $swcomment) {
     $replacement = $swcomment;
         if (is_null($replacement)) {
         $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
-function theme_pioneer_set_swmultilangcss($css, $swmultilangcss) {
-    $tag = '[[setting:swmultilangcss]]';
-    $replacement = $swmultilangcss;
-    if (is_null($replacement)) {
-        $replacement = null;
     }
 
     $css = str_replace($tag, $replacement, $css);

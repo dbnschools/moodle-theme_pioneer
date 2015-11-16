@@ -183,6 +183,9 @@ section#region-main .block_course_overview .content {
     box-shadow: 5px 5px 20px 0 #666666;
       float:right;
 }
+.path-course-view .completionprogress {
+    z-index: 1;
+}
 
 .top-search {
   margin-top:4px;
@@ -319,9 +322,10 @@ text-align: right;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1001;
+    z-index: 2;
     height:50px;
 }
+
 
 .fpcustomnav-container .navbar,.navbar-inner {
   margin-bottom: 0px;
@@ -357,6 +361,7 @@ text-align: right;
     position: fixed;
     width: 100%;
     height:55px;
+    z-index: 2;
 }
 body.has_dock #page {
     padding-left: 40px;
@@ -408,6 +413,8 @@ body.has_dock .fpcustomnav-container {
 .navbar, .navbar-inner{
   padding:0px;
 }
+
+.navbar-fixed-top, .navbar-fixed-bottom {z-index: 2;}
 
 @media (max-width: 679px){
 .navbar .nav-collapse.in {
@@ -484,10 +491,39 @@ body.has_dock .fpcustomnav-container {
 }
 }
 
-/*Social Wall*/
+#dndupload-status {
+  position: fixed;
+  left: 0;
+  width: 40%;
+  margin: 100px 30%;
+  padding: 6px;
+  border: 1px solid #bce8f1;
+  text-align: center;
+  background: #d9edf7;
+  color: #3a87ad;
+  z-index: 100;
+  -webkit-box-shadow: 2px 2px 5px 1px #ccc;
+  -moz-box-shadow: 2px 2px 5px 1px #ccc;
+  box-shadow: 2px 2px 5px 1px #ccc;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+
+
+
+
+/*Social Wall
+.format-socialwall .header-spacer {padding-top:140px;}*/
 .format-socialwall .course-content ul.topics li.section {
 border-bottom: 0px solid #ccc;
 margin-top: 0;
+}
+
+.format-socialwall li#section-0 {
+    display: none;
+    visibility: hidden;
 }
 
 .format-socialwall #fgroup_id_buttonar input#id_submitbutton {
@@ -495,16 +531,15 @@ margin-top: 0;
     visibility: hidden;
 }
 
-
 .format-socialwall #section-0 .content {
   display:none;
   visibility: hidden;
 }
+
 .format-socialwall #section-2 .content {
 background-color: [[setting:swaddpost]];
 padding: 10px;
 margin: 0px;
-border: 3px solid #d4d4d4;
 border-radius: 0px;
 margin-top:15px;
 margin-bottom: 15px;
@@ -514,209 +549,91 @@ box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
 }
 
 .format-socialwall .tl-post {
-margin: 30px 0px 50px 0px;
-padding:15px;
-}
-
-.format-socialwall .tl-posttext {
-background-color: [[setting:swmessage]];
-padding: 10px 10px 20px 10px;
-border-radius: 10px 10px 0px 0px;
-border: 1px solid #ccc;
-margin-top: 10px;
+    margin: 60px 0;
+    background-color: #fff;
+    padding: 15px 10px;
+    -moz-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
 }
 
 .format-socialwall ul.section.tl-postattachment {
-background-color: [[setting:swattach]];
-padding: 5px 5px 5px 50px;
-border-left: 1px solid #ccc;
-border-right: 1px solid #ccc;
-margin:0px;
+  background-color: [[setting:swattach]];
+  padding: 15px 5px 15px 20px;
+  margin:0px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 
-
-[[setting:swmultilangcss]]
-
-.format-socialwall ul.section.tl-postattachment:before { content: "[[setting:swlabelattachment]]"; }
-.format-socialwall .tl-comments:before { content: "[[setting:swlabelcomment]]"; }
-.format-socialwall .tl-posttext:before{ content: "[[setting:swlabelmessage]]"; }
-.format-socialwall .tl-post:before{ content: "[[setting:swlabelpost]]"; }
-
-.format-socialwall ul.section.tl-postattachment:before {
-  color:[[setting:swicontext]];
-  line-height: 20px;
-  display: inline-block;
-  font: 16px/1 FontAwesome;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transform: translate(0, 0);
-  margin-bottom: 7px;
-  margin-left:-15px;
-  padding-bottom: 4px;
-  border-bottom:2px solid #ccc;
-}
-.format-socialwall .tl-comments:before {
-  color:[[setting:swicontext]];
-  line-height: 20px;
-  display: inline-block;
-  font: 16px/1 FontAwesome;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transform: translate(0, 0);
-  margin-bottom: 7px;
-  padding-bottom: 4px;
-  width:100%;
-  text-align: center;
-}
-.format-socialwall .tl-posttext:before{
-  color:[[setting:swicontext]];
-  line-height: 20px;
-  display: inline-block;
-  font: 16px/1 FontAwesome;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transform: translate(0, 0);
-  margin-bottom: 7px;
-  padding-bottom: 4px;
-  border-bottom:2px solid #ccc;
-  width:100%;
-  text-align: center;
-}
-.format-socialwall .tl-post:before{
-  color:[[setting:swicontext]];
-  line-height: 20px;
-  display: inline-block;
-  font: 18px/1 FontAwesome;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transform: translate(0, 0);
-  padding-bottom: 4px;
-  padding-left:15px;
-  text-align: center;
-}
-/*  End CSS :before Text strings for socialwall */
-
-
-.format-socialwall .tl-text {
-margin-left: 40px;
-padding:10px;
-border: 2px solid #efefef;
--moz-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
--webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
-border-radius: 20px 0px 0px 0px;
-background-color: [[setting:swpost]];
+.format-socialwall .tl-posttext {
+    background-color: [[setting:swmessage]];
+    padding: 10px 10px 30px 10px;
+    border-radius: 3px 3px 0px 0px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    font-size: 16px;
 }
 
-.format-socialwall .tl-comments {
-padding:15px;
-margin:0px;
+.format-socialwall .tl-edited-wrapper {
+    background: #ff974a;
+    width:150px;
 }
 
-.format-socialwall .tl-comments .tl-text {
-  border: 2px solid #ccc;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  background-color: [[setting:swcomment]];
-}
-
-.format-socialwall .tl-comment {
-padding-left:25px;
-padding-top: 0px;
-padding-bottom: 0px;
-}
-
-.format-socialwall .tl-post-actionarea {
-border: 1px solid #ccc;
-padding: 4px 4px 10px 4px;
-background: [[setting:swmessage]];
-border-radius: 0px 0px 5px 5px;
-}
-
-.format-socialwall .tl-timeago, .tl-counts {
-font-size: 12px;
-color: #666;
-line-height: 15px;
-padding-bottom: 5px;
+.format-socialwall .tl-edited {
+    float: left;
+    padding-right: 10px;
 }
 
 .format-socialwall .like {
-   border-top: 1px solid #96d1f8;
-   background: #65a9d7;
-   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
-   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
-   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
-   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
-   background: -o-linear-gradient(top, #3e779d, #65a9d7);
-   padding: 5px 5px;
-   -webkit-border-radius: 8px;
-   -moz-border-radius: 8px;
-   border-radius: 8px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: white;
-   font-size: 14px;
-   font-family: Georgia, serif;
-   text-decoration: none;
-   vertical-align: middle;
-   }
-
-.format-socialwall .like:hover {
-   border-top-color: #28597a;
-   background: #28597a;
-   color: #ccc;
-   }
-
-.format-socialwall .like:active {
-   border-top-color: #1b435e;
-   background: #1b435e;
-   }
-
+  padding-right:15px;
+}
 .format-socialwall .likenomore {
-   border-top: 1px solid #96d1f8;
-   background: #65a9d7;
-   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
-   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
-   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
-   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
-   background: -o-linear-gradient(top, #3e779d, #65a9d7);
-   padding: 5px 5px;
-   -webkit-border-radius: 8px;
-   -moz-border-radius: 8px;
-   border-radius: 8px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: white;
-   font-size: 14px;
-   font-family: Georgia, serif;
-   text-decoration: none;
-   vertical-align: middle;
-   }
-.format-socialwall .likenomore:hover {
-   border-top-color: #28597a;
-   background: #28597a;
-   color: #ccc;
-   }
-.format-socialwall .likenomore:active {
-   border-top-color: #1b435e;
-   background: #1b435e;
-   }
-
-.format-socialwall form.tl-commentform {
-padding-top: 10px;
+  padding-right:15px;
 }
 
-.format-socialwall #postform .fitem .felement #id_submitbutton {
-margin:0px;
+.format-socialwall .tl-comment-replywrapper {
+    margin-left: 45px;
+    background-color:#f2f2f2;
+}
+.format-socialwall .tl-post .tl-comment {
+    margin-bottom: 10px;
+    line-height: 18px;
+    margin-top: 20px;
+}
+.format-socialwall .tl-post .tl-comment .tl-comment-replywrapper .tl-comment {
+    margin-top: 0px;
+    padding-left:5px;
+}
+
+.format-socialwall .tl-comments {
+    background-color: [[setting:swcomment]];
+    padding: 5px 10px;
+    margin-top: 0px;
+}
+
+.format-socialwall .tl-comment-replywrapper .tl-actionlink {
+    padding: 7px 5px;
+}
+.format-socialwall .tl-timeago, .tl-counts {
+    margin-bottom: 5px;
+}
+
+.format-socialwall .tl-actionlink a {
+    margin: 5px;
+    border: 1px solid;
+    padding: 2px;
+    background-color: [[setting:swaddpost]];
+    border-radius: 5px;
+}
+.format-socialwall .tl-commenttext {
+    margin: 5px 0px;
+}
+
+.format-socialwall .attachactivies {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: [[setting:swattach]];
 }
 
 
@@ -1539,3 +1456,5 @@ filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccfffff
 .courseheadergradepercentage table tbody tr:last-of-type .column-feedback {display:none;}
 .courseheadergradepercentage table tbody tr:last-of-type .column-contributiontocoursetotal {display:none;}
 */
+
+
