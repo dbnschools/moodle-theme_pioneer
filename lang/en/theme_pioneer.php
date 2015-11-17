@@ -150,7 +150,7 @@ $string['fptextboxinfodesc'] = 'Use this text box to provide instructions and in
 $string['mycorusesinfo'] = 'My Courses Dropdown Menu';
 $string['mycorusesinfodesc'] = 'This will display a drop down in the top navigation bar showing only enrolled courses to the user.';
 $string['coursegradeinfo'] = 'Course Grade Slider';
-$string['coursegradeinfodesc'] = 'Checking this box will display the coruse gradebook items to students in a slider/toggle on each course page.  This makes it really simple for a student to see their grades for a course.';
+$string['coursegradeinfodesc'] = 'Checking this box will display the course gradebook items to students in a slider/toggle on each course page.  This makes it really simple for a student to see their grades for a course.';
 $string['headerimageinfo'] = 'Header Image Height';
 $string['headerimageinfodesc'] = 'These settings control the height of the header image on the site and in-course activities. ';
 
