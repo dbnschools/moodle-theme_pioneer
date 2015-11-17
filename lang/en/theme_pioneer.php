@@ -71,6 +71,7 @@ $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be 
 $string['generalalert'] = 'General Alert';
 $string['generalalertdesc'] = 'Whatever you add to this textarea will be displayed in the General Alert area on the frontpage.';
 
+
 $string['fptextbox'] = 'Frontpage Textbox';
 $string['fptextboxdesc'] = 'This textbox appears on the frontpage and is ideal for putting a welcome message.';
 $string['togglefptextbox'] = 'Toggle Frontpage Text Box Display';
@@ -129,7 +130,7 @@ either language key or Text.For ex: lang:display or Display';
 $string['pcourseenable'] = 'Enable Featured courses';
 $string['pcourses'] = 'Featured Courses';
 $string['pcoursesdesc'] = 'Please give the featured courses id should separated by comma.';
-$string['promotedcoursesheading'] = 'featured Courses';
+$string['promotedcoursesheading'] = 'Featured Courses';
 $string['title'] = 'Title';
 
 //Custom Login Page 
@@ -138,6 +139,20 @@ $string['lginpass'] = 'password';
 $string['lginforgot'] = 'forgot ?';
 $string['lginlogin'] = 'Log In';
 $string['signuplogin'] = 'Create New';
+
+//top course search form
+$string['topsearch'] = 'Search courses';
+$string['topsearchbutton'] = 'Find';
+
+//settings info
+$string['fptextboxinfo'] = 'Frontpage Only Custom Text Box';
+$string['fptextboxinfodesc'] = 'Use this text box to provide instructions and information for your users.  It will only appear on the the frontpage.  The toggle is below is limited to only the frontpage (Dashboard or Site).';
+$string['mycorusesinfo'] = 'My Courses Dropdown Menu';
+$string['mycorusesinfodesc'] = 'This will display a drop down in the top navigation bar showing only enrolled courses to the user.';
+$string['coursegradeinfo'] = 'Course Grade Slider';
+$string['coursegradeinfodesc'] = 'Checking this box will display the coruse gradebook items to students in a slider/toggle on each course page.  This makes it really simple for a student to see their grades for a course.';
+$string['headerimageinfo'] = 'Header Image Height';
+$string['headerimageinfodesc'] = 'These settings control the height of the header image on the site and in-course activities. ';
 
 // Marketing Spots
 $string['alwaysdisplay'] = 'Always Show';
@@ -202,9 +217,9 @@ $string['naviconbuttonurldesc'] = 'URL the button will point to.';
 
 //Google Fonts
 $string['gheadingimporturl'] = 'Heading Import URL';
-$string['gheadingimporturldesc'] = 'HEADING STEP ONE: Find a font on google.com/fonts.  Click the quick use icon.  Find the step that says "Add this code to your website".  Copy and paste that here. Be sure to complete HEADING STEP 2.';
+$string['gheadingimporturldesc'] = 'HEADING STEP ONE: Find a font on google.com/fonts.  Click the quick use icon.  Find the step that says "Add this code to your website".  Copy and paste that here. Be sure to complete HEADING STEP 2. <a href="https://www.google.com/fonts"> Find a Google Font</a>';
 $string['gbodyimporturl'] = 'Body Import URL';
-$string['gbodyimporturldesc'] = 'BODY STEP 1: Find a font on google.com/fonts.  Click the quick use icon.  Find the step that says "Add this code to your website".  Copy and paste that here. Be sure to complete BODY STEP 2.';
+$string['gbodyimporturldesc'] = 'BODY STEP 1: Find a font on google.com/fonts.  Click the quick use icon.  Find the step that says "Add this code to your website".  Copy and paste that here. Be sure to complete BODY STEP 2. <a href="https://www.google.com/fonts"> Find a Google Font</a>';
 $string['headingfont'] = 'Heading Font family';
 $string['headingfontdesc'] = 'HEADING STEP 2: Copy and paste the Google font family informaiton here.';
 $string['bodyfont'] = 'Body Font';

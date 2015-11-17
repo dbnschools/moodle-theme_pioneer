@@ -30,6 +30,13 @@ defined('MOODLE_INTERNAL') || die;
     // "geneictemp" settingpage
     $temp = new admin_settingpage('theme_pioneer_generic',  get_string('geneicsettings', 'theme_pioneer'));
 
+// Description
+    $name = 'theme_pioneer/headerimageinfo';
+    $heading = get_string('headerimageinfo', 'theme_pioneer');
+    $information = get_string('headerimageinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
     // Header Background spacing setting.
     $name = 'theme_pioneer/headerimagepadding';
     $title = get_string('headerimagepadding', 'theme_pioneer');
@@ -173,6 +180,14 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    // Description
+    $name = 'theme_pioneer/fptextboxinfo';
+    $heading = get_string('fptextboxinfo', 'theme_pioneer');
+    $information = get_string('fptextboxinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+
     // Toggle FP Textbox Spots.
     $name = 'theme_pioneer/togglefptextbox';
     $title = get_string('togglefptextbox' , 'theme_pioneer');
@@ -181,7 +196,7 @@ defined('MOODLE_INTERNAL') || die;
     $displaybeforelogin = get_string('displaybeforelogin', 'theme_pioneer');
     $displayafterlogin = get_string('displayafterlogin', 'theme_pioneer');
     $dontdisplay = get_string('dontdisplay', 'theme_pioneer');
-    $default = 'displaybeforelogin';
+    $default = 'dontdisplay';
     $choices = array('1'=>$alwaysdisplay, '2'=>$displaybeforelogin, '3'=>$displayafterlogin, '0'=>$dontdisplay);
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -192,9 +207,16 @@ defined('MOODLE_INTERNAL') || die;
     $name = 'theme_pioneer/fptextbox';
     $title = get_string('fptextbox', 'theme_pioneer');
     $description = get_string('fptextboxdesc', 'theme_pioneer');
-    $default = '<h3>Welcome to Moodle</h3><p>This is the Pioneer theme brought to you by Dearborn Public Schools. &nbsp;We hope you enjoy using this theme as much as we do. &nbsp;A big thank you to the Moodle Community members and theme developers who helped make this theme possible. &nbsp;Special Thanks to Richard Oberman for help with the Header Images, Mary Evans who developed the Block Styling, and the eGuru theme from which we found excellent code for the Featured Courses.</p>';
+    $default = '';
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Description
+    $name = 'theme_pioneer/mycorusesinfo';
+    $heading = get_string('mycorusesinfo', 'theme_pioneer');
+    $information = get_string('mycorusesinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
     $temp->add($setting);
 
     // Toggle courses display in custommenu.
@@ -219,6 +241,13 @@ defined('MOODLE_INTERNAL') || die;
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+// Description
+    $name = 'theme_pioneer/coursegradeinfo';
+    $heading = get_string('coursegradeinfo', 'theme_pioneer');
+    $information = get_string('coursegradeinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
     $temp->add($setting);
 
 // Show or Hide Course Grades toggle.
@@ -282,9 +311,8 @@ defined('MOODLE_INTERNAL') || die;
     $temp->add($setting);
     // Promoted Courses End.
 
-
-
     $ADMIN->add('theme_pioneer', $temp);
+
 
 $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorheading', 'theme_pioneer'));
 
@@ -375,17 +403,17 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-    $name = 'theme_pioneer/gbodyimporturl';
-    $title = get_string('gbodyimporturl','theme_pioneer');
-    $description = get_string('gbodyimporturl', 'theme_pioneer');
+    $name = 'theme_pioneer/headingfont';
+    $title = get_string('headingfont','theme_pioneer');
+    $description = get_string('headingfontdesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-    $name = 'theme_pioneer/headingfont';
-    $title = get_string('headingfont','theme_pioneer');
-    $description = get_string('headingfontdesc', 'theme_pioneer');
+    $name = 'theme_pioneer/gbodyimporturl';
+    $title = get_string('gbodyimporturl','theme_pioneer');
+    $description = get_string('gbodyimporturldesc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -537,7 +565,7 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $name = 'theme_pioneer/nav4buttontext';
     $title = get_string('naviconbuttontext', 'theme_pioneer');
     $description = get_string('naviconbuttontextdesc', 'theme_pioneer');
-    $default = 'Courses';
+    $default = 'All Courses';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);

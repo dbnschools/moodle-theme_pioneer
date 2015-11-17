@@ -56,6 +56,7 @@ echo $OUTPUT->doctype() ?>
 <?php require_once(dirname(__FILE__).'/includes/topnav.php'); ?>
 
     <div id="page-content" class="row-fluid">
+
         <div id="header-image-box">
             <?php if($PAGE->theme->settings->headerbackgroundtoggle==1 && $courseimage) { ?>
             <div class="header-image-custom" style="background-image: url('<?php echo $courseimage ?>');">

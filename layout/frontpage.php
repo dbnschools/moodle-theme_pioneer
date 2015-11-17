@@ -100,8 +100,9 @@ echo $OUTPUT->doctype() ?>
                 <?php echo $OUTPUT->course_header(); ?>
                 </div>
             </div>
+            </div>
     <?php } ?>
-        </div>
+        
         </div>
         <div id="breadcrumb-container" class="clearfix">
             <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> <?php echo $OUTPUT->user_menu(); ?>

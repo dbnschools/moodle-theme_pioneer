@@ -17,8 +17,8 @@
            <?php require_once(dirname(__FILE__).'/iconnav.php'); ?>
            <div class="top-search">
            <form action="<?php echo new moodle_url('/course/search.php'); ?>" method="get">
-              <input type="text" placeholder="<?php echo get_string('searchcourses'); ?>" name="search" value="">
-              <input type="submit" value="Find">
+              <input type="text" placeholder="<?php echo get_string('topsearch' , 'theme_pioneer'); ?>" name="search" value="">
+              <input type="submit" value="<?php echo get_string('topsearchbutton' , 'theme_pioneer'); ?>">
            </form>    
            </div>
            <?php } else { ?>
