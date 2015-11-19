@@ -51,8 +51,6 @@ echo $OUTPUT->doctype() ?>
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
-
-
 <div id="page" class="container-fluid">
 
     <?php require_once(dirname(__FILE__).'/includes/topnav.php'); ?>

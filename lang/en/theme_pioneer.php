@@ -116,13 +116,6 @@ $string['socialicon6'] = 'YouTube URL';
 $string['socialicon7'] = 'Vimeo URL';
 $string['socialicon8'] = 'Google Plus URL';
 
-$string['navicon'] = 'Icon';
-$string['navicondesc'] = 'Name of the icon you wish to use. List is <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_new">here</a>.  Just enter what is after "fa-", e.g. "star".';
-$string['naviconbuttontext'] = 'Link Text';
-$string['naviconbuttontextdesc'] = 'Text to appear on the button.';
-$string['naviconbuttonurl'] = 'Link URL';
-$string['naviconbuttonurldesc'] = 'URL the button will point to.';
-
 //promoted courses
 $string['promotedtitledefault'] = 'Featured courses';
 $string['promotedtitledesc'] = 'Please give the Promoted courses block title,
@@ -210,7 +203,7 @@ $string['navicon8'] = 'Custom Frontpage Icon Eight';
 $string['navicon'] = 'Icon';
 $string['navicondesc'] = 'Name of the icon you wish to use. List is <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_new">here</a>.  Just enter what is after "fa-", e.g. "star".';
 $string['naviconbuttontext'] = 'Tooltip Text';
-$string['naviconbuttontextdesc'] = 'Text to appear in the tooltip of the icon.';
+$string['naviconbuttontextdesc'] = 'Text to appear in the tooltip of the icon when the mouse hovers over it.';
 $string['naviconbuttonurl'] = 'Link URL';
 $string['naviconbuttonurldesc'] = 'URL the button will point to.';
 
@@ -250,6 +243,8 @@ $string['headerbackgroundtoggle_desc'] = 'If turned on a teacher can upload an i
 
 $string['topicweekcolor'] = 'Topic and Week Section Background';
 $string['topicweekcolor_desc'] = 'In Topic and Weekly course formats this is the background color for each topic or week in the course.';
+$string['sectionheadericon'] = 'Section Title Icon';
+$string['sectionheadericondesc'] = 'This icon appears before the title of every topic for weekly and topic based course formats.  Use the unicode setting from Font Awesome. List is <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_new">here</a>';
 $string['swicontext'] = 'Socialwall Course Format Icon and Text colors';
 $string['swicontext_desc'] = 'If you use the Socialwall Course Format this setting will change the colors of the icons and words Attachments, Posts, Message, and Comments in the wall feed.';
 $string['swpost'] = 'Socialwall Course Format Post background';

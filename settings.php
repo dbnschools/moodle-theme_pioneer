@@ -162,6 +162,15 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    //Topic and Weekly Section Titles Icon
+    $name = 'theme_pioneer/sectionheadericon';
+    $title = get_string('sectionheadericon','theme_pioneer');
+    $description = get_string('sectionheadericondesc', 'theme_pioneer');
+    $default = '\f02d';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
     // Custom CSS file.
     $name = 'theme_pioneer/customcss';
     $title = get_string('customcss', 'theme_pioneer');

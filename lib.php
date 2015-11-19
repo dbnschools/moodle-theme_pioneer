@@ -238,6 +238,15 @@ function theme_pioneer_process_css($css, $theme) {
     }
     $css = theme_pioneer_set_swcomment($css, $swcomment);
 
+    // Set section/week icon
+    if (!empty($theme->settings->sectionheadericon)) {
+        $sectionheadericon = $theme->settings->sectionheadericon;
+    } else {
+        $sectionheadericon = null;
+    }
+    $css = theme_pioneer_set_sectionheadericon($css, $sectionheadericon);
+
+
     return $css;
 
 }
@@ -496,7 +505,18 @@ function theme_pioneer_set_swcomment($css, $swcomment) {
 
     return $css;
 }
+//Adds custom icon to section and weekly topic titles
+function theme_pioneer_set_sectionheadericon($css, $sectionheadericon) {
+    $tag = '[[setting:sectionheadericon]]';
+    $replacement = $sectionheadericon;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
 
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
 
 /**
  * Serves any files associated with the theme settings.

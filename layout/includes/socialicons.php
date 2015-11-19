@@ -1,6 +1,5 @@
 <div class="clearfix"> </div>
 <div class="socialicons-container">
- <div id="logo"> </div>
 <div class="socialicons">
 	<?php if ($PAGE->theme->settings->social1buttonurl) { ?>
         <a href="<?php echo $PAGE->theme->settings->social1buttonurl ?>" target="_self" id="button"> <i class="fa fa-2x fa-facebook-square"></i></a>

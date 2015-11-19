@@ -25,10 +25,30 @@ h1, h2, h3, h4, h5, h6,
 [[setting:headingfont]]
 }
 
+h3.sectionname {
+    border-bottom: 1px solid;
+    border-width:thin;
+}
+
+h3.sectionname:before {
+  font-family: FontAwesome;
+  content: "[[setting:sectionheadericon]]";
+  color: [[setting:blockbordercolor]];
+}
+h3.sectionname:before {
+  margin-right: 10px;
+}
+
+h3.sectionname:after {
+  margin-left: 10px;
+}
+
+
 #dock {background: #32352c;}
 
 #block-region-side-pre {
     padding-top:10px;
+    padding-left:15px;
 }
 
 #logo {
@@ -49,21 +69,50 @@ h1, h2, h3, h4, h5, h6,
     -webkit-box-shadow: inset none;
     -moz-box-shadow: inset none;
     box-shadow: inset none;
-    padding: 8px 0;
-    padding-bottom:0px;
+    padding:8px 5px;
     background-color: [[setting:blockcolor]];
-    margin-bottom: 0px;
+    margin-bottom: 7px;
 }
+
+.jsenabled .block {
+    position: relative;
+    border-style: solid;
+    border-width: 0px 0px 0px 7px;
+}
+.jsenabled .block .header h2 {
+    text-transform: uppercase;
+    line-height: 24px;
+    color:[[setting:blockbordercolor]];
+    padding-bottom:5px;
+
+}
+
+
 .container-fluid {
     max-width: none;
     margin: 0 auto;
 }
+
 section#region-main {
     padding:25px 20px 25px 20px;
     background:none;
     border:none;
     margin:0px;
     box-shadow: none;
+}
+
+/*section#region-main { 
+    background: none;
+    border: none;
+    box-shadow: none;
+    background-color:[[setting:topicweekcolor]];
+    padding: 20px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+}*/
+.pagelayout-course section#region-main { 
+  box-shadow:none;
+  background:none;
+  background-color: none;
 }
 
 @media (max-width: 679px){
@@ -79,6 +128,10 @@ section#region-main .block_course_overview {
   margin-bottom: 60px;
   border-bottom: 0px;
   background-color:[[setting:topicweekcolor]];
+  border-width:0px;
+}
+section#region-main .block_course_overview .block .jsenabled .header h2 {
+display:none;
 }
 
 @media (max-width: 679px){
@@ -109,6 +162,7 @@ section#region-main .block_course_overview .content {
   border-bottom: 0px;
   background-color:[[setting:topicweekcolor]];
 }
+
 #page-login-index section#region-main {
   padding-top: 75px;
   padding-bottom: 275px;
@@ -153,6 +207,7 @@ section#region-main .block_course_overview .content {
 #page-content {
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
   border-bottom: 0px;
+  padding-bottom:15px;
   background-color: [[setting:contentbackgroundcolor]];
    border: 1px;
    display:block;
@@ -168,7 +223,7 @@ section#region-main .block_course_overview .content {
     padding-left: 0px;
 }
 
-.moodle-actionmenu[data-enhanced].show .menu {
+/*.moodle-actionmenu[data-enhanced].show .menu {
     display: block;
     position: absolute;
     text-align: left;
@@ -182,9 +237,17 @@ section#region-main .block_course_overview .content {
     -moz-box-shadow: 5px 5px 20px 0 #666666;
     box-shadow: 5px 5px 20px 0 #666666;
       float:right;
+}*/
+
+.block .header .block_action {
+    padding: 0px 5px 0px 0px;
+    float: right;
 }
 .path-course-view .completionprogress {
     z-index: 1;
+    position: relative;
+    top: 10px;
+    right: 10px;
 }
 
 .top-search {
@@ -373,20 +436,15 @@ body.has_dock .fpcustomnav-container {
 
 .socialicons-container{
     margin:0px;
-    min-height: 30px;
-    text-align: left;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
     background-color: [[setting:iconnavbackgroundcolor]];
-    border: 1px solid #ccc;
-    border-bottom: 0px;
-    border-radius: 0px 0px 3px 3px;
     padding-bottom: 5px;
     padding-top: 5px;
-    padding-left:10px;
+    padding-right:10px;
     display: block; 
-    float:right;
     clear:both;
 }
+
 
 .fpcustomnav-container .iconset {
   padding-right: 15px;
@@ -400,7 +458,6 @@ body.has_dock .fpcustomnav-container {
 }
 
 .socialicons-container .socialicons {
-  float:right;
   padding-right: 20px;
   padding-left: 10px;
   position: relative;
@@ -636,191 +693,6 @@ box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
     background-color: [[setting:swattach]];
 }
 
-
-
-/* Modified Moodle CSS by Mary Evans based on
-   CSS-Tricks Example
-   by Chris Coyier
-   https://css-tricks.com/sideways-headers/
-   ----------------------------------------*/
-
-.jsenabled .block {
-    position: relative;
-    border-style: solid;
-    border-width: 0px 0px 0px 34px;
-}
-.jsenabled .block .header h2 {
-    font: bold 12px Sans-Serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #fff;
-    line-height: 24px;
-    /* Abs positioning makes it not take up vert space */
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    /* Border is the new background 
-    background: none;*/
-
-    /* Rotate from top left corner (not default) */
-    -webkit-transform-origin: 0 0;
-       -moz-transform-origin: 0 0;
-        -ms-transform-origin: 0 0;
-         -o-transform-origin: 0 0;
-            transform-origin: 0 0;
-
-
-    -webkit-transform: rotate(90deg);
-       -moz-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-         -o-transform: rotate(90deg);
-            transform: rotate(90deg);
-}
-
-.jsenabled .block.hidden,
-.jsenabled .block.block_adminblock {
-    display: block;
-    position: relative;
-    border-left: 0 none;
-    min-height: 24px;
-    padding-left: 0;
-    padding-top:15px;
-    padding-bottom:15px;
-    background-color: [[setting:contentbackgroundcolor]];
-    border-top: 1px solid;
-    -webkit-border-radius:0px;
-    -moz-border-radius:0px;
-    border-radius:0px;
-}
-.jsenabled .block.hidden.block_with_controls .block-control-actions.commands.icon .toggle-display > i.fa,
-.jsenabled .block.hidden.block_with_controls .block-control-actions.commands.icon move.menu-action > i.fa {
-    color: #fff;
-}
-
-.jsenabled .block.hidden .header h2,
-.jsenabled .block.block_adminblock .header h2 {
-    padding: 5px 10px;
-    margin: 0 0 10px 0;
-    line-height: 24px;
-    font: bold 12px Sans-Serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: [[setting:blockbordercolor]];
-    /* Abs positioning makes it not take up vert space */
-    position: absolute;
-    top: 0;
-    left: 0;
-    /* Border is the new background */
-    background: none;
-
-    /* Rotate from top left corner (not default) */
-    -webkit-transform-origin: none;
-       -moz-transform-origin: none;
-        -ms-transform-origin: none;
-         -o-transform-origin: none;
-            transform-origin: none;
-
-    -webkit-transform: rotate(0);
-       -moz-transform: rotate(0);
-        -ms-transform: rotate(0);
-         -o-transform: rotate(0);
-            transform: rotate(0);
-}
-
-.jsenabled .block.block_adminblock {
-    padding: 30px 10px 0;
-}
-
-.jsenabled .block_adminblock .content .singleselect {
-    width: 100%;
-    max-width: 200px;
-    margin: 0;
-    margin-left: 1px;
-    padding: 0;
-    display: block;
-}
-/* Block min-height
--------------------------*/
-
-.jsenabled .block_site_main_menu,
-.jsenabled .block_messages {
-    min-height: 100px;
-}
-.jsenabled .block_blog_recent {
-    min-height: 120px;
-}
-.jsenabled .block_progress {
-    min-height: 135px;
-}
-.jsenabled .block_private_files {
-    min-height: 150px;
-}
-.jsenabled .block_adminblock,
-.jsenabled .block_mentees,
-.jsenabled .block_badges,
-.jsenabled .block_blog_menu,
-.jsenabled .block_blog_tags,
-.jsenabled .block_book_toc,
-.jsenabled .block_calendar_upcoming,
-.jsenabled .block_comments,
-.jsenabled .block_community,
-.jsenabled .block_course_badges,
-.jsenabled .block_course_list,
-.jsenabled .block_course_overview,
-.jsenabled .block_feedback,
-.jsenabled .block_flickr,
-.jsenabled .block_heritage,
-.jsenabled .block_html,
-.jsenabled .block_login,
-.jsenabled .block_myprofile,
-.jsenabled .block_navigation,
-.jsenabled .block_news_items,
-.jsenabled .block_people,
-.jsenabled .block_rss_client,
-.jsenabled .block_rss_plus,
-.jsenabled .block_settings,
-.jsenabled .block_tags,
-.jsenabled .block_youtube,
-.jsenabled .block_lrc {
-    min-height: 160px;
-}
-
-.jsenabled .block_activity_modules,
-.jsenabled .block_activity_results,
-.jsenabled .block_admin_bookmarks,
-.jsenabled .block_calendar_month,
-.jsenabled .block_glossary_random,
-.jsenabled .block_online_users,
-.jsenabled .block_participants,
-.jsenabled .block_quiz_navblock,
-.jsenabled .block_quiz_results,
-.jsenabled .block_recent_activity,
-.jsenabled .block_search_forums,
-.jsenabled .block_section_links,
-.jsenabled .block_twitter_search {
-    min-height: 165px;
-}
-
-.jsenabled .block_selfcompletion,
-.jsenabled .block_completionstatus {
-    min-height: 175px;
-}
-
-/** Special case needs top padding to see block action icons **/
-.jsenabled .block_search_forums .searchform {
-    padding-top: 20px;
-}
-
-/** Added CSS for commands  **/
-
-.block .header .commands { display: none;}
-
-.editing .block .header .commands { display: block;}
-
-.block_course_overview .course_list {
-    width: 98%;
-}
 
 
 /*Frontpage Login*/
@@ -1456,5 +1328,224 @@ filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccfffff
 .courseheadergradepercentage table tbody tr:last-of-type .column-feedback {display:none;}
 .courseheadergradepercentage table tbody tr:last-of-type .column-contributiontocoursetotal {display:none;}
 */
+/*Special thanks to Shaun Daubney (Theme Aardvark)
+for the colored icons in the blocks.*/
+ 
+.block .header .title h2:before {
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-family: FontAwesome;
+    font-size: 1.2em;
+    height: 1.3em;
+    margin-left: -0.5em;
+    margin-right: 0.5em;
+    margin-top: -0.2em;
+    padding-top: 0.2em;
+    text-align: center;
+    width: 1.5em;
+  -webkit-border-radius:2px;
+  -moz-border-radius:2px;
+  border-radius:2px;
+}
+
+.block .header .title h2:before {
+    color: #FFF;
+    display: block;
+    float: left;
+    font-family: FontAwesome;
+    margin-left: -0.5em;
+    margin-right: 0.5em;
+    text-align: center;
+    width: 2em;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
 
 
+.block_news_items .header .title h2:before {
+    background-color: #29A294;
+  content:"\f0a1";
+}
+
+.block_navigation .header .title h2:before {
+    background-color: #f42941;
+    content:"\f0e8";
+}
+
+.block_calendar_upcoming .header .title h2:before,
+.block_calendar_month .header .title h2:before {
+    background-color: #008ecd;
+  content:"\f073";
+}
+
+.block_course_list .header .title h2:before {
+    background-color: #ffce00;
+  content:"\f108";
+}
+
+.block_completionstatus .header .title h2:before,
+.block_selfcompletion .header .title h2:before {
+    background-color: #76b900;
+  content:"\f0e4";
+}
+
+.block_rss_client .header .title h2:before {
+    background-color: #ff9500;
+  content:"\f09e";
+}
+
+.block_rss_plus .header .title h2:before {
+    background-color: #ff9500;
+  content:"\f09e";
+}
+
+.block_blog_menu .header .title h2:before {
+    background-color: #ff9500;
+  content:"\f02d";
+}
+
+.block_quiz_results .header .title h2:before {
+    background-color: #76b900;    
+  content:"\f080";
+}
+
+.block_quiz_navblock .header .title h2:before {
+    background-color: #76b900;
+    content:"\f126";
+}
+
+.block_glossary_random .header .title h2:before {
+    background-color: #3d3d3d;
+    content:"\f0eb";
+}
+
+.block_book_toc .header .title h2:before {
+    background-color: #3d3d3d;
+    content:"\f02d";
+}
+
+
+.block_participants .header .title h2:before,
+.block_online_users .header .title h2:before {
+    background-color: #92499e;
+    content:"\f0c0";
+}
+
+.block_html .header .title h2:before {
+    background-color: #eeeeee;
+
+}
+
+.block_section_links .header .title h2:before {
+    background-color: #f42941;
+    content:"\f02e";
+}
+
+.block_activity_modules .header .title h2:before {
+    background-color: #f42941;
+    content:"\f12e";
+}
+
+.block_comments .header .title h2:before {
+    background-color: #ffce00;
+    content:"\f075";
+}
+
+.block_settings .header .title h2:before,
+.block_admin_bookmarks .header .title h2:before{
+    background-color: #004675;
+    content:"\f085";
+}
+
+.block_blog_tags .header .title h2:before,
+.block_tags .header .title h2:before {
+    background-color: #ff9f00;
+    content:"\f02c";
+}
+
+.block_private_files .header .title h2:before {
+    background-color: #82cadd;
+    content:"\f114";
+}
+
+.block_block_mentees .header .title h2:before {
+    background-color: #3d3d3d;
+    content:"\f0c0";
+}
+
+.block_messages .header .title h2:before {
+    background-color: #ffce00;
+    content:"\f0e0";
+}
+
+.block_community .header .title h2:before {
+    background-color: #ffce00;
+    content:"\f0ac";
+}
+
+.block_login .header .title h2:before {
+    background-color: #3d3d3d;
+    content:"\f007";
+}
+
+.block_recent_activity .header .title h2:before {
+    background-color: #cee3ed;
+    content:"\f017";
+}
+
+.block_search_forums .header .title h2:before {
+    background-color: #ffce00;
+    content:"\f0e6";
+}
+
+.block_myprofile .header .title h2:before {
+    background-color: #f42941;
+    content:"\f007";
+}
+
+.block_adminblock .header .title h2:before {
+    background-color: #E0F52A;
+    content:"\f055";
+}
+
+.block_feedback .header .title h2:before {
+    background-color: #ffce00;
+    content:"\f087";
+}
+
+.block_flickr .header .title h2:before {
+    background-color: #ff3096;
+    content:"\f03e";
+}
+
+.block_youtube .header .title h2:before {
+    background-color: #f42941;
+    content:"\f145";
+}
+
+.block_course_badges .header .title h2:before {
+    background-color: #29a294;
+    content:"\f091";
+}
+
+.block_twitter_search .header .title h2:before {
+    background-color: #008ecd;
+    content:"\f099";
+}
+
+.block_heritage .header .title h2:before {
+    background-color: #3e647e;
+    content:"\f02d";
+}
+
+.block_lrc .header .title h2:before {
+    background-color: #3e647e;
+    content:"\f02d";
+}
+
+.block_badges .header .title h2:before {
+  background-color: #EDF731;
+  content:"\f091";
+}
