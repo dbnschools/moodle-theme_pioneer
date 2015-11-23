@@ -244,7 +244,7 @@ $string['headerbackgroundtoggle_desc'] = 'If turned on a teacher can upload an i
 $string['topicweekcolor'] = 'Topic and Week Section Background';
 $string['topicweekcolor_desc'] = 'In Topic and Weekly course formats this is the background color for each topic or week in the course.';
 $string['sectionheadericon'] = 'Section Title Icon';
-$string['sectionheadericondesc'] = 'This icon appears before the title of every topic for weekly and topic based course formats.  Use the unicode setting from Font Awesome. List is <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_new">here</a>';
+$string['sectionheadericondesc'] = 'This icon appears before the title of every topic for weekly and topic based course formats.  Use the unicode setting from Font Awesome. List is <a https://fortawesome.github.io/Font-Awesome/icons/" target="_new">here</a>. The \f02d (default) icon is a book.';
 $string['swicontext'] = 'Socialwall Course Format Icon and Text colors';
 $string['swicontext_desc'] = 'If you use the Socialwall Course Format this setting will change the colors of the icons and words Attachments, Posts, Message, and Comments in the wall feed.';
 $string['swpost'] = 'Socialwall Course Format Post background';

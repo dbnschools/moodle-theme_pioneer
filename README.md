@@ -17,6 +17,12 @@ The Moodle Pioneer theme is a responsive bootstrap theme for Moodle. Highly cust
 * Custom Logo and Images
 * Custom Colors
 
+##Pioneer v1.2.0
+* Social Icons Links open in new window
+* Chnaged styling of Marketing spots to be a little less "shocking" as one teacher put it. 
+* Made footer and social icons merge at the bottom of the page. Looks cleaner. 
+* Default logo is more generic.  Simple arrow-head and text.
+
 ##Pioneer v1.1.9
 * Fixed Language string mis-spelling
 * On Dashboard Page enhanced the course overview block to remove the verticle block title.  If you move it to the sidebar it will regain it's verticle block title.
