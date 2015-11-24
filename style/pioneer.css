@@ -1147,7 +1147,15 @@ Margin-top:20px;
 }
 
 
-/*Marketing Spots CSS*/
+/*Marketing and tab Spots CSS*/
+
+#tab-spots {
+    max-width: 90%;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+    padding:10px;
+}
 
 #marketing-spots {
   margin-top:40px;
@@ -1156,6 +1164,7 @@ Margin-top:20px;
 #marketing-spots .span4 {
     padding: 5px;
 }
+
 .marketwrap {
   display:block;
     -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);

@@ -34,7 +34,7 @@ $string['socialwallheading'] = 'Socialwall Course Format Options';
 $string['socialwallheaddesc'] = 'Socialwall Course format is a set of course format plugins for Moodle that provides teachers with an easy to use course that operates similar to Facebook.  You can download the Socialwall Course Format from Moodle.org <a href="https://moodle.org/plugins/browse.php?list=set&id=74">https://moodle.org/plugins/browse.php?list=set&id=74</a>.  The settings below allow you to customize the colors of the socialwall.';
 $string['socialiconheading'] = 'Social Icon Navigation';
 $string['marketingheading'] = 'Marketing Spots';
-
+$string['tabheading'] = 'Frontpage Tabs';
 
 $string['backgroundfixed'] = 'Background fixed';
 $string['backgroundfixed_desc'] = 'Use this setting to fix the background image to the page.';
@@ -206,6 +206,26 @@ $string['naviconbuttontext'] = 'Tooltip Text';
 $string['naviconbuttontextdesc'] = 'Text to appear in the tooltip of the icon when the mouse hovers over it.';
 $string['naviconbuttonurl'] = 'Link URL';
 $string['naviconbuttonurldesc'] = 'URL the button will point to.';
+
+//Frontpage tabs
+$string['tabbutton'] = 'Getting Started';
+$string['tabbuttontext'] = 'Tab Button Text';
+$string['tabbuttontextdesc'] = 'This text is used in the show/hide button to display the tabs.';
+$string['tabtoggle'] = 'Tab Toggle';
+$string['tabtoggle_desc'] = 'Show or hide the homepage tabs.';
+
+$string['tab1'] = 'Tab One';
+$string['tab2'] = 'Tab Two';
+$string['tab3'] = 'Tab Three';
+$string['tab4'] = 'Tab Four';
+$string['tab5'] = 'Tab Five';
+$string['tab6'] = 'Tab Six';
+$string['tabinfodesc'] = 'Add a title and a desctription below.  This will only appear on the frontpage as a slider.  The button to activate the slider is located in the top header.';
+
+$string['tabtitle'] = 'Tab Title';
+$string['tabtitledesc'] = 'This is the tab title that appears at the top of the tab content.';
+$string['tabcontent'] = 'Tab Content';
+$string['tabcontentdesc'] = 'The text and HTML you enter here will be displayed in the tab.';
 
 
 //Google Fonts

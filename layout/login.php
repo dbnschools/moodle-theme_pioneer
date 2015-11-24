@@ -64,7 +64,6 @@ echo $OUTPUT->doctype() ?>
         </div>
 
         <div class="clearfix"></div>
-        <?php echo $courserenderer->promoted_courses(); ?>
     
     <!-- Start Marketing Spots -->
     <?php 

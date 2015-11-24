@@ -948,6 +948,177 @@ $ADMIN->add('theme_pioneer', $temp);
 
 
 
+/* Help Spot Settings temp*/
+$temp = new admin_settingpage('theme_pioneer_tab', get_string('tabheading', 'theme_pioneer'));
+
+    // Show or Hide Frontpage Tabs.
+    $name = 'theme_pioneer/tabtoggle';
+    $title = get_string('tabtoggle', 'theme_pioneer');
+    $description = get_string('tabtoggle_desc', 'theme_pioneer');
+    $default = 0;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Tab Button Text.
+    $name = 'theme_pioneer/tabbuttontext';
+    $title = get_string('tabbuttontext', 'theme_pioneer');
+    $description = get_string('tabbuttontextdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for tab Spot One
+    $name = 'theme_pioneer/tab1info';
+    $heading = get_string('tab1', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // tab Spot One
+    $name = 'theme_pioneer/tab1';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab1content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    
+    // This is the descriptor for tab Spot Two
+    $name = 'theme_pioneer/tab2info';
+    $heading = get_string('tab2', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+    
+    // tab Spot Two
+    $name = 'theme_pioneer/tab2';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab2content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    // This is the descriptor for tab Spot Three
+    $name = 'theme_pioneer/tab3info';
+    $heading = get_string('tab3', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+    
+    // tab Spot Three.
+    $name = 'theme_pioneer/tab3';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab3content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for tab Spot One
+    $name = 'theme_pioneer/tab4info';
+    $heading = get_string('tab4', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // tab Spot One
+    $name = 'theme_pioneer/tab4';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab4content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for tab Spot One
+    $name = 'theme_pioneer/tab5info';
+    $heading = get_string('tab5', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // tab Spot One
+    $name = 'theme_pioneer/tab5';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab5content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for tab Spot One
+    $name = 'theme_pioneer/tab6info';
+    $heading = get_string('tab6', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // tab Spot One
+    $name = 'theme_pioneer/tab6';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab6content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+
+    
+    $ADMIN->add('theme_pioneer', $temp);
+
+
 $temp = new admin_settingpage('theme_pioneer_socialiconnav', get_string('socialiconheading', 'theme_pioneer'));
 
     $name = 'theme_pioneer/social1buttonurl';

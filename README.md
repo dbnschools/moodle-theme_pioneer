@@ -17,6 +17,13 @@ The Moodle Pioneer theme is a responsive bootstrap theme for Moodle. Highly cust
 * Custom Logo and Images
 * Custom Colors
 
+##Pioneer v1.2.1
+* Six custom frontpage tabs which are displayed via a slider button.  Add a title and content text for each tab.  Tabs fade in and out with content.
+* Found bug for SSL and login with featured courses enabled.  Fix is to force users to login before seeing featured courses.
+* When using the default Moodle login page featured courses is not displayed.  This is to fix a bug with featured courses.  If your site uses SSL for login only, please click in Site Admin to Force Login.
+* Seeking input for best way to fix the SSL and featured courses bug. Alternative is to make featured courses only visible when logged in.
+
+
 ##Pioneer v1.2.0
 * Social Icons Links open in new window
 * Chnaged styling of Marketing spots to be a little less "shocking" as one teacher put it. 

@@ -98,13 +98,20 @@ echo $OUTPUT->doctype() ?>
                 <?php echo $OUTPUT->course_header(); ?>
                 </div>
             </div>
+            <?php if($PAGE->theme->settings->tabtoggle==1) { ?>
+            <div data-toggle="collapse" data-target="#test" class="coursegradebtn"><i class="fa fa-arrow-circle-down"></i>  <?php echo $PAGE->theme->settings->tabbuttontext ?> </div>
+            <?php } ?>
             </div>
     <?php } ?>
-        
         </div>
         <div id="breadcrumb-container" class="clearfix">
             <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> <?php echo $OUTPUT->user_menu(); ?>
         </div>
+        <?php if($PAGE->theme->settings->tabtoggle==1) { ?>
+            <div id="test" class="collapse out">
+                <?php require_once(dirname(__FILE__).'/includes/tabs.php'); ?>
+            </div>
+        <?php } ?>
         <div id="editbutton">
                 <?php echo $OUTPUT->page_heading_button(); ?>
         </div>
@@ -129,7 +136,9 @@ echo $OUTPUT->doctype() ?>
         <?php echo $OUTPUT->blocks('side-pre', $sidepre); ?>
 
         <div class="clearfix"></div>
+
         <?php echo $courserenderer->promoted_courses(); ?>
+
                     <!-- Start Marketing Spots -->
     <?php 
         if($PAGE->theme->settings->togglemarketing==1) {
