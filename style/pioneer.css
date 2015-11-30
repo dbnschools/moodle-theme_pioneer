@@ -177,6 +177,9 @@ section#region-main .block_course_overview .content {
 }
 #page-badges-mybadges .coursegradewrap {display:none;}
 #page-badges-mybadges #frontpagetabs {display:none;}
+#page-user-profile .coursegradewrap {display:none;}
+#page-user-profile #coursegrades {display:none;}
+
 
 .coursegradebtn {
   margin: 0px auto;
@@ -734,7 +737,6 @@ box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
 .wrap input {
   border: none;
   background: #fff;
-  font-family:Lato ;
   font-weight:700 ;
   display: block;
   height: 40px;
@@ -787,17 +789,16 @@ box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
 .wrap button {
   width: 100%;
   border-radius: 7px;
-  background: #b6ee65;
+  background: [[setting:loginbuttoncolor]];
   text-decoration: center;
   border: none;
-  color: #51771a;
   margin-top:-5px;
   margin-left:0px;
   padding-top: 14px;
   padding-bottom: 14px;
   outline: none;
   font-size: 20px;  
-  border-bottom: 3px solid #307d63;
+  border-bottom: 3px solid #000;
   cursor: pointer;
 }
 

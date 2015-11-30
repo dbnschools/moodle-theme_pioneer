@@ -127,6 +127,8 @@ $string['promotedcoursesheading'] = 'Featured Courses';
 $string['title'] = 'Title';
 
 //Custom Login Page 
+$string['loginbuttoncolor'] = 'Login button Color';
+$string['loginbuttoncolor_desc'] = 'This is the color of the button in the custom login form.';
 $string['lginuser'] = 'username';
 $string['lginpass'] = 'password';
 $string['lginforgot'] = 'forgot ?';

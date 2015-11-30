@@ -379,6 +379,15 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    // @login button color.
+    $name = 'theme_pioneer/loginbuttoncolor';
+    $title = get_string('loginbuttoncolor', 'theme_pioneer');
+    $description = get_string('loginbuttoncolor_desc', 'theme_pioneer');
+    $default = '#FF6500';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
     // block border
     $name = 'theme_pioneer/blockbordercolor';
     $title = get_string('blockbordercolor', 'theme_pioneer');

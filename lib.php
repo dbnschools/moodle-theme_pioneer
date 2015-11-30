@@ -166,6 +166,12 @@ function theme_pioneer_process_css($css, $theme) {
     }
     $css = theme_pioneer_set_blockbordercolor($css, $blockbordercolor);
 
+    if (!empty($theme->settings->loginbuttoncolor)) {
+        $loginbuttoncolor = $theme->settings->loginbuttoncolor;
+    } else {
+        $loginbuttoncolor = '';
+    }
+    $css = theme_pioneer_set_loginbuttoncolor($css, $loginbuttoncolor);
 
     if (!empty($theme->settings->blockcolor)) {
         $blockcolor = $theme->settings->blockcolor;
@@ -384,6 +390,18 @@ function theme_pioneer_set_bodyweight($css, $bodyweight) {
 function theme_pioneer_set_topicweekcolor($css, $topicweekcolor) {
     $tag = '[[setting:topicweekcolor]]';
     $replacement = $topicweekcolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_loginbuttoncolor($css, $loginbuttoncolor) {
+    $tag = '[[setting:loginbuttoncolor]]';
+    $replacement = $loginbuttoncolor;
         if (is_null($replacement)) {
         $replacement = '';
     }
