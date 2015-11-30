@@ -132,6 +132,12 @@ $string['lginpass'] = 'password';
 $string['lginforgot'] = 'forgot ?';
 $string['lginlogin'] = 'Log In';
 $string['signuplogin'] = 'Create New';
+$string['customlogininfo'] = 'Custom Login';
+$string['customlogindesc'] = 'Custom Login Options';
+$string['createusertoggle'] = 'Create User Link';
+$string['createusertoggle_desc'] = 'Show or hide the Create User link in the custom login form on the frontpage.';
+$string['forgotpasstoggle'] = 'Forgot Password Link';
+$string['forgotpasstoggle_desc'] = 'Show or hide the Forgot Password link in the custom login form on the frontpage.';
 
 //top course search form
 $string['topsearch'] = 'Search courses';
@@ -220,7 +226,7 @@ $string['tab3'] = 'Tab Three';
 $string['tab4'] = 'Tab Four';
 $string['tab5'] = 'Tab Five';
 $string['tab6'] = 'Tab Six';
-$string['tabinfodesc'] = 'Add a title and a desctription below.  This will only appear on the frontpage as a slider.  The button to activate the slider is located in the top header.';
+$string['tabinfodesc'] = 'Add a title and a description below.  This will only appear on the frontpage as a slider.  The button to activate the slider is located in the top header.';
 
 $string['tabtitle'] = 'Tab Title';
 $string['tabtitledesc'] = 'This is the tab title that appears at the top of the tab content.';
@@ -321,6 +327,8 @@ $string['grades'] = 'My Grades';
 $string['coursegradetoggle'] = 'Show/Hide Course Grade Slider';
 $string['coursegradetoggle_desc'] = 'This will allow students to quickly see a list of all activities and their grade right in the top header area above the breadcrumbs and below the course title.';
 $string['coursegradebutton'] = 'Course Grades';
+$string['coursegradestext'] = 'Course Grades Button Text';
+$string['coursegradestextdesc'] = 'Enter the text you would like to appear for the toggle button.';
 
 
 // CourseBox rendering.

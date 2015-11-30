@@ -25,9 +25,8 @@
  
 ?>
 <div class="clearfix"></div>
-<div class="row-fluid" id="tab-spots">
+<div id="tab-spots">
 <div>
-
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <?php if ($PAGE->theme->settings->tab1) { ?>
@@ -71,8 +70,5 @@
   <div role="tabpanel" class="tab-pane fade" id="tab6"> <?php echo $PAGE->theme->settings->tab6content ?> </div>
   <?php } ?>
 </div>
-
 </div>
-
-
 </div>

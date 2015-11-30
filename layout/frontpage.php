@@ -74,14 +74,17 @@ echo $OUTPUT->doctype() ?>
         <img src="<?php echo $OUTPUT->pix_url('avatar', 'theme'); ?>" alt="Login" />
        </div>
         <form action="<?php echo new moodle_url('/login/index.php'); ?>" method="post" id="login"  >
-                    <a href="<?php echo new moodle_url('/login/signup.php'); ?>" class="create_link"><?php echo get_string('signuplogin' , 'theme_pioneer'); ?></a>
-
+            <div class="create_link">
+            <?php if($PAGE->theme->settings->createuser==1) { ?><a href="<?php echo new moodle_url('/login/signup.php'); ?>"><?php echo get_string('signuplogin' , 'theme_pioneer'); ?></a><?php } ?>
+            </div>
         <input type="text" name="username" placeholder="<?php echo get_string('lginuser' , 'theme_pioneer'); ?>" required>
         <div class="bar">
             <i></i>
        </div>
         <input type="password" name="password" placeholder="<?php echo get_string('lginpass' , 'theme_pioneer'); ?>" required>
-        <a href="<?php echo new moodle_url('/login/forgot_password.php'); ?>" class="forgot_link"><?php echo get_string('lginforgot' , 'theme_pioneer'); ?></a>
+        <div class="forgot_link">
+        <?php if($PAGE->theme->settings->forgotpass==1) { ?><a href="<?php echo new moodle_url('/login/forgot_password.php'); ?>"><?php echo get_string('lginforgot' , 'theme_pioneer'); ?></a><?php } ?>
+        </div>
         <button>
             <?php echo get_string('lginlogin' , 'theme_pioneer'); ?>
         </button>
@@ -99,7 +102,9 @@ echo $OUTPUT->doctype() ?>
                 </div>
             </div>
             <?php if($PAGE->theme->settings->tabtoggle==1) { ?>
-            <div data-toggle="collapse" data-target="#test" class="coursegradebtn"><i class="fa fa-arrow-circle-down"></i>  <?php echo $PAGE->theme->settings->tabbuttontext ?> </div>
+            <div class="coursegradewrap">
+            <div data-toggle="collapse" data-target="#frontpagetabs" class="coursegradebtn btn-link"><i class="fa fa-arrow-circle-down"></i>  <?php echo $PAGE->theme->settings->tabbuttontext ?> </div>
+            </div>
             <?php } ?>
             </div>
     <?php } ?>
@@ -108,7 +113,7 @@ echo $OUTPUT->doctype() ?>
             <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> <?php echo $OUTPUT->user_menu(); ?>
         </div>
         <?php if($PAGE->theme->settings->tabtoggle==1) { ?>
-            <div id="test" class="collapse out">
+            <div id="frontpagetabs" class="collapse out">
                 <?php require_once(dirname(__FILE__).'/includes/tabs.php'); ?>
             </div>
         <?php } ?>

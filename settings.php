@@ -31,6 +31,32 @@ defined('MOODLE_INTERNAL') || die;
     $temp = new admin_settingpage('theme_pioneer_generic',  get_string('geneicsettings', 'theme_pioneer'));
 
 // Description
+    $name = 'theme_pioneer/customlogininfo';
+    $heading = get_string('customlogininfo', 'theme_pioneer');
+    $information = get_string('customlogindesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+ // Show hide toggle.
+    $name = 'theme_pioneer/createuser';
+    $title = get_string('createusertoggle', 'theme_pioneer');
+    $description = get_string('createusertoggle_desc', 'theme_pioneer');
+    $default = 0;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+     // Show hide toggle.
+    $name = 'theme_pioneer/forgotpass';
+    $title = get_string('forgotpasstoggle', 'theme_pioneer');
+    $description = get_string('forgotpasstoggle_desc', 'theme_pioneer');
+    $default = 0;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+
+// Description
     $name = 'theme_pioneer/headerimageinfo';
     $heading = get_string('headerimageinfo', 'theme_pioneer');
     $information = get_string('headerimageinfodesc', 'theme_pioneer');
@@ -267,6 +293,16 @@ defined('MOODLE_INTERNAL') || die;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
+
+    // Course Grades Button Text.
+    $name = 'theme_pioneer/coursegradestext';
+    $title = get_string('coursegradestext', 'theme_pioneer');
+    $description = get_string('coursegradestext', 'theme_pioneer');
+    $default = 'Course Grades';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
 
 // Promoted Courses Start.
     // Promoted Courses Heading.

@@ -42,12 +42,15 @@
             <p>
             <?php echo $PAGE->theme->settings->marketing1content ?>
             </p> 
-            <br />
+            
             <?php if ($PAGE->theme->settings->marketing1buttonurl) { ?>
+            <div class="marketlink">
             <a href="<?php echo $PAGE->theme->settings->marketing1buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing1target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing1icon ?>"></i></span>
             <?php echo $PAGE->theme->settings->marketing1buttontext ?>
             </a>
+            </div>
             <?php } ?>
+
         </div>
     </div>
 </div>
@@ -69,9 +72,11 @@
             </p> 
             <br />
             <?php if ($PAGE->theme->settings->marketing2buttonurl) { ?>
+            <div class="marketlink">
             <a href="<?php echo $PAGE->theme->settings->marketing2buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing2target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing2icon ?>"></i></span>
             <?php echo $PAGE->theme->settings->marketing2buttontext ?>
             </a>
+            </div>
             <?php } ?>
         </div>
     </div>
@@ -94,9 +99,11 @@
             </p> 
             <br />
             <?php if ($PAGE->theme->settings->marketing3buttonurl) { ?>
+            <div class="marketlink">
             <a href="<?php echo $PAGE->theme->settings->marketing3buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing3target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing3icon ?>"></i></span>
             <?php echo $PAGE->theme->settings->marketing3buttontext ?>
             </a>
+            </div>
             <?php } ?>
         </div>
     </div>

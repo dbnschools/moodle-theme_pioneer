@@ -17,6 +17,15 @@ The Moodle Pioneer theme is a responsive bootstrap theme for Moodle. Highly cust
 * Custom Logo and Images
 * Custom Colors
 
+##Pioneer v1.2.2
+* Fixed IPad buttons not working for frontpage tabs and view course grades.
+* Fixed marketing spots full width when not enough text to fill space.
+* Custom Text for Course Grades Button.
+* Create New and Forgot Password text on the custom login can now be shown or hidden via settings toggle.
+* Fixed Language string
+* Increased max width of button text for frontpage tabs and course grades to 500px.
+* Numerous css fixes.
+
 ##Pioneer v1.2.1
 * Six custom frontpage tabs which are displayed via a slider button.  Add a title and content text for each tab.  Tabs fade in and out with content.
 * Found bug for SSL and login with featured courses enabled.  Fix is to force users to login before seeing featured courses.

@@ -100,7 +100,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
                         <div class="fp-coursebox">
                         <div class="fp-coursethumb">
                         <a href="'.$courseurl.'">
-                        <img src="'.$imgurl.'" width="243" height="165" alt="'.$course->fullname.'">
+                        <img src="'.$imgurl.'" width="100%" height="140" alt="'.$course->fullname.'">
                         </a>
                         </div>
                         <div class="fp-courseinfo">
