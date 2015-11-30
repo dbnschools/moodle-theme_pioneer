@@ -48,9 +48,11 @@ echo $OUTPUT->doctype() ?>
         <div id="header-image-box">
             <div class="header-image" <?php if ($courseimage){ echo 'style="background-image: url('.$courseimage.');"'; } ?> >
             <div class="header-spacer-incourse">
-                <div class="course-title">
-                    <?php echo $html->heading; ?>
-                </div>
+            <div class="course-titlewrap">
+            <div class="course-title">
+            <?php echo $html->heading; ?>
+           </div>
+           </div>
                 <div id="course-header">      
                 <?php echo $OUTPUT->course_header(); ?>
                 </div>

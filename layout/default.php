@@ -58,9 +58,11 @@ echo $OUTPUT->doctype() ?>
         <div id="header-image-box">
             <div class="header-image">
                 <div class="header-spacer">
-                <div class="course-title">
-                    <?php echo $html->heading; ?>
-                </div>
+            <div class="course-titlewrap">
+            <div class="course-title">
+            <?php echo $html->heading; ?>
+           </div>
+           </div>
                 <div id="course-header">      
                 <?php echo $OUTPUT->course_header(); ?>
                 </div>

@@ -42,7 +42,7 @@
             <p>
             <?php echo $PAGE->theme->settings->marketing1content ?>
             </p> 
-            
+            <br>
             <?php if ($PAGE->theme->settings->marketing1buttonurl) { ?>
             <div class="marketlink">
             <a href="<?php echo $PAGE->theme->settings->marketing1buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing1target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing1icon ?>"></i></span>

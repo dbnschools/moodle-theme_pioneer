@@ -17,6 +17,11 @@ The Moodle Pioneer theme is a responsive bootstrap theme for Moodle. Highly cust
 * Custom Logo and Images
 * Custom Colors
 
+##Pioneer v1.2.3
+* When a new header image is uploaded in theme settings it will also be used for courses with no images when Featured or displayed as Available Courses on the frontpage. This fixes the issue of having to FTP a no-image.jpg up to the server in the theme pix folder. 
+* Course title no longer appears as a black bar across the whole top of the page.  It is centered and paddded to only fill the space of the text. This allows the header image to be more visible without a distracting black bar across the full width. 
+* Marketing Box buttons now appear right aligned. 
+
 ##Pioneer v1.2.2
 * Fixed IPad buttons not working for frontpage tabs and view course grades.
 * Fixed marketing spots full width when not enough text to fill space.

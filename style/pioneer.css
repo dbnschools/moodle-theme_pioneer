@@ -298,15 +298,16 @@ z-index: 0;
   background-color:none;
 }
 
-
-.course-title h1 {text-align:center; line-height: 64px;}
+.course-titlewrap{
+  text-align: center;
+}
 
 .course-title {
-  clear:both;
-  margin: 0px auto;
-  background-color: rgba(0,0,0,0.65);
-  border-radius: 2px;
+  padding:0px 40px;
+  background-color: rgba(0,0,0,0.75);
+  border-radius: 4px;
   color:#fff;
+  display: inline-block;
 }
 
 .course_category_tree .category > .info {
@@ -1218,7 +1219,7 @@ margin-left:65px;
 }
 
 .marketwrap a.button {
-    display: block;
+    display: inline-block;
     font-size: 20px;
     background-color: #F2F5FB;
     padding: 10px;
@@ -1235,7 +1236,7 @@ margin-left:65px;
 .marketwrap .button:active {
 }
 .marketlink {
-    display: inline-block;
+    text-align: right;
 }
 
 @media print {

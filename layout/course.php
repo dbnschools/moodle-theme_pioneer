@@ -68,9 +68,11 @@ echo $OUTPUT->doctype() ?>
                 <div id="course-header">      
                 <?php echo $OUTPUT->course_header(); ?>  
                 </div>
-                <div class="course-title">
-                    <?php echo $html->heading; ?> 
-                </div>
+            <div class="course-titlewrap">
+            <div class="course-title">
+            <?php echo $html->heading; ?>
+           </div>
+           </div>
             </div>
             <?php if($PAGE->theme->settings->coursegradetoggle==1) { ?>
             <div class="coursegradewrap">
