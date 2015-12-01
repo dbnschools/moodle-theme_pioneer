@@ -31,7 +31,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
 
     public function frontpage_available_courses() {
         /* available courses */
-        global $CFG, $OUTPUT, $PAGE;
+        global $CFG, $OUTPUT;
         require_once($CFG->libdir. '/coursecatlib.php');
 
         $chelper = new coursecat_helper();
@@ -70,8 +70,10 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
 
                     $no = get_config('theme_pioneer', 'patternselect');
                     $nimgp = (empty($no)||$no == "default") ? 'no-image' : 'cs0'.$no.'/no-image';
+
                     $noimgurl = $OUTPUT->pix_url($nimgp, 'theme');
                     $courseurl = new moodle_url('/course/view.php', array('id' => $courseid ));
+
                     if ($course instanceof stdClass) {
                         require_once($CFG->libdir. '/coursecatlib.php');
                         $course = new course_in_list($course);
@@ -91,7 +93,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
                     }
 
                     if (empty($imgurl)) {
-                        $imgurl = $PAGE->theme->setting_file_url('headerbackgroundimage', 'headerbackgroundimage', true);
+                        $imgurl = $noimgurl;
                     }
 
                     $rowcontent .= '<div class="span3">
@@ -122,7 +124,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
     }
 
     public function promoted_courses() {
-        global $CFG, $OUTPUT, $DB, $PAGE;
+        global $CFG, $OUTPUT, $DB;
 
         $pcourseenable = theme_pioneer_get_setting('pcourseenable');
         if (!$pcourseenable) {
@@ -213,7 +215,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
                     }
 
                     if (empty($imgurl)) {
-                        $imgurl = $PAGE->theme->setting_file_url('headerbackgroundimage', 'headerbackgroundimage', true);
+                        $imgurl = $noimgurl;
                     }
 
                         $coursehtml = '<div class="span2">

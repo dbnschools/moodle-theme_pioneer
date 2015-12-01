@@ -136,7 +136,6 @@ echo $OUTPUT->doctype() ?>
             require_once(dirname(__FILE__).'/includes/fptextbox.php');
         } 
     ?>
-
             <?php
             echo $OUTPUT->course_content_header();
             echo $OUTPUT->main_content();
