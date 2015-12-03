@@ -134,8 +134,13 @@ echo $OUTPUT->doctype() ?>
             require_once(dirname(__FILE__).'/includes/fptextbox.php');
         } else if($PAGE->theme->settings->togglefptextbox==3 && isloggedin()) {
             require_once(dirname(__FILE__).'/includes/fptextbox.php');
-        } 
+        } else if($PAGE->theme->settings->togglefptextbox==0) {
+            require_once(dirname(__FILE__).'/includes/fp_iconnav.php');
+        } else if($PAGE->theme->settings->togglefptextbox==2) {
+            require_once(dirname(__FILE__).'/includes/fp_iconnav.php');
+        }
     ?>
+
             <?php
             echo $OUTPUT->course_content_header();
             echo $OUTPUT->main_content();

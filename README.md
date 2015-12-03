@@ -1,5 +1,9 @@
 # Moodle-theme_pioneer
-The Moodle Pioneer theme is a responsive bootstrap theme for Moodle. Highly customizable and loaded with great features.  This theme is ideal for educational institutions and businesses alike.  Pioneer is focused on simplicity and providing an intuitive user experience.
+Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.
+
+##Pioneer v1.2.5
+* Added frontpage enhancement. If you utilize the frontpage textbox you will now see the same icons with tooltips located in the top navigation but they will be quit larger and it also includes the course search bar.  We discovered that most people prefer the larger icon navigation on the homepage with the custom text box.  This allows the site admin to provide instructions and key navigational links as the first thing someone sees upon logging in.  
+* When a new header image is uploaded in theme settings it will also be used for courses with no-image when Featured or displayed as Available Courses on the frontpage. This fixes the issue of having to FTP a no-image.jpg up to the server in the theme pix folder.  This was first introduced in version 1.2.3 and a bug was found.  This has been fixed and reinstated.  
 
 ##Pioneer v1.2.4
 * Removed frontpage featured courses from using an uploaded header image. Found a bug which displays no image if the course doesn't have an image and there is no header image uploaded in settings.  It should default to an image in the pix folder but it does not.  I need more time with the code to make it work.

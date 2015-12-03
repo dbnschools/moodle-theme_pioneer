@@ -36,6 +36,8 @@ $string['socialiconheading'] = 'Social Icon Navigation';
 $string['marketingheading'] = 'Marketing Spots';
 $string['tabheading'] = 'Frontpage Tabs';
 
+$string['choosereadme'] = '<p>Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.</p><p>We are a K-12 school district in Dearborn, Michigan.  Pioneer is the mascot of Dearborn High School.</p>';
+
 $string['backgroundfixed'] = 'Background fixed';
 $string['backgroundfixed_desc'] = 'Use this setting to fix the background image to the page.';
 $string['backgroundimage'] = 'Background image';
@@ -59,7 +61,6 @@ $string['backgroundrepeatrepeatx'] = 'Repeat horizontally';
 $string['backgroundrepeatrepeaty'] = 'Repeat vertically';
 $string['bodybackground'] = 'Background colour';
 $string['bodybackground_desc'] = 'The main colour to use for the background.';
-$string['choosereadme'] = '<p>The Pioneer theme is a responsive bootstrap theme for Moodle. Highly customizable and loaded with great features. This theme is ideal for educational institutions and businesses alike. Pioneer is focused on simplicity and providing an intuitive user experience.</p><p>Developed and maintained by Dearborn Public Schools.  We are a K-12 school district in Dearborn, Michigan.  Pioneer is the mascot of Dearborn High School.</p>';
 
 $string['configtitle'] = 'Pioneer';
 $string['contentbackground'] = 'Main content background colour';
@@ -144,6 +145,9 @@ $string['forgotpasstoggle_desc'] = 'Show or hide the Forgot Password link in the
 //top course search form
 $string['topsearch'] = 'Search courses';
 $string['topsearchbutton'] = 'Find';
+$string['fpsearch'] = 'Find and enroll in courses...';
+$string['fpsearchbutton'] = 'Search';
+
 
 //settings info
 $string['fptextboxinfo'] = 'Frontpage Only Custom Text Box';

@@ -26,5 +26,10 @@
 ?>
 
 <?php if ($PAGE->theme->settings->fptextbox) { ?>
-<div class="fptextbox"> <?php echo $PAGE->theme->settings->fptextbox ?> </div>
+<div class="fptextbox">
+
+	<?php require_once(dirname(__FILE__).'/fp_iconnav.php'); ?> 
+	<?php echo $PAGE->theme->settings->fptextbox ?> 
+	
+</div>
 <?php } ?>

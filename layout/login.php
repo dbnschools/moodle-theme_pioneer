@@ -52,11 +52,13 @@ echo $OUTPUT->doctype() ?>
     <div id="page-content" class="row-fluid">
        <?php require_once(dirname(__FILE__).'/includes/alerts.php'); ?>
         <section id="region-main" class="span12 moodleheader">
+            <div class="loginwrapper">
             <?php
             echo $OUTPUT->course_content_header();
             echo $OUTPUT->main_content();
             echo $OUTPUT->course_content_footer();
             ?>
+        </div>
         </section>
 
         <div id="breadcrumb-container" class="clearfix">

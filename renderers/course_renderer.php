@@ -31,7 +31,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
 
     public function frontpage_available_courses() {
         /* available courses */
-        global $CFG, $OUTPUT;
+        global $CFG, $OUTPUT, $PAGE;
         require_once($CFG->libdir. '/coursecatlib.php');
 
         $chelper = new coursecat_helper();
@@ -93,7 +93,10 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
                     }
 
                     if (empty($imgurl)) {
-                        $imgurl = $noimgurl;
+                        $imgurl = $PAGE->theme->setting_file_url('headerbackgroundimage', 'headerbackgroundimage', true);
+                        if (!$imgurl) {
+                            $imgurl = $noimgurl;
+                        }
                     }
 
                     $rowcontent .= '<div class="span3">
@@ -124,7 +127,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
     }
 
     public function promoted_courses() {
-        global $CFG, $OUTPUT, $DB;
+        global $CFG, $OUTPUT, $DB, $PAGE;
 
         $pcourseenable = theme_pioneer_get_setting('pcourseenable');
         if (!$pcourseenable) {
@@ -215,7 +218,10 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
                     }
 
                     if (empty($imgurl)) {
-                        $imgurl = $noimgurl;
+                        $imgurl = $PAGE->theme->setting_file_url('headerbackgroundimage', 'headerbackgroundimage', true);
+                        if (!$imgurl) {
+                            $imgurl = $noimgurl;
+                        }
                     }
 
                         $coursehtml = '<div class="span2">

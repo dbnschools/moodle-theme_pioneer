@@ -826,8 +826,11 @@ background: transparent;
   -moz-background-clip: content;     /* Firefox 3.6 */
   -webkit-background-clip: content;  /* Safari 4? Chrome 6? */
   background-clip: content-box;
+  display:inline-block;
 }
-
+.loginwrapper {
+  text-align: center;
+}
 .loginbox h2{
 color: #000;
 text-align:center;
@@ -1485,4 +1488,34 @@ for the colored icons in the blocks.*/
         -webkit-transform: scale(0.8);
         -ms-transform: scale(0.8);
         transform: scale(0.8);
+}
+
+/* Frontpage Search and Icons */
+.fpstartwrap {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.fpstart {
+    display: inline-block;
+    background-color: [[setting:blockcolor]];
+    border-radius: 5px;
+    padding: 15px;
+    text-align: left;
+}
+.fpstart .iconset {
+  float:left;
+  display:block;
+}
+.fpstart .fpsearch {
+  float:right;
+  display: block;
+}
+.fpsearch {
+    margin: 10px 0px 0px 20px;
+}
+.fpsearch input[type="text"] {
+    width: 170px;
+}
+.fpstart .iconset .fa {
+    margin: 0px 5px 0px 5px;
 }
