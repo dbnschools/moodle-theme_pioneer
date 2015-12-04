@@ -77,6 +77,8 @@ $string['fptextbox'] = 'Frontpage Textbox';
 $string['fptextboxdesc'] = 'This textbox appears on the frontpage and is ideal for putting a welcome message.';
 $string['togglefptextbox'] = 'Toggle Frontpage Text Box Display';
 $string['togglefptextboxdesc'] = 'Choose if you wish to hide or show the Frontpage Text Box.';
+$string['fptextboxiconnav'] = 'Show Icon Nav and Searchbox';
+$string['fptextboxiconnavdesc'] = 'Check if you would like to show the icon navigation and searchbox with the Frontpage Textbox.  This will help first time users find and enroll in courses.';
 
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';

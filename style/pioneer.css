@@ -43,6 +43,9 @@ h3.sectionname:after {
   margin-left: 10px;
 }
 
+.breadcrumb>li>.divider {
+    color: [[setting:blockbordercolor]];
+}
 
 #dock {background: #32352c;}
 
@@ -457,11 +460,14 @@ body.has_dock .fpcustomnav-container {
     clear:both;
 }
 
+.fpcustomnav-container .usermenu {
+    float: left;
+}
 
 .fpcustomnav-container .iconset {
   padding-right: 15px;
   padding-left:15px;
-  float:left;
+  float:right;
   display:block;
 }
 
@@ -1519,3 +1525,4 @@ for the colored icons in the blocks.*/
 .fpstart .iconset .fa {
     margin: 0px 5px 0px 5px;
 }
+

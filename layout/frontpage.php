@@ -115,7 +115,7 @@ echo $OUTPUT->doctype() ?>
     <?php } ?>
         </div>
         <div id="breadcrumb-container" class="clearfix">
-            <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> <?php echo $OUTPUT->user_menu(); ?>
+            <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
         </div>
         <?php if($PAGE->theme->settings->tabtoggle==1) { ?>
             <div id="frontpagetabs" class="collapse out">

@@ -247,6 +247,16 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+     // Toggle icon navigation and searchbox.
+    $name = 'theme_pioneer/fptextboxiconnav';
+    $title = get_string('fptextboxiconnav', 'theme_pioneer');
+    $description = get_string('fptextboxiconnavdesc', 'theme_pioneer');
+    $default = false;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+
     // Description
     $name = 'theme_pioneer/mycorusesinfo';
     $heading = get_string('mycorusesinfo', 'theme_pioneer');

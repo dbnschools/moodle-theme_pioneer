@@ -1,4 +1,3 @@
-
 <div class="fpcustomnav-container">
 <header class="fixed-top-nav">
         <nav role="navigation" class="navbar navbar-inner">
@@ -10,20 +9,27 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
         </a>
-        
-          <div class="nav-collapse collapse">
-          <?php if (isloggedin()) { ?>
-                <!-- icon navigation-->
-           <?php require_once(dirname(__FILE__).'/iconnav.php'); ?>
-           <div class="top-search">
+          
+        <?php echo $OUTPUT->user_menu(); ?>
+          
+        <div class="nav-collapse collapse">
+        <?php if (isloggedin()) { ?>
+          <div>
+          <div class="top-search">
            <form action="<?php echo new moodle_url('/course/search.php'); ?>" method="get">
               <input type="text" placeholder="<?php echo get_string('topsearch' , 'theme_pioneer'); ?>" name="search" value="">
               <input type="submit" value="<?php echo get_string('topsearchbutton' , 'theme_pioneer'); ?>">
            </form>    
            </div>
+           
+          <?php require_once(dirname(__FILE__).'/iconnav.php'); ?>
+           
+           </div>
            <?php } else { ?>
            <?php } ?>
+
                 <?php echo $OUTPUT->custom_menu(); ?>
+
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
                 </ul>
@@ -33,4 +39,3 @@
 </div>
 
 <div class="clearfix"></div>
-
