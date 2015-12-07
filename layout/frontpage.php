@@ -31,8 +31,8 @@ $regionmain = 'span9 pull-left';
 $sidepre = 'span3 pull-right desktop-first-column';
 // Reset layout mark-up for RTL languages.
 if (right_to_left()) {
-    $regionmain = 'span9';
-    $sidepre = 'span3 pull-right';
+    $regionmain = 'span9 pull-left';
+    $sidepre = 'span3 pull-right desktop-first-column';
 }
 
 echo $OUTPUT->doctype() ?>
@@ -125,9 +125,10 @@ echo $OUTPUT->doctype() ?>
         <div id="editbutton">
                 <?php echo $OUTPUT->page_heading_button(); ?>
         </div>
+
         <section id="region-main" class="<?php echo $regionmain; ?>">
             
-    <?php 
+        <?php 
         if($PAGE->theme->settings->togglefptextbox==1) {
             require_once(dirname(__FILE__).'/includes/fptextbox.php');
         } else if($PAGE->theme->settings->togglefptextbox==2 && !isloggedin()) {
@@ -139,8 +140,7 @@ echo $OUTPUT->doctype() ?>
         } else if($PAGE->theme->settings->togglefptextbox==2) {
             require_once(dirname(__FILE__).'/includes/fp_iconnav.php');
         }
-    ?>
-
+        ?>
             <?php
             echo $OUTPUT->course_content_header();
             echo $OUTPUT->main_content();
@@ -149,11 +149,12 @@ echo $OUTPUT->doctype() ?>
         </section>
         <?php echo $OUTPUT->blocks('side-pre', $sidepre); ?>
 
+        
         <div class="clearfix"></div>
-
+<?php echo $OUTPUT->blocks('side-post'); ?>
         <?php echo $courserenderer->promoted_courses(); ?>
 
-                    <!-- Start Marketing Spots -->
+    <!-- Start Marketing Spots -->
     <?php 
         if($PAGE->theme->settings->togglemarketing==1) {
             require_once(dirname(__FILE__).'/includes/marketingspots.php');
@@ -169,17 +170,9 @@ echo $OUTPUT->doctype() ?>
         <?php require_once(dirname(__FILE__).'/includes/socialicons.php'); ?>
 
     <footer id="page-footer">
-    <!-- Start Marketing Spots -->
-    <?php 
-        if($PAGE->theme->settings->togglemarketing==1) {
-            require_once(dirname(__FILE__).'/includes/marketingspots.php');
-        } else if($PAGE->theme->settings->togglemarketing==2 && !isloggedin()) {
-            require_once(dirname(__FILE__).'/includes/marketingspots.php');
-        } else if($PAGE->theme->settings->togglemarketing==3 && isloggedin()) {
-            require_once(dirname(__FILE__).'/includes/marketingspots.php');
-        } 
-    ?>
-    <!-- End Marketing Spots -->
+
+        <?php require_once(dirname(__FILE__).'/includes/footertext.php'); ?>
+
         <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
         <?php

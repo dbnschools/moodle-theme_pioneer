@@ -1,9 +1,18 @@
 # Moodle-theme_pioneer
 Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.
 
-##Pioneer v1.2.6
+##Pioneer v1.2.8
+* Added a theme admin page to create a custom footer with the ability to use a single full-width textbox or a 4 column layout with 4 individual textboxes. Or choose to use both!
+* If no site logo is uploaded the topnav bar will now default to the site title and link to the frontpage.
+* Revisited and fixed an issue with the large frontpage icons and searchbox display toggle not truly hiding when it was supposed to be hidden.
+* Marketing Spots will only appear on homepage/frontpage.  They will no longer display past the homepage.  This makes the courses nicer and less cluttered.
+*
+
+##Pioneer v1.2.6 & 1.2.7
 * Moved User Menu up to top navigation bar next to my courses dropdown.
 * Moved top icon nav next to course search box on right side of screen.
+* Added toggle to show or hide the larger iconnav and course searchbox from being displayed with the Frontpage Textbox. This is useful for first time users but the same icons and search is available in the top navigation menu.  This simply makes it more obvious to the user and in the textbox you can explain what/how you want the user to do in the site.  
+* Fixed secure site layout file to be in line with theme.
 
 ##Pioneer v1.2.5
 * Added frontpage enhancement. If you utilize the frontpage textbox you will now see the same icons with tooltips located in the top navigation but they will be quit larger and it also includes the course search bar.  We discovered that most people prefer the larger icon navigation on the homepage with the custom text box.  This allows the site admin to provide instructions and key navigational links as the first thing someone sees upon logging in.  

@@ -1,4 +1,4 @@
-<?php if (isloggedin()) { ?>
+<?php if (isloggedin() && ($PAGE->theme->settings->fptextboxiconnav)) { ?> 
 <div class="fpstartwrap">
 <div class="fpstart">
     <div class="iconset">
@@ -35,7 +35,6 @@
     </div>
 </div>
 </div>
-
 
   <?php } else { ?>
     <?php } ?>

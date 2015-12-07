@@ -22,14 +22,22 @@
  * @copyright  2015 Chris Kenniburg
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
- 
 ?>
 
-<?php if ($PAGE->theme->settings->fptextbox) { ?>
-<div class="fptextbox">
-
-    <?php require_once(dirname(__FILE__).'/fp_iconnav.php'); ?>
-	<?php echo $PAGE->theme->settings->fptextbox ?> 
-	
-</div>
-<?php } ?>
+        <div class="row-fluid customfooter">
+            <div class="span12 footertext">
+                <?php echo $PAGE->theme->settings->fullfootertext ?>
+            </div>
+            <div class="span3 footertext">
+                <?php echo $PAGE->theme->settings->footertext1 ?> 
+            </div>
+            <div class="span3 footertext">
+                <?php echo $PAGE->theme->settings->footertext2 ?> 
+            </div>
+            <div class="span3 footertext">
+                <?php echo $PAGE->theme->settings->footertext3 ?> 
+            </div>
+            <div class="span3 footertext">
+                <?php echo $PAGE->theme->settings->footertext4 ?> 
+            </div>
+        </div>

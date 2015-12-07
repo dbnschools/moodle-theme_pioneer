@@ -83,22 +83,14 @@ echo $OUTPUT->doctype() ?>
             ?>
         </section>
         <?php echo $OUTPUT->blocks('side-pre', $sidepre); ?>
-                    <!-- Start Marketing Spots -->
-    <?php 
-        if($PAGE->theme->settings->togglemarketing==1) {
-            require_once(dirname(__FILE__).'/includes/marketingspots.php');
-        } else if($PAGE->theme->settings->togglemarketing==2 && !isloggedin()) {
-            require_once(dirname(__FILE__).'/includes/marketingspots.php');
-        } else if($PAGE->theme->settings->togglemarketing==3 && isloggedin()) {
-            require_once(dirname(__FILE__).'/includes/marketingspots.php');
-        } 
-    ?>
-    <!-- End Marketing Spots -->
+
     </div>
 
         <?php require_once(dirname(__FILE__).'/includes/socialicons.php'); ?>
 
     <footer id="page-footer">
+
+        <?php require_once(dirname(__FILE__).'/includes/footertext.php'); ?>
 
         <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>

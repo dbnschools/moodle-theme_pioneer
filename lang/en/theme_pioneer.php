@@ -35,6 +35,7 @@ $string['socialwallheaddesc'] = 'Socialwall Course format is a set of course for
 $string['socialiconheading'] = 'Social Icon Navigation';
 $string['marketingheading'] = 'Marketing Spots';
 $string['tabheading'] = 'Frontpage Tabs';
+$string['footertextboxes'] = 'Footer Textboxes';
 
 $string['choosereadme'] = '<p>Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.</p><p>We are a K-12 school district in Dearborn, Michigan.  Pioneer is the mascot of Dearborn High School.</p>';
 
@@ -71,6 +72,14 @@ $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be 
 
 $string['generalalert'] = 'General Alert';
 $string['generalalertdesc'] = 'Whatever you add to this textarea will be displayed in the General Alert area on the frontpage.';
+
+$string['fullfootertext'] = 'Full-Width Footer Textbox';
+$string['fullfootertext_desc'] = 'This is a full-width textbox that appears in the footer above the 4 column textboxes. This is ideal if you do not want to use the 4 column textboxes below.';
+$string['footertext1'] = 'Footer Textbox One';
+$string['footertext2'] = 'Footer Textbox Two';
+$string['footertext3'] = 'Footer Textbox Three';
+$string['footertext4'] = 'Footer Textbox Four';
+$string['footertext_desc'] = 'Enter HTML text and it will appear in the bottom of the page.  Three columns are used.';
 
 
 $string['fptextbox'] = 'Frontpage Textbox';
