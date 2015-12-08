@@ -288,6 +288,14 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    $name = 'theme_pioneer/enablethiscourse';
+    $title = get_string('enablethiscourse', 'theme_pioneer');
+    $description = get_string('enablethiscoursedesc', 'theme_pioneer');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
 // Description
     $name = 'theme_pioneer/coursegradeinfo';
     $heading = get_string('coursegradeinfo', 'theme_pioneer');

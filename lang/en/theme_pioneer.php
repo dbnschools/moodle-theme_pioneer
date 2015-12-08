@@ -347,6 +347,10 @@ $string['coursegradebutton'] = 'Course Grades';
 $string['coursegradestext'] = 'Course Grades Button Text';
 $string['coursegradestextdesc'] = 'Enter the text you would like to appear for the toggle button.';
 
+$string['thiscourse'] = 'This Course';
+$string['enablethiscourse'] = 'Course Activity Menu';
+$string['enablethiscoursedesc'] = 'Show a drop down menu of course activities.';
+
 
 // CourseBox rendering.
 $string['frontpagecoursesettings'] = 'Frontpage Courses';

@@ -31,7 +31,8 @@
            </div>
            <?php } else { ?>
            <?php } ?>
-
+           
+                <?php echo $OUTPUT->navigation_menu(); ?>
                 <?php echo $OUTPUT->custom_menu(); ?>
 
                 <ul class="nav pull-right">

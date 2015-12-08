@@ -580,7 +580,39 @@ function theme_pioneer_get_setting($setting, $format = false) {
         return format_string($theme->settings->$setting);
     }
 }
+function theme_pioneer_get_course_activities() {
+    GLOBAL $CFG, $PAGE, $OUTPUT;
+    // A copy of block_activity_modules.
+    $course = $PAGE->course;
+    $content = new stdClass();
+    $modinfo = get_fast_modinfo($course);
+    $modfullnames = array();
 
+    $archetypes = array();
+
+    foreach ($modinfo->cms as $cm) {
+        // Exclude activities which are not visible or have no link (=label).
+        if (!$cm->uservisible or !$cm->has_view()) {
+            continue;
+        }
+        if (array_key_exists($cm->modname, $modfullnames)) {
+            continue;
+        }
+        if (!array_key_exists($cm->modname, $archetypes)) {
+            $archetypes[$cm->modname] = plugin_supports('mod', $cm->modname, FEATURE_MOD_ARCHETYPE, MOD_ARCHETYPE_OTHER);
+        }
+        if ($archetypes[$cm->modname] == MOD_ARCHETYPE_RESOURCE) {
+            if (!array_key_exists('resources', $modfullnames)) {
+                $modfullnames['resources'] = get_string('resources');
+            }
+        } else {
+            $modfullnames[$cm->modname] = $cm->modplural;
+        }
+    }
+    core_collator::asort($modfullnames);
+
+    return $modfullnames;
+}
 /**
  * Fetch the hide course ids
  *

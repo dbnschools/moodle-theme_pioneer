@@ -20,7 +20,10 @@
  * @copyright  2015 Chris Kenniburg
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
- 
+require_once($CFG->dirroot.'/blocks/course_overview/locallib.php');
+require_once($CFG->dirroot . "/course/renderer.php");
+require_once($CFG->libdir. '/coursecatlib.php');
+
  class theme_pioneer_core_renderer extends theme_bootstrapbase_core_renderer {
     /*
      * Returns HTML to display a "Turn editing on/off" button in a form.
@@ -45,15 +48,33 @@
         return html_writer::tag('a', html_writer::start_tag('i', array('class' => $icon . ' fa fa-fw')) .
             html_writer::end_tag('i') . $title, array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
     }
-     protected function render_custom_menu(custom_menu $menu) {
-        /*
-        * This code replaces adds the current enrolled
-        * courses to the custommenu.
-        */
-    
-        $hasdisplaymycourses = (empty($this->page->theme->settings->displaymycourses)) ? false : $this->page->theme->settings->displaymycourses;
-        if (isloggedin() && !isguestuser() && $hasdisplaymycourses) {
-            $mycoursetitle = $this->page->theme->settings->mycoursetitle;
+
+    /*
+     * This renders the navbar.
+     * Uses bootstrap compatible html.
+     */
+    public function navbar() {
+        $items = $this->page->navbar->get_items();
+        $breadcrumbs = array();
+        foreach ($items as $item) {
+            $item->hideicon = true;
+            $breadcrumbs[] = $this->render($item);
+        }
+        $divider = '<i class="fa fa-chevron-right"></i>';
+        $listitems = '<li>'.join(" $divider</li><li>", $breadcrumbs).'</li>';
+        $title = '<span class="accesshide">'.get_string('pagepath').'</span>';
+        return $title . "<ul class=\"breadcrumb\">$listitems</ul>";
+    }
+
+
+    public function navigation_menu() {
+        global $PAGE, $COURSE, $OUTPUT, $CFG;
+        $menu = new custom_menu();
+        
+        if (isloggedin() && !isguestuser()) {
+
+            if (!empty($PAGE->theme->settings->displaymycourses)) {
+                $mycoursetitle = $this->page->theme->settings->mycoursetitle;
             if ($mycoursetitle == 'module') {
                 $branchtitle = get_string('mymodules', 'theme_pioneer');
             } else if ($mycoursetitle == 'unit') {
@@ -66,21 +87,59 @@
             $branchlabel = '<i class="fa fa-briefcase"></i>'.$branchtitle;
             $branchurl   = new moodle_url('/my/index.php');
             $branchsort  = 10000;
- 
-            $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
-            if ($courses = enrol_get_my_courses(NULL, 'fullname ASC')) {
-                foreach ($courses as $course) {
-                    if ($course->visible){
-                        $branch->add(format_string($course->fullname), new moodle_url('/course/view.php?id='.$course->id), format_string($course->shortname));
+
+                $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+                list($sortedcourses, $sitecourses, $totalcourses) = block_course_overview_get_sorted_courses();
+
+                if ($sortedcourses) {
+                    foreach ($sortedcourses as $course) {
+                        if ($course->visible) {
+                            $branch->add(format_string($course->fullname), new moodle_url('/course/view.php?id='.$course->id),
+                                    format_string($course->shortname));
+                        }
                     }
+                } else {
+                    $noenrolments = get_string('noenrolments', 'theme_pioneer');
+                    $branch->add('<em>'.$noenrolments.'</em>', new moodle_url('/'), $noenrolments);
                 }
-            } else {
-                $noenrolments = get_string('noenrolments', 'theme_pioneer');
-                $branch->add('<em>'.$noenrolments.'</em>', new moodle_url('/'), $noenrolments);
             }
             
+            if (!empty($PAGE->theme->settings->enablethiscourse)) {
+                if (ISSET($COURSE->id) && $COURSE->id > 1) {
+                    $branchtitle = get_string('thiscourse', 'theme_pioneer');
+                    $branchlabel = '<i class="fa fa-sitemap"></i><span class="menutitle">'.$branchtitle.'</span>';
+                    $branchurl = new moodle_url('#');
+                    $branch = $menu->add($branchlabel, $branchurl, $branchtitle, 10002);
+
+                    $branchtitle = "People";
+                    $branchlabel = '<i class="fa fa-users"></i>'.$branchtitle;
+                    $branchurl = new moodle_url('/user/index.php', array('id' => $PAGE->course->id));
+                    $branch->add($branchlabel, $branchurl, $branchtitle, 100003);
+
+                    $branchtitle = get_string('grades');
+                    $branchlabel = $OUTPUT->pix_icon('i/grades', '', '', array('class' => 'icon')).$branchtitle;
+                    $branchurl = new moodle_url('/grade/report/index.php', array('id' => $PAGE->course->id));
+                    $branch->add($branchlabel, $branchurl, $branchtitle, 100004);
+
+                    $data = theme_pioneer_get_course_activities();
+
+                    foreach ($data as $modname => $modfullname) {
+                        if ($modname === 'resources') {
+                            $icon = $OUTPUT->pix_icon('icon', '', 'mod_page', array('class' => 'icon'));
+                            $branch->add($icon.$modfullname, new moodle_url('/course/resources.php', array('id' => $PAGE->course->id)));
+                        } else {
+                            $icon = '<img src="'.$OUTPUT->pix_url('icon', $modname) . '" class="icon" alt="" />';
+                            $branch->add($icon.$modfullname, new moodle_url('/mod/'.$modname.'/index.php',
+                                    array('id' => $PAGE->course->id)));
+                        }
+                    }
+                }
+            }
         }
-        return parent::render_custom_menu($menu);
+
+        return $this->render_custom_menu($menu);
     }
+
+
 }
 ?>

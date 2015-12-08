@@ -6,7 +6,9 @@ Pioneer is a beautiful, responsive theme loaded with great features from custom 
 * If no site logo is uploaded the topnav bar will now default to the site title and link to the frontpage.
 * Revisited and fixed an issue with the large frontpage icons and searchbox display toggle not truly hiding when it was supposed to be hidden.
 * Marketing Spots will only appear on homepage/frontpage.  They will no longer display past the homepage.  This makes the courses nicer and less cluttered.
-*
+* Centered featured courses when less than 6 are used.
+* Added This Course dropdown menu for quick access to course activities.
+* My Classes now reflects the ordering and settings of the Course Overview Block on the Dashboard.
 
 ##Pioneer v1.2.6 & 1.2.7
 * Moved User Menu up to top navigation bar next to my courses dropdown.
