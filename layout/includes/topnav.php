@@ -33,8 +33,10 @@
            <?php } ?>
            
                 <?php echo $OUTPUT->navigation_menu(); ?>
+                <?php echo $OUTPUT->tools_menu(); ?>
                 <?php echo $OUTPUT->custom_menu(); ?>
-
+                
+                <?php if (empty($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu']) { echo $OUTPUT->lang_menu(); } ?>
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
                 </ul>

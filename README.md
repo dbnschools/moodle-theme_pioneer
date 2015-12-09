@@ -1,6 +1,17 @@
 # Moodle-theme_pioneer
 Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.
 
+##Pioneer v1.2.9
+* Added custom color for breadcrumb bar which appears below the header image.
+* Added Copyright Notice in footer area.
+* CSS fixes and enhancements
+* Updated language strings and settings pages to be more intuitive. 
+* My Classes and This Course drop down menus will now include a scroll bar if the list of items is too long. 
+* Removed My Grades from This Course dropdown menu.  Causes issues if show gradebook to students is turned off.  
+* Added Tools custom drop down menu for quick links as a custom menu option.
+* Duplicate Language drop down Menu is fixed.
+* Topnav Drop Down menus will only support single column menus. This is to accomodate very long My Classes and This Course Menus.  If anyone can help with a CSS fix I would appreciate this.  I do believe it can be fixed with some simple CSS adjustments but I am at a loss and we don't use more than a single column links.
+
 ##Pioneer v1.2.8
 * Added a theme admin page to create a custom footer with the ability to use a single full-width textbox or a 4 column layout with 4 individual textboxes. Or choose to use both!
 * If no site logo is uploaded the topnav bar will now default to the site title and link to the frontpage.

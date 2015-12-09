@@ -127,6 +127,14 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+// Description
+    $name = 'theme_pioneer/backgroundimageinfo';
+    $heading = get_string('backgroundimageinfo', 'theme_pioneer');
+    $information = get_string('backgroundimageinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+
     // Background image setting.
     $name = 'theme_pioneer/backgroundimage';
     $title = get_string('backgroundimage', 'theme_pioneer');
@@ -178,6 +186,13 @@ defined('MOODLE_INTERNAL') || die;
     $description = get_string('backgroundfixed_desc', 'theme_pioneer');
     $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
     $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+// Description
+    $name = 'theme_pioneer/stylinginfo';
+    $heading = get_string('stylinginfo', 'theme_pioneer');
+    $information = get_string('stylinginfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
     $temp->add($setting);
 
     // Logo file setting.
@@ -295,6 +310,15 @@ defined('MOODLE_INTERNAL') || die;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
+
+    $name = 'theme_pioneer/toolsmenu';
+    $title = get_string('toolsmenu', 'theme_pioneer');
+    $description = get_string('toolsmenudesc', 'theme_pioneer');
+    $setting = new admin_setting_configtextarea($name, $title, $description, '', PARAM_RAW, '50', '10');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $ADMIN->add('theme_pioneer', $temp);
 
 // Description
     $name = 'theme_pioneer/coursegradeinfo';
@@ -438,6 +462,15 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $title = get_string('iconnavbackgroundcolor', 'theme_pioneer');
     $description = get_string('iconnavbackgroundcolor_desc', 'theme_pioneer');
     $default = '#fff';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Breadcrumb bar color
+    $name = 'theme_pioneer/breadcrumbcolor';
+    $title = get_string('breadcrumbcolor', 'theme_pioneer');
+    $description = get_string('breadcrumbcolor_desc', 'theme_pioneer');
+    $default = '#DCE0E5';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
@@ -1221,6 +1254,15 @@ $temp = new admin_settingpage('theme_pioneer_footertextboxes', get_string('foote
     $description = get_string('footertext_desc', 'theme_pioneer');
     $default = '';
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    //Topic and Weekly Section Titles Icon
+    $name = 'theme_pioneer/copyrighttext';
+    $title = get_string('copyrighttext','theme_pioneer');
+    $description = get_string('copyrighttext_desc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 

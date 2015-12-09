@@ -35,7 +35,7 @@ $string['socialwallheaddesc'] = 'Socialwall Course format is a set of course for
 $string['socialiconheading'] = 'Social Icon Navigation';
 $string['marketingheading'] = 'Marketing Spots';
 $string['tabheading'] = 'Frontpage Tabs';
-$string['footertextboxes'] = 'Footer Textboxes';
+$string['footertextboxes'] = 'Custom Footer';
 
 $string['choosereadme'] = '<p>Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.</p><p>We are a K-12 school district in Dearborn, Michigan.  Pioneer is the mascot of Dearborn High School.</p>';
 
@@ -79,8 +79,9 @@ $string['footertext1'] = 'Footer Textbox One';
 $string['footertext2'] = 'Footer Textbox Two';
 $string['footertext3'] = 'Footer Textbox Three';
 $string['footertext4'] = 'Footer Textbox Four';
-$string['footertext_desc'] = 'Enter HTML text and it will appear in the bottom of the page.  Three columns are used.';
-
+$string['footertext_desc'] = 'Enter HTML text and it will appear in the bottom of each page.  Four columns are used with Bootstrap <span3>.';
+$string['copyrighttext'] = 'Copyright Notice';
+$string['copyrighttext_desc'] = 'Add a copyright notice for the site.  Will appear in the footer.';
 
 $string['fptextbox'] = 'Frontpage Textbox';
 $string['fptextboxdesc'] = 'This textbox appears on the frontpage and is ideal for putting a welcome message.';
@@ -161,14 +162,22 @@ $string['fpsearchbutton'] = 'Search';
 
 
 //settings info
-$string['fptextboxinfo'] = 'Frontpage Only Custom Text Box';
+$string['fptextboxinfo'] = 'Frontpage Welcome Box';
 $string['fptextboxinfodesc'] = 'Use this text box to provide instructions and information for your users.  It will only appear on the the frontpage.  The toggle is below is limited to only the frontpage (Dashboard or Site).';
-$string['mycorusesinfo'] = 'My Courses Dropdown Menu';
-$string['mycorusesinfodesc'] = 'This will display a drop down in the top navigation bar showing only enrolled courses to the user.';
+$string['mycorusesinfo'] = 'Navigational Menu Options';
+$string['mycorusesinfodesc'] = 'These settings control the top navigation bar.  These include the My Courses dropdown and This Course dropdown.';
 $string['coursegradeinfo'] = 'Course Grade Slider';
 $string['coursegradeinfodesc'] = 'Checking this box will display the course gradebook items to students in a slider/toggle on each course page.  This makes it really simple for a student to see their grades for a course.';
 $string['headerimageinfo'] = 'Header Image Height';
 $string['headerimageinfodesc'] = 'These settings control the height of the header image on the site and in-course activities. ';
+$string['backgroundimageinfo'] = 'Background Image';
+$string['backgroundimageinfodesc'] = 'Since the main content is full width you will only see a small portion of background color at the very bottom of the page.  You can upload an image if desired.';
+$string['stylinginfo'] = 'Styling and Alerts';
+$string['stylinginfodesc'] = 'Additional customization options and alert settings.';
+
+
+
+
 
 // Marketing Spots
 $string['alwaysdisplay'] = 'Always Show';
@@ -228,7 +237,7 @@ $string['navicondesc'] = 'Name of the icon you wish to use. List is <a href="htt
 $string['naviconbuttontext'] = 'Tooltip Text';
 $string['naviconbuttontextdesc'] = 'Text to appear in the tooltip of the icon when the mouse hovers over it.';
 $string['naviconbuttonurl'] = 'Link URL';
-$string['naviconbuttonurldesc'] = 'URL the button will point to.';
+$string['naviconbuttonurldesc'] = 'URL the button will point to. You can link to anywhere including outside websites  just enter the proper URL.  If your Moodle site is in a subdirectory the default URL will not work.  Please adjust the URL to reflect the subdirectory. Example if "moodle" was your subdirectory folder then the URL would need to be changed to /moodle/my/ ';
 
 //Frontpage tabs
 $string['tabbutton'] = 'Getting Started';
@@ -282,12 +291,13 @@ $string['headerbackgroundimage'] = 'Default Header Image';
 $string['headerbackgroundimage_desc'] = 'This is the default header image.';
 $string['headerbackgroundtoggle'] = 'Allow teachers to upload header image';
 $string['headerbackgroundtoggle_desc'] = 'If turned on a teacher can upload an image to <a href="https://docs.moodle.org/29/en/Course_settings#Course_summary_files" target="_new">Course Summary Files</a>.  This image should be small to reduce load time.  Recommended size is 1024 width and less than 500kb in size. Otherwise all courses will use the photo you upload below for header image.';
-
+$string['breadcrumbcolor'] = 'Breadcrumb Color';
+$string['breadcrumbcolor_desc'] = 'Choose a background color for the breadcrumb bar. This is just below the main header image on the page.';
 
 $string['topicweekcolor'] = 'Topic and Week Section Background';
 $string['topicweekcolor_desc'] = 'In Topic and Weekly course formats this is the background color for each topic or week in the course.';
 $string['sectionheadericon'] = 'Section Title Icon';
-$string['sectionheadericondesc'] = 'This icon appears before the title of every topic for weekly and topic based course formats.  Use the unicode setting from Font Awesome. List is <a https://fortawesome.github.io/Font-Awesome/icons/" target="_new">here</a>. The \f02d (default) icon is a book.';
+$string['sectionheadericondesc'] = 'This icon appears before the title of every topic for weekly and topic based course formats.  Use the unicode setting from Font Awesome. List is <a href="https://fortawesome.github.io/Font-Awesome/icons/" target="_new">here</a>. The \f02d (default) icon is a book.';
 $string['swicontext'] = 'Socialwall Course Format Icon and Text colors';
 $string['swicontext_desc'] = 'If you use the Socialwall Course Format this setting will change the colors of the icons and words Attachments, Posts, Message, and Comments in the wall feed.';
 $string['swpost'] = 'Socialwall Course Format Post background';
@@ -325,6 +335,18 @@ $string['mycoursesinfo'] = 'Dynamic Enrolled Courses List';
 $string['mycoursesinfodesc'] = 'Displays a dynamic list of enrolled courses to the user.';
 $string['displaymycourses'] = 'Display enrolled courses';
 $string['displaymycoursesdesc'] = 'Display enrolled courses for users in the Custom Menu';
+
+$string['toolsmenulabel'] = 'Tools';
+$string['toolsmenu'] = 'Tool Menu';
+$string['toolsmenudesc'] = 'You can configure links to be shown under a tools menu. Each line consists of some menu text, a link URL (optional), a tooltip title (optional) and a language code or comma-separated list of codes (optional, for displaying the line to users of the specified language only), separated by pipe characters. For example:
+<pre>
+Moodle community|https://moodle.org
+Moodle free support|https://moodle.org/support
+Moodle development|https://moodle.org/development
+Moodle Docs|http://docs.moodle.org|Moodle Docs
+German Moodle Docs|http://docs.moodle.org/de|Documentation in German|de
+Moodle.com|http://moodle.com/
+</pre>';
 
 $string['mycoursetitle'] = 'Terminology';
 $string['mycoursetitledesc'] = 'Change the terminology for the "My Courses" link in the dropdown menu';

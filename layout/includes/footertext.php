@@ -25,19 +25,25 @@
 ?>
 
         <div class="row-fluid customfooter">
-            <div class="span12 footertext">
-                <?php echo $PAGE->theme->settings->fullfootertext ?>
-            </div>
-            <div class="span3 footertext">
-                <?php echo $PAGE->theme->settings->footertext1 ?> 
-            </div>
-            <div class="span3 footertext">
+            <?php if ($PAGE->theme->settings->fullfootertext) { ?> <div class="span12 footertext">
+                <?php echo $PAGE->theme->settings->fullfootertext ?> 
+            </div><?php } ?>
+            <?php if ($PAGE->theme->settings->footertext1) { ?><div class="span3 footertext">
+                 <?php echo $PAGE->theme->settings->footertext1 ?> 
+            </div><?php } ?>
+           <?php if ($PAGE->theme->settings->footertext2) { ?>  <div class="span3 footertext">
                 <?php echo $PAGE->theme->settings->footertext2 ?> 
-            </div>
-            <div class="span3 footertext">
+            </div><?php } ?>
+            <?php if ($PAGE->theme->settings->footertext3) { ?> <div class="span3 footertext">
                 <?php echo $PAGE->theme->settings->footertext3 ?> 
-            </div>
-            <div class="span3 footertext">
+            </div><?php } ?>
+           <?php if ($PAGE->theme->settings->footertext4) { ?>  <div class="span3 footertext">
                 <?php echo $PAGE->theme->settings->footertext4 ?> 
-            </div>
+            </div><?php } ?>
         </div>
+
+        <?php if ($PAGE->theme->settings->copyrighttext) { ?>
+            <div class="copyrighttext">
+                © <?php echo $PAGE->theme->settings->copyrighttext ?>
+            </div>
+        <?php } ?>

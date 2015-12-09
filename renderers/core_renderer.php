@@ -86,7 +86,7 @@ require_once($CFG->libdir. '/coursecatlib.php');
             }
             $branchlabel = '<i class="fa fa-briefcase"></i>'.$branchtitle;
             $branchurl   = new moodle_url('/my/index.php');
-            $branchsort  = 10000;
+            $branchsort  = 10001;
 
                 $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
                 list($sortedcourses, $sitecourses, $totalcourses) = block_course_overview_get_sorted_courses();
@@ -116,11 +116,6 @@ require_once($CFG->libdir. '/coursecatlib.php');
                     $branchurl = new moodle_url('/user/index.php', array('id' => $PAGE->course->id));
                     $branch->add($branchlabel, $branchurl, $branchtitle, 100003);
 
-                    $branchtitle = get_string('grades');
-                    $branchlabel = $OUTPUT->pix_icon('i/grades', '', '', array('class' => 'icon')).$branchtitle;
-                    $branchurl = new moodle_url('/grade/report/index.php', array('id' => $PAGE->course->id));
-                    $branch->add($branchlabel, $branchurl, $branchtitle, 100004);
-
                     $data = theme_pioneer_get_course_activities();
 
                     foreach ($data as $modname => $modfullname) {
@@ -138,6 +133,92 @@ require_once($CFG->libdir. '/coursecatlib.php');
         }
 
         return $this->render_custom_menu($menu);
+    }
+
+public function tools_menu() {
+        global $PAGE;
+        $custommenuitems = '';
+        if (!empty($PAGE->theme->settings->toolsmenu)) {
+            $custommenuitems .= "<i class='fa fa-wrench'> </i>".get_string('toolsmenulabel', 'theme_pioneer')."|#|".
+                    get_string('toolsmenulabel', 'theme_pioneer')."\n";
+            $arr = explode("\n", $PAGE->theme->settings->toolsmenu);
+            // We want to force everything inputted under this menu.
+            foreach ($arr as $key => $value) {
+                $arr[$key] = '-' . $arr[$key];
+            }
+            $custommenuitems .= implode("\n", $arr);
+        }
+        $custommenu = new custom_menu($custommenuitems);
+        return $this->render_custom_menu($custommenu);
+    }
+
+    public function lang_menu() {
+        global $CFG;
+        $langmenu = new custom_menu();
+
+        $addlangmenu = true;
+        $langs = get_string_manager()->get_list_of_translations();
+        if (count($langs) < 2
+            or empty($CFG->langmenu)
+            or ($this->page->course != SITEID and !empty($this->page->course->lang))
+        ) {
+            $addlangmenu = false;
+        }
+
+        if ($addlangmenu) {
+            $strlang = get_string('language');
+            $currentlang = current_language();
+            if (isset($langs[$currentlang])) {
+                $currentlang = $langs[$currentlang];
+            } else {
+                $currentlang = $strlang;
+            }
+            $this->language = $langmenu->add('<i class="fa fa-flag"></i><span class="langdesc">'.$currentlang.'</span>',
+                    new moodle_url('#'), $strlang, 100);
+            foreach ($langs as $langtype => $langname) {
+                $this->language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
+            }
+        }
+        return $this->render_custom_menu($langmenu);
+    }
+
+    public function custom_menu($custommenuitems = '') {
+        global $CFG;
+
+        if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
+            $custommenuitems = $CFG->custommenuitems;
+        }
+        $custommenu = new custom_menu($custommenuitems, current_language());
+        return $this->render_custom_menu($custommenu);
+    }
+    /*
+     * This renders the bootstrap top menu.
+     *
+     * This renderer is needed to enable the Bootstrap style navigation.
+     */
+    protected function render_custom_menu(custom_menu $menu) {
+        global $CFG;
+
+        // TODO: eliminate this duplicated logic, it belongs in core, not
+        // here. See MDL-39565.
+        $addlangmenu = true;
+        $langs = get_string_manager()->get_list_of_translations();
+        if (count($langs) < 2
+            or empty($CFG->langmenu)
+            or ($this->page->course != SITEID and !empty($this->page->course->lang))) {
+            $addlangmenu = false;
+        }
+
+        if (!$menu->has_children() && $addlangmenu === false) {
+            return '';
+        }
+
+        $content = '<ul class="nav">';
+        foreach ($menu->get_children() as $item) {
+            $content .= $this->render_custom_menu_item($item, 1);
+        }
+
+        return $content.'</ul>';
     }
 
 

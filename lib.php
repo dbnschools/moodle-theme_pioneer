@@ -252,6 +252,13 @@ function theme_pioneer_process_css($css, $theme) {
     }
     $css = theme_pioneer_set_sectionheadericon($css, $sectionheadericon);
 
+    // breadcrumb color
+    if (!empty($theme->settings->breadcrumbcolor)) {
+        $breadcrumbcolor = $theme->settings->breadcrumbcolor;
+    } else {
+        $breadcrumbcolor = '';
+    }
+    $css = theme_pioneer_set_breadcrumbcolor($css, $breadcrumbcolor);
 
     return $css;
 
@@ -279,6 +286,18 @@ function theme_pioneer_set_logo($css, $logo, $theme) {
 function theme_pioneer_set_marketboxcolor($css, $marketboxcolor) {
     $tag = '[[setting:marketboxcolor]]';
     $replacement = $marketboxcolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+//Adds custom background color to breadcrumbs
+function theme_pioneer_set_breadcrumbcolor($css, $breadcrumbcolor) {
+    $tag = '[[setting:breadcrumbcolor]]';
+    $replacement = $breadcrumbcolor;
         if (is_null($replacement)) {
         $replacement = '';
     }
