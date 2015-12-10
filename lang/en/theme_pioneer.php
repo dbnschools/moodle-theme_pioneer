@@ -104,6 +104,11 @@ $string['secondarybackground'] = 'Secondary background colour';
 $string['secondarybackground_desc'] = 'The background colour of any secondary content, such as blocks.';
 $string['textcolor'] = 'Text colour';
 $string['textcolor_desc'] = 'The colour of the text.';
+$string['tabbuttoncolor'] = 'Tab Button Color';
+$string['tabbuttoncolor_desc'] = 'The color of the button used to toggle the frontpage tabs and course grades slider.  This appears just below the title of the page when activated.';
+$string['tabbuttonhovercolor'] = 'Tab Button Color Roll Over';
+$string['tabbuttonhovercolor_desc'] = 'The color of the button on hover used to toggle the frontpage tabs and course grades slider.  This appears just below the title of the page when activated.';
+
 
 // Custom Icons
 $string['togglenavicons'] = 'Turn On Custom Icons';

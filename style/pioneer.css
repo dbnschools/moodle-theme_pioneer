@@ -188,14 +188,14 @@ section#region-main .block_course_overview .content {
   margin: 0px auto;
   display: inline-block;
   max-width: 500px;
-  background-color: rgba(0,0,0,0.65);
+  background-color: [[setting:tabbuttoncolor]];
   padding:5px 15px;
   color:#fff;
   font-size:20px;
   text-align: center;
 }
 .coursegradebtn:hover {
-  background-color:#fff;
+  background-color:[[setting:tabbuttonhovercolor]];
   color:#000;
   cursor:pointer;
 }
@@ -1558,8 +1558,9 @@ for the colored icons in the blocks.*/
     margin: 7px 0px;
 }
 
-.open>.dropdown-menu {
+/*.open>.dropdown-menu {
     display: block;
     max-height: 300px;
     overflow-y: auto;
-}
+}*/
+

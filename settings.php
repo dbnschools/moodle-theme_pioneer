@@ -318,8 +318,6 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-    $ADMIN->add('theme_pioneer', $temp);
-
 // Description
     $name = 'theme_pioneer/coursegradeinfo';
     $heading = get_string('coursegradeinfo', 'theme_pioneer');
@@ -426,6 +424,24 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $title = get_string('loginbuttoncolor', 'theme_pioneer');
     $description = get_string('loginbuttoncolor_desc', 'theme_pioneer');
     $default = '#FF6500';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Tab slider button color.
+    $name = 'theme_pioneer/tabbuttoncolor';
+    $title = get_string('tabbuttoncolor', 'theme_pioneer');
+    $description = get_string('tabbuttoncolor_desc', 'theme_pioneer');
+    $default = 'rgba(0, 0, 0, 0.7)';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Tab slider button hover color.
+    $name = 'theme_pioneer/tabbuttonhovercolor';
+    $title = get_string('tabbuttonhovercolor', 'theme_pioneer');
+    $description = get_string('tabbuttonhovercolor_desc', 'theme_pioneer');
+    $default = 'rgba(255, 255, 255, 1)';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);

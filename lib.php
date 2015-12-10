@@ -173,6 +173,20 @@ function theme_pioneer_process_css($css, $theme) {
     }
     $css = theme_pioneer_set_loginbuttoncolor($css, $loginbuttoncolor);
 
+    if (!empty($theme->settings->tabbuttoncolor)) {
+        $tabbuttoncolor = $theme->settings->tabbuttoncolor;
+    } else {
+        $tabbuttoncolor = '';
+    }
+    $css = theme_pioneer_set_tabbuttoncolor($css, $tabbuttoncolor);
+
+    if (!empty($theme->settings->tabbuttonhovercolor)) {
+        $tabbuttonhovercolor = $theme->settings->tabbuttonhovercolor;
+    } else {
+        $tabbuttonhovercolor = '';
+    }
+    $css = theme_pioneer_set_tabbuttonhovercolor($css, $tabbuttonhovercolor);
+
     if (!empty($theme->settings->blockcolor)) {
         $blockcolor = $theme->settings->blockcolor;
     } else {
@@ -421,6 +435,30 @@ function theme_pioneer_set_topicweekcolor($css, $topicweekcolor) {
 function theme_pioneer_set_loginbuttoncolor($css, $loginbuttoncolor) {
     $tag = '[[setting:loginbuttoncolor]]';
     $replacement = $loginbuttoncolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_tabbuttoncolor($css, $tabbuttoncolor) {
+    $tag = '[[setting:tabbuttoncolor]]';
+    $replacement = $tabbuttoncolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_tabbuttonhovercolor($css, $tabbuttonhovercolor) {
+    $tag = '[[setting:tabbuttonhovercolor]]';
+    $replacement = $tabbuttonhovercolor;
         if (is_null($replacement)) {
         $replacement = '';
     }
