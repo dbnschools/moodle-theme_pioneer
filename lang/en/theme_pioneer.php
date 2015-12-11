@@ -87,8 +87,10 @@ $string['fptextbox'] = 'Frontpage Textbox';
 $string['fptextboxdesc'] = 'This textbox appears on the frontpage and is ideal for putting a welcome message.';
 $string['togglefptextbox'] = 'Toggle Frontpage Text Box Display';
 $string['togglefptextboxdesc'] = 'Choose if you wish to hide or show the Frontpage Text Box.';
-$string['fptextboxiconnav'] = 'Show Icon Nav and Searchbox';
-$string['fptextboxiconnavdesc'] = 'Check if you would like to show the icon navigation and searchbox with the Frontpage Textbox.  This will help first time users find and enroll in courses.';
+$string['fpsearchboxtop'] = 'Display Course Searchbox in Top Navigation';
+$string['fpsearchboxmain'] = 'Display Course Searchbox in Main Content Area';
+$string['fpsearchboxtop_desc'] = 'Show a course search box in the top navigation bar.  This will appear to the right of the icon navigation at the top of the page and can be shown even if the icon navigation is hidden.  This searchbox is not dependent on icon navigation settings.';
+$string['fpsearchboxmain_desc'] = 'Show a course search box in the frontpage textbox area.  This option is dependent on the icon navigation settings and will only be displayed if icon navigation is set to display in main content area.';
 
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
@@ -111,6 +113,12 @@ $string['tabbuttonhovercolor_desc'] = 'The color of the button on hover used to 
 
 
 // Custom Icons
+$string['toggleiconnav'] = 'Icon Navigation Location';
+$string['toggleiconnav_desc'] = 'Determine where you want the icons and course searchbox to appear.';
+$string['bothpositions'] = 'Both Positions';
+$string['intopnav'] = 'Only Top Navbar';
+$string['inmaincontent'] = 'Only Main Content';
+
 $string['togglenavicons'] = 'Turn On Custom Icons';
 $string['togglenaviconsdesc'] = 'Choose to include custom navigation icons based off Font-Awesome.';
 $string['naviconon'] = 'Turn on custom navigation icons';
@@ -162,7 +170,7 @@ $string['forgotpasstoggle_desc'] = 'Show or hide the Forgot Password link in the
 //top course search form
 $string['topsearch'] = 'Search courses';
 $string['topsearchbutton'] = 'Find';
-$string['fpsearch'] = 'Find and enroll in courses...';
+$string['fpsearch'] = 'Search courses';
 $string['fpsearchbutton'] = 'Search';
 
 
@@ -346,10 +354,10 @@ $string['toolsmenu'] = 'Tool Menu';
 $string['toolsmenudesc'] = 'You can configure links to be shown under a tools menu. Each line consists of some menu text, a link URL (optional), a tooltip title (optional) and a language code or comma-separated list of codes (optional, for displaying the line to users of the specified language only), separated by pipe characters. For example:
 <pre>
 Moodle community|https://moodle.org
-Moodle free support|https://moodle.org/support
-Moodle development|https://moodle.org/development
-Moodle Docs|http://docs.moodle.org|Moodle Docs
-German Moodle Docs|http://docs.moodle.org/de|Documentation in German|de
+-Moodle free support|https://moodle.org/support
+-Moodle development|https://moodle.org/development
+--Moodle Docs|http://docs.moodle.org|Moodle Docs
+--German Moodle Docs|http://docs.moodle.org/de|Documentation in German|de
 Moodle.com|http://moodle.com/
 </pre>';
 

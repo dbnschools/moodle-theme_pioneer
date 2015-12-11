@@ -31,8 +31,8 @@ $regionmain = 'span9 pull-left';
 $sidepre = 'span3 pull-right desktop-first-column';
 // Reset layout mark-up for RTL languages.
 if (right_to_left()) {
-    $regionmain = 'span9 pull-left';
-    $sidepre = 'span3 pull-right desktop-first-column';
+    $regionmain = 'span9 pull-right';
+    $sidepre = 'span3 pull-left desktop-first-column';
 }
 
 echo $OUTPUT->doctype() ?>
@@ -135,9 +135,11 @@ echo $OUTPUT->doctype() ?>
             require_once(dirname(__FILE__).'/includes/fptextbox.php');
         } else if($PAGE->theme->settings->togglefptextbox==3 && isloggedin()) {
             require_once(dirname(__FILE__).'/includes/fptextbox.php');
-        } else if($PAGE->theme->settings->togglefptextbox==0) {
+        } else if($PAGE->theme->settings->togglefptextbox==0 && $PAGE->theme->settings->toggleiconnav==3) {
             require_once(dirname(__FILE__).'/includes/fp_iconnav.php');
-        } else if($PAGE->theme->settings->togglefptextbox==2) {
+        } else if($PAGE->theme->settings->togglefptextbox==2 && $PAGE->theme->settings->toggleiconnav==1) {
+            require_once(dirname(__FILE__).'/includes/fp_iconnav.php');
+        } else if($PAGE->theme->settings->togglefptextbox==0 && $PAGE->theme->settings->toggleiconnav==1) {
             require_once(dirname(__FILE__).'/includes/fp_iconnav.php');
         }
         ?>

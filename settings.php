@@ -262,16 +262,6 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-     // Toggle icon navigation and searchbox.
-    $name = 'theme_pioneer/fptextboxiconnav';
-    $title = get_string('fptextboxiconnav', 'theme_pioneer');
-    $description = get_string('fptextboxiconnavdesc', 'theme_pioneer');
-    $default = false;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-
     // Description
     $name = 'theme_pioneer/mycorusesinfo';
     $heading = get_string('mycorusesinfo', 'theme_pioneer');
@@ -573,6 +563,37 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $temp = new admin_settingpage('theme_pioneer_iconnav', get_string('iconnavheading', 'theme_pioneer'));
 
 //Custom Navigation Icons on homepage
+    // Toggle FP Textbox Spots.
+    $name = 'theme_pioneer/toggleiconnav';
+    $title = get_string('toggleiconnav' , 'theme_pioneer');
+    $description = get_string('toggleiconnav_desc', 'theme_pioneer');
+    $bothpositions = get_string('bothpositions', 'theme_pioneer');
+    $intopnav = get_string('intopnav', 'theme_pioneer');
+    $inmaincontent = get_string('inmaincontent', 'theme_pioneer');
+    $dontdisplay = get_string('dontdisplay', 'theme_pioneer');
+    $default = 'bothpositions';
+    $choices = array('1'=>$bothpositions, '2'=>$intopnav, '3'=>$inmaincontent, '0'=>$dontdisplay);
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+  // Toggle icon navigation and searchbox.
+    $name = 'theme_pioneer/fpsearchboxtop';
+    $title = get_string('fpsearchboxtop', 'theme_pioneer');
+    $description = get_string('fpsearchboxtop_desc', 'theme_pioneer');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Toggle icon navigation and searchbox.
+    $name = 'theme_pioneer/fpsearchboxmain';
+    $title = get_string('fpsearchboxmain', 'theme_pioneer');
+    $description = get_string('fpsearchboxmain_desc', 'theme_pioneer');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
     
     // This is the descriptor for icon One
     $name = 'theme_pioneer/navicon1info';

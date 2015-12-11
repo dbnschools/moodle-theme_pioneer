@@ -1,4 +1,4 @@
-<?php if (isloggedin() && ($PAGE->theme->settings->fptextboxiconnav)) { ?> 
+<?php if (isloggedin() ) { ?> 
 <div class="fpstartwrap">
 <div class="fpstart">
     <div class="iconset">
@@ -27,14 +27,12 @@
         <a href="<?php echo $PAGE->theme->settings->nav8buttonurl ?>" target="_self" id="button" data-toggle="tooltip" data-placement="bottom" title="<?php echo $PAGE->theme->settings->nav8buttontext ?>"><i class="fa fa-3x fa-<?php echo $PAGE->theme->settings->nav8icon ?>"></i></a>
         <?php } ?>
     </div>
-    <div class="fpsearch">
-        <form action="<?php echo new moodle_url('/course/search.php'); ?>" method="get">
-            <input type="text" placeholder="<?php echo get_string('fpsearch' , 'theme_pioneer'); ?>" name="search" value="">
-            <input type="submit" value="<?php echo get_string('fpsearchbutton' , 'theme_pioneer'); ?>">
-        </form>    
-    </div>
-</div>
-</div>
-
-  <?php } else { ?>
+    <?php if($PAGE->theme->settings->fpsearchboxmain) { ?>
+        <div class="fpsearch">
+            <?php require(dirname(__FILE__).'/searchbox.php'); ?>
+        </div> 
     <?php } ?>
+</div>
+</div>
+<?php } else { ?>
+<?php } ?>

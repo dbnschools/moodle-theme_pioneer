@@ -17,25 +17,28 @@
         <?php echo $OUTPUT->user_menu(); ?>
           
         <div class="nav-collapse collapse">
-        <?php if (isloggedin()) { ?>
           <div>
+         <?php if(isloggedin()) { ?> 
+          
           <div class="top-search">
-           <form action="<?php echo new moodle_url('/course/search.php'); ?>" method="get">
-              <input type="text" placeholder="<?php echo get_string('topsearch' , 'theme_pioneer'); ?>" name="search" value="">
-              <input type="submit" value="<?php echo get_string('topsearchbutton' , 'theme_pioneer'); ?>">
-           </form>    
+            <?php if($PAGE->theme->settings->fpsearchboxtop) { ?>
+            <?php require(dirname(__FILE__).'/searchbox.php'); ?>
+            <?php } ?>
            </div>
-           
-          <?php require_once(dirname(__FILE__).'/iconnav.php'); ?>
-           
+
+            <?php 
+              if($PAGE->theme->settings->toggleiconnav==1) {
+              require_once(dirname(__FILE__).'/iconnav.php');
+              } else if($PAGE->theme->settings->toggleiconnav==2) {
+              require_once(dirname(__FILE__).'/iconnav.php');
+              }
+            ?>
            </div>
            <?php } else { ?>
            <?php } ?>
-           
                 <?php echo $OUTPUT->navigation_menu(); ?>
                 <?php echo $OUTPUT->tools_menu(); ?>
                 <?php echo $OUTPUT->custom_menu(); ?>
-                
                 <?php if (empty($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu']) { echo $OUTPUT->lang_menu(); } ?>
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>

@@ -28,7 +28,14 @@
 <?php if ($PAGE->theme->settings->fptextbox) { ?>
 <div class="fptextbox">
 
-    <?php require_once(dirname(__FILE__).'/fp_iconnav.php'); ?>
+            <?php 
+              if($PAGE->theme->settings->toggleiconnav==1) {
+              require(dirname(__FILE__).'/fp_iconnav.php');
+              } else if($PAGE->theme->settings->toggleiconnav==3) {
+              require(dirname(__FILE__).'/fp_iconnav.php');
+              }
+            ?>
+
 	<?php echo $PAGE->theme->settings->fptextbox ?> 
 	
 </div>

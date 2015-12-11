@@ -1,4 +1,4 @@
-<?php if (isloggedin()) { ?>
+
 <div class="iconset">
 		<?php if ($PAGE->theme->settings->nav1icon) { ?>
         <a href="<?php echo $PAGE->theme->settings->nav1buttonurl ?>" target="_self" id="button" data-toggle="tooltip" data-placement="bottom" title="<?php echo $PAGE->theme->settings->nav1buttontext ?>"><i class="fa fa-2x fa-<?php echo $PAGE->theme->settings->nav1icon ?>"></i></a>
@@ -25,5 +25,3 @@
         <a href="<?php echo $PAGE->theme->settings->nav8buttonurl ?>" target="_self" id="button" data-toggle="tooltip" data-placement="bottom" title="<?php echo $PAGE->theme->settings->nav8buttontext ?>"><i class="fa fa-2x fa-<?php echo $PAGE->theme->settings->nav8icon ?>"></i></a>
         <?php } ?>
 </div> 
-  <?php } else { ?>
-    <?php } ?>
