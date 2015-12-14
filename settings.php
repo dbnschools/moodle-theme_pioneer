@@ -34,7 +34,7 @@ defined('MOODLE_INTERNAL') || die;
     $name = 'theme_pioneer/blockposition';
     $title = get_string('blockposition', 'theme_pioneer');
     $description = get_string('blockposition_desc', 'theme_pioneer');;
-    $default = 'pull-left';
+    $default = 'pull-right';
     $choices = array(
         'pull-left' => get_string('blocksleft', 'theme_pioneer'),
         'pull-right' => get_string('blocksright', 'theme_pioneer'),
