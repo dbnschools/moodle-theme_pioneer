@@ -27,8 +27,11 @@ $html = theme_pioneer_get_html_for_settings($OUTPUT, $PAGE);
 $courserenderer = $PAGE->get_renderer('core', 'course');
 $PAGE->requires->jquery(); 
 // Set default (LTR) layout mark-up for a two column page (side-pre-only).
-$regionmain = 'span9 pull-left';
-$sidepre = 'span3 pull-right desktop-first-column';
+
+$blockposition = $PAGE->theme->settings->blockposition;
+$regionposition = ($blockposition == 'pull-left' ? 'pull-right' : 'pull-left');
+$regionmain = "span9 $regionposition";
+$sidepre = "span3 $blockposition desktop-first-column";
 // Reset layout mark-up for RTL languages.
 if (right_to_left()) {
     $regionmain = 'span9 pull-right';

@@ -49,9 +49,14 @@ h3.sectionname:after {
 
 #dock {background: #32352c;}
 
-#block-region-side-pre {
+#block-region-side-pre .pull-right {
     padding-top:10px;
     padding-left:15px;
+}
+
+#block-region-side-pre .pull-left {
+    padding-top:10px;
+    padding-left:0px;
 }
 
 #logo {
@@ -66,9 +71,6 @@ h3.sectionname:after {
     min-height: 20px;
     border: none 0px;
     border-color:[[setting:blockbordercolor]];
-    -webkit-border-radius: 4px 0px 0px 4px;
-    -moz-border-radius: 4px 0px 0px 4px;
-    border-radius: 4px 0px 0px 4px;
     -webkit-box-shadow: inset none;
     -moz-box-shadow: inset none;
     box-shadow: inset none;
@@ -76,12 +78,28 @@ h3.sectionname:after {
     background-color: [[setting:blockcolor]];
     margin-bottom: 7px;
 }
+.pull-right .block {
+    -webkit-border-radius: 4px 0px 0px 4px;
+    -moz-border-radius: 4px 0px 0px 4px;
+    border-radius: 4px 0px 0px 4px;
+}
+.pull-left .block {
+    -webkit-border-radius: 0px 4px 4px 0px;
+    -moz-border-radius: 0px 4px 4px 0px;
+    border-radius: 0px 4px 4px 0px;
+}
 
-.jsenabled .block {
+.jsenabled .pull-right .block {
     position: relative;
     border-style: solid;
     border-width: 0px 0px 0px 7px;
 }
+.jsenabled .pull-left .block {
+    position: relative;
+    border-style: solid;
+    border-width: 0px 7px 0px 0px;
+}
+
 .jsenabled .block .header h2 {
     text-transform: uppercase;
     line-height: 24px;
@@ -512,7 +530,7 @@ body.has_dock .fpcustomnav-container {
 }
 }
 
-#editbutton {padding: 15px 10px 5px 20px;}
+#editbutton {padding: 15px 10px 15px 20px;}
 #editbutton .btn {clear:both;}
 #editbutton .singlebutton div {}
 #editbutton .forumsearch {}

@@ -29,7 +29,20 @@ defined('MOODLE_INTERNAL') || die;
 
     // "geneictemp" settingpage
     $temp = new admin_settingpage('theme_pioneer_generic',  get_string('geneicsettings', 'theme_pioneer'));
-
+    
+    // Block alignment
+    $name = 'theme_pioneer/blockposition';
+    $title = get_string('blockposition', 'theme_pioneer');
+    $description = get_string('blockposition_desc', 'theme_pioneer');;
+    $default = 'pull-left';
+    $choices = array(
+        'pull-left' => get_string('blocksleft', 'theme_pioneer'),
+        'pull-right' => get_string('blocksright', 'theme_pioneer'),
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
 // Description
     $name = 'theme_pioneer/customlogininfo';
     $heading = get_string('customlogininfo', 'theme_pioneer');

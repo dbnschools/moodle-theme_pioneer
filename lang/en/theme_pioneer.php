@@ -102,6 +102,11 @@ $string['logodesc'] = 'The logo should be 140px by 40px.  The logo is displayed 
 
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
+$string['blocksleft'] = 'Align blocks on the left';
+$string['blocksright'] = 'Align blocks on the right';
+$string['blockposition'] = 'Align Blocks';
+$string['blockposition_desc'] = 'Place the blocks to the left or to the right of the content.';
+
 $string['secondarybackground'] = 'Secondary background colour';
 $string['secondarybackground_desc'] = 'The background colour of any secondary content, such as blocks.';
 $string['textcolor'] = 'Text colour';
