@@ -36,9 +36,35 @@ $string['socialiconheading'] = 'Social Icon Navigation';
 $string['marketingheading'] = 'Marketing Spots';
 $string['tabheading'] = 'Frontpage Tabs';
 $string['footertextboxes'] = 'Custom Footer';
+$string['analyticsheading'] = 'Google Analytics';
 
+$string['configtitle'] = 'Pioneer';
 $string['choosereadme'] = '<p>Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.</p><p>We are a K-12 school district in Dearborn, Michigan.  Pioneer is the mascot of Dearborn High School.</p>';
 
+// Analytics.
+$string['analytics'] = 'Analytics';
+$string['analyticsheadingsub'] = 'Powerful analytics for Moodle';
+$string['analyticsdesc'] = 'Choose the type of analytics you want to insert and save to enable the other options.';
+$string['analyticssiteid'] = 'Site ID';
+$string['analyticssiteiddesc'] = 'Enter your Site ID';
+$string['analyticstrackingid'] = 'Site ID';
+$string['analyticstrackingiddesc'] = 'Enter your Tracking ID';
+$string['analyticsenabled'] = 'Enabled';
+$string['analyticsenableddesc'] = 'Enable analytics for Moodle';
+$string['analyticsimagetrack'] = 'Image tracking';
+$string['analyticscleanurl'] = 'Clean URLs';
+$string['analyticscleanurldesc'] = 'Generate clean URL for in advanced tracking';
+$string['analyticsimagetrackdesc'] = 'Enable Image Tracking for browsers with JavaScript disabled.';
+$string['analyticstrackadmin'] = 'Tracking Admins';
+$string['analyticstrackadmindesc'] = 'Enable tracking of Admin users (not recommended)';
+$string['analyticsuseuserid'] = 'User ID';
+$string['analyticsuseuseriddesc'] = 'Enable use of User ID in tracking.';
+$string['analyticspiwik'] = 'Piwik';
+$string['analyticsguniversal'] = 'Google Universal Analytics';
+
+
+
+//background
 $string['backgroundfixed'] = 'Background fixed';
 $string['backgroundfixed_desc'] = 'Use this setting to fix the background image to the page.';
 $string['backgroundimage'] = 'Background image';
@@ -63,16 +89,17 @@ $string['backgroundrepeatrepeaty'] = 'Repeat vertically';
 $string['bodybackground'] = 'Background colour';
 $string['bodybackground_desc'] = 'The main colour to use for the background.';
 
-$string['configtitle'] = 'Pioneer';
 $string['contentbackground'] = 'Main content background colour';
 $string['contentbackground_desc'] = 'The background colour of the main content of the site, leave empty for none.';
 
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
 
+//General Alert on frontpage
 $string['generalalert'] = 'General Alert';
 $string['generalalertdesc'] = 'Whatever you add to this textarea will be displayed in the General Alert area on the frontpage.';
 
+//footer info
 $string['fullfootertext'] = 'Full-Width Footer Textbox';
 $string['fullfootertext_desc'] = 'This is a full-width textbox that appears in the footer above the 4 column textboxes. This is ideal if you do not want to use the 4 column textboxes below.';
 $string['footertext1'] = 'Footer Textbox One';
@@ -83,6 +110,7 @@ $string['footertext_desc'] = 'Enter HTML text and it will appear in the bottom o
 $string['copyrighttext'] = 'Copyright Notice';
 $string['copyrighttext_desc'] = 'Add a copyright notice for the site.  Will appear in the footer.';
 
+//frontpage textbox
 $string['fptextbox'] = 'Frontpage Textbox';
 $string['fptextboxdesc'] = 'This textbox appears on the frontpage and is ideal for putting a welcome message.';
 $string['togglefptextbox'] = 'Toggle Frontpage Text Box Display';

@@ -1,6 +1,9 @@
 # Moodle-theme_pioneer
 Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.
 
+##Pioneer v1.3.4
+* Google Analytics added to theme.  Now site admins can simply add the UA tracking id number and begin collecting traffic and usage of their moodle site with clean URL's.  
+
 ##Pioneer v1.3.3
 * The Course Grade Slider can now be controlled by the teacher.  If course settings is set to Not Show Gradebook to Students then the Course Grade slider will not display.  In order to use the Course Grade Slider it must be turned on in Admin Theme Settings for Pioneer and at the course level to show gradebook to students which is set by the teacher on a course by course setting.
 
