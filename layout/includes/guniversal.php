@@ -66,9 +66,17 @@ function analytics_trackurl() {
 
 function insert_analytics_tracking() {
     global $PAGE, $OUTPUT;
-    $trackingid = $PAGE->theme->settings->analyticstrackingid;
-    $trackadmin = $PAGE->theme->settings->analyticstrackadmin;
-    $cleanurl = $PAGE->theme->settings->analyticscleanurl;
+    $trackadmin = false;
+    $cleanurl = false;
+    if(isset($PAGE->theme->settings->analyticstrackingid)) {
+        $trackingid = $PAGE->theme->settings->analyticstrackingid;
+    }
+    if(isset($PAGE->theme->settings->analyticstrackadmin)) {
+        $trackadmin = $PAGE->theme->settings->analyticstrackadmin;
+    }
+    if(isset($PAGE->theme->settings->analyticscleanurl)) {
+        $cleanurl = $PAGE->theme->settings->analyticscleanurl;
+    }
     $tracking = '';
 
     if ($cleanurl) {
