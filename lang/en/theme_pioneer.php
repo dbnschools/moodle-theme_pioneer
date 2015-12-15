@@ -42,27 +42,16 @@ $string['configtitle'] = 'Pioneer';
 $string['choosereadme'] = '<p>Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.</p><p>We are a K-12 school district in Dearborn, Michigan.  Pioneer is the mascot of Dearborn High School.</p>';
 
 // Analytics.
-$string['analytics'] = 'Analytics';
-$string['analyticsheadingsub'] = 'Powerful analytics for Moodle';
-$string['analyticsdesc'] = 'Choose the type of analytics you want to insert and save to enable the other options.';
 $string['analyticssiteid'] = 'Site ID';
 $string['analyticssiteiddesc'] = 'Enter your Site ID';
 $string['analyticstrackingid'] = 'Site ID';
-$string['analyticstrackingiddesc'] = 'Enter your Tracking ID';
+$string['analyticstrackingiddesc'] = 'Enter your Tracking ID from Google';
 $string['analyticsenabled'] = 'Enabled';
 $string['analyticsenableddesc'] = 'Enable analytics for Moodle';
-$string['analyticsimagetrack'] = 'Image tracking';
 $string['analyticscleanurl'] = 'Clean URLs';
-$string['analyticscleanurldesc'] = 'Generate clean URL for in advanced tracking';
-$string['analyticsimagetrackdesc'] = 'Enable Image Tracking for browsers with JavaScript disabled.';
+$string['analyticscleanurldesc'] = 'Generate clean URL for advanced tracking';
 $string['analyticstrackadmin'] = 'Tracking Admins';
 $string['analyticstrackadmindesc'] = 'Enable tracking of Admin users (not recommended)';
-$string['analyticsuseuserid'] = 'User ID';
-$string['analyticsuseuseriddesc'] = 'Enable use of User ID in tracking.';
-$string['analyticspiwik'] = 'Piwik';
-$string['analyticsguniversal'] = 'Google Universal Analytics';
-
-
 
 //background
 $string['backgroundfixed'] = 'Background fixed';
