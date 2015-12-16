@@ -141,67 +141,6 @@ defined('MOODLE_INTERNAL') || die;
     $temp->add($setting);
 
 // Description
-    $name = 'theme_pioneer/backgroundimageinfo';
-    $heading = get_string('backgroundimageinfo', 'theme_pioneer');
-    $information = get_string('backgroundimageinfodesc', 'theme_pioneer');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-
-    // Background image setting.
-    $name = 'theme_pioneer/backgroundimage';
-    $title = get_string('backgroundimage', 'theme_pioneer');
-    $description = get_string('backgroundimage_desc', 'theme_pioneer');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'backgroundimage');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Background repeat setting.
-    $name = 'theme_pioneer/backgroundrepeat';
-    $title = get_string('backgroundrepeat', 'theme_pioneer');
-    $description = get_string('backgroundrepeat_desc', 'theme_pioneer');;
-    $default = 'repeat';
-    $choices = array(
-        '0' => get_string('default'),
-        'repeat' => get_string('backgroundrepeatrepeat', 'theme_pioneer'),
-        'repeat-x' => get_string('backgroundrepeatrepeatx', 'theme_pioneer'),
-        'repeat-y' => get_string('backgroundrepeatrepeaty', 'theme_pioneer'),
-        'no-repeat' => get_string('backgroundrepeatnorepeat', 'theme_pioneer'),
-    );
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Background position setting.
-    $name = 'theme_pioneer/backgroundposition';
-    $title = get_string('backgroundposition', 'theme_pioneer');
-    $description = get_string('backgroundposition_desc', 'theme_pioneer');
-    $default = '0';
-    $choices = array(
-        '0' => get_string('default'),
-        'left_top' => get_string('backgroundpositionlefttop', 'theme_pioneer'),
-        'left_center' => get_string('backgroundpositionleftcenter', 'theme_pioneer'),
-        'left_bottom' => get_string('backgroundpositionleftbottom', 'theme_pioneer'),
-        'right_top' => get_string('backgroundpositionrighttop', 'theme_pioneer'),
-        'right_center' => get_string('backgroundpositionrightcenter', 'theme_pioneer'),
-        'right_bottom' => get_string('backgroundpositionrightbottom', 'theme_pioneer'),
-        'center_top' => get_string('backgroundpositioncentertop', 'theme_pioneer'),
-        'center_center' => get_string('backgroundpositioncentercenter', 'theme_pioneer'),
-        'center_bottom' => get_string('backgroundpositioncenterbottom', 'theme_pioneer'),
-    );
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Background fixed setting.
-    $name = 'theme_pioneer/backgroundfixed';
-    $title = get_string('backgroundfixed', 'theme_pioneer');
-    $description = get_string('backgroundfixed_desc', 'theme_pioneer');
-    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-// Description
     $name = 'theme_pioneer/stylinginfo';
     $heading = get_string('stylinginfo', 'theme_pioneer');
     $information = get_string('stylinginfodesc', 'theme_pioneer');
@@ -494,11 +433,11 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-    // @bodyBackground setting.
-    $name = 'theme_pioneer/bodybackground';
-    $title = get_string('bodybackground', 'theme_pioneer');
-    $description = get_string('bodybackground_desc', 'theme_pioneer');
-    $default = '#d6d6d6';
+    // Activity Background setting.
+    $name = 'theme_pioneer/activitybackground';
+    $title = get_string('activitybackground', 'theme_pioneer');
+    $description = get_string('activitybackground_desc', 'theme_pioneer');
+    $default = '#f9f9f9';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
@@ -509,6 +448,75 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $description = get_string('topicweekcolor_desc', 'theme_pioneer');
     $default = '#FFFFFF';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Description
+    $name = 'theme_pioneer/backgroundimageinfo';
+    $heading = get_string('backgroundimageinfo', 'theme_pioneer');
+    $information = get_string('backgroundimageinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // @bodyBackground setting.
+    $name = 'theme_pioneer/bodybackground';
+    $title = get_string('bodybackground', 'theme_pioneer');
+    $description = get_string('bodybackground_desc', 'theme_pioneer');
+    $default = '#d6d6d6';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Background image setting.
+    $name = 'theme_pioneer/backgroundimage';
+    $title = get_string('backgroundimage', 'theme_pioneer');
+    $description = get_string('backgroundimage_desc', 'theme_pioneer');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'backgroundimage');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Background repeat setting.
+    $name = 'theme_pioneer/backgroundrepeat';
+    $title = get_string('backgroundrepeat', 'theme_pioneer');
+    $description = get_string('backgroundrepeat_desc', 'theme_pioneer');;
+    $default = 'repeat';
+    $choices = array(
+        '0' => get_string('default'),
+        'repeat' => get_string('backgroundrepeatrepeat', 'theme_pioneer'),
+        'repeat-x' => get_string('backgroundrepeatrepeatx', 'theme_pioneer'),
+        'repeat-y' => get_string('backgroundrepeatrepeaty', 'theme_pioneer'),
+        'no-repeat' => get_string('backgroundrepeatnorepeat', 'theme_pioneer'),
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Background position setting.
+    $name = 'theme_pioneer/backgroundposition';
+    $title = get_string('backgroundposition', 'theme_pioneer');
+    $description = get_string('backgroundposition_desc', 'theme_pioneer');
+    $default = '0';
+    $choices = array(
+        '0' => get_string('default'),
+        'left_top' => get_string('backgroundpositionlefttop', 'theme_pioneer'),
+        'left_center' => get_string('backgroundpositionleftcenter', 'theme_pioneer'),
+        'left_bottom' => get_string('backgroundpositionleftbottom', 'theme_pioneer'),
+        'right_top' => get_string('backgroundpositionrighttop', 'theme_pioneer'),
+        'right_center' => get_string('backgroundpositionrightcenter', 'theme_pioneer'),
+        'right_bottom' => get_string('backgroundpositionrightbottom', 'theme_pioneer'),
+        'center_top' => get_string('backgroundpositioncentertop', 'theme_pioneer'),
+        'center_center' => get_string('backgroundpositioncentercenter', 'theme_pioneer'),
+        'center_bottom' => get_string('backgroundpositioncenterbottom', 'theme_pioneer'),
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Background fixed setting.
+    $name = 'theme_pioneer/backgroundfixed';
+    $title = get_string('backgroundfixed', 'theme_pioneer');
+    $description = get_string('backgroundfixed_desc', 'theme_pioneer');
+    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 

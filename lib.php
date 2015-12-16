@@ -107,7 +107,15 @@ function theme_pioneer_process_css($css, $theme) {
     }
     $css = theme_pioneer_set_headingfont($css, $headingfont);
 
-   //Set body font
+   //Set activitybackground
+    if (!empty($theme->settings->activitybackground)) {
+        $activitybackground = $theme->settings->activitybackground;
+    } else {
+        $activitybackground = '';
+    }
+    $css = theme_pioneer_set_activitybackground($css, $activitybackground);
+
+    //Set body font
     if (!empty($theme->settings->bodyfont)) {
         $bodyfont = $theme->settings->bodyfont;
     } else {
@@ -308,6 +316,20 @@ function theme_pioneer_set_marketboxcolor($css, $marketboxcolor) {
 
     return $css;
 }
+
+//Adds activity background
+function theme_pioneer_set_activitybackground($css, $activitybackground) {
+    $tag = '[[setting:activitybackground]]';
+    $replacement = $activitybackground;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
 //Adds custom background color to breadcrumbs
 function theme_pioneer_set_breadcrumbcolor($css, $breadcrumbcolor) {
     $tag = '[[setting:breadcrumbcolor]]';

@@ -83,7 +83,8 @@ echo $OUTPUT->doctype() ?>
         </div>
         <div id="editbutton">
                 <?php echo $OUTPUT->page_heading_button(); ?>
-        </div> 
+        </div>
+        <div class="coursecontents">
         <section id="region-main" class="<?php echo $regionmain; ?>">
             <?php
             echo $OUTPUT->course_content_header();
@@ -91,6 +92,7 @@ echo $OUTPUT->doctype() ?>
             echo $OUTPUT->course_content_footer();
             ?>
         </section>
+        </div>
         <?php echo $OUTPUT->blocks('side-pre', $sidepre); ?>
 
     </div>

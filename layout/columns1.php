@@ -66,6 +66,7 @@ echo $OUTPUT->doctype() ?>
         <div id="editbutton">
                 <?php echo $OUTPUT->page_heading_button(); ?>
         </div> 
+        <div class="coursecontents">
         <section id="region-main" class="span12">
             <?php
             echo $OUTPUT->course_content_header();
@@ -73,6 +74,7 @@ echo $OUTPUT->doctype() ?>
             echo $OUTPUT->course_content_footer();
             ?>
         </section>
+    </div>
 
     </div>
 

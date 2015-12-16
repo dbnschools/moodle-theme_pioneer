@@ -121,15 +121,21 @@ section#region-main {
     margin:0px;
     box-shadow: none;
 }
+.pagelayout-incourse #region-main, #region-main {
+  background-color: [[setting:activitybackground]]; 
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+}
 
-/*section#region-main { 
-    background: none;
-    border: none;
-    box-shadow: none;
-    background-color:[[setting:topicweekcolor]];
-    padding: 20px;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
-}*/
+.coursecontents #region-main {
+  background-color: [[setting:activitybackground]]; 
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+}
+
+.coursecontents {
+  margin-left:10px;
+  margin-right:10px;
+}
+
 .pagelayout-course section#region-main { 
   box-shadow:none;
   background:none;
@@ -148,7 +154,7 @@ section#region-main .block_course_overview {
   padding: 10px;
   margin-bottom: 60px;
   border-bottom: 0px;
-  background-color:[[setting:topicweekcolor]];
+  background-color:[[setting:activitybackground]];
   border-width:0px;
 }
 section#region-main .block_course_overview .block .jsenabled .header h2 {
@@ -201,6 +207,9 @@ section#region-main .block_course_overview .content {
 #page-user-profile .coursegradewrap {display:none;}
 #page-user-profile #coursegrades {display:none;}
 
+div#coursegrades {
+    background-color: [[setting:topicweekcolor]];
+}
 
 .coursegradebtn {
   margin: 0px auto;
@@ -343,36 +352,35 @@ z-index: 0;
     border-radius: 0px;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
 }
-
+/*
 .path-mod-forum .forumheaderlist {
-    background-color: [[setting:topicweekcolor]];
+    background-color: [[setting:activitybackground]];
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
     padding:15px;
 }
 .forumpost {
-  background-color: [[setting:topicweekcolor]];
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.37);
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
+    border:none;
 }
 
 .path-mod-glossary .glossarydisplay {
     margin-left: auto;
     margin-right: auto;
-    background-color: [[setting:topicweekcolor]];
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
     padding:10px;
 }
-
+*/
 .path-calendar .maincalendar {
-    background-color: [[setting:topicweekcolor]];
+    background-color: [[setting:activitybackground]];
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
     padding:15px;
 }
 
 .fptextbox {
-    background-color: [[setting:topicweekcolor]];
+    background-color: [[setting:activitybackground]];
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
     padding:15px;
     margin-bottom:20px;
@@ -1581,4 +1589,9 @@ for the colored icons in the blocks.*/
     max-height: 300px;
     overflow-y: auto;
 }*/
-
+.courses .coursebox.even {
+    background: none;
+}
+.courses .coursebox.even:hover {
+    background: #fff;
+}
