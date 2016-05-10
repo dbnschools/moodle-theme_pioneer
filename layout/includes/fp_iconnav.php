@@ -3,7 +3,7 @@
 <div class="fpstart">
     <div class="iconset">
 		<?php if ($PAGE->theme->settings->nav1icon) { ?>
-        <a href="<?php echo $PAGE->theme->settings->nav1buttonurl ?>" target="_self" id="button" data-toggle="tooltip" data-placement="bottom" title="<?php echo $PAGE->theme->settings->nav1buttontext ?>"><i class="fa fa-3x fa-<?php echo $PAGE->theme->settings->nav1icon ?>"></i></a>
+       <a href="<?php echo $PAGE->theme->settings->nav1buttonurl ?>" target="_self" id="button" data-toggle="tooltip" data-placement="bottom" title="<?php echo $PAGE->theme->settings->nav1buttontext ?>"><i class="fa fa-3x fa-<?php echo $PAGE->theme->settings->nav1icon ?>"></i></a>
         <?php } ?>
         <?php if ($PAGE->theme->settings->nav2icon) { ?>
         <a href="<?php echo $PAGE->theme->settings->nav2buttonurl ?>" target="_self" id="button" data-toggle="tooltip" data-placement="bottom" title="<?php echo $PAGE->theme->settings->nav2buttontext ?>"><i class="fa fa-3x fa-<?php echo $PAGE->theme->settings->nav2icon ?>"></i></a>

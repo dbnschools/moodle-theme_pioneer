@@ -43,4 +43,8 @@
 
 $plugins = array(
    'bootstrap-tooltip' => array('files' => array('bootstrap-tooltip.js')),
+   'slick' => array('files' => array('slick.js')),
+   'stickybar' => array('files' => array('stickybar.js')),
+   'fpslider' => array('files' => array('fpslider.js')),
+   'promo' => array('files' => array('promo.js'))
 );

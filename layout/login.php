@@ -40,32 +40,34 @@ echo $OUTPUT->doctype() ?>
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
 <div id="page" class="container-fluid">
+<div id="page-content" class="row-fluid">
 
-<div class="fpcustomnav-container">
-        <nav role="navigation" class="navbar navbar-inner">
-          <a href="<?php echo $CFG->wwwroot;?>"><div id="logo"> </div></a>
-            <?php echo $OUTPUT->custom_menu(); ?>
-        </nav>
-</div>
-        <div class="clearfix"></div>
-
-    <div id="page-content" class="row-fluid">
        <?php require_once(dirname(__FILE__).'/includes/alerts.php'); ?>
+
+    <header>
         <section id="region-main" class="span12 moodleheader">
+        
             <div class="loginwrapper">
             <?php
             echo $OUTPUT->course_content_header();
             echo $OUTPUT->main_content();
             echo $OUTPUT->course_content_footer();
             ?>
-        </div>
+            </div>    
         </section>
+    </header>
+    
+    <div class="clearfix"></div>
 
+        <?php require_once(dirname(__FILE__).'/includes/topnav.php'); ?>
+
+        <div class="breadcrumbcenter">
         <div id="breadcrumb-container" class="clearfix">
-            <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> <?php echo $OUTPUT->user_menu(); ?>
+            <breadcrumb class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></breadcrumb>
+        </div>
         </div>
 
-        <div class="clearfix"></div>
+    <div class="clearfix"></div>
     
     <!-- Start Marketing Spots -->
     <?php 
@@ -78,22 +80,19 @@ echo $OUTPUT->doctype() ?>
         } 
     ?>
     <!-- End Marketing Spots -->
-    </div>
 
-        <?php require_once(dirname(__FILE__).'/includes/socialicons.php'); ?>
-        
+    <?php require_once(dirname(__FILE__).'/includes/socialicons.php'); ?>
 
     <footer id="page-footer">
-
         <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
         <?php
         echo $OUTPUT->standard_footer_html();
         ?>
     </footer>
-
     <?php echo $OUTPUT->standard_end_of_body_html() ?>
-
 </div>
+</div>
+
 </body>
 </html>

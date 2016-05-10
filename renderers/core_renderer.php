@@ -37,12 +37,12 @@ require_once($CFG->libdir. '/coursecatlib.php');
         if ($this->page->user_is_editing()) {
             $url->param('edit', 'off');
             $btn = 'btn-danger';
-            $title = get_string('turneditingoff');
+            $title = get_string('editoff' , 'theme_pioneer');
             $icon = 'fa-power-off';
         } else {
             $url->param('edit', 'on');
             $btn = 'btn-success';
-            $title = get_string('turneditingon');
+            $title = get_string('editon' , 'theme_pioneer');
             $icon = 'fa-edit';
         }
         return html_writer::tag('a', html_writer::start_tag('i', array('class' => $icon . ' fa fa-fw')) .
@@ -65,7 +65,6 @@ require_once($CFG->libdir. '/coursecatlib.php');
         $title = '<span class="accesshide">'.get_string('pagepath').'</span>';
         return $title . "<ul class=\"breadcrumb\">$listitems</ul>";
     }
-
 
     public function navigation_menu() {
         global $PAGE, $COURSE, $OUTPUT, $CFG;

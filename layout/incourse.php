@@ -56,9 +56,9 @@ echo $OUTPUT->doctype() ?>
 
 <div id="page" class="container-fluid">
 
-<?php require_once(dirname(__FILE__).'/includes/topnav.php'); ?>
-
     <div id="page-content" class="row-fluid">
+        
+<header>
         <div id="header-image-box">
             <?php if($PAGE->theme->settings->headerbackgroundtoggle==1 && $courseimage) { ?>
             <div class="header-image-custom" style="background-image: url('<?php echo $courseimage ?>');">
@@ -71,38 +71,42 @@ echo $OUTPUT->doctype() ?>
             <?php echo $html->heading; ?>
            </div>
            </div>
-                <div id="course-header">      
-                <?php echo $OUTPUT->course_header(); ?>
-                </div>
+           <div id="course-header">      
+           <?php echo $OUTPUT->course_header(); ?>
+           </div>
         </div>
         </div>
         </div>
-        
+</header>
+
+        <?php require_once(dirname(__FILE__).'/includes/topnav.php'); ?>
+
+    <div class="breadcrumbcenter">
         <div id="breadcrumb-container" class="clearfix">
-            <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav> 
+            <breadcrumb class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></breadcrumb>
         </div>
-        <div id="editbutton">
-                <?php echo $OUTPUT->page_heading_button(); ?>
-        </div>
-        <div class="coursecontents">
-        <section id="region-main" class="<?php echo $regionmain; ?>">
+    </div>
+    <div id="editbutton">
+        <?php echo $OUTPUT->page_heading_button(); ?>
+    </div>
+    <div class="coursecontents">
+    <section id="region-main" class="<?php echo $regionmain; ?>">
             <?php
             echo $OUTPUT->course_content_header();
             echo $OUTPUT->main_content();
             echo $OUTPUT->course_content_footer();
             ?>
-        </section>
-        </div>
-        <?php echo $OUTPUT->blocks('side-pre', $sidepre); ?>
+    </section>
+    </div>
+
+    <?php echo $OUTPUT->blocks('side-pre', $sidepre); ?>
 
     </div>
 
-        <?php require_once(dirname(__FILE__).'/includes/socialicons.php'); ?>
+    <?php require_once(dirname(__FILE__).'/includes/socialicons.php'); ?>
 
     <footer id="page-footer">
-
         <?php require_once(dirname(__FILE__).'/includes/footertext.php'); ?>
-        
         <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
         <?php
@@ -113,10 +117,12 @@ echo $OUTPUT->doctype() ?>
     <?php echo $OUTPUT->standard_end_of_body_html() ?>
     
 </div>
+
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
 </script>
+
 </body>
 </html>

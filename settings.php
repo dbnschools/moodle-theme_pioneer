@@ -29,7 +29,14 @@ defined('MOODLE_INTERNAL') || die;
 
     // "geneictemp" settingpage
     $temp = new admin_settingpage('theme_pioneer_generic',  get_string('geneicsettings', 'theme_pioneer'));
-    
+
+// Description
+    $name = 'theme_pioneer/blocks';
+    $heading = get_string('blocksinfo', 'theme_pioneer');
+    $information = get_string('blocksdesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
     // Block alignment
     $name = 'theme_pioneer/blockposition';
     $title = get_string('blockposition', 'theme_pioneer');
@@ -49,6 +56,14 @@ defined('MOODLE_INTERNAL') || die;
     $information = get_string('customlogindesc', 'theme_pioneer');
     $setting = new admin_setting_heading($name, $heading, $information);
     $temp->add($setting);
+// Show hide login form toggle
+    $name = 'theme_pioneer/showlogin';
+     $title = get_string('showlogintoggle', 'theme_pioneer');
+     $description = get_string('showlogintoggle_desc', 'theme_pioneer');
+     $default = 1;
+     $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+     $setting->set_updatedcallback('theme_reset_all_caches');
+     $temp->add($setting);
 
  // Show hide toggle.
     $name = 'theme_pioneer/createuser';
@@ -69,82 +84,21 @@ defined('MOODLE_INTERNAL') || die;
     $temp->add($setting);
 
 
-// Description
-    $name = 'theme_pioneer/headerimageinfo';
-    $heading = get_string('headerimageinfo', 'theme_pioneer');
-    $information = get_string('headerimageinfodesc', 'theme_pioneer');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    // Header Background spacing setting.
-    $name = 'theme_pioneer/headerimagepadding';
-    $title = get_string('headerimagepadding', 'theme_pioneer');
-    $description = get_string('headerimagepadding_desc', 'theme_pioneer');;
-    $default = '200px';
-    $choices = array(
-        '10px' => '10px',
-        '20px' => '20px',
-        '40px' => '40px',
-        '80px' => '80px',
-        '100px' => '100px',
-        '120px' => '120px',
-        '140px' => '140px',
-        '180px' => '180px',
-        '200px' => '200px',
-        '220px' => '220px',
-        '240px' => '240px',
-        '300px' => '300px',
-    );
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Header Background spacing setting.
-    $name = 'theme_pioneer/headerincourseimagepadding';
-    $title = get_string('headerincourseimagepadding', 'theme_pioneer');
-    $description = get_string('headerincourseimagepadding_desc', 'theme_pioneer');;
-    $default = '40px';
-    $choices = array(
-        '10px' => '10px',
-        '20px' => '20px',
-        '30px' => '30px',
-        '40px' => '40px',
-        '80px' => '80px',
-        '100px' => '100px',
-        '120px' => '120px',
-        '140px' => '140px',
-        '180px' => '180px',
-        '200px' => '200px',
-        '220px' => '220px',
-        '240px' => '240px',
-        '300px' => '300px',
-    );
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // allow or disallow teacher header images.
-    $name = 'theme_pioneer/headerbackgroundtoggle';
-    $title = get_string('headerbackgroundtoggle', 'theme_pioneer');
-    $description = get_string('headerbackgroundtoggle_desc', 'theme_pioneer');
-    $default = 0;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Header Background image setting.
-    $name = 'theme_pioneer/headerbackgroundimage';
-    $title = get_string('headerbackgroundimage', 'theme_pioneer');
-    $description = get_string('headerbackgroundimage_desc', 'theme_pioneer');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'headerbackgroundimage');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
 
 // Description
     $name = 'theme_pioneer/stylinginfo';
     $heading = get_string('stylinginfo', 'theme_pioneer');
     $information = get_string('stylinginfodesc', 'theme_pioneer');
     $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+ // Toggle course completion.
+    $name = 'theme_pioneer/coursecomplete';
+    $title = get_string('coursecomplete', 'theme_pioneer');
+    $description = get_string('coursecomplete_desc', 'theme_pioneer');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Logo file setting.
@@ -182,13 +136,212 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+
+    $ADMIN->add('theme_pioneer', $temp);
+
+
+
+$temp = new admin_settingpage('theme_pioneer_headerimage', get_string('headerimagepage', 'theme_pioneer'));
+// Description
+    $name = 'theme_pioneer/headerimageinfo';
+    $heading = get_string('headerimageinfo', 'theme_pioneer');
+    $information = get_string('headerimageinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+
+    // Frontpage Image Background spacing setting.
+    $name = 'theme_pioneer/fpheaderimagepadding';
+    $title = get_string('fpheaderimagepadding', 'theme_pioneer');
+    $description = get_string('fpheaderimagepadding_desc', 'theme_pioneer');;
+    $default = '260px';
+    $choices = array(
+        '10px' => '10px',
+        '20px' => '20px',
+        '40px' => '40px',
+        '60px' => '60px',
+        '80px' => '80px',
+        '100px' => '100px',
+        '120px' => '120px',
+        '140px' => '140px',
+        '160px' => '160px',
+        '180px' => '180px',
+        '200px' => '200px',
+        '220px' => '220px',
+        '240px' => '240px',
+        '260px' => '260px',
+        '280px' => '280px',
+        '300px' => '300px',
+        '350px' => '350px',
+        '400px' => '400px',
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Header Background spacing setting.
+    $name = 'theme_pioneer/headerimagepadding';
+    $title = get_string('headerimagepadding', 'theme_pioneer');
+    $description = get_string('headerimagepadding_desc', 'theme_pioneer');;
+    $default = '140px';
+    $choices = array(
+        '10px' => '10px',
+        '20px' => '20px',
+        '40px' => '40px',
+        '60px' => '60px',
+        '80px' => '80px',
+        '100px' => '100px',
+        '120px' => '120px',
+        '140px' => '140px',
+        '160px' => '160px',
+        '180px' => '180px',
+        '200px' => '200px',
+        '220px' => '220px',
+        '240px' => '240px',
+        '260px' => '260px',
+        '280px' => '280px',
+        '300px' => '300px',
+        '350px' => '350px',
+        '400px' => '400px',
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Header Background spacing setting.
+    $name = 'theme_pioneer/headerincourseimagepadding';
+    $title = get_string('headerincourseimagepadding', 'theme_pioneer');
+    $description = get_string('headerincourseimagepadding_desc', 'theme_pioneer');;
+    $default = '40px';
+    $choices = array(
+        '10px' => '10px',
+        '20px' => '20px',
+        '40px' => '40px',
+        '60px' => '60px',
+        '80px' => '80px',
+        '100px' => '100px',
+        '120px' => '120px',
+        '140px' => '140px',
+        '160px' => '160px',
+        '180px' => '180px',
+        '200px' => '200px',
+        '220px' => '220px',
+        '240px' => '240px',
+        '260px' => '260px',
+        '280px' => '280px',
+        '300px' => '300px',
+        '350px' => '350px',
+        '400px' => '400px',
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // allow or disallow teacher header images.
+    $name = 'theme_pioneer/headerbackgroundtoggle';
+    $title = get_string('headerbackgroundtoggle', 'theme_pioneer');
+    $description = get_string('headerbackgroundtoggle_desc', 'theme_pioneer');
+    $default = 1;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Header Background image setting.
+    $name = 'theme_pioneer/headerbackgroundimage';
+    $title = get_string('headerbackgroundimage', 'theme_pioneer');
+    $description = get_string('headerbackgroundimage_desc', 'theme_pioneer');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'headerbackgroundimage');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+
+    $ADMIN->add('theme_pioneer', $temp);
+
+
+$temp = new admin_settingpage('theme_pioneer_fpdashboard', get_string('fpdashboard', 'theme_pioneer'));
+
+//Custom Navigation Icons on homepage
+    // Toggle FP Textbox Spots.
+    $name = 'theme_pioneer/toggleiconnav';
+    $title = get_string('toggleiconnav' , 'theme_pioneer');
+    $description = get_string('toggleiconnav_desc', 'theme_pioneer');
+    $bothpositions = get_string('bothpositions', 'theme_pioneer');
+    $intopnav = get_string('intopnav', 'theme_pioneer');
+    $inmaincontent = get_string('inmaincontent', 'theme_pioneer');
+    $dontdisplay = get_string('dontdisplay', 'theme_pioneer');
+    $default = 'bothpositions';
+    $choices = array('1'=>$bothpositions, '2'=>$intopnav, '3'=>$inmaincontent, '0'=>$dontdisplay);
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+// Toggle icon navigation and searchbox.
+    $name = 'theme_pioneer/fpsearchboxtop';
+    $title = get_string('fpsearchboxtop', 'theme_pioneer');
+    $description = get_string('fpsearchboxtop_desc', 'theme_pioneer');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+// Toggle icon navigation and searchbox.
+    $name = 'theme_pioneer/fpsearchboxmain';
+    $title = get_string('fpsearchboxmain', 'theme_pioneer');
+    $description = get_string('fpsearchboxmain_desc', 'theme_pioneer');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+// Description
+    $name = 'theme_pioneer/coursegradeinfo';
+    $heading = get_string('coursegradeinfo', 'theme_pioneer');
+    $information = get_string('coursegradeinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+// Show or Hide Course Grades toggle.
+    $name = 'theme_pioneer/coursegradetoggle';
+    $title = get_string('coursegradetoggle', 'theme_pioneer');
+    $description = get_string('coursegradetoggle_desc', 'theme_pioneer');
+    $default = 1;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Course Grades Button Text.
+    $name = 'theme_pioneer/coursegradestext';
+    $title = get_string('coursegradestext', 'theme_pioneer');
+    $description = get_string('coursegradestext', 'theme_pioneer');
+    $default = 'Course Grades';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+ // Show or Hide Frontpage Tabs.
+    $name = 'theme_pioneer/tabtoggle';
+    $title = get_string('tabtoggle', 'theme_pioneer');
+    $description = get_string('tabtoggle_desc', 'theme_pioneer');
+    $default = 0;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Tab Button Text.
+    $name = 'theme_pioneer/tabbuttontext';
+    $title = get_string('tabbuttontext', 'theme_pioneer');
+    $description = get_string('tabbuttontextdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
     // Description
     $name = 'theme_pioneer/fptextboxinfo';
     $heading = get_string('fptextboxinfo', 'theme_pioneer');
     $information = get_string('fptextboxinfodesc', 'theme_pioneer');
     $setting = new admin_setting_heading($name, $heading, $information);
     $temp->add($setting);
-
 
     // Toggle FP Textbox Spots.
     $name = 'theme_pioneer/togglefptextbox';
@@ -214,6 +367,309 @@ defined('MOODLE_INTERNAL') || die;
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    // Frontpage Textbox.
+    $name = 'theme_pioneer/fpcreatortextbox';
+    $title = get_string('fpcreatortextbox', 'theme_pioneer');
+    $description = get_string('fpcreatortextbox_desc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // TOP FEATURED.
+    // Promoted Courses Heading.
+    $name = 'theme_pioneer_toppromotedcoursesheading';
+    $heading = get_string('toppromotedcoursesheading', 'theme_pioneer');
+    $information = '';
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // Enable / Disable Promoted Courses.
+    $name = 'theme_pioneer/toppcourseenable';
+    $title = get_string('toppcourseenable', 'theme_pioneer');
+    $description = '';
+    $alwaysdisplay = get_string('alwaysdisplay', 'theme_pioneer');
+    $displaybeforelogin = get_string('displaybeforelogin', 'theme_pioneer');
+    $displayafterlogin = get_string('displayafterlogin', 'theme_pioneer');
+    $dontdisplay = get_string('dontdisplay', 'theme_pioneer');
+    $default = 'dontdisplay';
+    $choices = array('1'=>$alwaysdisplay, '2'=>$displaybeforelogin, '3'=>$displayafterlogin, '0'=>$dontdisplay);
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Promoted courses Block title.
+    $name = 'theme_pioneer/toppromotedtitle';
+    $title = get_string('toppcourses', 'theme_pioneer').' '.get_string('toptitle', 'theme_pioneer');
+    $description = get_string('toppromotedtitledesc', 'theme_pioneer');
+    $default = 'lang:promotedtitledefault';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Frontpage Image Background spacing setting.
+    $name = 'theme_pioneer/toppromotedpadding';
+    $title = get_string('fptoppromotedpadding', 'theme_pioneer');
+    $description = get_string('fptoppromotedpadding_desc', 'theme_pioneer');;
+    $default = '200px';
+    $choices = array(
+        '125px' => '125px',
+        '140px' => '140px',
+        '150px' => '150px',
+        '160px' => '160px',
+        '170px' => '170px',
+        '180px' => '180px',
+        '190px' => '190px',
+        '200px' => '200px',
+        '210px' => '210px',
+        '225px' => '225px',
+        '250px' => '250px',
+        '275px' => '275px',
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+
+    $name = 'theme_pioneer/toppromotedcourses';
+    $title = get_string('toppcourses', 'theme_pioneer');
+    $description = get_string('toppcoursesdesc', 'theme_pioneer');
+    $default = array();
+
+    $courses[0] = '';
+    $cnt = 0;
+    if ($ccc = get_courses('all', 'c.sortorder ASC', 'c.id,c.shortname,c.visible,c.category')) {
+        foreach ($ccc as $cc) {
+            if ($cc->visible == "0" || $cc->id == "1") {
+                continue;
+            }
+            $cnt++;
+            $courses[$cc->id] = $cc->shortname;
+            // Set some courses for default option.
+            if ($cnt < 6) {
+                $default[] = $cc->id;
+            }
+        }
+    }
+    $coursedefault = implode(",", $default);
+    $setting = new admin_setting_configtextarea($name, $title, $description, $coursedefault);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    // Top Promoted Courses End.
+
+
+
+// Promoted Courses Start.
+    // Promoted Courses Heading.
+    $name = 'theme_pioneer_promotedcoursesheading';
+    $heading = get_string('promotedcoursesheading', 'theme_pioneer');
+    $information = '';
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // Enable / Disable Promoted Courses.
+    $name = 'theme_pioneer/pcourseenable';
+    $title = get_string('pcourseenable', 'theme_pioneer');
+    $description = '';
+    $alwaysdisplay = get_string('alwaysdisplay', 'theme_pioneer');
+    $displaybeforelogin = get_string('displaybeforelogin', 'theme_pioneer');
+    $displayafterlogin = get_string('displayafterlogin', 'theme_pioneer');
+    $dontdisplay = get_string('dontdisplay', 'theme_pioneer');
+    $default = 'dontdisplay';
+    $choices = array('1'=>$alwaysdisplay, '2'=>$displaybeforelogin, '3'=>$displayafterlogin, '0'=>$dontdisplay);
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Promoted courses Block title.
+    $name = 'theme_pioneer/promotedtitle';
+    $title = get_string('pcourses', 'theme_pioneer').' '.get_string('title', 'theme_pioneer');
+    $description = get_string('promotedtitledesc', 'theme_pioneer');
+    $default = 'lang:promotedtitledefault';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/promotedcourses';
+    $title = get_string('pcourses', 'theme_pioneer');
+    $description = get_string('pcoursesdesc', 'theme_pioneer');
+    $default = array();
+
+    $courses[0] = '';
+    $cnt = 0;
+    if ($ccc = get_courses('all', 'c.sortorder ASC', 'c.id,c.shortname,c.visible,c.category')) {
+        foreach ($ccc as $cc) {
+            if ($cc->visible == "0" || $cc->id == "1") {
+                continue;
+            }
+            $cnt++;
+            $courses[$cc->id] = $cc->shortname;
+            // Set some courses for default option.
+            if ($cnt < 9) {
+                $default[] = $cc->id;
+            }
+        }
+    }
+    $coursedefault = implode(",", $default);
+    $setting = new admin_setting_configtextarea($name, $title, $description, $coursedefault);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    // Promoted Courses End.
+
+$ADMIN->add('theme_pioneer', $temp);
+
+$temp = new admin_settingpage('theme_pioneer_tab', get_string('tabheading', 'theme_pioneer'));
+
+    // This is the descriptor for tab Spot One
+    $name = 'theme_pioneer/tab1info';
+    $heading = get_string('tab1', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // tab Spot One
+    $name = 'theme_pioneer/tab1';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab1content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    
+    // This is the descriptor for tab Spot Two
+    $name = 'theme_pioneer/tab2info';
+    $heading = get_string('tab2', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+    
+    // tab Spot Two
+    $name = 'theme_pioneer/tab2';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab2content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    // This is the descriptor for tab Spot Three
+    $name = 'theme_pioneer/tab3info';
+    $heading = get_string('tab3', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+    
+    // tab Spot Three.
+    $name = 'theme_pioneer/tab3';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab3content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for tab Spot One
+    $name = 'theme_pioneer/tab4info';
+    $heading = get_string('tab4', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // tab Spot One
+    $name = 'theme_pioneer/tab4';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab4content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for tab Spot One
+    $name = 'theme_pioneer/tab5info';
+    $heading = get_string('tab5', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // tab Spot One
+    $name = 'theme_pioneer/tab5';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab5content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // This is the descriptor for tab Spot One
+    $name = 'theme_pioneer/tab6info';
+    $heading = get_string('tab6', 'theme_pioneer');
+    $information = get_string('tabinfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // tab Spot One
+    $name = 'theme_pioneer/tab6';
+    $title = get_string('tabtitle', 'theme_pioneer');
+    $description = get_string('tabtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/tab6content';
+    $title = get_string('tabcontent', 'theme_pioneer');
+    $description = get_string('tabcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $ADMIN->add('theme_pioneer', $temp);
+
+
+
+$temp = new admin_settingpage('theme_pioneer_navigation', get_string('navigation', 'theme_pioneer'));
     // Description
     $name = 'theme_pioneer/mycorusesinfo';
     $heading = get_string('mycorusesinfo', 'theme_pioneer');
@@ -259,86 +715,8 @@ defined('MOODLE_INTERNAL') || die;
     $setting = new admin_setting_configtextarea($name, $title, $description, '', PARAM_RAW, '50', '10');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
+$ADMIN->add('theme_pioneer', $temp);
 
-// Description
-    $name = 'theme_pioneer/coursegradeinfo';
-    $heading = get_string('coursegradeinfo', 'theme_pioneer');
-    $information = get_string('coursegradeinfodesc', 'theme_pioneer');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-// Show or Hide Course Grades toggle.
-    $name = 'theme_pioneer/coursegradetoggle';
-    $title = get_string('coursegradetoggle', 'theme_pioneer');
-    $description = get_string('coursegradetoggle_desc', 'theme_pioneer');
-    $default = 0;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Course Grades Button Text.
-    $name = 'theme_pioneer/coursegradestext';
-    $title = get_string('coursegradestext', 'theme_pioneer');
-    $description = get_string('coursegradestext', 'theme_pioneer');
-    $default = 'Course Grades';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-
-// Promoted Courses Start.
-    // Promoted Courses Heading.
-    $name = 'theme_pioneer_promotedcoursesheading';
-    $heading = get_string('promotedcoursesheading', 'theme_pioneer');
-    $information = '';
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    // Enable / Disable Promoted Courses.
-    $name = 'theme_pioneer/pcourseenable';
-    $title = get_string('pcourseenable', 'theme_pioneer');
-    $description = '';
-    $default = 0;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Promoted courses Block title.
-    $name = 'theme_pioneer/promotedtitle';
-    $title = get_string('pcourses', 'theme_pioneer').' '.get_string('title', 'theme_pioneer');
-    $description = get_string('promotedtitledesc', 'theme_pioneer');
-    $default = 'lang:promotedtitledefault';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    $name = 'theme_pioneer/promotedcourses';
-    $title = get_string('pcourses', 'theme_pioneer');
-    $description = get_string('pcoursesdesc', 'theme_pioneer');
-    $default = array();
-
-    $courses[0] = '';
-    $cnt = 0;
-    if ($ccc = get_courses('all', 'c.sortorder ASC', 'c.id,c.shortname,c.visible,c.category')) {
-        foreach ($ccc as $cc) {
-            if ($cc->visible == "0" || $cc->id == "1") {
-                continue;
-            }
-            $cnt++;
-            $courses[$cc->id] = $cc->shortname;
-            // Set some courses for default option.
-            if ($cnt < 8) {
-                $default[] = $cc->id;
-            }
-        }
-    }
-    $coursedefault = implode(",", $default);
-    $setting = new admin_setting_configtextarea($name, $title, $description, $coursedefault);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    // Promoted Courses End.
-
-    $ADMIN->add('theme_pioneer', $temp);
 
 
 $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorheading', 'theme_pioneer'));
@@ -361,6 +739,24 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    // course title background color.
+    $name = 'theme_pioneer/coursetitlebkg';
+    $title = get_string('coursetitlebkg', 'theme_pioneer');
+    $description = get_string('coursetitlebkg_desc', 'theme_pioneer');
+    $default = 'rgba(255,255,255,0.8)';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // course title text color.
+    $name = 'theme_pioneer/coursetitletxt';
+    $title = get_string('coursetitletxt', 'theme_pioneer');
+    $description = get_string('coursetitletxt_desc', 'theme_pioneer');
+    $default = '#000000';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
     // @login button color.
     $name = 'theme_pioneer/loginbuttoncolor';
     $title = get_string('loginbuttoncolor', 'theme_pioneer');
@@ -374,7 +770,7 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $name = 'theme_pioneer/tabbuttoncolor';
     $title = get_string('tabbuttoncolor', 'theme_pioneer');
     $description = get_string('tabbuttoncolor_desc', 'theme_pioneer');
-    $default = 'rgba(0, 0, 0, 0.7)';
+    $default = 'rgba(255,101,0, 0.8)';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
@@ -406,6 +802,24 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    // @Marketing Box background color setting.
+    $name = 'theme_pioneer/marketboxcolor';
+    $title = get_string('marketboxcolor', 'theme_pioneer');
+    $description = get_string('marketboxcolor_desc', 'theme_pioneer');
+    $default = '#FFFFFF';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // @Marketing Box background color setting.
+    $name = 'theme_pioneer/marketboxcontentcolor';
+    $title = get_string('marketboxcontentcolor', 'theme_pioneer');
+    $description = get_string('marketboxcontentcolor_desc', 'theme_pioneer');
+    $default = 'rgba(255,255,255,0.8)';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
     // Main Content Background
     $name = 'theme_pioneer/contentbackgroundcolor';
     $title = get_string('contentbackgroundcolor', 'theme_pioneer');
@@ -416,10 +830,28 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $temp->add($setting);
 
     // icon navigation Background
+    $name = 'theme_pioneer/iconnavbackgroundcolortop';
+    $title = get_string('iconnavbackgroundcolortop', 'theme_pioneer');
+    $description = get_string('iconnavbackgroundcolortop_desc', 'theme_pioneer');
+    $default = '#FFFFFF';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // icon navigation Background
     $name = 'theme_pioneer/iconnavbackgroundcolor';
     $title = get_string('iconnavbackgroundcolor', 'theme_pioneer');
     $description = get_string('iconnavbackgroundcolor_desc', 'theme_pioneer');
-    $default = '#fff';
+    $default = '#DCE0E5';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Main navigation Background
+    $name = 'theme_pioneer/navbkgcolor';
+    $title = get_string('navbkgcolor', 'theme_pioneer');
+    $description = get_string('navbkgcolor_desc', 'theme_pioneer');
+    $default = '#FFFFFF';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
@@ -437,7 +869,7 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $name = 'theme_pioneer/activitybackground';
     $title = get_string('activitybackground', 'theme_pioneer');
     $description = get_string('activitybackground_desc', 'theme_pioneer');
-    $default = '#f9f9f9';
+    $default = '#FFFFFF';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
@@ -582,39 +1014,6 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
 
 /* Frontpage Settings temp*/
     $temp = new admin_settingpage('theme_pioneer_iconnav', get_string('iconnavheading', 'theme_pioneer'));
-
-//Custom Navigation Icons on homepage
-    // Toggle FP Textbox Spots.
-    $name = 'theme_pioneer/toggleiconnav';
-    $title = get_string('toggleiconnav' , 'theme_pioneer');
-    $description = get_string('toggleiconnav_desc', 'theme_pioneer');
-    $bothpositions = get_string('bothpositions', 'theme_pioneer');
-    $intopnav = get_string('intopnav', 'theme_pioneer');
-    $inmaincontent = get_string('inmaincontent', 'theme_pioneer');
-    $dontdisplay = get_string('dontdisplay', 'theme_pioneer');
-    $default = 'bothpositions';
-    $choices = array('1'=>$bothpositions, '2'=>$intopnav, '3'=>$inmaincontent, '0'=>$dontdisplay);
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-  // Toggle icon navigation and searchbox.
-    $name = 'theme_pioneer/fpsearchboxtop';
-    $title = get_string('fpsearchboxtop', 'theme_pioneer');
-    $description = get_string('fpsearchboxtop_desc', 'theme_pioneer');
-    $default = true;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Toggle icon navigation and searchbox.
-    $name = 'theme_pioneer/fpsearchboxmain';
-    $title = get_string('fpsearchboxmain', 'theme_pioneer');
-    $description = get_string('fpsearchboxmain_desc', 'theme_pioneer');
-    $default = true;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
     
     // This is the descriptor for icon One
     $name = 'theme_pioneer/navicon1info';
@@ -867,17 +1266,209 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
 
 $ADMIN->add('theme_pioneer', $temp);
 
-/* Marketing Spot Settings temp*/
-    $temp = new admin_settingpage('theme_pioneer_marketing', get_string('marketingheading', 'theme_pioneer'));
 
-    // @Marketing Box background color setting.
-    $name = 'theme_pioneer/marketboxcolor';
-    $title = get_string('marketboxcolor', 'theme_pioneer');
-    $description = get_string('marketboxcolor_desc', 'theme_pioneer');
-    $default = '#FFFFFF';
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+/* Marketingtop Spottop Settings temp*/
+    $temp = new admin_settingpage('theme_pioneer_marketingtop', get_string('marketingheadingtop', 'theme_pioneer'));
+
+    // Toggle Marketing Spots.
+    $name = 'theme_pioneer/togglemarketingtop';
+    $title = get_string('togglemarketing' , 'theme_pioneer');
+    $description = get_string('togglemarketingdesc', 'theme_pioneer');
+    $alwaysdisplay = get_string('alwaysdisplay', 'theme_pioneer');
+    $displaybeforelogin = get_string('displaybeforelogin', 'theme_pioneer');
+    $displayafterlogin = get_string('displayafterlogin', 'theme_pioneer');
+    $dontdisplay = get_string('dontdisplay', 'theme_pioneer');
+    $default = 'dontdisplay';
+    $choices = array('1'=>$alwaysdisplay, '2'=>$displaybeforelogin, '3'=>$displayafterlogin, '0'=>$dontdisplay);
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
+    
+    // This is the descriptor for Marketing Spot One
+    $name = 'theme_pioneer/marketingtop1info';
+    $heading = get_string('marketing1', 'theme_pioneer');
+    $information = get_string('marketinginfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+    
+    // Marketing Spot One
+    $name = 'theme_pioneer/marketingtop1';
+    $title = get_string('marketingtitle', 'theme_pioneer');
+    $description = get_string('marketingtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop1content';
+    $title = get_string('marketingcontent', 'theme_pioneer');
+    $description = get_string('marketingcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop1buttontext';
+    $title = get_string('marketingbuttontext', 'theme_pioneer');
+    $description = get_string('marketingbuttontextdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/marketingtop1icon';
+    $title = get_string('marketingicon', 'theme_pioneer');
+    $description = get_string('marketingicondesc', 'theme_pioneer');
+    $default = 'star';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop1buttonurl';
+    $title = get_string('marketingbuttonurl', 'theme_pioneer');
+    $description = get_string('marketingbuttonurldesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop1target';
+    $title = get_string('marketingurltarget' , 'theme_pioneer');
+    $description = get_string('marketingurltargetdesc', 'theme_pioneer');
+    $target1 = get_string('marketingurltargetself', 'theme_pioneer');
+    $target2 = get_string('marketingurltargetnew', 'theme_pioneer');
+    $target3 = get_string('marketingurltargetparent', 'theme_pioneer');
+    $default = 'target1';
+    $choices = array('_self'=>$target1, '_blank'=>$target2, '_parent'=>$target3);
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    // This is the descriptor for Marketing Spot Two
+    $name = 'theme_pioneer/marketingtop2info';
+    $heading = get_string('marketing2', 'theme_pioneer');
+    $information = get_string('marketinginfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+    
+    // Marketing Spot Two.
+    $name = 'theme_pioneer/marketingtop2';
+    $title = get_string('marketingtitle', 'theme_pioneer');
+    $description = get_string('marketingtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop2content';
+    $title = get_string('marketingcontent', 'theme_pioneer');
+    $description = get_string('marketingcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop2buttontext';
+    $title = get_string('marketingbuttontext', 'theme_pioneer');
+    $description = get_string('marketingbuttontextdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/marketingtop2icon';
+    $title = get_string('marketingicon', 'theme_pioneer');
+    $description = get_string('marketingicondesc', 'theme_pioneer');
+    $default = 'star';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop2buttonurl';
+    $title = get_string('marketingbuttonurl', 'theme_pioneer');
+    $description = get_string('marketingbuttonurldesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop2target';
+    $title = get_string('marketingurltarget' , 'theme_pioneer');
+    $description = get_string('marketingurltargetdesc', 'theme_pioneer');
+    $target1 = get_string('marketingurltargetself', 'theme_pioneer');
+    $target2 = get_string('marketingurltargetnew', 'theme_pioneer');
+    $target3 = get_string('marketingurltargetparent', 'theme_pioneer');
+    $default = 'target1';
+    $choices = array('_self'=>$target1, '_blank'=>$target2, '_parent'=>$target3);
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    // This is the descriptor for Marketing Spot Three
+    $name = 'theme_pioneer/marketingtop3info';
+    $heading = get_string('marketing3', 'theme_pioneer');
+    $information = get_string('marketinginfodesc', 'theme_pioneer');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+    
+    // Marketing Spot Three.
+    $name = 'theme_pioneer/marketingtop3';
+    $title = get_string('marketingtitle', 'theme_pioneer');
+    $description = get_string('marketingtitledesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop3content';
+    $title = get_string('marketingcontent', 'theme_pioneer');
+    $description = get_string('marketingcontentdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop3buttontext';
+    $title = get_string('marketingbuttontext', 'theme_pioneer');
+    $description = get_string('marketingbuttontextdesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop3icon';
+    $title = get_string('marketingicon', 'theme_pioneer');
+    $description = get_string('marketingicondesc', 'theme_pioneer');
+    $default = 'star';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_pioneer/marketingtop3buttonurl';
+    $title = get_string('marketingbuttonurl', 'theme_pioneer');
+    $description = get_string('marketingbuttonurldesc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $name = 'theme_pioneer/marketingtop3target';
+    $title = get_string('marketingurltarget' , 'theme_pioneer');
+    $description = get_string('marketingurltargetdesc', 'theme_pioneer');
+    $target1 = get_string('marketingurltargetself', 'theme_pioneer');
+    $target2 = get_string('marketingurltargetnew', 'theme_pioneer');
+    $target3 = get_string('marketingurltargetparent', 'theme_pioneer');
+    $default = 'target1';
+    $choices = array('_self'=>$target1, '_blank'=>$target2, '_parent'=>$target3);
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+    
+    $ADMIN->add('theme_pioneer', $temp);
+
+
+/* Marketing Spot Settings temp*/
+    $temp = new admin_settingpage('theme_pioneer_marketing', get_string('marketingheading', 'theme_pioneer'));
 
     // Toggle Marketing Spots.
     $name = 'theme_pioneer/togglemarketing';
@@ -1100,177 +1691,6 @@ $ADMIN->add('theme_pioneer', $temp);
     $ADMIN->add('theme_pioneer', $temp);
 
 
-
-
-/* Help Spot Settings temp*/
-$temp = new admin_settingpage('theme_pioneer_tab', get_string('tabheading', 'theme_pioneer'));
-
-    // Show or Hide Frontpage Tabs.
-    $name = 'theme_pioneer/tabtoggle';
-    $title = get_string('tabtoggle', 'theme_pioneer');
-    $description = get_string('tabtoggle_desc', 'theme_pioneer');
-    $default = 0;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // Tab Button Text.
-    $name = 'theme_pioneer/tabbuttontext';
-    $title = get_string('tabbuttontext', 'theme_pioneer');
-    $description = get_string('tabbuttontextdesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // This is the descriptor for tab Spot One
-    $name = 'theme_pioneer/tab1info';
-    $heading = get_string('tab1', 'theme_pioneer');
-    $information = get_string('tabinfodesc', 'theme_pioneer');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    // tab Spot One
-    $name = 'theme_pioneer/tab1';
-    $title = get_string('tabtitle', 'theme_pioneer');
-    $description = get_string('tabtitledesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    $name = 'theme_pioneer/tab1content';
-    $title = get_string('tabcontent', 'theme_pioneer');
-    $description = get_string('tabcontentdesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    
-    // This is the descriptor for tab Spot Two
-    $name = 'theme_pioneer/tab2info';
-    $heading = get_string('tab2', 'theme_pioneer');
-    $information = get_string('tabinfodesc', 'theme_pioneer');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-    
-    // tab Spot Two
-    $name = 'theme_pioneer/tab2';
-    $title = get_string('tabtitle', 'theme_pioneer');
-    $description = get_string('tabtitledesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    $name = 'theme_pioneer/tab2content';
-    $title = get_string('tabcontent', 'theme_pioneer');
-    $description = get_string('tabcontentdesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-    
-    // This is the descriptor for tab Spot Three
-    $name = 'theme_pioneer/tab3info';
-    $heading = get_string('tab3', 'theme_pioneer');
-    $information = get_string('tabinfodesc', 'theme_pioneer');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-    
-    // tab Spot Three.
-    $name = 'theme_pioneer/tab3';
-    $title = get_string('tabtitle', 'theme_pioneer');
-    $description = get_string('tabtitledesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    $name = 'theme_pioneer/tab3content';
-    $title = get_string('tabcontent', 'theme_pioneer');
-    $description = get_string('tabcontentdesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // This is the descriptor for tab Spot One
-    $name = 'theme_pioneer/tab4info';
-    $heading = get_string('tab4', 'theme_pioneer');
-    $information = get_string('tabinfodesc', 'theme_pioneer');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    // tab Spot One
-    $name = 'theme_pioneer/tab4';
-    $title = get_string('tabtitle', 'theme_pioneer');
-    $description = get_string('tabtitledesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    $name = 'theme_pioneer/tab4content';
-    $title = get_string('tabcontent', 'theme_pioneer');
-    $description = get_string('tabcontentdesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // This is the descriptor for tab Spot One
-    $name = 'theme_pioneer/tab5info';
-    $heading = get_string('tab5', 'theme_pioneer');
-    $information = get_string('tabinfodesc', 'theme_pioneer');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    // tab Spot One
-    $name = 'theme_pioneer/tab5';
-    $title = get_string('tabtitle', 'theme_pioneer');
-    $description = get_string('tabtitledesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    $name = 'theme_pioneer/tab5content';
-    $title = get_string('tabcontent', 'theme_pioneer');
-    $description = get_string('tabcontentdesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // This is the descriptor for tab Spot One
-    $name = 'theme_pioneer/tab6info';
-    $heading = get_string('tab6', 'theme_pioneer');
-    $information = get_string('tabinfodesc', 'theme_pioneer');
-    $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
-    // tab Spot One
-    $name = 'theme_pioneer/tab6';
-    $title = get_string('tabtitle', 'theme_pioneer');
-    $description = get_string('tabtitledesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_configtext($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    $name = 'theme_pioneer/tab6content';
-    $title = get_string('tabcontent', 'theme_pioneer');
-    $description = get_string('tabcontentdesc', 'theme_pioneer');
-    $default = '';
-    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-
-    
-    $ADMIN->add('theme_pioneer', $temp);
 
 /* Custom Footer Text Settings temp*/
 $temp = new admin_settingpage('theme_pioneer_footertextboxes', get_string('footertextboxes', 'theme_pioneer'));

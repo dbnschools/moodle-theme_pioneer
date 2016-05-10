@@ -28,21 +28,15 @@
 <div class="row-fluid" id="marketing-spots">
 
 <div class="span4">
-    <div class="marketwrap">
-    <div class="market-icon">
-        <i class="fa fa-<?php echo $PAGE->theme->settings->marketing1icon ?>"></i>
-    </div>
+    <div style="background-image: url(<?php if ($PAGE->theme->settings->marketing1image) { echo $PAGE->theme->setting_file_url('marketing1image', 'marketing1image', true); } ?>);background-repeat: no-repeat;background-size:cover; background-position:center;" class="marketwrap">
         <div class="market-spot">
+            <div class="markettext">
             <div class="market-title">
             <h3><?php echo $PAGE->theme->settings->marketing1 ?></h3>
             </div>
-            <?php if ($PAGE->theme->settings->marketing1image) { ?>
-            <img src="<?php echo $PAGE->theme->setting_file_url('marketing1image', 'marketing1image', true); ?>" />
-            <?php } ?>
-            <p>
             <?php echo $PAGE->theme->settings->marketing1content ?>
-            </p> 
-            <br>
+            
+            </div>
             <?php if ($PAGE->theme->settings->marketing1buttonurl) { ?>
             <div class="marketlink">
             <a href="<?php echo $PAGE->theme->settings->marketing1buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing1target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing1icon ?>"></i></span>
@@ -50,27 +44,21 @@
             </a>
             </div>
             <?php } ?>
-
         </div>
     </div>
 </div>
 
 <div class="span4">
-    <div class="marketwrap">
-    <div class="market-icon">
-        <i class="fa fa-<?php echo $PAGE->theme->settings->marketing2icon ?>"></i>
-    </div>
+            
+    <div style="background-image: url(<?php if ($PAGE->theme->settings->marketing2image) { echo $PAGE->theme->setting_file_url('marketing2image', 'marketing2image', true); } ?>);background-repeat: no-repeat;background-size:cover; background-position:center;"  class="marketwrap">
         <div class="market-spot">
+            <div class="markettext">
             <div class="market-title">
             <h3><?php echo $PAGE->theme->settings->marketing2 ?></h3>
             </div>
-            <?php if ($PAGE->theme->settings->marketing2image) { ?>
-            <img src="<?php echo $PAGE->theme->setting_file_url('marketing2image', 'marketing2image', true); ?>" />
-            <?php } ?>
-            <p>
             <?php echo $PAGE->theme->settings->marketing2content ?>
-            </p> 
-            <br />
+            
+            </div>
             <?php if ($PAGE->theme->settings->marketing2buttonurl) { ?>
             <div class="marketlink">
             <a href="<?php echo $PAGE->theme->settings->marketing2buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing2target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing2icon ?>"></i></span>
@@ -83,21 +71,15 @@
 </div>
 
 <div class="span4">
-    <div class="marketwrap">
-    <div class="market-icon">
-        <i class="fa fa-<?php echo $PAGE->theme->settings->marketing3icon ?>"></i>
-    </div>
+    <div style="background-image: url(<?php if ($PAGE->theme->settings->marketing3image) { echo $PAGE->theme->setting_file_url('marketing3image', 'marketing3image', true); } ?>);background-repeat: no-repeat;background-size:cover; background-position:center;" class="marketwrap">
         <div class="market-spot">
+            <div class="markettext">
             <div class="market-title">
             <h3><?php echo $PAGE->theme->settings->marketing3 ?></h3>
             </div>
-            <?php if ($PAGE->theme->settings->marketing3image) { ?>
-            <img src="<?php echo $PAGE->theme->setting_file_url('marketing3image', 'marketing3image', true); ?>" />
-            <?php } ?>
-            <p>
             <?php echo $PAGE->theme->settings->marketing3content ?>
-            </p> 
-            <br />
+            
+            </div>
             <?php if ($PAGE->theme->settings->marketing3buttonurl) { ?>
             <div class="marketlink">
             <a href="<?php echo $PAGE->theme->settings->marketing3buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketing3target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketing3icon ?>"></i></span>

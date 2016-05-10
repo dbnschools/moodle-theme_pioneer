@@ -1,5 +1,5 @@
 
-<div class="iconset">
+<div class="iconsettop">
 		<?php if ($PAGE->theme->settings->nav1icon) { ?>
         <a href="<?php echo $PAGE->theme->settings->nav1buttonurl ?>" target="_self" id="button" data-toggle="tooltip" data-placement="bottom" title="<?php echo $PAGE->theme->settings->nav1buttontext ?>"><i class="fa fa-2x fa-<?php echo $PAGE->theme->settings->nav1icon ?>"></i></a>
         <?php } ?>

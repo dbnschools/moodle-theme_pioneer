@@ -22,12 +22,21 @@
  * @copyright  2015 Chris Kenniburg
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
- 
+$context = context_system::instance();
 ?>
 
-<?php if ($PAGE->theme->settings->fptextbox) { ?>
-<div class="fptextbox">
+	<div class="fptextbox">
 
+    <?php 
+        if($PAGE->theme->settings->toppcourseenable==1) {
+            echo $courserenderer->top_promoted_courses();
+        } else if($PAGE->theme->settings->toppcourseenable==2 && !isloggedin()) {
+            echo $courserenderer->top_promoted_courses();
+        } else if($PAGE->theme->settings->toppcourseenable==3 && isloggedin()) {
+            echo $courserenderer->top_promoted_courses();
+        } 
+        ?>
+    <div class="fptextbox-inner">
             <?php 
               if($PAGE->theme->settings->toggleiconnav==1) {
               require(dirname(__FILE__).'/fp_iconnav.php');
@@ -35,8 +44,26 @@
               require(dirname(__FILE__).'/fp_iconnav.php');
               }
             ?>
+      <?php 
+        if($PAGE->theme->settings->fpcreatortextbox && has_capability('moodle/course:create', $context)) {
+        echo ('<div class="creatortextbox"><hr>');
+        echo $PAGE->theme->settings->fpcreatortextbox;
+        echo ('<hr></div><div class="clearfix"></div>');
+        }
+      ?>
+      <div class="fptextboxtext">
+        <?php 
+        if($PAGE->theme->settings->togglefptextbox==1) {
+            echo $PAGE->theme->settings->fptextbox;
+        } else if($PAGE->theme->settings->togglefptextbox==2 && !isloggedin()) {
+            echo $PAGE->theme->settings->fptextbox;
+        } else if($PAGE->theme->settings->togglefptextbox==3 && isloggedin()) {
+            echo $PAGE->theme->settings->fptextbox;
+        } 
+        ?>
+      </div>
+      <div class="clearfix"></div>
+			<?php echo $OUTPUT->main_content(); ?>
+    </div>
+	</div>
 
-	<?php echo $PAGE->theme->settings->fptextbox ?> 
-	
-</div>
-<?php } ?>

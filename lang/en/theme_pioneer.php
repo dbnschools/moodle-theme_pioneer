@@ -25,6 +25,9 @@ $string['pluginname'] = 'Pioneer';
 
 //Theme Admin Panel Labels
 $string['geneicsettings'] = 'General Settings';
+$string['headerimagepage'] = 'Header Image Settings';
+$string['navigation'] = 'Navigation Options';
+$string['fpdashboard'] = 'Frontpage Dashboard';
 $string['themecolorsettings'] = 'Theme Colors';
 $string['frontpageheading'] = 'Frontpage Options';
 $string['iconnavheading'] = 'Icon Navigation';
@@ -33,10 +36,13 @@ $string['googleheading'] = 'Google Fonts';
 $string['socialwallheading'] = 'Socialwall Course Format Options';
 $string['socialwallheaddesc'] = 'Socialwall Course format is a set of course format plugins for Moodle that provides teachers with an easy to use course that operates similar to Facebook.  You can download the Socialwall Course Format from Moodle.org <a href="https://moodle.org/plugins/browse.php?list=set&id=74">https://moodle.org/plugins/browse.php?list=set&id=74</a>.  The settings below allow you to customize the colors of the socialwall.';
 $string['socialiconheading'] = 'Social Icon Navigation';
-$string['marketingheading'] = 'Marketing Spots';
+$string['marketingheading'] = 'Marketing Spots Bottom';
+$string['marketingheadingtop'] = 'Marketing Spots Top';
 $string['tabheading'] = 'Frontpage Tabs';
 $string['footertextboxes'] = 'Custom Footer';
 $string['analyticsheading'] = 'Google Analytics';
+
+
 
 $string['configtitle'] = 'Pioneer';
 $string['choosereadme'] = '<p>Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.</p><p>We are a K-12 school district in Dearborn, Michigan.  Pioneer is the mascot of Dearborn High School.</p>';
@@ -89,6 +95,8 @@ $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be 
 //General Alert on frontpage
 $string['generalalert'] = 'General Alert';
 $string['generalalertdesc'] = 'Whatever you add to this textarea will be displayed in the General Alert area on the frontpage.';
+$string['showlogintoggle'] = 'Display Login Form';
+$string['showlogintoggle_desc'] = 'Show or hide the custom login form on the frontpage.';
 
 //footer info
 $string['fullfootertext'] = 'Full-Width Footer Textbox';
@@ -104,12 +112,15 @@ $string['copyrighttext_desc'] = 'Add a copyright notice for the site.  Will appe
 //frontpage textbox
 $string['fptextbox'] = 'Frontpage Textbox';
 $string['fptextboxdesc'] = 'This textbox appears on the frontpage and is ideal for putting a welcome message.';
-$string['togglefptextbox'] = 'Toggle Frontpage Text Box Display';
-$string['togglefptextboxdesc'] = 'Choose if you wish to hide or show the Frontpage Text Box.';
+$string['togglefptextbox'] = 'Show/Hide Text Box Display';
+$string['togglefptextboxdesc'] = 'Choose if you wish to hide or show the Frontpage Text Box for logged out users on the frontpage.';
 $string['fpsearchboxtop'] = 'Display Course Searchbox in Top Navigation';
 $string['fpsearchboxmain'] = 'Display Course Searchbox in Main Content Area';
 $string['fpsearchboxtop_desc'] = 'Show a course search box in the top navigation bar.  This will appear to the right of the icon navigation at the top of the page and can be shown even if the icon navigation is hidden.  This searchbox is not dependent on icon navigation settings.';
 $string['fpsearchboxmain_desc'] = 'Show a course search box in the frontpage textbox area.  This option is dependent on the icon navigation settings and will only be displayed if icon navigation is set to display in main content area.';
+
+$string['coursecomplete'] = 'Radial Course Completion Display';
+$string['coursecomplete_desc'] = 'If a course uses course completion and this is turned on then Pioneer will display a radial completion status for the student in the upper left of the page.';
 
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
@@ -119,6 +130,8 @@ $string['linkcolor_desc'] = 'The color of the links.';
 $string['logo'] = 'Logo';
 $string['logodesc'] = 'The logo should be 140px by 40px.  The logo is displayed in the top left and bottom right of the theme.';
 
+$string['blocksinfo'] = 'Block Position';
+$string['blocksdesc'] = 'Align blocks on the left or the right of the page.';
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
 $string['blocksleft'] = 'Align blocks on the left';
@@ -148,6 +161,7 @@ $string['togglenaviconsdesc'] = 'Choose to include custom navigation icons based
 $string['naviconon'] = 'Turn on custom navigation icons';
 $string['naviconoff'] = 'Turn off custom navigation icons';
 
+
 $string['navicon1'] = 'Custom Frontpage Icon One';
 $string['navicon2'] = 'Custom Frontpage Icon Two';
 $string['navicon3'] = 'Custom Frontpage Icon Three';
@@ -167,14 +181,28 @@ $string['socialicon7'] = 'Vimeo URL';
 $string['socialicon8'] = 'Google Plus URL';
 
 //promoted courses
-$string['promotedtitledefault'] = 'Featured courses';
+$string['toppromotedtitledefault'] = 'Featured courses';
+$string['toppromotedtitledesc'] = 'This text appears below the Course Title in the slider. "Enroll Now" is an ideal tagline.';
+$string['toppcourseenable'] = 'Enable Featured Courses Slideshow';
+$string['toppcourses'] = 'Featured Courses Slideshow';
+$string['toppcoursesdesc'] = 'LIMIT=6 You cannot enter more than 6 course ids.  Please give the featured courses id should separated by comma.';
+$string['toppromotedcoursesheading'] = 'Featured Course Slideshow';
+$string['toptitle'] = 'Tagline';
+$string['fptoppromotedpadding'] = 'Height of Course Slideshow';
+$string['fptoppromotedpadding_desc'] = 'This will control the height of the course image slideshow.';
+
+
+
+//promoted courses
+$string['promotedtitledefault'] = 'Bottom Featured courses';
 $string['promotedtitledesc'] = 'Please give the Promoted courses block title,
 either language key or Text.For ex: lang:display or Display';
 $string['pcourseenable'] = 'Enable Featured courses';
-$string['pcourses'] = 'Featured Courses';
-$string['pcoursesdesc'] = 'Please give the featured courses id should separated by comma.';
-$string['promotedcoursesheading'] = 'Featured Courses';
+$string['pcourses'] = 'Bottom Featured Courses';
+$string['pcoursesdesc'] = 'LIMIT=9 You cannot enter more than 9 course ids. Please give the featured courses id should separated by comma.';
+$string['promotedcoursesheading'] = 'Bottom Featured Courses Slider';
 $string['title'] = 'Title';
+
 
 //Custom Login Page 
 $string['loginbuttoncolor'] = 'Login button Color';
@@ -190,30 +218,34 @@ $string['createusertoggle'] = 'Create User Link';
 $string['createusertoggle_desc'] = 'Show or hide the Create User link in the custom login form on the frontpage.';
 $string['forgotpasstoggle'] = 'Forgot Password Link';
 $string['forgotpasstoggle_desc'] = 'Show or hide the Forgot Password link in the custom login form on the frontpage.';
+$string['coursetitlebkg'] = 'Course Title Background Color';
+$string['coursetitlebkg_desc'] = 'This is the color of the box that appears behind the Course Title.  It is also used as the background color for the Course Slideshow and Available Courses Titles to create a consistent look.';
+$string['coursetitletxt'] = 'Course Title Text Color';
+$string['coursetitletxt_desc'] = 'This is the color of the course title.';
+
 
 //top course search form
 $string['topsearch'] = 'Search courses';
 $string['topsearchbutton'] = 'Find';
 $string['fpsearch'] = 'Search courses';
 $string['fpsearchbutton'] = 'Search';
-
+$string['promotedtitledefault'] = 'Featured Courses';
 
 //settings info
 $string['fptextboxinfo'] = 'Frontpage Welcome Box';
-$string['fptextboxinfodesc'] = 'Use this text box to provide instructions and information for your users.  It will only appear on the the frontpage.  The toggle is below is limited to only the frontpage (Dashboard or Site).';
+$string['fptextboxinfodesc'] = 'Add a welcome message for users.';
+$string['fpcreatortextbox'] = 'Frontpage Course Creator User Role Textbox';
+$string['fpcreatortextbox_desc'] = 'Add content only visible to users with the Course Creator Role.';
 $string['mycorusesinfo'] = 'Navigational Menu Options';
 $string['mycorusesinfodesc'] = 'These settings control the top navigation bar.  These include the My Courses dropdown and This Course dropdown.';
-$string['coursegradeinfo'] = 'Course Grade Slider';
-$string['coursegradeinfodesc'] = 'Checking this box will display the course gradebook items to students in a slider/toggle on each course page.  This makes it really simple for a student to see their grades for a course.';
+$string['coursegradeinfo'] = 'Course Header Area (Frontpage Tabs & Course Grades)';
+$string['coursegradeinfodesc'] = 'These settings control the slider button that appears on the homepage and main course page. The course grades show a list of all grade items and the associated grade for the student. The frontpage tabs require that you add content to the tabs on the Frontpage Tabs setting page. In order for course grades to appear the course settings under Appearance must be set to YES for Show gradebook to students.';
 $string['headerimageinfo'] = 'Header Image Height';
 $string['headerimageinfodesc'] = 'These settings control the height of the header image on the site and in-course activities. ';
 $string['backgroundimageinfo'] = 'Background Image';
 $string['backgroundimageinfodesc'] = 'Since the main content is full width you will only see a small portion of background color at the very bottom of the page.  You can upload an image if desired.';
 $string['stylinginfo'] = 'Styling and Alerts';
 $string['stylinginfodesc'] = 'Additional customization options and alert settings.';
-
-
-
 
 
 // Marketing Spots
@@ -225,6 +257,8 @@ $string['marketinginfodesc'] = 'Enter the settings for your marketing spot.';
 $string['marketingheadingsub'] = 'Three locations on the front page to add information and links';
 $string['marketboxcolor'] = 'Marketing Box background color';
 $string['marketboxcolor_desc'] = 'The color of the background for the marketing box.';
+$string['marketboxcontentcolor'] = 'Bottom Marketing Box background color';
+$string['marketboxcontentcolor_desc'] = 'The color of the background for the bottom area marketing box. This is where the text appears in the marketing spot.';
 $string['marketingheight'] = 'Height of Marketing Images';
 $string['marketingheightdesc'] = 'If you want to display images in the Marketing boxes you can specify their hight here.';
 $string['marketingdesc'] = 'This theme provides the option of enabling three "marketing" or "ad" spots just under the slideshow.  These allow you to easily identify core information to your users and provide direct links.';
@@ -254,6 +288,7 @@ $string['marketingurltargetself'] = 'Current Page';
 $string['marketingurltargetnew'] = 'New Page';
 $string['marketingurltargetparent'] = 'Parent Frame';
 
+
 // Custom Icons
 $string['togglenavicons'] = 'Turn On Custom Icons';
 $string['togglenaviconsdesc'] = 'Choose to include custom navigation icons based off Font-Awesome.';
@@ -275,6 +310,7 @@ $string['naviconbuttontext'] = 'Tooltip Text';
 $string['naviconbuttontextdesc'] = 'Text to appear in the tooltip of the icon when the mouse hovers over it.';
 $string['naviconbuttonurl'] = 'Link URL';
 $string['naviconbuttonurldesc'] = 'URL the button will point to. You can link to anywhere including outside websites  just enter the proper URL.  If your Moodle site is in a subdirectory the default URL will not work.  Please adjust the URL to reflect the subdirectory. Example if "moodle" was your subdirectory folder then the URL would need to be changed to /moodle/my/ ';
+
 
 //Frontpage tabs
 $string['tabbutton'] = 'Getting Started';
@@ -311,19 +347,24 @@ $string['bodysizedesc'] = 'Use a number such as 14px';
 $string['bodyweight'] = 'Body Weight';
 $string['bodyweightdesc'] = 'Typically Google Fonts will have a number such as 100, 200, 300, etc.  Use that here.';
 
-
 $string['blockbordercolor'] = 'Block Border Color';
 $string['blockbordercolor_desc'] = 'This is the course block border color.  It is the background color of the title area.';
 $string['blockcolor'] = 'Block Color';
 $string['blockcolor_desc'] = 'This is the course block background color area.';
 $string['contentbackgroundcolor'] = 'Content Background Color';
 $string['contentbackgroundcolor_desc'] = 'This is the background color for the main course content area. If you delete the color here it will default to the Body Background below as well as the background image settings.';
-$string['iconnavbackgroundcolor'] = 'Icon Navigation Background';
-$string['iconnavbackgroundcolor_desc'] = 'This is the background color for the very top icon navigation area.';
+$string['iconnavbackgroundcolor'] = 'Maincontent Icon and Searchbox Navigation Background';
+$string['iconnavbackgroundcolor_desc'] = 'This is the background color for the icon navigation and searchbox area in the main content area.';
+$string['iconnavbackgroundcolortop'] = 'Top Icon and Searchbox Navigation Background';
+$string['iconnavbackgroundcolortop_desc'] = 'This is the background color for the icon navigation and searchbox area in the very top-right of the page.';
+$string['navbkgcolor'] = 'Main Navigation Background';
+$string['navbkgcolor_desc'] = 'This is the background color for the main navigation bar.';
 $string['headerimagepadding'] = 'Header Image Padding';
+$string['headerimagepadding_desc'] = 'Control the padding and height of the header image for courses.';
+$string['fpheaderimagepadding'] = 'Frontpage Header Image Padding';
+$string['fpheaderimagepadding_desc'] = 'Control the padding and height of the header image for the frontpage. This setting is applied above and below the login form for logged out users.';
 $string['headerincourseimagepadding'] = 'Header Image Padding in Course Activities (Incourse)';
 $string['headerincourseimagepadding_desc'] = 'After the course homepage, this will be the padding height of the header image.  Making this shorter allows more content to be displayed';
-$string['headerimagepadding_desc'] = 'Control the padding and height of the header image for courses.';
 $string['headerbackgroundimage'] = 'Default Header Image';
 $string['headerbackgroundimage_desc'] = 'This is the default header image.';
 $string['headerbackgroundtoggle'] = 'Allow teachers to upload header image';
@@ -347,6 +388,8 @@ $string['swattach'] = 'Socialwall Course Format Attachment background';
 $string['swattach_desc'] = 'If you use the Socialwall Course Format this setting will change the background color of the attachment area in the wall feed.';
 $string['swcomment'] = 'Socialwall Course Format comment background';
 $string['swcomment_desc'] = 'If you use the Socialwall Course Format this setting will change the background color of the comment area in the wall feed.';
+
+
 //socialwall CSS labels
 $string['swlabelpost'] = 'Post CSS Label';
 $string['swlabelmessage'] = 'Message CSS Label';
@@ -425,3 +468,7 @@ $string['rendereroverlayfontcolor'] = 'Overlay font color';
 $string['rendereroverlayfontcolordesc'] = 'The color of the font, when hovering over a coursebox with "Tiles w/ overlay" renderer enabled.';
 $string['frontpagerendererdefaultimage'] = 'Default course image';
 $string['frontpagerendererdefaultimagedesc'] = 'The default image to use when no course image is found, (only applies for Tiles w/ overlay)';
+
+//MISC
+$string['editon'] = 'Edit On';
+$string['editoff'] = 'Edit Off';

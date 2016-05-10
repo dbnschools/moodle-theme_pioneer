@@ -46,21 +46,17 @@ echo $OUTPUT->doctype() ?>
 
 <div id="page" class="container-fluid">
 
-<?php require_once(dirname(__FILE__).'/includes/topnav.php'); ?>
-
 <div id="page-content" class="row-fluid">
-
+<header>
 <div id="header-image-box">
-            
-
             <div class="course-titlewrap">
             <div class="course-title">
             <?php echo $OUTPUT->page_heading(); ?>
            </div>
-           </div>
-
-            
+           </div> 
 </div>
+</header>
+<?php require_once(dirname(__FILE__).'/includes/topnav.php'); ?>
         <div id="region-main-box" class="<?php echo $regionmainbox; ?>">
             <div class="row-fluid">
                 <section id="region-main" class="<?php echo $regionmain; ?>">

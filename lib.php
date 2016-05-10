@@ -143,6 +143,14 @@ function theme_pioneer_process_css($css, $theme) {
     $css = theme_pioneer_set_customcss($css, $customcss);
 
     // Set header image padding.
+    if (!empty($theme->settings->fpheaderimagepadding)) {
+        $fpheaderimagepadding = $theme->settings->fpheaderimagepadding;
+    } else {
+        $fpheaderimagepadding = null;
+    }
+    $css = theme_pioneer_set_fpheaderimagepadding($css, $fpheaderimagepadding);
+
+    // Set header image padding.
     if (!empty($theme->settings->headerimagepadding)) {
         $headerimagepadding = $theme->settings->headerimagepadding;
     } else {
@@ -157,6 +165,14 @@ function theme_pioneer_process_css($css, $theme) {
         $headerincourseimagepadding = null;
     }
     $css = theme_pioneer_set_headerincourseimagepadding($css, $headerincourseimagepadding);
+
+    // Set slider image padding.
+    if (!empty($theme->settings->toppromotedpadding)) {
+        $toppromotedpadding = $theme->settings->toppromotedpadding;
+    } else {
+        $toppromotedpadding = null;
+    }
+    $css = theme_pioneer_set_toppromotedpadding($css, $toppromotedpadding);
     
    // Set topic week background CSS.
     if (!empty($theme->settings->topicweekcolor)) {
@@ -180,6 +196,20 @@ function theme_pioneer_process_css($css, $theme) {
         $loginbuttoncolor = '';
     }
     $css = theme_pioneer_set_loginbuttoncolor($css, $loginbuttoncolor);
+
+    if (!empty($theme->settings->coursetitlebkg)) {
+        $coursetitlebkg = $theme->settings->coursetitlebkg;
+    } else {
+        $coursetitlebkg = '';
+    }
+    $css = theme_pioneer_set_coursetitlebkg($css, $coursetitlebkg);
+
+    if (!empty($theme->settings->coursetitletxt)) {
+        $coursetitletxt = $theme->settings->coursetitletxt;
+    } else {
+        $coursetitletxt = '';
+    }
+    $css = theme_pioneer_set_coursetitletxt($css, $coursetitletxt);
 
     if (!empty($theme->settings->tabbuttoncolor)) {
         $tabbuttoncolor = $theme->settings->tabbuttoncolor;
@@ -218,6 +248,23 @@ function theme_pioneer_process_css($css, $theme) {
     }
     $css = theme_pioneer_set_iconnavbackgroundcolor($css, $iconnavbackgroundcolor);
 
+
+    if (!empty($theme->settings->iconnavbackgroundcolortop)) {
+        $iconnavbackgroundcolortop = $theme->settings->iconnavbackgroundcolortop;
+    } else {
+        $iconnavbackgroundcolortop = '';
+    }
+    $css = theme_pioneer_set_iconnavbackgroundcolortop($css, $iconnavbackgroundcolortop);
+
+
+    if (!empty($theme->settings->navbkgcolor)) {
+        $navbkgcolor = $theme->settings->navbkgcolor;
+    } else {
+        $navbkgcolor = '';
+    }
+    $css = theme_pioneer_set_navbkgcolor($css, $navbkgcolor);
+
+
     // Set marketbox CSS.
     if (!empty($theme->settings->marketboxcolor)) {
         $marketboxcolor = $theme->settings->marketboxcolor;
@@ -225,6 +272,13 @@ function theme_pioneer_process_css($css, $theme) {
         $marketboxcolor = '';
     }
     $css = theme_pioneer_set_marketboxcolor($css, $marketboxcolor);
+
+    if (!empty($theme->settings->marketboxcontentcolor)) {
+        $marketboxcontentcolor = $theme->settings->marketboxcontentcolor;
+    } else {
+        $marketboxcontentcolor = '';
+    }
+    $css = theme_pioneer_set_marketboxcontentcolor($css, $marketboxcontentcolor);
 
     // Set Socialwall post background color CSS.
     if (!empty($theme->settings->swpost)) {
@@ -317,6 +371,18 @@ function theme_pioneer_set_marketboxcolor($css, $marketboxcolor) {
     return $css;
 }
 
+function theme_pioneer_set_marketboxcontentcolor($css, $marketboxcontentcolor) {
+    $tag = '[[setting:marketboxcontentcolor]]';
+    $replacement = $marketboxcontentcolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
 //Adds activity background
 function theme_pioneer_set_activitybackground($css, $activitybackground) {
     $tag = '[[setting:activitybackground]]';
@@ -355,6 +421,18 @@ function theme_pioneer_set_headerbackgroundimage($css, $headerbackgroundimage, $
     return $css;
 }
 
+function theme_pioneer_set_fpheaderimagepadding($css, $fpheaderimagepadding) {
+    $tag = '[[setting:fpheaderimagepadding]]';
+    $replacement = $fpheaderimagepadding;
+    if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
 function theme_pioneer_set_headerimagepadding($css, $headerimagepadding) {
     $tag = '[[setting:headerimagepadding]]';
     $replacement = $headerimagepadding;
@@ -370,6 +448,18 @@ function theme_pioneer_set_headerimagepadding($css, $headerimagepadding) {
 function theme_pioneer_set_headerincourseimagepadding($css, $headerincourseimagepadding) {
     $tag = '[[setting:headerincourseimagepadding]]';
     $replacement = $headerincourseimagepadding;
+    if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_toppromotedpadding($css, $toppromotedpadding) {
+    $tag = '[[setting:toppromotedpadding]]';
+    $replacement = $toppromotedpadding;
     if (is_null($replacement)) {
         $replacement = '';
     }
@@ -466,6 +556,30 @@ function theme_pioneer_set_loginbuttoncolor($css, $loginbuttoncolor) {
     return $css;
 }
 
+function theme_pioneer_set_coursetitlebkg($css, $coursetitlebkg) {
+    $tag = '[[setting:coursetitlebkg]]';
+    $replacement = $coursetitlebkg;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_coursetitletxt($css, $coursetitletxt) {
+    $tag = '[[setting:coursetitletxt]]';
+    $replacement = $coursetitletxt;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
 function theme_pioneer_set_tabbuttoncolor($css, $tabbuttoncolor) {
     $tag = '[[setting:tabbuttoncolor]]';
     $replacement = $tabbuttoncolor;
@@ -529,6 +643,30 @@ function theme_pioneer_set_contentbackgroundcolor($css, $contentbackgroundcolor)
 function theme_pioneer_set_iconnavbackgroundcolor($css, $iconnavbackgroundcolor) {
     $tag = '[[setting:iconnavbackgroundcolor]]';
     $replacement = $iconnavbackgroundcolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_iconnavbackgroundcolortop($css, $iconnavbackgroundcolortop) {
+    $tag = '[[setting:iconnavbackgroundcolortop]]';
+    $replacement = $iconnavbackgroundcolortop;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_navbkgcolor($css, $navbkgcolor) {
+    $tag = '[[setting:navbkgcolor]]';
+    $replacement = $navbkgcolor;
         if (is_null($replacement)) {
         $replacement = '';
     }
@@ -628,7 +766,7 @@ function theme_pioneer_set_sectionheadericon($css, $sectionheadericon) {
  * @return bool
  */
 function theme_pioneer_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
-    if ($context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'logo' || $filearea === 'backgroundimage' || $filearea === 'headerbackgroundimage' || $filearea === 'marketing1image'|| $filearea === 'marketing2image' || $filearea === 'marketing3image'  )) {
+    if ($context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'logo' || $filearea === 'backgroundimage' || $filearea === 'headerbackgroundimage' || $filearea === 'marketing1image'|| $filearea === 'marketing2image' || $filearea === 'marketing3image' )) {
         $theme = theme_config::load('pioneer');
         // By default, theme files must be cache-able by both browsers and proxies.
         if (!array_key_exists('cacheability', $options)) {
@@ -814,6 +952,7 @@ function theme_pioneer_set_customcss($css, $customcss) {
 
 function theme_pioneer_page_init(moodle_page $page) {
 $page->requires->jquery_plugin('bootstrap-tooltip', 'theme_pioneer');
+$page->requires->jquery_plugin('stickybar', 'theme_pioneer');
 }
 
 function theme_pioneer_lang($key = '') {

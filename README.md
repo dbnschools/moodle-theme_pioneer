@@ -1,6 +1,36 @@
 # Moodle-theme_pioneer
 Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.
 
+##Pioneer v1.3.8
+* Fixed menu bar on login page /moodle/login/index.php.
+* Fixed Sidebar blocks side-post on frontpage
+* Adjusted gradebook slider display to clean up data presented  pioneer.css line 230-233 #coursegrades
+* Added color picker for course title background box
+* Added color picker for course title text
+* Added Header Image Padding Settings for better control of header image height when logged out, logged in/main course page, and in-course activity view.
+* Display or hide custom login form when logged out on frontpage
+* Scroll Spy returns user to page position on in a course when returning or refreshing.
+* New Featured Course Slideshow with height controls using slickjs
+* New MarketingSpots at top of page
+* Many new toggles for when to display frontpage elements
+* Textbox only visible to users with Course Creator Role on frontpage
+* Animated Radial Course Completion circle appears in upper left corner.  Admin toggle on/off.  Must have course completion enabled as well.
+* Featured Courses is now a 9 course slider which displays three at a time
+* Moved Edit button to main navigation
+* Moved icon and searchbox to very top right of page
+* Moved course title, frontpage tab slider, and course grade slider to bottom of header image.
+* Added color picker for marketing elements
+* Added background color picker for top and main content icon and searchbox navigation
+* Moved many Theme Settings into new pages to try and better organize the various controls of the theme.
+* Too many CSS improvements to count.
+* Utilizing the header images of courses throughout the site in various capacities
+
+##Pioneer v1.3.7
+* Added ability to control the frontpage background image size by adjusting padding from the theme settings page.  Padding is applied above and below the login form.
+
+##Pioneer v1.3.6
+* Fixed issue with Socialwall Course Format in which save buttons were hidden from view.
+
 ##Pioneer v1.3.5
 * Fixed a slight issue with Google Analytics and defined variables.
 * Moved the background image upload and parameters from General Settings to the page with the color pickers since it is part of the background colors.
