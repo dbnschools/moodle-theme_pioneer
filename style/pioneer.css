@@ -546,7 +546,7 @@ text-align: right;
 
 .fpcustomnav-container .navbar,.navbar-inner {
   margin-bottom: 0px;
-  padding: 0px;
+  padding: 0px  10px;
   font-size:14px;
   vertical-align: middle;
   border:0px;
@@ -561,12 +561,16 @@ text-align: right;
     background-color: [[setting:navbkgcolor]];
     height:50px;
 }
-
-body.has_dock .fpcustomnav-container .navbar,.navbar-inner {
-    width: calc(100% - 50px);
+/*body.has_dock .fpcustomnav-container .navbar,.navbar-inner{*/
+body.has_dock .fpcustomnav-container .navbar{
+    width: calc(100% - 60px);
+}
+.navbar .brand {
+  margin-left:0px;
+  padding:15px 5px;
 }
 @media (max-width: 600px){
-body.has_dock .fpcustomnav-container .navbar,.navbar-inner {
+body.has_dock .fpcustomnav-container .navbar {
     width: initial;
 }
 }
