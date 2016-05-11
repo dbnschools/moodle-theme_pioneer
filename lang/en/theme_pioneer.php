@@ -180,7 +180,7 @@ $string['socialicon6'] = 'YouTube URL';
 $string['socialicon7'] = 'Vimeo URL';
 $string['socialicon8'] = 'Google Plus URL';
 
-//promoted courses
+//promoted courses Top
 $string['toppromotedtitledefault'] = 'Featured courses';
 $string['toppromotedtitledesc'] = 'This text appears below the Course Title in the slider. "Enroll Now" is an ideal tagline.';
 $string['toppcourseenable'] = 'Enable Featured Courses Slideshow';
@@ -191,9 +191,7 @@ $string['toptitle'] = 'Tagline';
 $string['fptoppromotedpadding'] = 'Height of Course Slideshow';
 $string['fptoppromotedpadding_desc'] = 'This will control the height of the course image slideshow.';
 
-
-
-//promoted courses
+//promoted courses Bottom
 $string['promotedtitledefault'] = 'Bottom Featured courses';
 $string['promotedtitledesc'] = 'Please give the Promoted courses block title,
 either language key or Text.For ex: lang:display or Display';
@@ -223,7 +221,6 @@ $string['coursetitlebkg_desc'] = 'This is the color of the box that appears behi
 $string['coursetitletxt'] = 'Course Title Text Color';
 $string['coursetitletxt_desc'] = 'This is the color of the course title.';
 
-
 //top course search form
 $string['topsearch'] = 'Search courses';
 $string['topsearchbutton'] = 'Find';
@@ -246,7 +243,6 @@ $string['backgroundimageinfo'] = 'Background Image';
 $string['backgroundimageinfodesc'] = 'Since the main content is full width you will only see a small portion of background color at the very bottom of the page.  You can upload an image if desired.';
 $string['stylinginfo'] = 'Styling and Alerts';
 $string['stylinginfodesc'] = 'Additional customization options and alert settings.';
-
 
 // Marketing Spots
 $string['alwaysdisplay'] = 'Always Show';
@@ -287,7 +283,6 @@ $string['marketingurltargetdesc'] = 'Choose how the link should be opened';
 $string['marketingurltargetself'] = 'Current Page';
 $string['marketingurltargetnew'] = 'New Page';
 $string['marketingurltargetparent'] = 'Parent Frame';
-
 
 // Custom Icons
 $string['togglenavicons'] = 'Turn On Custom Icons';
@@ -331,7 +326,6 @@ $string['tabtitle'] = 'Tab Title';
 $string['tabtitledesc'] = 'This is the tab title that appears at the top of the tab content.';
 $string['tabcontent'] = 'Tab Content';
 $string['tabcontentdesc'] = 'The text and HTML you enter here will be displayed in the tab.';
-
 
 //Google Fonts
 $string['gheadingimporturl'] = 'Heading Import URL';
@@ -388,7 +382,6 @@ $string['swattach'] = 'Socialwall Course Format Attachment background';
 $string['swattach_desc'] = 'If you use the Socialwall Course Format this setting will change the background color of the attachment area in the wall feed.';
 $string['swcomment'] = 'Socialwall Course Format comment background';
 $string['swcomment_desc'] = 'If you use the Socialwall Course Format this setting will change the background color of the comment area in the wall feed.';
-
 
 //socialwall CSS labels
 $string['swlabelpost'] = 'Post CSS Label';
@@ -469,6 +462,10 @@ $string['rendereroverlayfontcolordesc'] = 'The color of the font, when hovering 
 $string['frontpagerendererdefaultimage'] = 'Default course image';
 $string['frontpagerendererdefaultimagedesc'] = 'The default image to use when no course image is found, (only applies for Tiles w/ overlay)';
 
-//MISC
+//MISC Settings
 $string['editon'] = 'Edit On';
 $string['editoff'] = 'Edit Off';
+$string['settinggradebutton'] = 'View Course Grades';
+$string['settingtabbutton'] = 'Getting Started with Moodle';
+$string['settingshowtagline'] = 'Enroll Now';
+$string['settingfeaturedslider'] = 'Featured Courses';
