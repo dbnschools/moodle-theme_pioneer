@@ -93,6 +93,11 @@ echo $OUTPUT->doctype() ?>
     <div id="header-image-box">
     <div class="header-image">
         <div class="top-icon-search">
+        <div class="pull-left navbar navbar-inner">
+            <?php echo $OUTPUT->tools_menu(); ?> 
+            <?php echo $OUTPUT->custom_menu(); ?>
+            <?php if (empty($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu']) { echo $OUTPUT->lang_menu(); } ?>
+        </div>
         <?php if(isloggedin()) { ?> 
             <?php 
               if($PAGE->theme->settings->toggleiconnav==1) {
@@ -107,6 +112,8 @@ echo $OUTPUT->doctype() ?>
             <?php } ?>
            </div>
            </div>
+           
+                
            <?php } else { ?>
         </div>
         <?php } ?>
@@ -210,10 +217,6 @@ echo $OUTPUT->doctype() ?>
     <?php echo $OUTPUT->standard_end_of_body_html() ?>
     
 </div>
-
-<script>
-
-</script>
 
 <script>
 $(document).ready(function(){

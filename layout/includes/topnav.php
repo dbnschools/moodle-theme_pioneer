@@ -20,9 +20,7 @@
             <div class="nav-collapse collapse">
           
                 <?php echo $OUTPUT->navigation_menu(); ?>
-                <div class="topnav-personalmenus"><?php echo $OUTPUT->tools_menu(); ?></div>
-                <?php echo $OUTPUT->custom_menu(); ?>
-                <?php if (empty($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu']) { echo $OUTPUT->lang_menu(); } ?>
+                
                 <ul class="nav pull-right">
                     <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
                 </ul>

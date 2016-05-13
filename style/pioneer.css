@@ -373,6 +373,14 @@ div#coursegrades {
     position: absolute;
     right: 10px;
 }
+.top-icon-search .navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active>.dropdown-toggle {
+    background-color: initial;
+}
+.top-icon-search .navbar, .navbar-inner {
+    background-color: initial;
+    height:auto;
+}
+
 
 .top-search {
   margin-top:4px;
@@ -574,12 +582,6 @@ body.has_dock .fpcustomnav-container .navbar {
     width: initial;
 }
 }
-
-/*body.has_dock .fpcustomnav-container {
-    width: calc(100% - 40px);
-}*/
-
-
 
 .fixed-top-nav {
     display: block;
