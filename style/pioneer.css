@@ -1248,6 +1248,7 @@ padding:0px;
 #Promoted-Courses .titlebar h2 {
     margin: 0px;
     text-align: center;
+    font-size: 18px;
 }
 #Promoted-Courses .row-fluid {
     /*max-width:900px;*/

@@ -208,6 +208,13 @@ $string['pcoursesdesc'] = 'LIMIT=9 You cannot enter more than 9 course ids. Plea
 $string['promotedcoursesheading'] = 'Bottom Featured Courses Slider';
 $string['title'] = 'Title';
 
+$string['promotedlinktext'] = 'View More Courses Text';
+$string['promotedlinktext_desc'] = 'This provides an option to link to a course category to show more courses.  Enter a URL below.';
+$string['promotedlink'] = 'View More Courses URL';
+$string['promotedlink_desc'] = 'Enter a URL to one of your course catagories.  This is displayed next to the featured courses title.';
+$string['settingpromotedlinktext'] = 'View More Courses';
+$string['settingpromotedlink'] = 'http://mymoodlesite/course/index.php?categoryid=2';
+
 
 //Custom Login Page 
 $string['loginbuttoncolor'] = 'Login button Color';

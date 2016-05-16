@@ -165,11 +165,13 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
         $totalfcourse = count($fcourseids);
         $promotedtitle = theme_pioneer_get_setting('promotedtitle', 'format_text');
         $promotedtitle = theme_pioneer_lang($promotedtitle);
+        $promotedlinktext = theme_pioneer_get_setting('promotedlinktext', 'format_text');
+        $promotedlink = theme_pioneer_get_setting('promotedlink', 'format_text');
 
         $featuredheader = '<div class="custom-courses-list" id="Promoted-Courses">
 							  <div class="container-fluid">
 								<div class="titlebar with-felements">
-									<h2>'.$promotedtitle.'</h2>
+									<h2>'.$promotedtitle.'  |  <a href="'.$promotedlink.'">'.$promotedlinktext.'</a></h2>
 									<div class="clearfix"></div>
 								</div>
 								<div class="promoted_courses" data-crow="'.$totalfcourse.'">';

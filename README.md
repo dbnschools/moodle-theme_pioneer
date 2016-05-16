@@ -1,6 +1,14 @@
 # Moodle-theme_pioneer
 Pioneer is a beautiful, responsive theme loaded with great features from custom tabs and a course gradebook slider to the ability for teachers to upload their own header image in course summary files! Each of the main elements in the theme can be customized from the theme settings page.  Pioneer is Made in Michigan at Dearborn Public Schools.
 
+##Pioneer v1.3.9
+* Improved layout
+* Main Content Icon Navigation now shows text for link. Previously it was displayed as a tooltip.
+* Homepage slideshow of featured courses now has a button which will show a listing of all featured courses at a glance.
+* Bottom Featured course slider shows 4 items by default (up to 12 total) and is responsive so that as your screen size gets smaller less items will show in view.  On a cellphone only one item is displayed.
+* Changed Block Styling based on feedback.  Block headings are now colorful and based on the previous icon box color.  However, in theme settings you can pick a single color for all block heading titles.
+
+
 ##Pioneer v1.3.8
 * Fixed menu bar on login page /moodle/login/index.php.
 * Fixed Sidebar blocks side-post on frontpage

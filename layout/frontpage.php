@@ -188,6 +188,34 @@ echo $OUTPUT->doctype() ?>
             echo $courserenderer->promoted_courses();
         } 
         ?>
+
+        <?php 
+        if($PAGE->theme->settings->pcourseenable==1) {
+            echo $courserenderer->promoted_courses();
+        } else if($PAGE->theme->settings->pcourseenable==2 && !isloggedin()) {
+            echo $courserenderer->promoted_courses();
+        } else if($PAGE->theme->settings->pcourseenable==3 && isloggedin()) {
+            echo $courserenderer->promoted_courses();
+        } 
+        ?>
+        <?php 
+        if($PAGE->theme->settings->pcourseenable==1) {
+            echo $courserenderer->promoted_courses();
+        } else if($PAGE->theme->settings->pcourseenable==2 && !isloggedin()) {
+            echo $courserenderer->promoted_courses();
+        } else if($PAGE->theme->settings->pcourseenable==3 && isloggedin()) {
+            echo $courserenderer->promoted_courses();
+        } 
+        ?>
+        <?php 
+        if($PAGE->theme->settings->pcourseenable==1) {
+            echo $courserenderer->promoted_courses();
+        } else if($PAGE->theme->settings->pcourseenable==2 && !isloggedin()) {
+            echo $courserenderer->promoted_courses();
+        } else if($PAGE->theme->settings->pcourseenable==3 && isloggedin()) {
+            echo $courserenderer->promoted_courses();
+        } 
+        ?>
         
    <!-- Start Marketing Spots -->
     <?php 
