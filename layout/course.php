@@ -112,7 +112,7 @@ echo $OUTPUT->doctype() ?>
             <?php if($PAGE->theme->settings->coursegradetoggle==1 && $PAGE->course->showgrades==1) { ?>
             <div class="coursegradewrap">
             <div data-toggle="collapse" data-target="#coursegrades" class="coursegradebtn btn-link"><i class="fa fa-graduation-cap"></i>  <?php echo $PAGE->theme->settings->coursegradestext ?></div>
-            </div>
+            
             <?php } ?>
             </div>
             </div>
@@ -120,9 +120,9 @@ echo $OUTPUT->doctype() ?>
         </div>
         <div>
         <?php if($PAGE->theme->settings->coursegradetoggle==1 && $PAGE->course->showgrades==1) { ?>
-        <div id="coursegrades" class="collapse out">
-            <?php require_once(dirname(__FILE__).'/includes/coursegrade.php'); ?>
-        </div>
+                <div id="coursegrades" class="collapse out">
+                <?php require_once(dirname(__FILE__).'/includes/coursegrade.php'); ?>
+                </div>
         <?php } ?>
         </div>
     </header>

@@ -134,7 +134,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
         $featuredcontent = '';
         /* Get Featured courses id from DB */
         $featuredids = theme_pioneer_get_setting('promotedcourses');
-        $rcourseids = (!empty($featuredids)) ? explode(",", $featuredids, 9) : array();
+        $rcourseids = (!empty($featuredids)) ? explode(",", $featuredids, 12) : array();
         if (empty($rcourseids)) {
             return false;
         }
@@ -161,7 +161,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
             return false;
         }
 
-        $fcourseids = array_chunk($rcourseids, 9);
+        $fcourseids = array_chunk($rcourseids, 12);
         $totalfcourse = count($fcourseids);
         $promotedtitle = theme_pioneer_get_setting('promotedtitle', 'format_text');
         $promotedtitle = theme_pioneer_lang($promotedtitle);
@@ -290,6 +290,8 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
         $totalfcourse = count($fcourseids);
         $promotedtitle = theme_pioneer_get_setting('toppromotedtitle', 'format_text');
         $promotedtitle = theme_pioneer_lang($promotedtitle);
+        $closelisting = theme_pioneer_get_setting('topclosefeatured', 'format_text');
+        $topshowfeatured = theme_pioneer_get_setting('topshowfeatured', 'format_text');
 
         $featuredheader = '<div class="custom-courses-list" id="topPromoted-Courses">
                               <div class="container-fluid">
@@ -298,8 +300,10 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
         $featuredfooter = ' </div>
                             </div>
                             </div>';
-
+        
         if (!empty($fcourseids)) {
+            echo '<div id="featured-listing" class="collapse out">';
+            echo '<div data-toggle="collapse" data-target="#featured-listing" class="btn-link"style="text-align:center;">'.$closelisting.'</div>';
             foreach ($fcourseids as $courseids) {
                 $rowcontent = '<div><div class="row-fluid topcarousel">';
 
@@ -309,7 +313,6 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
                     $nimgp = (empty($no)|| $no == "default") ? 'no-image' : 'cs0'.$no.'/no-image';
 
                     $noimgurl = $OUTPUT->pix_url($nimgp, 'theme');
-
                     $courseurl = new moodle_url('/course/view.php', array('id' => $courseid ));
 
                     if ($course instanceof stdClass) {
@@ -325,6 +328,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
 
                     $context = context_course::instance($course->id);
                     $nostudents = count_role_users(5, $context);
+                    
 
                     foreach ($course->get_course_overviewfiles() as $file) {
                         $isimage = $file->is_valid_image();
@@ -343,24 +347,37 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
                         }
                     }
 
+                    $listitems = '
+                    <div class="row-fluid">
+                    <div class="span3">
+                    <img src="'.$imgurl.'" width="100%" height="75px" alt="'.$course->fullname.'">
+                    </div>
+                    <div class="span5">
+                    <h5><a href="'.$courseurl.'" >'.$trimtitle.'</a></h5>
+                    </div>
+                    <div class="span4">
+                    <p>'.$summary.'</p>
+                    </div>
+                    </div>';
+
                         $coursehtml = '
                         <div style="background-image: url('.$imgurl.');background-repeat: no-repeat;background-size:cover; background-position:center;" class="promowrap">
                             <div class="fp-coursebox">
                                 <div class="fp-courseinfo">
                                     <p style="font-size:24px;font-weight:bold;"><a href="'.$courseurl.'" id="button" data-toggle="tooltip" data-placement="bottom"title="'.$summary.'" >'.$trimtitle.'</a></p>
                                 <div class="titlebar"> <h5>'.$promotedtitle.'</h5> </div>
+                                <div data-toggle="collapse" data-target="#featured-listing" class="btn-link">'.$topshowfeatured.'</div>
                                 </div>
                             </div>
                         </div>';
-
                         $rowcontent .= $coursehtml;
-
+                        echo ($listitems);
                 }
 
-                    $rowcontent .= '</div></div>';
+                    $rowcontent .= '</div></div> ';
                     $featuredcontent .= $rowcontent;
             }
-
+            echo "</div>";
         }
 
         $featuredcourses = $featuredheader.$featuredcontent.$featuredfooter;

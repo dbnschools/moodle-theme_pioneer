@@ -407,6 +407,24 @@ $temp = new admin_settingpage('theme_pioneer_fpdashboard', get_string('fpdashboa
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    // Promoted courses Block title.
+    $name = 'theme_pioneer/topshowfeatured';
+    $title = get_string('topshowfeatured', 'theme_pioneer').' '.get_string('toptitle', 'theme_pioneer');
+    $description = get_string('topshowfeatureddesc', 'theme_pioneer');
+    $default =  get_string('topshowfeaturedtext', 'theme_pioneer');
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Promoted courses Block title.
+    $name = 'theme_pioneer/topclosefeatured';
+    $title = get_string('topclosefeatured', 'theme_pioneer').' '.get_string('toptitle', 'theme_pioneer');
+    $description = get_string('topclosefeatureddesc', 'theme_pioneer');
+    $default =  get_string('topclosefeaturedtext', 'theme_pioneer');
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
     // Frontpage Image Background spacing setting.
     $name = 'theme_pioneer/toppromotedpadding';
     $title = get_string('fptoppromotedpadding', 'theme_pioneer');
@@ -505,7 +523,7 @@ $temp = new admin_settingpage('theme_pioneer_fpdashboard', get_string('fpdashboa
             $cnt++;
             $courses[$cc->id] = $cc->shortname;
             // Set some courses for default option.
-            if ($cnt < 9) {
+            if ($cnt < 12) {
                 $default[] = $cc->id;
             }
         }
@@ -780,6 +798,24 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $title = get_string('tabbuttonhovercolor', 'theme_pioneer');
     $description = get_string('tabbuttonhovercolor_desc', 'theme_pioneer');
     $default = 'rgba(255, 255, 255, 1)';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // block Header
+    $name = 'theme_pioneer/blocktitlecolor';
+    $title = get_string('blocktitlecolor', 'theme_pioneer');
+    $description = get_string('blocktitlecolor_desc', 'theme_pioneer');
+    $default = '#FFFFFF';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // block Header
+    $name = 'theme_pioneer/blockheadercolor';
+    $title = get_string('blockheadercolor', 'theme_pioneer');
+    $description = get_string('blockheadercolor_desc', 'theme_pioneer');
+    $default = '';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);

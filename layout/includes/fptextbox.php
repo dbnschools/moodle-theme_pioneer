@@ -26,7 +26,6 @@ $context = context_system::instance();
 ?>
 
 	<div class="fptextbox">
-
     <?php 
         if($PAGE->theme->settings->toppcourseenable==1) {
             echo $courserenderer->top_promoted_courses();

@@ -93,11 +93,13 @@ echo $OUTPUT->doctype() ?>
     <div id="header-image-box">
     <div class="header-image">
         <div class="top-icon-search">
-        <div class="pull-left navbar navbar-inner">
-            <?php echo $OUTPUT->tools_menu(); ?> 
-            <?php echo $OUTPUT->custom_menu(); ?>
-            <?php if (empty($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu']) { echo $OUTPUT->lang_menu(); } ?>
-        </div>
+            <div class="pull-left navbar navbar-inner">
+                <div class="fp-custom-menus">
+                    <?php echo $OUTPUT->tools_menu(); ?> 
+                    <?php echo $OUTPUT->custom_menu(); ?>
+                    <?php if (empty($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu']) { echo $OUTPUT->lang_menu(); } ?>
+                </div>
+            </div>
         <?php if(isloggedin()) { ?> 
             <?php 
               if($PAGE->theme->settings->toggleiconnav==1) {
@@ -107,33 +109,30 @@ echo $OUTPUT->doctype() ?>
               }
             ?>
             <div class="top-search">
-            <?php if($PAGE->theme->settings->fpsearchboxtop) { ?>
-            <?php require(dirname(__FILE__).'/includes/searchbox.php'); ?>
-            <?php } ?>
+                <?php if($PAGE->theme->settings->fpsearchboxtop) { ?>
+                <?php require(dirname(__FILE__).'/includes/searchbox.php'); ?>
+                <?php } ?>
            </div>
-           </div>
-           
-                
-           <?php } else { ?>
         </div>
+          
+                
+        <?php } else { ?>
+    </div>
         <?php } ?>
-                <div class="header-spacer">
-
+            <div class="header-spacer">
                 <div id="course-header">      
-                <?php echo $OUTPUT->course_header(); ?>
+                    <?php echo $OUTPUT->course_header(); ?>
                 </div>
                 <div class="course-titlewrap">
             <div class="course-title">
-            <?php echo $html->heading; ?>
-            <?php if($PAGE->theme->settings->tabtoggle==1) { ?>
-            
-            <div class="coursegradewrap">        
-            <div data-toggle="collapse" data-target="#frontpagetabs" class="coursegradebtn btn-link"><i class="fa fa-arrow-circle-down"></i>  <?php echo $PAGE->theme->settings->tabbuttontext ?> </div>
-            </div>
+                <?php echo $html->heading; ?>
+                <?php if($PAGE->theme->settings->tabtoggle==1) { ?>
+                <div class="coursegradewrap">        
+                    <div data-toggle="collapse" data-target="#frontpagetabs" class="coursegradebtn btn-link"><i class="fa fa-arrow-circle-down"></i>  <?php echo $PAGE->theme->settings->tabbuttontext ?> </div>
+                </div>
             <?php } ?>
             </div>
-            
-            </div>
+                </div>
            </div>
             </div>
         <?php if($PAGE->theme->settings->tabtoggle==1) { ?>

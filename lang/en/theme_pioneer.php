@@ -190,6 +190,13 @@ $string['toppromotedcoursesheading'] = 'Featured Course Slideshow';
 $string['toptitle'] = 'Tagline';
 $string['fptoppromotedpadding'] = 'Height of Course Slideshow';
 $string['fptoppromotedpadding_desc'] = 'This will control the height of the course image slideshow.';
+$string['topshowfeatured'] = 'Show All Courses Listing Link';
+$string['topshowfeatureddesc'] = 'This text appears in the slideshow and will display a list of all featured courses. "View All Courses" is suggested text.';
+$string['topshowfeaturedtext'] = 'View All Featured Courses';
+$string['topclosefeaturedtext'] = 'Close Course Listing';
+$string['topclosefeatured'] = 'Close Featured Course Listing Link';
+$string['topclosefeatureddesc'] = 'This text appears above the featured course listing and will close the list of featured courses. "Close Course Listing" is suggested text.';
+
 
 //promoted courses Bottom
 $string['promotedtitledefault'] = 'Bottom Featured courses';
@@ -345,6 +352,10 @@ $string['blockbordercolor'] = 'Block Border Color';
 $string['blockbordercolor_desc'] = 'This is the course block border color.  It is the background color of the title area.';
 $string['blockcolor'] = 'Block Color';
 $string['blockcolor_desc'] = 'This is the course block background color area.';
+$string['blocktitlecolor'] = 'Block Title Text Color';
+$string['blocktitlecolor_desc'] = 'This is the block title text color.';
+$string['blockheadercolor'] = 'Block Header Color';
+$string['blockheadercolor_desc'] = 'This is the background color of the heading in each block.  Use this setting if you would like one background header color for all blocks.';
 $string['contentbackgroundcolor'] = 'Content Background Color';
 $string['contentbackgroundcolor_desc'] = 'This is the background color for the main course content area. If you delete the color here it will default to the Body Background below as well as the background image settings.';
 $string['iconnavbackgroundcolor'] = 'Maincontent Icon and Searchbox Navigation Background';

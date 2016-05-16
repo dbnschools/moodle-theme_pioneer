@@ -182,6 +182,13 @@ function theme_pioneer_process_css($css, $theme) {
     }
     $css = theme_pioneer_set_topicweekcolor($css, $topicweekcolor);
 
+    if (!empty($theme->settings->blocktitlecolor)) {
+        $blocktitlecolor = $theme->settings->blocktitlecolor;
+    } else {
+        $blocktitlecolor = '';
+    }
+    $css = theme_pioneer_set_blocktitlecolor($css, $blocktitlecolor);
+
 
     if (!empty($theme->settings->blockbordercolor)) {
         $blockbordercolor = $theme->settings->blockbordercolor;
@@ -231,6 +238,13 @@ function theme_pioneer_process_css($css, $theme) {
         $blockbcolor = '';
     }
     $css = theme_pioneer_set_blockcolor($css, $blockcolor);
+
+    if (!empty($theme->settings->blockheadercolor)) {
+        $blockheadercolor = $theme->settings->blockheadercolor;
+    } else {
+        $blockheadercolor = '';
+    }
+    $css = theme_pioneer_set_blockheadercolor($css, $blockheadercolor);
 
 
     if (!empty($theme->settings->contentbackgroundcolor)) {
@@ -616,9 +630,33 @@ function theme_pioneer_set_blockbordercolor($css, $blockbordercolor) {
     return $css;
 }
 
+function theme_pioneer_set_blocktitlecolor($css, $blocktitlecolor) {
+    $tag = '[[setting:blocktitlecolor]]';
+    $replacement = $blocktitlecolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
 function theme_pioneer_set_blockcolor($css, $blockcolor) {
     $tag = '[[setting:blockcolor]]';
     $replacement = $blockcolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_blockheadercolor($css, $blockheadercolor) {
+    $tag = '[[setting:blockheadercolor]]';
+    $replacement = $blockheadercolor;
         if (is_null($replacement)) {
         $replacement = '';
     }
