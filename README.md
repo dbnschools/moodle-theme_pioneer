@@ -7,6 +7,7 @@ Pioneer is a beautiful, responsive theme loaded with great features from custom 
 * Homepage slideshow of featured courses now has a button which will show a listing of all featured courses at a glance.
 * Bottom Featured course slider shows 4 items by default (up to 12 total) and is responsive so that as your screen size gets smaller less items will show in view.  On a cellphone only one item is displayed.
 * Changed Block Styling based on feedback.  Block headings are now colorful and based on the previous icon box color.  However, in theme settings you can pick a single color for all block heading titles.
+* Moved Settings into separate pages to better manage all the features.
 
 
 ##Pioneer v1.3.8
