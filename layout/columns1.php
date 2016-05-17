@@ -94,9 +94,10 @@ echo $OUTPUT->doctype() ?>
         ?>
     </footer>
 
-    <?php echo $OUTPUT->standard_end_of_body_html() ?>
-
 </div>
+
+<?php echo $OUTPUT->standard_end_of_body_html() ?>
+
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 

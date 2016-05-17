@@ -161,50 +161,9 @@ echo $OUTPUT->doctype() ?>
         echo $OUTPUT->standard_footer_html();
         ?>
     </footer>
-<div class="top-radial">
-<?php if($PAGE->theme->settings->coursecomplete==1 && $PAGE->course->enablecompletion==1) {require_once(dirname(__FILE__).'/includes/radialcoursecompletion.php'); } ?>
-<?php if($PAGE->theme->settings->gradecomplete==1 && $PAGE->course->showgrades==1) {require_once(dirname(__FILE__).'/includes/radialcoursegrade.php'); } ?>
+
 </div>
 
-<script type="text/javascript">
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-});
-</script>
-<script type="text/javascript">
-$(window).scroll(function(x) {
-    var viewport_top = $(window).scrollTop();
-    var closest = null;
-    var closest_offset = null;
-    $('.section.main').each(function(e, f) {
-        var this_offset = $(f).offset().top;
-        
-        if ($(closest).offset()) {
-            closest_offset = $(closest).offset().top;
-        }
-        if (closest == null || Math.abs(this_offset - viewport_top) < Math.abs(closest_offset - viewport_top)) {
-            closest = f;
-        }
-    }); 
-    
-    window.sessionStorage.setItem('closest_id', closest.id);
-    window.sessionStorage.setItem('closest_delta', viewport_top - $(closest).offset().top);
-});
-$(document).ready(function() {
-    var closest_id = window.sessionStorage.getItem('closest_id');
-    var closest_delta = window.sessionStorage.getItem('closest_delta');
-    if (closest_id && closest_delta) {
-        var closest = $('#' + closest_id);
-        $(window).scrollTop(closest.offset().top + parseInt(closest_delta));
-    }
-});
-</script>
-</body>
-
-</html>
-
-    
-</div>
 <?php echo $OUTPUT->standard_end_of_body_html() ?>
 
 <script type="text/javascript">
@@ -242,6 +201,10 @@ $(document).ready(function() {
     }
 });
 </script>
+<div class="top-radial">
+<?php if($PAGE->theme->settings->coursecomplete==1 && $PAGE->course->enablecompletion==1) {require_once(dirname(__FILE__).'/includes/radialcoursecompletion.php'); } ?>
+<?php if($PAGE->theme->settings->gradecomplete==1 && $PAGE->course->showgrades==1) {require_once(dirname(__FILE__).'/includes/radialcoursegrade.php'); } ?>
+</div>
 </body>
 
 </html>

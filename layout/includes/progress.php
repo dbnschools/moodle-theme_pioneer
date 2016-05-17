@@ -1,32 +1,4 @@
-<style type="text/less">
-@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
-.errorText{
-	text-align:center;
-	text-transform:uppercase;
-	font-size:smaller;
-	color:#B2B9BD;padding-left:4px;
-}
-.radial-progress{
-		@circle-size: 120px;
-		@circle-background: #d6dadc;
-		@circle-color: #07957C;
-		@inset-size: 75px;
-		@inset-color: #fbfbfb;
-		@transition-length: 1s;
-		@shadow: none;
-		@percentage-color: #07957C;
-		@percentage-font-size: 22px;
-		@percentage-text-width: 57px;
-		position:absolute;
-		top:0;
-		left:0;
-		z-index: 2;
-		margin:20px;
-		width:@circle-size;
-		height:@circle-size;
-		background-color:@circle-background;
-		border-radius:50%;
-		.circle { .mask,.fill,.shadow { width: @circle-size;height:@circle-size;position:absolute;border-radius:50%;}.shadow{}.mask,.fill{-webkit-backface-visibility:hidden;transition:-webkit-transform @transition-length;transition:-ms-transform @transition-length;transition:transform @transition-length;border-radius:50%;}.mask{clip:rect(0px,@circle-size,@circle-size,@circle-size/2);.fill { clip: rect(0px,@circle-size/2,@circle-size,0px);background-color:@circle-color;}	}
+<style type="text/less">@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);.errorText{text-align:center;text-transform:uppercase;font-size:smaller;color:#B2B9BD;padding-left:4px;}.radial-progress{@circle-size: 190px;@circle-background: #d6dadc;@circle-color: #07957C;@inset-size: 120px;@inset-color: #fbfbfb;@transition-length: 1s;@shadow: none;@percentage-color: #07957C;@percentage-font-size: 22px;@percentage-text-width: 57px;margin:20px;width:@circle-size;height:@circle-size;background-color:@circle-background;border-radius:50%;.circle { .mask,.fill,.shadow { width: @circle-size;height:@circle-size;position:absolute;border-radius:50%;}.shadow{}.mask,.fill{-webkit-backface-visibility:hidden;transition:-webkit-transform @transition-length;transition:-ms-transform @transition-length;transition:transform @transition-length;border-radius:50%;}.mask{clip:rect(0px,@circle-size,@circle-size,@circle-size/2);.fill { clip: rect(0px,@circle-size/2,@circle-size,0px);background-color:@circle-color;}	}
 	}
 	.inset {
 		width:       @inset-size;
@@ -89,9 +61,7 @@
 	}
 	.loop(@i);
 }
-</style>
-
-
+	</style>
 <div class="radial-progress" data-progress="0">
 	<div class="circle">
 		<div class="mask full">
@@ -109,10 +79,9 @@
 		</div>
 	</div>
 </div>
-
-
 <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.6.1/less.min.js"></script>
-<script type="text/javascript">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
 		$(function(){
 
 			window.getCompletion = function(doBind) {
@@ -160,4 +129,4 @@
 
 		
 		});
-</script>
+     </script>

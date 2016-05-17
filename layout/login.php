@@ -90,9 +90,9 @@ echo $OUTPUT->doctype() ?>
         echo $OUTPUT->standard_footer_html();
         ?>
     </footer>
-    <?php echo $OUTPUT->standard_end_of_body_html() ?>
-</div>
-</div>
 
+</div>
+</div>
+    <?php echo $OUTPUT->standard_end_of_body_html() ?>
 </body>
 </html>

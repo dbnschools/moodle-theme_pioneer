@@ -172,24 +172,6 @@ if ($PAGE->pagelayout == 'course') {
     }
     .radialgradedisplay h4 {text-align:center; font-size: 12px;}
     .radialgradedisplay .radial-grade {margin:auto;}
-
-    /*  .top-radial {
-        background: #fff;
-        position: absolute;
-        top: 0;
-        left: 20px;
-        border-radius: 0px 0px 10px 10px;
-}*/
-
-.top-radial {
-    display: inline-block;
-    background: #fff;
-    position: absolute;
-    top:0px;
-    left:20px;
-    border-radius: 0px 0px 10px 10px;
-}
-
     </style>
 
     <!-- Javascript to create and animate radial display -->
@@ -230,7 +212,6 @@ if ($PAGE->pagelayout == 'course') {
             </div>
             <h4>Total Course Grade</h4>
         </div>
-
     </div>
 <?php
 }

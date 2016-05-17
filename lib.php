@@ -225,6 +225,13 @@ function theme_pioneer_process_css($css, $theme) {
     }
     $css = theme_pioneer_set_tabbuttoncolor($css, $tabbuttoncolor);
 
+    if (!empty($theme->settings->radialboxbackground)) {
+        $radialboxbackground = $theme->settings->radialboxbackground;
+    } else {
+        $radialboxbackground = '';
+    }
+    $css = theme_pioneer_set_radialboxbackground($css, $radialboxbackground);
+
     if (!empty($theme->settings->tabbuttonhovercolor)) {
         $tabbuttonhovercolor = $theme->settings->tabbuttonhovercolor;
     } else {
@@ -597,6 +604,18 @@ function theme_pioneer_set_coursetitletxt($css, $coursetitletxt) {
 function theme_pioneer_set_tabbuttoncolor($css, $tabbuttoncolor) {
     $tag = '[[setting:tabbuttoncolor]]';
     $replacement = $tabbuttoncolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_radialboxbackground($css, $radialboxbackground) {
+    $tag = '[[setting:radialboxbackground]]';
+    $replacement = $radialboxbackground;
         if (is_null($replacement)) {
         $replacement = '';
     }

@@ -145,6 +145,15 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+     // radial animation Background
+    $name = 'theme_pioneer/radialboxbackground';
+    $title = get_string('radialboxbackground', 'theme_pioneer');
+    $description = get_string('radialboxbackground_desc', 'theme_pioneer');
+    $default = 'rgba(255,255,255,0.4)';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
     // Main navigation Background
     $name = 'theme_pioneer/navbkgcolor';
     $title = get_string('navbkgcolor', 'theme_pioneer');

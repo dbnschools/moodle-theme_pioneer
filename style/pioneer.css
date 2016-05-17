@@ -413,6 +413,17 @@ div#coursegrades {
 @media (max-width: 900px){
 .radialgradedisplay, .radialcompletiondisplay {display:none;}  
 }
+.editing .radialgradedisplay, .editing .radialcompletiondisplay {display: none;}
+
+.top-radial {
+    display: inline-block;
+    background: [[setting:radialboxbackground]];
+    position: absolute;
+    top:0px;
+    left:10px;
+    border-radius: 0px 0px 10px 10px;
+}
+
 
 /* BREADCRUMBS */
 .breadcrumbcenter {
@@ -675,7 +686,7 @@ body.has_dock #page {
 
 .navbar-fixed-top, .navbar-fixed-bottom {z-index: 2;}
 
-@media (max-width: 768px){
+@media (max-width: 900px){
 .navbar .nav-collapse.in {
     border: 1px solid #d4d4d4;
     background-color: [[setting:navbkgcolor]];
