@@ -411,7 +411,7 @@ div#coursegrades {
 .top-search { display:none;}
 }
 @media (max-width: 900px){
-.radial-progress{display:none;}  
+.radialgradedisplay, .radialcompletiondisplay {display:none;}  
 }
 
 /* BREADCRUMBS */

@@ -78,6 +78,25 @@ $temp = new admin_settingpage('theme_pioneer_fpdashboard', get_string('fpdashboa
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+// Toggle course completion.
+    $name = 'theme_pioneer/coursecomplete';
+    $title = get_string('coursecomplete', 'theme_pioneer');
+    $description = get_string('coursecomplete_desc', 'theme_pioneer');
+    $default = false;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Toggle grade total.
+    $name = 'theme_pioneer/gradecomplete';
+    $title = get_string('gradecomplete', 'theme_pioneer');
+    $description = get_string('gradecomplete_desc', 'theme_pioneer');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+
     // Description
     $name = 'theme_pioneer/fptextboxinfo';
     $heading = get_string('fptextboxinfo', 'theme_pioneer');

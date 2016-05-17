@@ -109,14 +109,15 @@ echo $OUTPUT->doctype() ?>
         <div class="course-titlewrap">
         <div class="course-title">
             <?php echo $html->heading; ?>
+
             <?php if($PAGE->theme->settings->coursegradetoggle==1 && $PAGE->course->showgrades==1) { ?>
             <div class="coursegradewrap">
             <div data-toggle="collapse" data-target="#coursegrades" class="coursegradebtn btn-link"><i class="fa fa-graduation-cap"></i>  <?php echo $PAGE->theme->settings->coursegradestext ?></div>
-            
             <?php } ?>
             </div>
             </div>
         </div>
+
         </div>
         <div>
         <?php if($PAGE->theme->settings->coursegradetoggle==1 && $PAGE->course->showgrades==1) { ?>
@@ -137,7 +138,6 @@ echo $OUTPUT->doctype() ?>
     <div id="editbutton">
         <?php echo $OUTPUT->page_heading_button(); ?>
     </div> 
-
 
     <section id="region-main" class="<?php echo $regionmain; ?>">
             <?php
@@ -161,11 +161,51 @@ echo $OUTPUT->doctype() ?>
         echo $OUTPUT->standard_footer_html();
         ?>
     </footer>
+<div class="top-radial">
+<?php if($PAGE->theme->settings->coursecomplete==1 && $PAGE->course->enablecompletion==1) {require_once(dirname(__FILE__).'/includes/radialcoursecompletion.php'); } ?>
+<?php if($PAGE->theme->settings->gradecomplete==1 && $PAGE->course->showgrades==1) {require_once(dirname(__FILE__).'/includes/radialcoursegrade.php'); } ?>
+</div>
 
-    <?php echo $OUTPUT->standard_end_of_body_html() ?>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
+<script type="text/javascript">
+$(window).scroll(function(x) {
+    var viewport_top = $(window).scrollTop();
+    var closest = null;
+    var closest_offset = null;
+    $('.section.main').each(function(e, f) {
+        var this_offset = $(f).offset().top;
+        
+        if ($(closest).offset()) {
+            closest_offset = $(closest).offset().top;
+        }
+        if (closest == null || Math.abs(this_offset - viewport_top) < Math.abs(closest_offset - viewport_top)) {
+            closest = f;
+        }
+    }); 
+    
+    window.sessionStorage.setItem('closest_id', closest.id);
+    window.sessionStorage.setItem('closest_delta', viewport_top - $(closest).offset().top);
+});
+$(document).ready(function() {
+    var closest_id = window.sessionStorage.getItem('closest_id');
+    var closest_delta = window.sessionStorage.getItem('closest_delta');
+    if (closest_id && closest_delta) {
+        var closest = $('#' + closest_id);
+        $(window).scrollTop(closest.offset().top + parseInt(closest_delta));
+    }
+});
+</script>
+</body>
+
+</html>
+
     
 </div>
-<?php if($PAGE->theme->settings->coursecomplete==1 && $PAGE->course->enablecompletion==1) {require_once(dirname(__FILE__).'/includes/progress.php'); } ?>
+<?php echo $OUTPUT->standard_end_of_body_html() ?>
 
 <script type="text/javascript">
 $(document).ready(function(){

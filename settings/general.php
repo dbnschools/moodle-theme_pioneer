@@ -57,20 +57,11 @@
 
 
 
-// Description
+    // Description
     $name = 'theme_pioneer/stylinginfo';
     $heading = get_string('stylinginfo', 'theme_pioneer');
     $information = get_string('stylinginfodesc', 'theme_pioneer');
     $setting = new admin_setting_heading($name, $heading, $information);
-    $temp->add($setting);
-
- // Toggle course completion.
-    $name = 'theme_pioneer/coursecomplete';
-    $title = get_string('coursecomplete', 'theme_pioneer');
-    $description = get_string('coursecomplete_desc', 'theme_pioneer');
-    $default = true;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
     // Logo file setting.

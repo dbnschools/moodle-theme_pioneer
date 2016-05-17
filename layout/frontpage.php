@@ -188,6 +188,7 @@ echo $OUTPUT->doctype() ?>
             echo $courserenderer->promoted_courses();
         } 
         ?>
+    
 
         
    <!-- Start Marketing Spots -->

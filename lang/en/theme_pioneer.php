@@ -121,6 +121,8 @@ $string['fpsearchboxmain_desc'] = 'Show a course search box in the frontpage tex
 
 $string['coursecomplete'] = 'Radial Course Completion Display';
 $string['coursecomplete_desc'] = 'If a course uses course completion and this is turned on then Pioneer will display a radial completion status for the student in the upper left of the page.';
+$string['gradecomplete'] = 'Radial Course Grade Total';
+$string['gradecomplete_desc'] = 'If a course is set to show student grades and this is turned on then Pioneer will display a course total grade in an animated radial for the student in the upper left of the page.';
 
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
