@@ -724,7 +724,12 @@ display:none;
 @media (min-width:768px) {
     #page-content #editbutton {display:none !important;}
 }
- 
+
+
+#page-mod-forum-view #editbutton-top {display:none !important;}
+#page-mod-forum-view #editbutton {display:block !important;}
+
+
 //small screen sizes
 @media (max-width: 768px) {
     #page-content #editbutton {display:block !important;}

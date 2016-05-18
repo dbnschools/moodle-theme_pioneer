@@ -113,7 +113,7 @@
     global $USER, $COURSE, $DB, $CFG;
     $table1 = $CFG->prefix.'course_modules';
     $table2 = 'course_modules_completion';
-    $where2 = 'userid = '.$USER->id.' AND coursemoduleid IN (SELECT id FROM '.$table1.' WHERE course = '.$COURSE->id.')';
+    $where2 = 'userid = '.$USER->id.' AND completionstate > 0 AND coursemoduleid IN (SELECT id FROM '.$table1.' WHERE course = '.$COURSE->id.')';
     $completions = $DB->count_records_select($table2, $where2);
     $table3 = 'course_modules';
     $where3 = 'course = '.$COURSE->id.' AND completion > 0';
@@ -136,7 +136,7 @@
         $('.radial-progress').click(window.randomize);
         });
      </script>
-<div id='percentagecompletions' style='display:none;'>
+    <div id="percentagecompletions" style="display:none;">
         <?php echo $percentagecompletions; ?>
     </div>
     <!-- Display radial completion -->
