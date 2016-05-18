@@ -116,13 +116,14 @@ h3.sectionname:after {
 
 #block-region-side-pre .block .header .title h2 {color:[[setting:blocktitlecolor]];}
 
-.que {
+#page-mod-quiz-attempt .que {
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.4);
     padding:15px;
     margin-bottom:50px;
+    margin-top:15px;
     background-color: [[setting:topicweekcolor]]; 
 }
-.que .formulation {
+#page-mod-quiz-attempt .que .formulation {
     background-color: [[setting:topicweekcolor]]; 
     border:none;
 }
@@ -130,7 +131,7 @@ h3.sectionname:after {
     padding-top: 0px;
     text-align: center;
 }
-.que .info {
+#page-mod-quiz-attempt .que .info {
     background-color: [[setting:blockcolor]];
 }
 
