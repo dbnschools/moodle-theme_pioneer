@@ -64,5 +64,6 @@ $context = context_system::instance();
       <div class="clearfix"></div>
 			<?php echo $OUTPUT->main_content(); ?>
     </div>
+    <?php if($PAGE->theme->settings->showrecommendedcourses==1) { echo $courserenderer->promoted_courses('tags'); } ?>
 	</div>
 

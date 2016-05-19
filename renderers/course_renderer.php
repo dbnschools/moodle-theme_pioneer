@@ -126,14 +126,32 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
         }
     }
 
-    public function promoted_courses() {
-        global $CFG, $OUTPUT, $DB, $PAGE;
 
-       
+ public function promoted_courses($type) {
+        global $CFG, $OUTPUT, $DB, $PAGE, $USER;
 
         $featuredcontent = '';
         /* Get Featured courses id from DB */
         $featuredids = theme_pioneer_get_setting('promotedcourses');
+        if ($type == 'tags') {
+            $sql = 'SELECT DISTINCT itemid FROM {tag_instance} WHERE itemtype = "course" AND tagid IN(SELECT tagid FROM {tag_instance} WHERE itemtype = "user" AND itemid = '.$USER->id.')';
+            $featuredidsarray = $DB->get_records_sql($sql, array());
+            $featuredids = '';
+            $promotedtitle = theme_pioneer_get_setting('promotedtagtitle', 'format_text');
+            $promotedlinktext = theme_pioneer_get_setting('promotedtaglinktext', 'format_text');
+            $promotedlink = theme_pioneer_get_setting('promotedtaglink', 'format_text');
+            foreach ($featuredidsarray as $fid) {
+                $featuredids .= $fid->itemid.',';
+            }
+         }
+        if ($type == 'setting') {
+            $promotedtitle = theme_pioneer_get_setting('promotedtitle', 'format_text');
+            $promotedlinktext = theme_pioneer_get_setting('promotedlinktext', 'format_text');
+            $promotedlink = theme_pioneer_get_setting('promotedlink', 'format_text');
+        }
+
+        $featuredcontent = '';
+        /* Get Featured courses id from DB */
         $rcourseids = (!empty($featuredids)) ? explode(",", $featuredids, 12) : array();
         if (empty($rcourseids)) {
             return false;
@@ -163,15 +181,12 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
 
         $fcourseids = array_chunk($rcourseids, 12);
         $totalfcourse = count($fcourseids);
-        $promotedtitle = theme_pioneer_get_setting('promotedtitle', 'format_text');
-        $promotedtitle = theme_pioneer_lang($promotedtitle);
-        $promotedlinktext = theme_pioneer_get_setting('promotedlinktext', 'format_text');
-        $promotedlink = theme_pioneer_get_setting('promotedlink', 'format_text');
+        
 
         $featuredheader = '<div class="custom-courses-list" id="Promoted-Courses">
 							  <div class="container-fluid">
 								<div class="titlebar with-felements">
-									<h2>'.$promotedtitle.'  |  <a href="'.$promotedlink.'">'.$promotedlinktext.'</a></h2>
+									<h2>'.$promotedtitle.' | <a href="'.$promotedlink.'">'.$promotedlinktext.'</a></h2>
 									<div class="clearfix"></div>
 								</div>
 								<div class="promoted_courses" data-crow="'.$totalfcourse.'">';

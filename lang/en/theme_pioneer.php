@@ -41,6 +41,8 @@ $string['marketingheadingtop'] = 'Marketing Spots Top';
 $string['tabheading'] = 'Frontpage Tabs';
 $string['footertextboxes'] = 'Custom Footer';
 $string['analyticsheading'] = 'Google Analytics';
+$string['recommendedcoursesheading'] = 'Personalized Recommended Course Slider';
+$string['recommendedcoursesheadingdesc'] = 'Personalized Recommended Course Slider will match user tags (interests) with course tags.  When a match is found the resulting course list will be displayed in a beautiful responsive slider on the frontpage. This setting is automatic and no interaction is required other than providing tags for courses and user profiles. ';
 
 
 
@@ -201,21 +203,38 @@ $string['topclosefeatureddesc'] = 'This text appears above the featured course l
 
 
 //promoted courses Bottom
-$string['promotedtitledefault'] = 'Bottom Featured courses';
-$string['promotedtitledesc'] = 'Please give the Promoted courses block title,
-either language key or Text.For ex: lang:display or Display';
+$string['promotedtitledefault'] = 'Featured courses';
+$string['promotedtitledesc'] = 'Please give the Promoted courses block a title.';
 $string['pcourseenable'] = 'Enable Featured courses';
 $string['pcourses'] = 'Bottom Featured Courses';
 $string['pcoursesdesc'] = 'LIMIT=9 You cannot enter more than 9 course ids. Please give the featured courses id should separated by comma.';
 $string['promotedcoursesheading'] = 'Bottom Featured Courses Slider';
 $string['title'] = 'Title';
 
-$string['promotedlinktext'] = 'View More Courses Text';
-$string['promotedlinktext_desc'] = 'This provides an option to link to a course category to show more courses.  Enter a URL below.';
-$string['promotedlink'] = 'View More Courses URL';
+$string['promotedlinktext'] = 'Featured View More Courses Text';
+$string['promotedlinktext_desc'] = 'This provides an option to link to a course category to show more courses in the bottom featured slider.  Enter a URL below.';
+$string['promotedlink'] = 'Featured View More Courses URL';
 $string['promotedlink_desc'] = 'Enter a URL to one of your course catagories.  This is displayed next to the featured courses title.';
-$string['settingpromotedlinktext'] = 'View More Courses';
+$string['settingpromotedlinktext'] = 'Featured View More Courses';
 $string['settingpromotedlink'] = 'http://mymoodlesite/course/index.php?categoryid=2';
+
+
+$string['pcoursestag'] = 'Personalized Recommended Courses';
+$string['promotedtagtitledesc'] = 'Please give the Personalized Recommended Courses block a title.';
+$string['promotedtaglinktext'] = 'Recommended View More Courses Text';
+$string['promotedtaglinktext_desc'] = 'This provides an option to link to a course category to show more courses.  Enter a URL below.';
+$string['promotedtaglink'] = 'Recommended View More Courses URL';
+$string['promotedtaglink_desc'] = 'Enter a URL to one of your course catagories.  This is displayed next to the featured courses title.';
+$string['settingpromotedtaglinktext'] = 'Recommended View More Courses';
+$string['settingpromotedtaglink'] = 'http://mymoodlesite/course/index.php?categoryid=2';
+$string['settingfeaturedtagslider'] = 'Personalized Recommended Courses';
+$string['showrecommendedcourses'] = 'Show/Hide Personalized Recommended Courses';
+$string['showrecommendedcourses_desc'] = 'Uncheck this if you do not wish to show personalized recommended courses.';
+
+
+
+
+
 
 
 //Custom Login Page 

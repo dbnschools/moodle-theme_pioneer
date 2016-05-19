@@ -177,15 +177,14 @@ echo $OUTPUT->doctype() ?>
         </section>
 
         <?php echo $OUTPUT->blocks('side-pre', $sidepre); ?>
-
         <div class="clearfix"></div>
         <?php 
         if($PAGE->theme->settings->pcourseenable==1) {
-            echo $courserenderer->promoted_courses();
+            echo $courserenderer->promoted_courses('setting');
         } else if($PAGE->theme->settings->pcourseenable==2 && !isloggedin()) {
-            echo $courserenderer->promoted_courses();
+            echo $courserenderer->promoted_courses('setting');
         } else if($PAGE->theme->settings->pcourseenable==3 && isloggedin()) {
-            echo $courserenderer->promoted_courses();
+            echo $courserenderer->promoted_courses('setting');
         } 
         ?>
     

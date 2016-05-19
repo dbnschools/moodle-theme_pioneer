@@ -236,6 +236,49 @@ $temp = new admin_settingpage('theme_pioneer_fpdashboard', get_string('fpdashboa
     $temp->add($setting);
     // Top Promoted Courses End.
 
+// Personalized Recommended Courses Heading.
+    $name = 'theme_pioneer_recommendedcoursesheading';
+    $heading = get_string('recommendedcoursesheading', 'theme_pioneer');
+    $information = get_string('recommendedcoursesheadingdesc', 'theme_pioneer');;
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // Toggle show or hide recommended courses
+    $name = 'theme_pioneer/showrecommendedcourses';
+    $title = get_string('showrecommendedcourses', 'theme_pioneer');
+    $description = get_string('showrecommendedcourses_desc', 'theme_pioneer');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Personalized Recommended Courses
+    $name = 'theme_pioneer/promotedtagtitle';
+    $title = get_string('pcoursestag', 'theme_pioneer');
+    $description = get_string('promotedtagtitledesc', 'theme_pioneer');
+    $default =  get_string('settingfeaturedtagslider', 'theme_pioneer');
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Personalized Recommended Courses
+    $name = 'theme_pioneer/promotedtaglinktext';
+    $title = get_string('promotedtaglinktext', 'theme_pioneer');
+    $description = get_string('promotedtaglinktext_desc', 'theme_pioneer');
+    $default =  get_string('settingpromotedtaglinktext', 'theme_pioneer');
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Personalized Recommended Courses
+    $name = 'theme_pioneer/promotedtaglink';
+    $title = get_string('promotedtaglink', 'theme_pioneer');
+    $description = get_string('promotedtaglink_desc', 'theme_pioneer');
+    $default =  get_string('settingpromotedtaglink', 'theme_pioneer');
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
 
 
 // Promoted Courses Start.
@@ -286,6 +329,7 @@ $temp = new admin_settingpage('theme_pioneer_fpdashboard', get_string('fpdashboa
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
+
 
     $name = 'theme_pioneer/promotedcourses';
     $title = get_string('pcourses', 'theme_pioneer');
