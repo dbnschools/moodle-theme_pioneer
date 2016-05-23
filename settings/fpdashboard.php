@@ -247,14 +247,24 @@ $temp = new admin_settingpage('theme_pioneer_fpdashboard', get_string('fpdashboa
     $name = 'theme_pioneer/showrecommendedcourses';
     $title = get_string('showrecommendedcourses', 'theme_pioneer');
     $description = get_string('showrecommendedcourses_desc', 'theme_pioneer');
-    $default = true;
+    $default = false;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    // Promoted Course Textbox.
+    $name = 'theme_pioneer/promotedtagtextbox';
+    $title = get_string('promotedtagtextbox', 'theme_pioneer');
+    $description = get_string('promotedtagtextbox_desc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+
     // Personalized Recommended Courses
     $name = 'theme_pioneer/promotedtagtitle';
-    $title = get_string('pcoursestag', 'theme_pioneer');
+    $title = get_string('promotedtagtitle', 'theme_pioneer');
     $description = get_string('promotedtagtitledesc', 'theme_pioneer');
     $default =  get_string('settingfeaturedtagslider', 'theme_pioneer');
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -279,6 +289,59 @@ $temp = new admin_settingpage('theme_pioneer_fpdashboard', get_string('fpdashboa
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+
+// Personalized Recommended Courses Heading.
+    $name = 'theme_pioneer_mycoursesheading';
+    $heading = get_string('mycoursesheading', 'theme_pioneer');
+    $information = get_string('mycoursesheadingdesc', 'theme_pioneer');;
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
+
+    // Toggle show or hide recommended courses
+    $name = 'theme_pioneer/showmycourses';
+    $title = get_string('showmycourses', 'theme_pioneer');
+    $description = get_string('showmycourses_desc', 'theme_pioneer');
+    $default = true;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Promoted Course Textbox.
+    $name = 'theme_pioneer/promotedmytextbox';
+    $title = get_string('promotedmytextbox', 'theme_pioneer');
+    $description = get_string('promotedtagtextbox_desc', 'theme_pioneer');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+
+    // Personalized Recommended Courses
+    $name = 'theme_pioneer/promotedmytitle';
+    $title = get_string('promotedmytitle', 'theme_pioneer');
+    $description = get_string('promotedmytitledesc', 'theme_pioneer');
+    $default =  get_string('settingfeaturedmyslider', 'theme_pioneer');
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Personalized Recommended Courses
+    $name = 'theme_pioneer/promotedmylinktext';
+    $title = get_string('promotedmylinktext', 'theme_pioneer');
+    $description = get_string('promotedtaglinktext_desc', 'theme_pioneer');
+    $default =  get_string('settingpromotedmylinktext', 'theme_pioneer');
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Personalized Recommended Courses
+    $name = 'theme_pioneer/promotedmylink';
+    $title = get_string('promotedmylink', 'theme_pioneer');
+    $description = get_string('promotedmylink_desc', 'theme_pioneer');
+    $default =  get_string('settingpromotedmylink', 'theme_pioneer');
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
 
 
 // Promoted Courses Start.

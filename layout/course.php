@@ -58,7 +58,7 @@ echo $OUTPUT->doctype() ?>
 <div id="page" class="container-fluid">
 <div id="page-content" class="row-fluid">
     <header>
-        <div id="header-image-box">
+         <div id="header-image-box">
             <?php if($PAGE->theme->settings->headerbackgroundtoggle==1 && $courseimage) { ?>
             <div class="header-image-custom" style="background-image: url('<?php echo $courseimage ?>');">
             <div class="top-icon-search">
@@ -70,11 +70,13 @@ echo $OUTPUT->doctype() ?>
               require_once(dirname(__FILE__).'/includes/iconnav.php');
               }
             ?>
-            <div class="top-search">
+            
             <?php if($PAGE->theme->settings->fpsearchboxtop) { ?>
+            <div class="top-search">
             <?php require(dirname(__FILE__).'/includes/searchbox.php'); ?>
-            <?php } ?>
             </div>
+            <?php } ?>
+            
             </div>
             <?php } else { ?>
             </div>
@@ -90,11 +92,13 @@ echo $OUTPUT->doctype() ?>
               require_once(dirname(__FILE__).'/includes/iconnav.php');
               }
             ?>
-            <div class="top-search">
+            
             <?php if($PAGE->theme->settings->fpsearchboxtop) { ?>
+            <div class="top-search">
             <?php require(dirname(__FILE__).'/includes/searchbox.php'); ?>
+            </div>
             <?php } ?>
-           </div>
+           
            </div>
            <?php } else { ?>
            </div>
@@ -105,7 +109,6 @@ echo $OUTPUT->doctype() ?>
             <?php echo $OUTPUT->course_header(); ?>  
             </div>
         </div>
-
         <div class="course-titlewrap">
         <div class="course-title">
             <?php echo $html->heading; ?>

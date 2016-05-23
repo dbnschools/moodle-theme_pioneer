@@ -50,6 +50,7 @@ $context = context_system::instance();
         echo ('<hr></div><div class="clearfix"></div>');
         }
       ?>
+      <?php if($PAGE->theme->settings->showmycourses==1) { echo $courserenderer->promoted_courses('my'); } ?>
       <div class="fptextboxtext">
         <?php 
         if($PAGE->theme->settings->togglefptextbox==1) {

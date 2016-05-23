@@ -272,8 +272,10 @@ margin-top:30px;
 #page-badges-mybadges .coursegradewrap {display:none;}
 #page-badges-mybadges #frontpagetabs {display:none;}
 #page-badges-mybadges .fptextboxtext {display:none;}
+#page-badges-mybadges .fptextbox-inner div#Promoted-Courses {display:none;}
 #page-badges-mybadges .creatortextbox {display:none;}
 #page-badges-mybadges div#topPromoted-Courses {display:none;}
+#page-badges-mybadges .fptextbox div#Promoted-Courses {display:none;}
 #page-user-profile .coursegradewrap {display:none;}
 #page-user-profile #coursegrades {display:none;}
 
@@ -382,7 +384,6 @@ div#coursegrades {
 .top-icon-search {
     display: inline;
     background-color: [[setting:iconnavbackgroundcolortop]];
-    padding: 0px 5px 5px 5px;
     border-radius: 0px 0px 10px 10px;
     position: absolute;
     right: 10px;
@@ -398,9 +399,9 @@ div#coursegrades {
 
 
 .top-search {
-  margin-top:4px;
   display: block;
-  padding:0px 10px;
+  padding-top:5px;
+  margin:0px 10px;
   float:right;
 }
 
@@ -424,7 +425,9 @@ div#coursegrades {
     left:10px;
     border-radius: 0px 0px 10px 10px;
 }
-
+.radial-grade .circle .mask .fill, .radial-progress .circle .mask .fill {
+    background-color: [[setting:radialcolor]];
+}
 
 /* BREADCRUMBS */
 .breadcrumbcenter {
@@ -437,16 +440,11 @@ div#coursegrades {
 
 
 div#breadcrumb-container {
-    background-color: [[setting:breadcrumbcolor]];
-    border:1px solid #ccc;
-    border-radius: 0px 0px 15px 15px;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.4);
    display:block;
-   padding: 0px 20px 0px 20px;
    clear:both;
    display:inline-block;
 }
-
+/*
 .breadcrumb-nav {  
   background-color:none;
   padding:2px;
@@ -471,6 +469,81 @@ z-index: 0;
   border-radius: 0px;
   padding: 5px;
 }
+*/
+
+/* BREADCRUMB NEW */
+/* BREADCRUMBS */
+.breadcrumb-nav {  
+  background-color:none;
+}
+
+.breadcrumb {
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 0px 0px 5px 5px;
+  background-color:none;
+  margin:0px;
+  padding:0px;
+  background: none;
+  border:1px solid #ccc;
+}
+.breadcrumb a {
+}
+
+.breadcrumb li {
+  text-decoration: none;
+  outline: none;
+  display: block;
+  float: left;
+  font-size: 14px;
+  line-height: 30px;
+  padding: 0 10px 0 20px;
+  background: [[setting:breadcrumbcolor]];
+  position: relative;
+  background-color:none;
+}
+.breadcrumb li:after {
+  content: '';
+  position: absolute;
+  top: 0; 
+  right: -14px;
+  width: 30px; 
+  height: 30px;
+  transform: scale(0.707) rotate(45deg);
+ z-index: 1;
+  background: [[setting:breadcrumbcolor]];
+  box-shadow: 
+    1px -1px 0 1px rgba(0, 0, 0, 0.1), 
+    2px -2px 0 2px rgba(255, 255, 255, 0.1);
+  border-radius: 0 5px 0 50px;
+}
+
+.breadcrumb li:first-child {
+  
+}
+
+.breadcrumb li:first-child:before {
+  left: 14px;
+}
+
+.breadcrumb li:last-child {
+  padding-right: 20px;
+}
+
+/*hover/active styles*/
+.breadcrumb li.active, .breadcrumb li:hover{
+  background: [[setting:breadcrumbcolorhover]];
+}
+
+.breadcrumb li.active:after, .breadcrumb li:hover:after {
+  background: [[setting:breadcrumbcolorhover]];
+}
+
+.breadcrumb li:last-child:after {
+  content: none;
+}
+
+
 
 /* ==================== */
 
@@ -524,13 +597,15 @@ z-index: 0;
     padding:10px;
 }
 */
+
 .path-calendar .maincalendar {
     background-color: [[setting:activitybackground]];
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.4);
     padding:15px;
 }
 .fptextbox #Promoted-Courses .promoted_courses {
-    background-color: #2C5282;
+    background-color: [[setting:recommendedbkg]];
+    border-radius: 4px;
 }
 .fptextbox {
     background-color: [[setting:activitybackground]];

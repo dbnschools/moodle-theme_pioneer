@@ -90,8 +90,9 @@ echo $OUTPUT->doctype() ?>
         </div>
 
     <?php } else { ?>
-    <div id="header-image-box">
-    <div class="header-image">
+        <?php if(isloggedin()) { ?> 
+        <div id="header-image-box">
+        <div class="header-image">
         <div class="top-icon-search">
             <div class="pull-left navbar navbar-inner">
                 <div class="fp-custom-menus">
@@ -100,7 +101,6 @@ echo $OUTPUT->doctype() ?>
                     <?php if (empty($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu']) { echo $OUTPUT->lang_menu(); } ?>
                 </div>
             </div>
-        <?php if(isloggedin()) { ?> 
             <?php 
               if($PAGE->theme->settings->toggleiconnav==1) {
               require_once(dirname(__FILE__).'/includes/iconnav.php');
@@ -108,11 +108,13 @@ echo $OUTPUT->doctype() ?>
               require_once(dirname(__FILE__).'/includes/iconnav.php');
               }
             ?>
-            <div class="top-search">
+            
                 <?php if($PAGE->theme->settings->fpsearchboxtop) { ?>
+                <div class="top-search">
                 <?php require(dirname(__FILE__).'/includes/searchbox.php'); ?>
+                </div>
                 <?php } ?>
-           </div>
+           
         </div>
           
                 

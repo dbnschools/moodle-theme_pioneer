@@ -3,7 +3,7 @@
     .radial-progress {
         @circle-size: 70px;
         @circle-background: #d6dadc;
-        @circle-color: #FF2A7E;
+        @circle-color: ;
         @inset-size: 45px;
         @inset-color: #fbfbfb;
         @transition-length: 1s;

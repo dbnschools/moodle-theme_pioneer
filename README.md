@@ -1,6 +1,15 @@
 # Moodle-theme_pioneer
 Pioneer strikes a balance between features and beautiful design. The Pioneer theme is focused on enhancing learning by using intuitive navigation, a simple layout, and amazing styling to help learners engage with your content more than the LMS. You have learning content, Pioneer makes it beautiful.
 
+##Pioneer v1.4
+* Radial Circle Color Picker
+* Personalized Recommended Courses based off of Moodle tagging.  This features utilizes Profile tags and matches them to course tags and displays the results in a beautiful responsive slider.  https://www.youtube.com/watch?v=XMXRvH51zRE
+* Personalized Recommended Courses Background color picker added
+* My Courses Slider functionality added.  Allows the display of My Courses in a slider similar to featured courses slider and recommended courses slider.
+* Fixed Top Menu background color appearing on course pages when no items are present in the menu.
+* Several CSS fixes.
+* New breadcrumb style.  Can pick breadcrumb color for background as well as background when in hover state.
+
 ##Pioneer v1.3.9
 * Improved layout
 * Total Course Grade Radial Animation when Admin Setting is turned on and Course Settings set to show student grades
@@ -12,6 +21,7 @@ Pioneer strikes a balance between features and beautiful design. The Pioneer the
 * Featured Course slider at bottom of page has a "View More Courses" link which can be customized to point the user to a specific category of courses.
 * Fixed CSS issue with responsive menu background-color not showing for ipads
 * Icon navigation when displayed in the main content area no longer use tooltips to show icon text.  The text is displayed below the icon.  Tooltips are only used when icons are located in the top header area to save space and provide a clean look.
+* Moved Tools Menu, Custom Menu, and Language Menu to the top right menu area.  This freed up space in the sticky navigation bar.
 
 ##Pioneer v1.3.8
 * Fixed menu bar on login page /moodle/login/index.php.

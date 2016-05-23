@@ -204,6 +204,13 @@ function theme_pioneer_process_css($css, $theme) {
     }
     $css = theme_pioneer_set_loginbuttoncolor($css, $loginbuttoncolor);
 
+    if (!empty($theme->settings->recommendedbkg)) {
+        $recommendedbkg = $theme->settings->recommendedbkg;
+    } else {
+        $recommendedbkg = '';
+    }
+    $css = theme_pioneer_set_recommendedbkg($css, $recommendedbkg);
+
     if (!empty($theme->settings->coursetitlebkg)) {
         $coursetitlebkg = $theme->settings->coursetitlebkg;
     } else {
@@ -231,6 +238,14 @@ function theme_pioneer_process_css($css, $theme) {
         $radialboxbackground = '';
     }
     $css = theme_pioneer_set_radialboxbackground($css, $radialboxbackground);
+
+    if (!empty($theme->settings->radialcolor)) {
+        $radialcolor = $theme->settings->radialcolor;
+    } else {
+        $radialcolor = '';
+    }
+    $css = theme_pioneer_set_radialcolor($css, $radialcolor);
+
 
     if (!empty($theme->settings->tabbuttonhovercolor)) {
         $tabbuttonhovercolor = $theme->settings->tabbuttonhovercolor;
@@ -356,6 +371,14 @@ function theme_pioneer_process_css($css, $theme) {
         $breadcrumbcolor = '';
     }
     $css = theme_pioneer_set_breadcrumbcolor($css, $breadcrumbcolor);
+    
+    // breadcrumb color hover
+    if (!empty($theme->settings->breadcrumbcolorhover)) {
+        $breadcrumbcolorhover = $theme->settings->breadcrumbcolorhover;
+    } else {
+        $breadcrumbcolorhover = '';
+    }
+    $css = theme_pioneer_set_breadcrumbcolorhover($css, $breadcrumbcolorhover);
 
     return $css;
 
@@ -416,6 +439,18 @@ function theme_pioneer_set_activitybackground($css, $activitybackground) {
 
     return $css;
 }
+//Adds custom background color to breadcrumbs
+function theme_pioneer_set_breadcrumbcolorhover($css, $breadcrumbcolorhover) {
+    $tag = '[[setting:breadcrumbcolorhover]]';
+    $replacement = $breadcrumbcolorhover;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
 
 //Adds custom background color to breadcrumbs
 function theme_pioneer_set_breadcrumbcolor($css, $breadcrumbcolor) {
@@ -429,6 +464,8 @@ function theme_pioneer_set_breadcrumbcolor($css, $breadcrumbcolor) {
 
     return $css;
 }
+
+
 
 function theme_pioneer_set_headerbackgroundimage($css, $headerbackgroundimage, $theme) {
     $tag = '[[setting:headerbackgroundimage]]';
@@ -481,6 +518,18 @@ function theme_pioneer_set_headerincourseimagepadding($css, $headerincourseimage
 function theme_pioneer_set_toppromotedpadding($css, $toppromotedpadding) {
     $tag = '[[setting:toppromotedpadding]]';
     $replacement = $toppromotedpadding;
+    if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_recommendedbkg($css, $recommendedbkg) {
+    $tag = '[[setting:recommendedbkg]]';
+    $replacement = $recommendedbkg;
     if (is_null($replacement)) {
         $replacement = '';
     }
@@ -616,6 +665,18 @@ function theme_pioneer_set_tabbuttoncolor($css, $tabbuttoncolor) {
 function theme_pioneer_set_radialboxbackground($css, $radialboxbackground) {
     $tag = '[[setting:radialboxbackground]]';
     $replacement = $radialboxbackground;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_radialcolor($css, $radialcolor) {
+    $tag = '[[setting:radialcolor]]';
+    $replacement = $radialcolor;
         if (is_null($replacement)) {
         $replacement = '';
     }

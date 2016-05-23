@@ -129,10 +129,14 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
 
  public function promoted_courses($type) {
         global $CFG, $OUTPUT, $DB, $PAGE, $USER;
+        if ($type == '') {
+            return false;
+        }
 
         $featuredcontent = '';
+        $featuredids = '';
         /* Get Featured courses id from DB */
-        $featuredids = theme_pioneer_get_setting('promotedcourses');
+        
         if ($type == 'tags') {
             $sql = 'SELECT DISTINCT itemid FROM {tag_instance} WHERE itemtype = "course" AND tagid IN(SELECT tagid FROM {tag_instance} WHERE itemtype = "user" AND itemid = '.$USER->id.')';
             $featuredidsarray = $DB->get_records_sql($sql, array());
@@ -140,14 +144,27 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
             $promotedtitle = theme_pioneer_get_setting('promotedtagtitle', 'format_text');
             $promotedlinktext = theme_pioneer_get_setting('promotedtaglinktext', 'format_text');
             $promotedlink = theme_pioneer_get_setting('promotedtaglink', 'format_text');
+            $personaltextbox = theme_pioneer_get_setting('promotedtagtextbox');
             foreach ($featuredidsarray as $fid) {
                 $featuredids .= $fid->itemid.',';
             }
          }
         if ($type == 'setting') {
+            $featuredids = theme_pioneer_get_setting('promotedcourses');
             $promotedtitle = theme_pioneer_get_setting('promotedtitle', 'format_text');
             $promotedlinktext = theme_pioneer_get_setting('promotedlinktext', 'format_text');
             $promotedlink = theme_pioneer_get_setting('promotedlink', 'format_text');
+            $personaltextbox = '';
+        }
+        if ($type == 'my') {
+            $promotedtitle = theme_pioneer_get_setting('promotedmytitle', 'format_text');
+            $promotedlinktext = theme_pioneer_get_setting('promotedmylinktext', 'format_text');
+            $promotedlink = theme_pioneer_get_setting('promotedmylink', 'format_text');
+            $personaltextbox = theme_pioneer_get_setting('promotedmytextbox');
+            $courses = enrol_get_all_users_courses($USER->id);
+            foreach ($courses as $fid) {
+                $featuredids .= $fid->id.',';
+            }
         }
 
         $featuredcontent = '';
@@ -186,18 +203,20 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
         $featuredheader = '<div class="custom-courses-list" id="Promoted-Courses">
 							  <div class="container-fluid">
 								<div class="titlebar with-felements">
-									<h2>'.$promotedtitle.' | <a href="'.$promotedlink.'">'.$promotedlinktext.'</a></h2>
+									<h2>'.$promotedtitle.'</h2>
 									<div class="clearfix"></div>
 								</div>
 								<div class="promoted_courses" data-crow="'.$totalfcourse.'">';
 
-        $featuredfooter = ' </div>
+        $featuredfooter = ' <p style="float:right;"> <a href="'.$promotedlink.'">'.$promotedlinktext.'</a></p>
+                            <div class="clearfix"></div>
+                            </div>
                             </div>
                             </div>';
 
         if (!empty($fcourseids)) {
             foreach ($fcourseids as $courseids) {
-                $rowcontent = '<div><div class="row-fluid carousel">';
+                $rowcontent = '<p>'.$personaltextbox.'</p><div><div class="row-fluid carousel">';
 
                 foreach ($courseids as $courseid) {
                     $course = get_course($courseid);
@@ -216,7 +235,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
                     $imgurl = '';
 
                     $summary = theme_pioneer_strip_html_tags($course->summary);
-                    $summary = theme_pioneer_course_trim_char($summary, 125);
+                    $summary = theme_pioneer_course_trim_char($summary, 115);
                     $trimtitle = theme_pioneer_course_trim_char($course->fullname, 25);
 
                     $context = context_course::instance($course->id);

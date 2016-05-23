@@ -60,7 +60,7 @@ require_once($CFG->libdir. '/coursecatlib.php');
             $item->hideicon = true;
             $breadcrumbs[] = $this->render($item);
         }
-        $divider = '<i class="fa fa-chevron-right"></i>';
+        $divider = '';
         $listitems = '<li>'.join(" $divider</li><li>", $breadcrumbs).'</li>';
         $title = '<span class="accesshide">'.get_string('pagepath').'</span>';
         return $title . "<ul class=\"breadcrumb\">$listitems</ul>";

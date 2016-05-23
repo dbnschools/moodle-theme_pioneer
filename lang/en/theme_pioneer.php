@@ -43,6 +43,8 @@ $string['footertextboxes'] = 'Custom Footer';
 $string['analyticsheading'] = 'Google Analytics';
 $string['recommendedcoursesheading'] = 'Personalized Recommended Course Slider';
 $string['recommendedcoursesheadingdesc'] = 'Personalized Recommended Course Slider will match user tags (interests) with course tags.  When a match is found the resulting course list will be displayed in a beautiful responsive slider on the frontpage. This setting is automatic and no interaction is required other than providing tags for courses and user profiles. ';
+$string['mycoursesheading'] = 'My Courses Slider';
+$string['mycoursesheadingdesc'] = 'This will display courses a user is enrolled in or teaching. They are displayed in a beautiful, responsive slider. Best suited for desktop presentation.';
 
 
 
@@ -216,25 +218,39 @@ $string['promotedlinktext_desc'] = 'This provides an option to link to a course 
 $string['promotedlink'] = 'Featured View More Courses URL';
 $string['promotedlink_desc'] = 'Enter a URL to one of your course catagories.  This is displayed next to the featured courses title.';
 $string['settingpromotedlinktext'] = 'Featured View More Courses';
-$string['settingpromotedlink'] = 'http://mymoodlesite/course/index.php?categoryid=2';
+$string['settingpromotedlink'] = 'example: http://mymoodlesite/course/';
 
-
-$string['pcoursestag'] = 'Personalized Recommended Courses';
+$string['promotedtagtitle'] = 'Personalized Recommended Courses Title';
 $string['promotedtagtitledesc'] = 'Please give the Personalized Recommended Courses block a title.';
 $string['promotedtaglinktext'] = 'Recommended View More Courses Text';
 $string['promotedtaglinktext_desc'] = 'This provides an option to link to a course category to show more courses.  Enter a URL below.';
 $string['promotedtaglink'] = 'Recommended View More Courses URL';
 $string['promotedtaglink_desc'] = 'Enter a URL to one of your course catagories.  This is displayed next to the featured courses title.';
 $string['settingpromotedtaglinktext'] = 'Recommended View More Courses';
-$string['settingpromotedtaglink'] = 'http://mymoodlesite/course/index.php?categoryid=2';
+$string['settingpromotedtaglink'] = 'example: http://mymoodlesite/course/';
 $string['settingfeaturedtagslider'] = 'Personalized Recommended Courses';
 $string['showrecommendedcourses'] = 'Show/Hide Personalized Recommended Courses';
 $string['showrecommendedcourses_desc'] = 'Uncheck this if you do not wish to show personalized recommended courses.';
+$string['recommendedbkg'] = 'Multiple Slider Background Color';
+$string['recommendedbkg_desc'] = 'This color will be applied to Featured Courses, Personalized Recommended Courses, and My Courses sliders. These are located on the frontpage.';
+$string['promotedtagtextbox'] = 'Personalized Description Textbox';
+$string['promotedtagtextbox_desc'] = 'Use this to explain to the user how to add profile tags and course tags so that recommended courses will appear for the user.';
 
-
-
-
-
+$string['promotedmytitle'] = 'My Courses Slider Title';
+$string['promotedmytitledesc'] = 'Please give the My Courses Slider block a title.';
+$string['promotedmylinktext'] = 'My Courses Slider View More Courses Text';
+$string['promotedmylinktext_desc'] = 'This provides an option to link to a course category to show more courses.  Enter a URL below.';
+$string['promotedmylink'] = 'My Courses Slider View More Courses URL';
+$string['promotedmylink_desc'] = 'Enter a URL to one of your course catagories.  This is displayed next to the My Courses Slider title.';
+$string['settingpromotedmylinktext'] = 'My Courses Slider View More Courses';
+$string['settingpromotedmylink'] = 'example: http://mymoodlesite/course/';
+$string['settingfeaturedmyslider'] = 'My Enrolled Courses';
+$string['showmycourses'] = 'Show/Hide My Courses Slider';
+$string['showmycourses_desc'] = 'Uncheck this if you do not wish to show My Courses Slider.';
+$string['mybkg'] = 'My Courses Slider Background';
+$string['mybkg_desc'] = 'Choose a color for the My Courses Slider Background.';
+$string['promotedmytextbox'] = 'My Courses Slider Description Textbox';
+$string['promotedmytextbox_desc'] = 'A textbox that appears with the My Courses Slider block.';
 
 
 //Custom Login Page 
@@ -390,6 +406,8 @@ $string['iconnavbackgroundcolor'] = 'Maincontent Icon and Searchbox Navigation B
 $string['iconnavbackgroundcolor_desc'] = 'This is the background color for the icon navigation and searchbox area in the main content area.';
 $string['radialboxbackground'] = 'Radial Course Grade and Completion Background';
 $string['radialboxbackground_desc'] = 'This is the background color for the box that contains the Course Grade Total and Course Completion radial elements in the top left of the course pages.';
+$string['radialcolor'] = 'Radial Circle Color';
+$string['radialcolor_desc'] = 'Set the color of the radial circle.';
 $string['iconnavbackgroundcolortop'] = 'Top Icon and Searchbox Navigation Background';
 $string['iconnavbackgroundcolortop_desc'] = 'This is the background color for the icon navigation and searchbox area in the very top-right of the page.';
 $string['navbkgcolor'] = 'Main Navigation Background';
@@ -406,6 +424,8 @@ $string['headerbackgroundtoggle'] = 'Allow teachers to upload header image';
 $string['headerbackgroundtoggle_desc'] = 'If turned on a teacher can upload an image to <a href="https://docs.moodle.org/29/en/Course_settings#Course_summary_files" target="_new">Course Summary Files</a>.  This image should be small to reduce load time.  Recommended size is 1024 width and less than 500kb in size. Otherwise all courses will use the photo you upload below for header image.';
 $string['breadcrumbcolor'] = 'Breadcrumb Color';
 $string['breadcrumbcolor_desc'] = 'Choose a background color for the breadcrumb bar. This is just below the main header image on the page.';
+$string['breadcrumbcolorhover'] = 'Breadcrumb Color Hover';
+$string['breadcrumbcolorhover_desc'] = 'Choose a background color for the breadcrumb bar when hovering over an item. This is just below the main header image on the page.';
 
 $string['topicweekcolor'] = 'Topic and Week Section Background';
 $string['topicweekcolor_desc'] = 'In Topic and Weekly course formats this is the background color for each topic or week in the course.';

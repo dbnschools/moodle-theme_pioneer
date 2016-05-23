@@ -110,6 +110,15 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $temp->add($setting);
 
     // @Marketing Box background color setting.
+    $name = 'theme_pioneer/recommendedbkg';
+    $title = get_string('recommendedbkg', 'theme_pioneer');
+    $description = get_string('recommendedbkg_desc', 'theme_pioneer');
+    $default = '#2C5282';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // @Marketing Box background color setting.
     $name = 'theme_pioneer/marketboxcontentcolor';
     $title = get_string('marketboxcontentcolor', 'theme_pioneer');
     $description = get_string('marketboxcontentcolor_desc', 'theme_pioneer');
@@ -154,6 +163,15 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+     // radial animation Background
+    $name = 'theme_pioneer/radialcolor';
+    $title = get_string('radialcolor', 'theme_pioneer');
+    $description = get_string('radialcolor_desc', 'theme_pioneer');
+    $default = '#FF2A7E';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
     // Main navigation Background
     $name = 'theme_pioneer/navbkgcolor';
     $title = get_string('navbkgcolor', 'theme_pioneer');
@@ -168,6 +186,15 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $title = get_string('breadcrumbcolor', 'theme_pioneer');
     $description = get_string('breadcrumbcolor_desc', 'theme_pioneer');
     $default = '#DCE0E5';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Breadcrumb bar color
+    $name = 'theme_pioneer/breadcrumbcolorhover';
+    $title = get_string('breadcrumbcolorhover', 'theme_pioneer');
+    $description = get_string('breadcrumbcolorhover_desc', 'theme_pioneer');
+    $default = '#b0b3b7';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
