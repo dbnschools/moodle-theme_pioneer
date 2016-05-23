@@ -10,6 +10,8 @@ Pioneer strikes a balance between features and beautiful design. The Pioneer the
 * Several CSS fixes.
 * New breadcrumb style.  Can pick breadcrumb color for background as well as background when in hover state.
 
+
+
 ##Pioneer v1.3.9
 * Improved layout
 * Total Course Grade Radial Animation when Admin Setting is turned on and Course Settings set to show student grades

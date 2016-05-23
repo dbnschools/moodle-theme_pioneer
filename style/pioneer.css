@@ -804,8 +804,8 @@ display:none;
 }
 
 
-#page-mod-forum-view #editbutton-top {display:none !important;}
-#page-mod-forum-view #editbutton {display:block !important;}
+#page-mod-forum-view #editbutton-top, #page-mod-forum-discuss #editbutton-top {display:none !important;}
+#page-mod-forum-view #editbutton, #page-mod-forum-discuss #editbutton {display:block !important;}
 
 
 //small screen sizes
