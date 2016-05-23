@@ -144,7 +144,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
             $promotedtitle = theme_pioneer_get_setting('promotedtagtitle', 'format_text');
             $promotedlinktext = theme_pioneer_get_setting('promotedtaglinktext', 'format_text');
             $promotedlink = theme_pioneer_get_setting('promotedtaglink', 'format_text');
-            $personaltextbox = theme_pioneer_get_setting('promotedtagtextbox', 'format_text');
+            $personaltextbox = theme_pioneer_get_setting('promotedtagtextbox', 'format_html');
             foreach ($featuredidsarray as $fid) {
                 $featuredids .= $fid->itemid.',';
             }
@@ -160,7 +160,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
             $promotedtitle = theme_pioneer_get_setting('promotedmytitle', 'format_text');
             $promotedlinktext = theme_pioneer_get_setting('promotedmylinktext', 'format_text');
             $promotedlink = theme_pioneer_get_setting('promotedmylink', 'format_text');
-            $personaltextbox = theme_pioneer_get_setting('promotedmytextbox', 'format_text');
+            $personaltextbox = theme_pioneer_get_setting('promotedmytextbox', 'format_html');
             $courses = enrol_get_all_users_courses($USER->id);
             foreach ($courses as $fid) {
                 $featuredids .= $fid->id.',';
