@@ -1,5 +1,5 @@
 # Moodle-theme_pioneer
-Pioneer strikes a balance between features and beautiful design. The Pioneer theme is focused on enhancing learning by using intuitive navigation, a simple layout, and amazing styling to help learners engage with your content more than the LMS. You have learning content, Pioneer makes it beautiful.
+Pioneer strikes a balance between features and beautiful design. The Pioneer theme is focused on enhancing learning by using intuitive navigation, a simple layout, and amazing styling to help learners engage with your content. You have learning content, Pioneer makes it beautiful.
 
 ##Pioneer v1.4
 * Radial Circle Color Picker
