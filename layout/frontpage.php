@@ -62,89 +62,85 @@ echo $OUTPUT->doctype() ?>
     <div id="page-content" class="row-fluid">
 
     <header>
-        <?php if ($PAGE->theme->settings->showlogin == 1 && !isloggedin()) { ?>
+    <?php if (!isloggedin()) { ?>
         <div id="header-image-box-logout">
-            <div id="course-header">      
+                <div id="course-header">      
                 <?php echo $OUTPUT->course_header(); ?>
-            </div>
-            <div class="course-titlewrap">
+                </div>
+        <div class="course-titlewrap">
             <div class="course-title">
-            <?php echo $html->heading; ?>
-            <div class="logintools">
-            <ul>
-            <?php if($PAGE->theme->settings->createuser==1) { ?><li><a href="<?php echo new moodle_url('/login/signup.php'); ?>"><?php echo get_string('signuplogin' , 'theme_pioneer'); ?></a></li><?php } ?>
-            <?php if($PAGE->theme->settings->forgotpass==1) { ?><li><a href="<?php echo new moodle_url('/login/forgot_password.php'); ?>"><?php echo get_string('lginforgot' , 'theme_pioneer'); ?></li></a><?php } ?>
-            </ul>
-            </div>
-            <div class="customlogin">
-            <form action="<?php echo new moodle_url('/login/index.php'); ?>" method="post" id="login"  >
-            <input type="text" name="username" placeholder="<?php echo get_string('lginuser' , 'theme_pioneer'); ?>" required>
-            <input type="password" name="password" placeholder="<?php echo get_string('lginpass' , 'theme_pioneer'); ?>" required>
-            <button>
-            <?php echo get_string('lginlogin' , 'theme_pioneer'); ?>
-            </button>
-            </form>
-            </div>
-            </div>
+                <?php echo $html->heading; ?>
+                <div class="logintools">
+                    <ul>
+                    <?php if($PAGE->theme->settings->createuser==1) { ?><li><a href="<?php echo new moodle_url('/login/signup.php'); ?>"><?php echo get_string('signuplogin' , 'theme_pioneer'); ?></a></li><?php } ?>
+                    <?php if($PAGE->theme->settings->forgotpass==1) { ?><li><a href="<?php echo new moodle_url('/login/forgot_password.php'); ?>"><?php echo get_string('lginforgot' , 'theme_pioneer'); ?></li></a><?php } ?>
+                    </ul>
+                </div>
+                    <?php if ($PAGE->theme->settings->showlogin == 1) { ?>
+                        <div class="customlogin">
+                            <form action="<?php echo new moodle_url('/login/index.php'); ?>" method="post" id="login"  >
+                            <input type="text" name="username" placeholder="<?php echo get_string('lginuser' , 'theme_pioneer'); ?>" required>
+                            <input type="password" name="password" placeholder="<?php echo get_string('lginpass' , 'theme_pioneer'); ?>" required>
+                            <button>
+                            <?php echo get_string('lginlogin' , 'theme_pioneer'); ?>
+                            </button>
+                            </form>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
         </div>
-
     <?php } else { ?>
-        <?php if(isloggedin()) { ?> 
         <div id="header-image-box">
         <div class="header-image">
-        <div class="top-icon-search">
-            <div class="pull-left navbar navbar-inner">
-                <div class="fp-custom-menus">
-                    <?php echo $OUTPUT->tools_menu(); ?> 
-                    <?php echo $OUTPUT->custom_menu(); ?>
-                    <?php if (empty($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu']) { echo $OUTPUT->lang_menu(); } ?>
+        <?php if (isloggedin()) { ?>
+            <div class="top-icon-search">
+                <div class="pull-left navbar navbar-inner">
+                    <div class="fp-custom-menus">
+                        <?php echo $OUTPUT->tools_menu(); ?> 
+                        <?php echo $OUTPUT->custom_menu(); ?>
+                        <?php if (empty($PAGE->layout_options['langmenu']) || $PAGE->layout_options['langmenu']) { echo $OUTPUT->lang_menu(); } ?>
+                    </div>
                 </div>
-            </div>
-            <?php 
-              if($PAGE->theme->settings->toggleiconnav==1) {
-              require_once(dirname(__FILE__).'/includes/iconnav.php');
-              } else if($PAGE->theme->settings->toggleiconnav==2) {
-              require_once(dirname(__FILE__).'/includes/iconnav.php');
-              }
-            ?>
-            
-                <?php if($PAGE->theme->settings->fpsearchboxtop) { ?>
-                <div class="top-search">
-                <?php require(dirname(__FILE__).'/includes/searchbox.php'); ?>
-                </div>
-                <?php } ?>
-           
-        </div>
-          
-                
-        <?php } else { ?>
-    </div>
+                <?php 
+                  if($PAGE->theme->settings->toggleiconnav==1) {
+                  require_once(dirname(__FILE__).'/includes/iconnav.php');
+                  } else if($PAGE->theme->settings->toggleiconnav==2) {
+                  require_once(dirname(__FILE__).'/includes/iconnav.php');
+                  }
+                ?>
+                    <?php if($PAGE->theme->settings->fpsearchboxtop) { ?>
+                    <div class="top-search">
+                    <?php require(dirname(__FILE__).'/includes/searchbox.php'); ?>
+                    </div>
+                    <?php } ?>
+            </div>  
         <?php } ?>
             <div class="header-spacer">
                 <div id="course-header">      
-                    <?php echo $OUTPUT->course_header(); ?>
+                <?php echo $OUTPUT->course_header(); ?>
                 </div>
                 <div class="course-titlewrap">
-            <div class="course-title">
+                <div class="course-title">
+                
                 <?php echo $html->heading; ?>
-                <?php if($PAGE->theme->settings->tabtoggle==1) { ?>
-                <div class="coursegradewrap">        
-                    <div data-toggle="collapse" data-target="#frontpagetabs" class="coursegradebtn btn-link"><i class="fa fa-arrow-circle-down"></i>  <?php echo $PAGE->theme->settings->tabbuttontext ?> </div>
-                </div>
-            <?php } ?>
-            </div>
-                </div>
-           </div>
-            </div>
-        <?php if($PAGE->theme->settings->tabtoggle==1) { ?>
-            <div id="frontpagetabs" class="collapse out">
-                <?php require_once(dirname(__FILE__).'/includes/tabs.php'); ?>
-            </div>
-        <?php } ?>
-            </div>       
-        <?php } ?>
 
+                <?php if($PAGE->theme->settings->tabtoggle==1) { ?>
+                    <div class="coursegradewrap">        
+                        <div data-toggle="collapse" data-target="#frontpagetabs" class="coursegradebtn btn-link"><i class="fa fa-arrow-circle-down"></i>  <?php echo $PAGE->theme->settings->tabbuttontext ?> </div>
+                    </div>
+                <?php } ?>
+
+                </div>
+                </div>
+            </div> 
+            </div>
+                <?php if($PAGE->theme->settings->tabtoggle==1) { ?>
+                <div id="frontpagetabs" class="collapse out">
+                <?php require_once(dirname(__FILE__).'/includes/tabs.php'); ?>
+                </div>
+                <?php } ?>
+    <?php } ?>
     </header>
 
         <?php require_once(dirname(__FILE__).'/includes/topnav.php'); ?>

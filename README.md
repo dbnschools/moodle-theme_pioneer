@@ -2,6 +2,11 @@
 Pioneer strikes a balance between features and beautiful design. The Pioneer theme is focused on enhancing learning by using intuitive navigation, a simple layout, and amazing styling to help learners engage with your content. You have learning content, Pioneer makes it beautiful.
 
 ##Pioneer v1.4
+* Fixed custom login issue where image would not display after hiding the login form
+* MYSQL and Postgres issue resolved to be compatible with both databases
+
+
+##Pioneer v1.4
 * Radial Circle Color Picker
 * Personalized Recommended Courses based off of Moodle tagging.  This features utilizes Profile tags and matches them to course tags and displays the results in a beautiful responsive slider.  https://www.youtube.com/watch?v=XMXRvH51zRE
 * Personalized Recommended Courses Background color picker added

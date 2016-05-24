@@ -138,7 +138,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
         /* Get Featured courses id from DB */
         
         if ($type == 'tags') {
-            $sql = 'SELECT DISTINCT itemid FROM {tag_instance} WHERE itemtype = "course" AND tagid IN(SELECT tagid FROM {tag_instance} WHERE itemtype = "user" AND itemid = '.$USER->id.')';
+            $sql = "SELECT DISTINCT itemid FROM {tag_instance} WHERE itemtype = 'course' AND tagid IN(SELECT tagid FROM {tag_instance} WHERE itemtype = 'user' AND itemid = ".$USER->id.")";
             $featuredidsarray = $DB->get_records_sql($sql, array());
             $featuredids = '';
             $promotedtitle = theme_pioneer_get_setting('promotedtagtitle', 'format_text');
