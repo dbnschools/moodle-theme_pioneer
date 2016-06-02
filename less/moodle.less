@@ -3,19 +3,13 @@
  */
 @import "../../bootstrapbase/less/moodle.less";
 
-/*// Set the secondary background.
-@tableBackgroundAccent: darken(@wellBackground, 5%);
-@tableBackgroundHover: darken(@wellBackground, 10%);
-@tableBorder: @wellBorder;
-@navbarBackground: @wellBackground;
-@formActionsBackground: @wellBackground;
-@paginationActiveBackground: @wellBackground;
-@hrBorder: darken(@wellBackground, 5%);
-*/
+@media (max-width:979px){
+@navbarText: @navbarLinkColor;
+}
 @formActionsBackground: @wellBackground;
 // Remove unwanted text shadow, this can look odd with random colours.
 .breadcrumb li,
-.nav-header {
+.nav {
     text-shadow: none;
 }
 

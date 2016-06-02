@@ -55,6 +55,14 @@
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
+
+    // Background image setting.
+    $name = 'theme_pioneer/topmarketing1image';
+    $title = get_string('marketingimage', 'theme_pioneer');
+    $description = get_string('marketingimage_desc', 'theme_pioneer');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'topmarketing1image');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
     
     $name = 'theme_pioneer/marketingtop1buttonurl';
     $title = get_string('marketingbuttonurl', 'theme_pioneer');
@@ -115,6 +123,14 @@
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
+
+    // Background image setting.
+    $name = 'theme_pioneer/topmarketing2image';
+    $title = get_string('marketingimage', 'theme_pioneer');
+    $description = get_string('marketingimage_desc', 'theme_pioneer');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'topmarketing2image');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
     
     $name = 'theme_pioneer/marketingtop2buttonurl';
     $title = get_string('marketingbuttonurl', 'theme_pioneer');
@@ -173,6 +189,14 @@
     $description = get_string('marketingicondesc', 'theme_pioneer');
     $default = 'star';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Background image setting.
+    $name = 'theme_pioneer/topmarketing3image';
+    $title = get_string('marketingimage', 'theme_pioneer');
+    $description = get_string('marketingimage_desc', 'theme_pioneer');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'topmarketing3image');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 

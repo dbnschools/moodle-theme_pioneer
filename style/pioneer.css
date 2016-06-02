@@ -80,6 +80,13 @@ h3.sectionname:after {
     padding: 0px;
 }
 
+.block .content {
+    padding: 4px 21px 10px 7px;
+    word-wrap: break-word;
+}
+.block_navigation .block_tree ul ul {
+    margin: 0 0 0 10px;
+}
 
 .block .header .block_action>* {
     background-color: #fff;
@@ -135,6 +142,10 @@ h3.sectionname:after {
     background-color: [[setting:blockcolor]];
 }
 
+div#changenumsections img {
+    background-color: #fff;
+    height: 20px;
+}
 
 .container-fluid {
     max-width: none;
@@ -149,8 +160,26 @@ section#region-main {
     box-shadow: none;
     padding-bottom:10px;
 }
+@media (max-width: 768px){
+section#region-main {
+  margin:0px 0px 10px 0px;
+}
+}
 
-.userprofile{
+/* remove these for moodle 3.1 version */
+.course-content ul.topics li.section .left, .course-content ul.topics li.section .right {
+    width: auto;
+    position:absolute;
+    float:none;
+}
+.course-content ul.topics li.section .right {
+margin-top:30px;
+}
+/*--------------*/
+
+.user-enroller-panel {z-index: 2 !important;}
+
+.userprofile {
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.4);
   padding: 10px;
   background-color:[[setting:topicweekcolor]];
@@ -252,14 +281,7 @@ section#region-main .block_course_overview .content {
     padding:0px;
   }
 
-.course-content ul.topics li.section .left, .course-content ul.topics li.section .right {
-    width: auto;
-    position:absolute;
-    float:none;
-}
-.course-content ul.topics li.section .right {
-margin-top:30px;
-}
+
 
 /*Gradebook margin for table header stop below nav bar*/
 .floater.heading.floating {
@@ -310,7 +332,7 @@ div#coursegrades {
 }
 
 .course-content .current {
-  background-color: #d9edf7 !important;
+  background-color: [[setting:topichighlight]] !important;
 }
 
 .course-content {
@@ -388,11 +410,11 @@ div#coursegrades {
     position: absolute;
     right: 10px;
 }
-.top-icon-search .navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active>.dropdown-toggle {
+.navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active>.dropdown-toggle, .jsenabled .usermenu .moodle-actionmenu.show {
     background-color: initial;
 }
 
-.top-icon-search .navbar, .navbar-inner {
+.navbar, .navbar-inner {
     background-color: initial;
     height:auto;
 }
@@ -444,39 +466,11 @@ div#breadcrumb-container {
    clear:both;
    display:inline-block;
 }
-/*
-.breadcrumb-nav {  
-  background-color:none;
-  padding:2px;
-  margin-bottom:0px;
-}
 
-.breadcrumb {
-  background-color:none;
-background: none;
-position:relative;
-z-index: 0;
-}
-
-.breadcrumb li {
-  background: none;
-  position: relative;
-  background-color:none;
-}
-
-.breadcrumb {
-  background-color: transparent;
-  border-radius: 0px;
-  padding: 5px;
-}
-*/
-
-/* BREADCRUMB NEW */
 /* BREADCRUMBS */
 .breadcrumb-nav {  
   background-color:none;
 }
-
 .breadcrumb {
   display: inline-block;
   overflow: hidden;
@@ -488,8 +482,8 @@ z-index: 0;
   border:1px solid #ccc;
 }
 .breadcrumb a {
+  color:[[setting:breadcrumbtext]];
 }
-
 .breadcrumb li {
   text-decoration: none;
   outline: none;
@@ -517,15 +511,12 @@ z-index: 0;
     2px -2px 0 2px rgba(255, 255, 255, 0.1);
   border-radius: 0 5px 0 50px;
 }
-
-.breadcrumb li:first-child {
-  
+.breadcrumb li:first-child, .breadcrumb li:first-child:after {
+  background-color: [[setting:breadcrumbcolorhover]];
 }
-
 .breadcrumb li:first-child:before {
   left: 14px;
 }
-
 .breadcrumb li:last-child {
   padding-right: 20px;
 }
@@ -664,7 +655,7 @@ text-align: right;
     padding: 0px;
     display: block;
     position:relative;
-    z-index: 3;
+    z-index: 2;
     height:50px;
 }
 
@@ -683,13 +674,17 @@ text-align: right;
     background: none;
     border: none;
     border-radius: 0px;
-    background-color: [[setting:navbkgcolor]];
     height:50px;
 }
+.fpcustomnav-container{background-color: [[setting:navbkgcolor]];}
 
 .navbar .nav {margin-top:5px;}
 
-/*body.has_dock .fpcustomnav-container .navbar,.navbar-inner{*/
+.navbar .nav>li>a {
+    text-shadow: none; 
+}
+
+
 body.has_dock .fpcustomnav-container .navbar{
     width: calc(100% - 60px);
 }
@@ -707,7 +702,6 @@ body.has_dock .fpcustomnav-container .navbar {
     display: block;
     position: relative;
     width: 100%;
-    z-index: 2;
     height:50px;
 }
 body.has_dock #page {
@@ -760,9 +754,9 @@ body.has_dock #page {
   padding:0px;
 }
 
-/*.navbar .btn-navbar{margin-right:20px;}*/
+/*.navbar .btn-navbar{margin-right:20px;}
 
-.navbar-fixed-top, .navbar-fixed-bottom {z-index: 2;}
+.navbar-fixed-top, .navbar-fixed-bottom {z-index: 2;}*/
 
 @media (max-width: 900px){
 .navbar .nav-collapse.in {
@@ -772,6 +766,7 @@ body.has_dock #page {
     margin-left:10px;
 }
 }
+
 @media (max-width: 768px) {
 .navbar .nav-collapse.in>.nav>li>a {
     padding-left: 20px;
@@ -1183,6 +1178,10 @@ color: #000;
 color: #000;
 }
 
+.loginwrapper {
+  padding-top: [[setting:headerimagepadding]]
+}
+
 /* Alerts */
 .generalalert {
   margin-top: 5px;
@@ -1531,7 +1530,6 @@ div#Promoted-Courses {
     margin: 3px 0
 }
 .coursebox > .info > .coursename a {
-    color: inherit;
     padding-left: 27px;
     background-position: left center
 }
@@ -1542,7 +1540,6 @@ div#Promoted-Courses {
 }
 .coursebox > .info > .coursename a:hover,
 .coursebox > .info > .coursename a:focus {
-    color: inherit;
     text-decoration: none
 }
 .coursebox .content {
@@ -1834,8 +1831,8 @@ aside.block-region {
   content:"\f108";
 }
 
-.block_completionstatus .header .title h2:before, .block_selfcompletion .header .title h2, .block_completionstatus .header .title h2
-.block_selfcompletion .header .title h2:before {
+.block_completionstatus .header .title h2:before, .block_selfcompletion .header .title h2:before, .block_completionstatus .header .title h2,
+.block_selfcompletion .header .title h2 {
     background-color: #76b900;
   content:"\f0e4";
 }
@@ -2120,7 +2117,7 @@ aside#block-region-side-pre .block .header .title h2 {background-color: [[settin
     border: none;
     outline: none;
     background: #000;
-    z-index:2;
+    z-index:1;
 }
 
 .slick-prev:hover,
@@ -2161,7 +2158,7 @@ aside#block-region-side-pre .block .header .title h2 {background-color: [[settin
 .slick-prev
 {
     left: 25px;
-    z-index:2;
+    z-index:1;
 }
 [dir='rtl'] .slick-prev
 {

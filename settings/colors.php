@@ -19,6 +19,24 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    // @navColor setting.
+    $name = 'theme_pioneer/navcolor';
+    $title = get_string('navcolor', 'theme_pioneer');
+    $description = get_string('navcolor_desc', 'theme_pioneer');
+    $default = '#696969';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // @navColor hover setting.
+    $name = 'theme_pioneer/navcolorhover';
+    $title = get_string('navcolorhover', 'theme_pioneer');
+    $description = get_string('navcolorhover_desc', 'theme_pioneer');
+    $default = '#3F3F3F';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
     // course title background color.
     $name = 'theme_pioneer/coursetitlebkg';
     $title = get_string('coursetitlebkg', 'theme_pioneer');
@@ -113,7 +131,7 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $name = 'theme_pioneer/recommendedbkg';
     $title = get_string('recommendedbkg', 'theme_pioneer');
     $description = get_string('recommendedbkg_desc', 'theme_pioneer');
-    $default = '#2C5282';
+    $default = '#DCE0E5';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
@@ -181,6 +199,15 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
+    // Breadcrumb text color
+    $name = 'theme_pioneer/breadcrumbtext';
+    $title = get_string('breadcrumbtext', 'theme_pioneer');
+    $description = get_string('breadcrumbtext_desc', 'theme_pioneer');
+    $default = '#ccc';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
     // Breadcrumb bar color
     $name = 'theme_pioneer/breadcrumbcolor';
     $title = get_string('breadcrumbcolor', 'theme_pioneer');
@@ -213,6 +240,14 @@ $temp = new admin_settingpage('theme_pioneer_colorheading', get_string('colorhea
     $title = get_string('topicweekcolor', 'theme_pioneer');
     $description = get_string('topicweekcolor_desc', 'theme_pioneer');
     $default = '#FFFFFF';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+     $name = 'theme_pioneer/topichighlight';
+    $title = get_string('topichighlight', 'theme_pioneer');
+    $description = get_string('topichighlight_desc', 'theme_pioneer');
+    $default = '#d9edf7';
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, null, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);

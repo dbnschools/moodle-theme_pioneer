@@ -1,10 +1,23 @@
 # Moodle-theme_pioneer
 Pioneer strikes a balance between features and beautiful design. The Pioneer theme is focused on enhancing learning by using intuitive navigation, a simple layout, and amazing styling to help learners engage with your content. You have learning content, Pioneer makes it beautiful.
 
-##Pioneer v1.4
+
+##Pioneer v1.4.3
+* Fixed default color settings
+* Numerous CSS issues resolved to enhance looks and appeal
+* Hidden courses now appear "dimmed" in the course category view.  Previously they looked like any other course.
+* Increased limits for featured courses and course sliders.  A hard limit of 30 was used but is not 
+
+##Pioneer v1.4.2
+* Added color pickers for Navigation Bar Drop Downs
+* Added color picker for Current/Highlighted backgroundfor the selected topic or week.
+* Fixed z-index issue with sticky navbar and enroll user popup
+* Added support for image backgrounds in top marketing spots
+
+
+##Pioneer v1.4.1 
 * Fixed custom login issue where image would not display after hiding the login form
 * MYSQL and Postgres issue resolved to be compatible with both databases
-
 
 ##Pioneer v1.4
 * Radial Circle Color Picker
@@ -14,8 +27,6 @@ Pioneer strikes a balance between features and beautiful design. The Pioneer the
 * Fixed Top Menu background color appearing on course pages when no items are present in the menu.
 * Several CSS fixes.
 * New breadcrumb style.  Can pick breadcrumb color for background as well as background when in hover state.
-
-
 
 ##Pioneer v1.3.9
 * Improved layout

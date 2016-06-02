@@ -28,15 +28,16 @@
 <div class="row-fluid" id="marketingtop-spots">
 
 <div class="span4">
-    <div class="marketwraptop">
+    <div style="background-image: url(<?php if ($PAGE->theme->settings->topmarketing1image) { echo $PAGE->theme->setting_file_url('topmarketing1image', 'topmarketing1image', true); } ?>);background-repeat: no-repeat;background-size:cover; background-position:center;" class="marketwraptop">
         <div class="market-spottop">
+            <div class="markettext">
             <div class="market-title">
             <h3><?php echo $PAGE->theme->settings->marketingtop1 ?></h3>
             </div>
             <p>
             <?php echo $PAGE->theme->settings->marketingtop1content ?>
             </p> 
-            <br>
+            </div>
             <?php if ($PAGE->theme->settings->marketingtop1buttonurl) { ?>
             <div class="marketlink">
             <a href="<?php echo $PAGE->theme->settings->marketingtop1buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketingtop1target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketingtop1icon ?>"></i></span>
@@ -44,21 +45,21 @@
             </a>
             </div>
             <?php } ?>
-
         </div>
     </div>
 </div>
 
 <div class="span4">
-    <div class="marketwraptop">
+    <div style="background-image: url(<?php if ($PAGE->theme->settings->topmarketing2image) { echo $PAGE->theme->setting_file_url('topmarketing2image', 'topmarketing2image', true); } ?>);background-repeat: no-repeat;background-size:cover; background-position:center;" class="marketwraptop">
         <div class="market-spottop">
+            <div class="markettext">
             <div class="market-title">
             <h3><?php echo $PAGE->theme->settings->marketingtop2 ?></h3>
             </div>
             <p>
             <?php echo $PAGE->theme->settings->marketingtop2content ?>
             </p> 
-            <br />
+            </div>
             <?php if ($PAGE->theme->settings->marketingtop2buttonurl) { ?>
             <div class="marketlink">
             <a href="<?php echo $PAGE->theme->settings->marketingtop2buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketingtop2target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketingtop2icon ?>"></i></span>
@@ -71,15 +72,16 @@
 </div>
 
 <div class="span4">
-    <div class="marketwraptop">
+    <div style="background-image: url(<?php if ($PAGE->theme->settings->topmarketing3image) { echo $PAGE->theme->setting_file_url('topmarketing3image', 'topmarketing3image', true); } ?>);background-repeat: no-repeat;background-size:cover; background-position:center;" class="marketwraptop">
         <div class="market-spottop">
+            <div class="markettext">
             <div class="market-title">
             <h3><?php echo $PAGE->theme->settings->marketingtop3 ?></h3>
             </div>
             <p>
             <?php echo $PAGE->theme->settings->marketingtop3content ?>
             </p> 
-            <br />
+            </div>
             <?php if ($PAGE->theme->settings->marketingtop3buttonurl) { ?>
             <div class="marketlink">
             <a href="<?php echo $PAGE->theme->settings->marketingtop3buttonurl ?>" target="<?php echo $PAGE->theme->settings->marketingtop3target ?>" class="button"><span><i class="fa fa-<?php echo $PAGE->theme->settings->marketingtop3icon ?>"></i></span>

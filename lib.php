@@ -74,6 +74,18 @@ function theme_pioneer_less_variables($theme) {
     if (!empty($theme->settings->linkcolor)) {
         $variables['linkColor'] = $theme->settings->linkcolor;
     }
+    if (!empty($theme->settings->navcolor)) {
+        $variables['navbarLinkColor'] = $theme->settings->navcolor;
+    }
+    if (!empty($theme->settings->navcolor)) {
+        $variables['navbarText'] = $theme->settings->navcolor;
+    }
+    if (!empty($theme->settings->navcolorhover)) {
+        $variables['navbarLinkColorHover'] = $theme->settings->navcolorhover;
+    }
+    if (!empty($theme->settings->navcolorhover)) {
+        $variables['navbarLinkColorActive'] = $theme->settings->navcolorhover;
+    }
     return $variables;
 }
 
@@ -371,6 +383,21 @@ function theme_pioneer_process_css($css, $theme) {
         $breadcrumbcolor = '';
     }
     $css = theme_pioneer_set_breadcrumbcolor($css, $breadcrumbcolor);
+
+    // breadcrumb color
+    if (!empty($theme->settings->breadcrumbtext)) {
+        $breadcrumbtext = $theme->settings->breadcrumbtext;
+    } else {
+        $breadcrumbtext = '';
+    }
+    $css = theme_pioneer_set_breadcrumbtext($css, $breadcrumbtext);
+
+    if (!empty($theme->settings->topichighlight)) {
+        $topichighlight = $theme->settings->topichighlight;
+    } else {
+        $topichighlight = '';
+    }
+    $css = theme_pioneer_set_topichighlight($css, $topichighlight);
     
     // breadcrumb color hover
     if (!empty($theme->settings->breadcrumbcolorhover)) {
@@ -452,10 +479,34 @@ function theme_pioneer_set_breadcrumbcolorhover($css, $breadcrumbcolorhover) {
     return $css;
 }
 
+function theme_pioneer_set_breadcrumbtext($css, $breadcrumbtext) {
+    $tag = '[[setting:breadcrumbtext]]';
+    $replacement = $breadcrumbtext;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
 //Adds custom background color to breadcrumbs
 function theme_pioneer_set_breadcrumbcolor($css, $breadcrumbcolor) {
     $tag = '[[setting:breadcrumbcolor]]';
     $replacement = $breadcrumbcolor;
+        if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+function theme_pioneer_set_topichighlight($css, $topichighlight) {
+    $tag = '[[setting:topichighlight]]';
+    $replacement = $topichighlight;
         if (is_null($replacement)) {
         $replacement = '';
     }
@@ -884,7 +935,7 @@ function theme_pioneer_set_sectionheadericon($css, $sectionheadericon) {
  * @return bool
  */
 function theme_pioneer_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
-    if ($context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'logo' || $filearea === 'backgroundimage' || $filearea === 'headerbackgroundimage' || $filearea === 'marketing1image'|| $filearea === 'marketing2image' || $filearea === 'marketing3image' )) {
+    if ($context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'logo' || $filearea === 'backgroundimage' || $filearea === 'headerbackgroundimage' || $filearea === 'topmarketing1image'|| $filearea === 'topmarketing2image'|| $filearea === 'topmarketing3image'|| $filearea === 'marketing1image'|| $filearea === 'marketing2image' || $filearea === 'marketing3image' )) {
         $theme = theme_config::load('pioneer');
         // By default, theme files must be cache-able by both browsers and proxies.
         if (!array_key_exists('cacheability', $options)) {

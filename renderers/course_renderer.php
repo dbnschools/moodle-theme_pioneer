@@ -169,7 +169,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
 
 
         /* Get Featured courses id from DB */
-        $rcourseids = (!empty($featuredids)) ? explode(",", $featuredids, 12) : array();
+        $rcourseids = (!empty($featuredids)) ? explode(",", $featuredids, 30) : array();
         if (empty($rcourseids)) {
             return false;
         }
@@ -196,7 +196,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
             return false;
         }
 
-        $fcourseids = array_chunk($rcourseids, 12);
+        $fcourseids = array_chunk($rcourseids, 30);
         $totalfcourse = count($fcourseids);
         
 
@@ -294,7 +294,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
         /* Get Featured courses id from DB */
         $featuredids = theme_pioneer_get_setting('toppromotedcourses');
 
-        $rcourseids = (!empty($featuredids)) ? explode(",", $featuredids, 6) : array();
+        $rcourseids = (!empty($featuredids)) ? explode(",", $featuredids, 10) : array();
        
         if (empty($rcourseids)) {
             return false;
@@ -322,7 +322,7 @@ class theme_pioneer_core_course_renderer extends core_course_renderer {
             return false;
         }
 
-        $fcourseids = array_chunk($rcourseids, 6);
+        $fcourseids = array_chunk($rcourseids, 10);
         $totalfcourse = count($fcourseids);
         $promotedtitle = theme_pioneer_get_setting('toppromotedtitle', 'format_text');
         $promotedtitle = theme_pioneer_lang($promotedtitle);

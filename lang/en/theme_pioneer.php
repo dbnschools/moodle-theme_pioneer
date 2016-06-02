@@ -133,8 +133,15 @@ $string['invertdesc'] = 'Swaps text and background for the navbar at the top of 
 
 $string['linkcolor'] = 'Link color';
 $string['linkcolor_desc'] = 'The color of the links.';
+$string['navcolor'] = 'Navbar Drop Down color';
+$string['navcolor_desc'] = 'The color of the drop down menu in the navigation bar.';
+$string['navcolorhover'] = 'Navbar Drop Down Color on Hover';
+$string['navcolorhover_desc'] = 'The color of the drop down menu in the navigation bar on rollover.';
 $string['logo'] = 'Logo';
 $string['logodesc'] = 'The logo should be 140px by 40px.  The logo is displayed in the top left and bottom right of the theme.';
+$string['topichighlight'] = 'Topic Highlight Color';
+$string['topichighlight_desc'] = 'Color used when a topic or week is highlighted in a course.';
+
 
 $string['blocksinfo'] = 'Block Position';
 $string['blocksdesc'] = 'Align blocks on the left or the right of the page.';
@@ -191,7 +198,7 @@ $string['toppromotedtitledefault'] = 'Featured courses';
 $string['toppromotedtitledesc'] = 'This text appears below the Course Title in the slider. "Enroll Now" is an ideal tagline.';
 $string['toppcourseenable'] = 'Enable Featured Courses Slideshow';
 $string['toppcourses'] = 'Featured Courses Slideshow';
-$string['toppcoursesdesc'] = 'LIMIT=6 You cannot enter more than 6 course ids.  Please give the featured courses id should separated by comma.';
+$string['toppcoursesdesc'] = 'LIMIT=10 You cannot enter more than 10 course ids.  Please give the featured courses id should separated by comma.';
 $string['toppromotedcoursesheading'] = 'Featured Course Slideshow';
 $string['toptitle'] = 'Tagline';
 $string['fptoppromotedpadding'] = 'Height of Course Slideshow';
@@ -209,7 +216,7 @@ $string['promotedtitledefault'] = 'Featured courses';
 $string['promotedtitledesc'] = 'Please give the Promoted courses block a title.';
 $string['pcourseenable'] = 'Enable Featured courses';
 $string['pcourses'] = 'Bottom Featured Courses';
-$string['pcoursesdesc'] = 'LIMIT=9 You cannot enter more than 9 course ids. Please give the featured courses id should separated by comma.';
+$string['pcoursesdesc'] = 'Please give the featured courses id should separated by comma.';
 $string['promotedcoursesheading'] = 'Bottom Featured Courses Slider';
 $string['title'] = 'Title';
 
@@ -426,6 +433,10 @@ $string['breadcrumbcolor'] = 'Breadcrumb Color';
 $string['breadcrumbcolor_desc'] = 'Choose a background color for the breadcrumb bar. This is just below the main header image on the page.';
 $string['breadcrumbcolorhover'] = 'Breadcrumb Color Hover';
 $string['breadcrumbcolorhover_desc'] = 'Choose a background color for the breadcrumb bar when hovering over an item. This is just below the main header image on the page.';
+$string['breadcrumbtext'] = 'Breadcrumb Text Color';
+$string['breadcrumbtext_desc'] = 'Choose a color for the breadcrumb text.';
+
+
 
 $string['topicweekcolor'] = 'Topic and Week Section Background';
 $string['topicweekcolor_desc'] = 'In Topic and Weekly course formats this is the background color for each topic or week in the course.';
